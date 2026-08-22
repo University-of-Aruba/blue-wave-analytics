@@ -12,6 +12,13 @@ Built with [The Carpentries Workbench][workbench] and developed by the
 [University of Aruba](https://www.ua.aw/), delivered in Curaçao with the
 University of Curaçao.
 
+> **Where this lives.** The repository sits under a personal account rather than
+> the University of Aruba org, deliberately. The lesson is a DCDC deliverable but
+> the teaching data belongs to Cornerstone Economics, and filing it under UA would
+> blur that and commit the network without its project lead having been consulted.
+> See [DATA-PROVENANCE.md](DATA-PROVENANCE.md). The intended end state is a
+> transfer to `University-of-Aruba` once that conversation has happened.
+
 ## How this edition relates to the master course
 
 The master product is **Introduction to R for SPSS Users**, which lives at

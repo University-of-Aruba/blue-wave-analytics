@@ -514,7 +514,7 @@ workshop folder:
 
 ```{r capstone-download, eval = FALSE}
 # Iteration: 1
-base <- "https://raw.githubusercontent.com/University-of-Aruba/blue-wave-analytics/main/episodes/files"
+base <- "https://raw.githubusercontent.com/rendell/blue-wave-analytics/main/episodes/files"
 
 download.file(file.path(base, "blue-wave-squad-report-template.Rmd"),
               "blue-wave-squad-report-template.Rmd")

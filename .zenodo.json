@@ -27,7 +27,7 @@
   "access_right": "open",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/University-of-Aruba/blue-wave-analytics",
+      "identifier": "https://github.com/rendell/blue-wave-analytics",
       "relation": "isSupplementTo",
       "scheme": "url"
     },

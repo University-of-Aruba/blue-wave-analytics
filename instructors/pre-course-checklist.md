@@ -31,9 +31,17 @@ because several later items depend on the answers.
       are the April 2026 Aruba pilot forms. Either create Curacao cohort forms
       and swap them, or add a cohort question to the existing forms and accept
       mixed responses. Decide before promotion goes out.
-- [ ] **Clear the squad dataset for publication.** The teaching data comes from
-      the research file behind working paper WP-2026-01. Confirm you are content
-      for it to sit in a public CC-BY repository before the site goes live.
+- [ ] **Settle the institutional home.** The repository is published under
+      `rendell/blue-wave-analytics` rather than the University of Aruba org on
+      purpose: the teaching data belongs to Cornerstone Economics, and filing it
+      under UA would blur whose data it is and would commit DCDC without Esther
+      having been asked. `DATA-PROVENANCE.md` sets out the split. Raise it with
+      Esther, then transfer the repository to `University-of-Aruba` from
+      Settings > Transfer ownership. History survives and the old `github.com`
+      links redirect, but **`raw.githubusercontent.com` URLs do not redirect**,
+      so after the transfer run a find-and-replace of `rendell/blue-wave-analytics`
+      to `University-of-Aruba/blue-wave-analytics` across the repository and
+      rebuild.
 
 ## Content verification
 
@@ -50,9 +58,9 @@ because several later items depend on the answers.
 - [ ] **Verify both survey links** in an incognito window, so your own Google
       login does not mask a broken link. Confirm each form loads and accepts a
       test response.
-- [ ] **Check the download links in Episode 2 and the setup page** resolve. They
-      point at `University-of-Aruba/blue-wave-analytics`, which does not exist
-      until the repository is pushed and made public.
+- [ ] **Check the download links in Episode 2 and the setup page** resolve
+      against whichever account currently owns the repository. They point at
+      `rendell/blue-wave-analytics` and must be updated if it is transferred.
 
 ## Delivery dry-run
 

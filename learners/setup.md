@@ -136,14 +136,14 @@ From Episode 2 onwards you will load the same small dataset in three different
 formats: a CSV file, an Excel workbook with two sheets, and an SPSS `.sav` file.
 Download **all three** now and keep them together.
 
-- [blue_wave_squad.csv](https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/blue_wave_squad.csv) plain-text version, one flat table of 103 rows
-- [blue_wave_squad.xlsx](https://github.com/University-of-Aruba/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.xlsx) Excel version, two sheets: `curacao` and `aruba`
-- [blue_wave_squad.sav](https://github.com/University-of-Aruba/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.sav) SPSS version, so you can see R open your existing files
+- [blue_wave_squad.csv](https://github.com/rendell/blue-wave-analytics/blob/main/episodes/data/blue_wave_squad.csv) plain-text version, one flat table of 103 rows
+- [blue_wave_squad.xlsx](https://github.com/rendell/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.xlsx) Excel version, two sheets: `curacao` and `aruba`
+- [blue_wave_squad.sav](https://github.com/rendell/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.sav) SPSS version, so you can see R open your existing files
 
 Two more files are used later in the course. Grab them at the same time:
 
-- [fifa_rankings.csv](https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/fifa_rankings.csv) FIFA rank, population, and diaspora for 211 national associations
-- [diaspora_change.csv](https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/diaspora_change.csv) diaspora size in 1990, 2010, and 2024
+- [fifa_rankings.csv](https://github.com/rendell/blue-wave-analytics/blob/main/episodes/data/fifa_rankings.csv) FIFA rank, population, and diaspora for 211 national associations
+- [diaspora_change.csv](https://github.com/rendell/blue-wave-analytics/blob/main/episodes/data/diaspora_change.csv) diaspora size in 1990, 2010, and 2024
 
 Open each link in your browser, then click the **Download raw file** button near
 the top right of the preview and save the file. Do not open the CSV in Excel and

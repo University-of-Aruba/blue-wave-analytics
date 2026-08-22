@@ -562,8 +562,8 @@ chose, and that is fine. The skills are searching for an indicator, downloading
 the data, and visualizing it.
 
 If your series comes back short or full of gaps, that is not a mistake on your
-part. Coverage for small island territories in international databases is
-genuinely patchy, and noticing it is part of the work.
+part. Coverage for small island territories in international databases is patchy, and
+noticing it is part of the work.
 
 :::::::::::::::::::::::::::::::::
 
@@ -577,8 +577,8 @@ You now know how to import data, transform it, visualize it, test hypotheses, an
 produce automated reports, all in R. That is not everything, but it is a solid
 foundation. The most important thing now is to **use it**. The next time you need
 to analyse data, try doing it in R instead of SPSS. You will be slower at first,
-and each time it gets easier. Everything you produce is reproducible, shareable,
-and open to challenge, which is a better position to argue from.
+and each time it gets easier. Everything you produce is reproducible and open to
+challenge, which is a better position to argue from.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 

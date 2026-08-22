@@ -261,9 +261,8 @@ squad_spss <- read_sav("data/blue_wave_squad.sav")
 head(squad_spss)
 ```
 
-Look at that output. It is the same data. You did not convert anything, you did
-not export to CSV first, and you did not open SPSS. R reads your existing files
-as they are.
+Look at that output. It is the same data, and nothing was converted or exported
+to get it there. R reads your existing SPSS files as they are.
 
 ### Excel files with `readxl`
 
@@ -404,9 +403,9 @@ summary(squad)
 ```
 
 For numeric columns you get the minimum, maximum, mean, median, and quartiles.
-For character columns you get the length and type. Notice that most of this
-dataset is character, which is normal for squad and survey data and is the
-reason frequency tables matter more here than means.
+For character columns you get the length and type. Most of this dataset is
+character, which is normal for squad and survey data, and it is why frequency
+tables matter more here than means.
 
 ### `table()`, frequency tables
 

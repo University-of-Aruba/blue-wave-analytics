@@ -31,14 +31,11 @@ keywords:
   - DCDC Network
 license: CC-BY-4.0
 repository-code: 'https://github.com/University-of-Aruba/blue-wave-analytics'
-doi: 10.5281/zenodo.20057762
 version: v1.1.0
 date-released: '2026-09-15'
-references:
-  - type: generic
-    title: "Introduction to R for SPSS Users"
-    authors:
-      - given-names: Rendell
-        family-names: de Kort
-    doi: 10.5281/zenodo.20057762
-    notes: Master course of which this is the Curacao edition
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20057762
+    description: >-
+      Concept DOI covering every edition of this lesson. Each island edition
+      is deposited as a new version under it.

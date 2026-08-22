@@ -253,9 +253,8 @@ squad |>
   theme_minimal(base_size = 14)
 ```
 
-Talking point: "Two islands, 80 kilometres apart, comparable populations,
-comparable colonial histories, comparable domestic leagues. Completely different
-answers. Nobody in this room needed a statistician to care about that question.
+Talking point: "Two islands, 80 kilometres apart, with populations and colonial
+histories that track each other closely. Completely different answers. Nobody in this room needed a statistician to care about that question.
 What you needed was a way to ask it, and you just watched it take twelve lines."
 
 Do not resolve the question. Let the room argue. Say: "By Wednesday you will be

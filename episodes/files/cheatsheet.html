@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>R for SPSS users — DCDC cheat sheet</title>
+<style>
+  @page { size: A4 portrait; margin: 7mm 10mm; }
+  html, body { background: #ffffff; color: #222; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 8.2pt;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+  }
+  .page {
+    max-width: 190mm;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .page-break { page-break-before: always; }
+  header.sheet-header {
+    border-bottom: 1.5px solid #091f38;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  header.sheet-header .title-block h1 {
+    font-size: 12pt;
+    margin: 0;
+    color: #091f38;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+  header.sheet-header .title-block .sub {
+    font-size: 7.6pt;
+    color: #4a5a6f;
+    margin-top: 1px;
+  }
+  header.sheet-header img {
+    height: 24px;
+    width: auto;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+  }
+  section { break-inside: avoid; margin-bottom: 2px; }
+  h2 {
+    font-size: 9pt;
+    color: #091f38;
+    margin: 3px 0 2px 0;
+    font-weight: 700;
+    border-bottom: 1px solid #cfd6df;
+    padding-bottom: 1px;
+  }
+  h3 {
+    font-size: 8.2pt;
+    color: #4a5a6f;
+    margin: 3px 0 1px 0;
+    font-weight: 700;
+  }
+  p { margin: 1px 0; }
+  code, pre {
+    font-family: "Menlo", "Consolas", monospace;
+    font-size: 7.6pt;
+  }
+  pre {
+    background: #f5f7fa;
+    border-left: 2px solid #1a66b1;
+    padding: 2px 5px;
+    margin: 2px 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.18;
+  }
+  .inline-code {
+    background: #f5f7fa;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1px 0;
+  }
+  th, td {
+    text-align: left;
+    padding: 1px 3px;
+    vertical-align: top;
+    font-size: 7.6pt;
+  }
+  th {
+    background: #091f38;
+    color: #ffffff;
+    font-weight: 700;
+  }
+  tr:nth-child(even) td { background: #f5f7fa; }
+  .key { color: #1a66b1; font-weight: 700; }
+  .muted { color: #4a5a6f; }
+  .full { grid-column: 1 / -1; }
+  footer {
+    margin-top: 4px;
+    font-size: 7pt;
+    color: #4a5a6f;
+    text-align: center;
+    border-top: 1px solid #cfd6df;
+    padding-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="page">
+
+<header class="sheet-header">
+  <div class="title-block">
+    <h1>R for SPSS users — cheat sheet</h1>
+    <div class="sub">Introduction to R · Dutch Caribbean Data Collective</div>
+  </div>
+  <img src="../fig/dcdc-logo.png" alt="DCDC Network">
+</header>
+
+<div class="grid">
+
+<section>
+  <h2>Start every script</h2>
+<pre>library(tidyverse)   <span class="muted"># dplyr, ggplot2, readr</span>
+library(readxl)      <span class="muted"># Excel files</span>
+library(haven)       <span class="muted"># SPSS .sav files</span></pre>
+  <p><span class="key">&lt;-</span> is <em>assignment</em>. Read it as "gets".
+  <code class="inline-code">x &lt;- 5</code> stores 5 in the object <code class="inline-code">x</code>.</p>
+</section>
+
+<section>
+  <h2>Read data in</h2>
+<pre>squad &lt;- read_csv("data/blue_wave_squad.csv")
+curacao &lt;- read_excel("data/blue_wave_squad.xlsx",
+                      sheet = "curacao")
+survey   &lt;- read_sav("data/survey.sav")</pre>
+  <p class="muted">Set working directory first: Session &gt; Set Working Directory &gt; To Source File Location.</p>
+</section>
+
+<section>
+  <h2>Inspect what you loaded</h2>
+<pre>View(squad)      <span class="muted"># spreadsheet (capital V)</span>
+head(squad)      <span class="muted"># first 6 rows</span>
+glimpse(squad)   <span class="muted"># one line per column</span>
+summary(squad)   <span class="muted"># min/max/mean</span>
+names(squad)     <span class="muted"># column names</span></pre>
+</section>
+
+<section>
+  <h2>The six dplyr verbs</h2>
+  <table>
+    <tr><th>SPSS menu</th><th>R verb</th><th>Does</th></tr>
+    <tr><td>Data &gt; Select Cases</td><td><code>filter()</code></td><td>Keep rows matching a condition</td></tr>
+    <tr><td>Variable View</td><td><code>select()</code></td><td>Keep or drop columns</td></tr>
+    <tr><td>Transform &gt; Compute</td><td><code>mutate()</code></td><td>Create or change a column</td></tr>
+    <tr><td>Data &gt; Sort Cases</td><td><code>arrange()</code></td><td>Sort rows</td></tr>
+    <tr><td>Data &gt; Split File</td><td><code>group_by()</code></td><td>Group before summarising</td></tr>
+    <tr><td>Data &gt; Aggregate</td><td><code>summarise()</code></td><td>Collapse groups to summaries</td></tr>
+  </table>
+</section>
+
+<section class="full">
+  <h2>The pipe <span class="key">|&gt;</span> — read it as "and then"</h2>
+<pre>squad |&gt;
+  filter(team_code == "CUW-M") |&gt;
+  group_by(year) |&gt;
+  summarise(mean_spend = mean(avg_spending_usd))</pre>
+  <p>Take <code class="inline-code">squad</code>, <em>and then</em> keep the Curacao men, <em>and then</em> group by club country, <em>and then</em> count. Each <code class="inline-code">|&gt;</code> passes the result of the previous line into the first argument of the next.</p>
+</section>
+
+<section>
+  <h2>Verbs in detail</h2>
+<pre><span class="muted"># filter: rows</span>
+filter(squad, team_code == "CUW-M", club_country == "NLD")
+<span class="muted"># select: columns (use - to drop)</span>
+select(squad, team_code, player_name, club_country)
+select(squad, -confidence)
+<span class="muted"># mutate: new or recoded column</span>
+mutate(squad,
+       abroad = !(club_country %in% c("CUW","ABW","X")),
+       season = case_when(
+         quarter %in% c(1,4) ~ "high",
+         TRUE                ~ "low"))
+<span class="muted"># arrange: sort (desc for descending)</span>
+arrange(squad, team_code, position)
+<span class="muted"># summarise after group_by</span>
+squad |&gt; group_by(team_code) |&gt;
+  summarise(n = n(), mean = mean(avg_spending_usd))</pre>
+</section>
+
+<section>
+  <h2>SPSS habits that change in R</h2>
+  <table>
+    <tr><th>Habit</th><th>SPSS</th><th>R</th></tr>
+    <tr><td>Equality test</td><td><code>=</code></td><td><code>==</code></td></tr>
+    <tr><td>String values</td><td>No quotes in menus</td><td><code>"in quotes"</code></td></tr>
+    <tr><td>Missing values</td><td>System- / user-missing</td><td><code>NA</code>. Check with <code>is.na(x)</code></td></tr>
+    <tr><td>Open datasets</td><td>One active</td><td>Many objects side by side</td></tr>
+    <tr><td>Outputs</td><td>Viewer window</td><td>Console, Plots, objects</td></tr>
+    <tr><td>Save analysis</td><td>Syntax file</td><td><code>.R</code> or <code>.Rmd</code></td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Descriptive stats the SPSS way</h2>
+<pre><span class="muted"># One variable at a time (Analyze &gt; Descriptives)</span>
+mean(squad$abroad, na.rm = TRUE)
+median(x, na.rm = TRUE);  sd(x, na.rm = TRUE)
+min(x);  max(x);  range(x)
+quantile(x, c(.25, .5, .75), na.rm = TRUE)
+
+<span class="muted"># Frequency tables (Analyze &gt; Frequencies / Crosstabs)</span>
+table(squad$club_country)
+table(visitors$origin, visitors$year)
+
+<span class="muted"># Descriptives screen, summarise style</span>
+visitors |&gt; group_by(origin) |&gt; summarise(
+  n    = n(),
+  mean = mean(visitors_stayover, na.rm = TRUE),
+  sd   = sd(visitors_stayover,   na.rm = TRUE))</pre>
+</section>
+
+<section>
+  <h2>Handling missing values</h2>
+<pre><span class="muted"># How many NAs in a column?</span>
+sum(is.na(visitors$satisfaction_score))
+
+<span class="muted"># Drop rows with any NA, or just in chosen columns</span>
+drop_na(visitors)
+visitors |&gt; drop_na(satisfaction_score)
+
+<span class="muted"># Replace NA with a value</span>
+visitors |&gt; replace_na(list(satisfaction_score = 0))
+
+<span class="muted"># Most stats functions need na.rm = TRUE</span>
+mean(visitors$avg_spending_usd, na.rm = TRUE)</pre>
+  <p class="muted">SPSS marks missing in the Variable View; R stores <code>NA</code> directly in the column, and most functions refuse to compute through it unless you say so.</p>
+</section>
+
+</div>
+
+<footer>
+  DCDC Network · Introduction to R for SPSS users · page 1 of 2 · CC-BY 4.0
+</footer>
+
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page page-break">
+
+<header class="sheet-header">
+  <div class="title-block">
+    <h1>R for SPSS users — cheat sheet</h1>
+    <div class="sub">Visualisation, text analysis, troubleshooting</div>
+  </div>
+  <img src="../fig/dcdc-logo.png" alt="DCDC Network">
+</header>
+
+<div class="grid">
+
+<section class="full">
+  <h2>ggplot skeleton</h2>
+<pre>ggplot(data = visitors,
+       aes(x = year, y = visitors_stayover)) +
+  geom_col() +
+  labs(title = "Stayover visitors by year",
+       x = "Year", y = "Visitors") +
+  theme_minimal()</pre>
+  <p><span class="key">|&gt;</span> pipes data into a function. <span class="key">+</span> adds layers to a ggplot. Do not mix them.</p>
+</section>
+
+<section>
+  <h2>Common geoms</h2>
+  <table>
+    <tr><td><code>geom_col()</code></td><td>Bar chart, values you supply</td></tr>
+    <tr><td><code>geom_bar()</code></td><td>Bar chart, counts rows</td></tr>
+    <tr><td><code>geom_histogram()</code></td><td>Distribution of one numeric</td></tr>
+    <tr><td><code>geom_point()</code></td><td>Scatter plot</td></tr>
+    <tr><td><code>geom_line()</code></td><td>Line chart, usually time</td></tr>
+    <tr><td><code>geom_boxplot()</code></td><td>Distribution by group</td></tr>
+    <tr><td><code>geom_smooth()</code></td><td>Trend line over points</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Make a plot publication-ready</h2>
+<pre><span class="muted"># Labels</span>
+labs(title    = "Stayover visitors",
+     subtitle = "Aruba, 2019-2023",
+     x = "Year", y = "Visitors",
+     caption  = "Source: CBS Aruba",
+     fill     = "Origin")
+<span class="muted"># Themes (pick one)</span>
+theme_minimal()  theme_classic()  theme_bw()
+<span class="muted"># DCDC-style colours</span>
+scale_fill_manual(values =
+  c("#091f38", "#1a66b1", "#4a90c2"))
+<span class="muted"># Small multiples</span>
+facet_wrap(~ origin)
+<span class="muted"># Save to file</span>
+ggsave("figures/visitors.png",
+       width = 7, height = 4, dpi = 300)</pre>
+</section>
+
+<section class="full">
+  <h2>Text analysis and wordclouds</h2>
+  <p>Tidy text analysis treats one word per row, so all dplyr verbs apply directly. Useful for free-text survey answers, transcripts, headlines, manifestos.</p>
+<pre>library(tidytext)
+library(ggwordcloud)
+<span class="muted"># Start from a tibble with a text column, e.g. manifestos</span>
+word_counts &lt;- manifestos |&gt;
+  unnest_tokens(word, text) |&gt;          <span class="muted"># one row per word</span>
+  anti_join(stop_words, by = "word") |&gt; <span class="muted"># drop the/and/...</span>
+  count(party_group, word, sort = TRUE)
+<span class="muted"># Top 50 words per group as a wordcloud</span>
+word_counts |&gt; group_by(party_group) |&gt; slice_max(n, n = 50) |&gt;
+  ggplot(aes(label = word, size = n, colour = party_group)) +
+  geom_text_wordcloud() + scale_size_area(max_size = 14) +
+  facet_wrap(~ party_group) + theme_minimal()</pre>
+  <p class="muted">For Dutch or Papiamento, swap <code>stop_words</code> for a language-specific list or build your own tibble with a <code>word</code> column.</p>
+</section>
+
+<section>
+  <h2>Joining two datasets</h2>
+<pre><span class="muted"># left_join: keep all rows from x, add matching cols from y</span>
+visitors |&gt; left_join(origin_codes, by = "origin")
+<span class="muted"># inner_join: rows in both; anti_join: x rows with no match in y</span></pre>
+  <p class="muted">SPSS: Data &gt; Merge Files &gt; Add Variables, but less fragile.</p>
+</section>
+
+<section>
+  <h2>When you get stuck</h2>
+  <p>
+    <strong><code>could not find function</code></strong>: you forgot <code class="inline-code">library(...)</code> at the top.<br>
+    <strong><code>object ... not found</code></strong>: typo in an object or column name, or the line that creates it has not been run. Check the Environment pane.<br>
+    <strong><code>unexpected ...</code></strong>: missing comma, bracket, or quote. Check the line above the error too.<br>
+    <strong>Package missing</strong>: <code class="inline-code">install.packages("name")</code> once, then <code class="inline-code">library(name)</code> every session.<br>
+    <strong>Help on any function</strong>: type <code class="inline-code">?function_name</code> in the Console.
+  </p>
+</section>
+
+<section class="full">
+  <h2>Keep going after the course</h2>
+  <p>
+    <strong>Course site and data</strong>: <code class="inline-code">university-of-aruba.github.io/blue-wave-analytics</code>.
+    <strong>R for Data Science (2nd ed.)</strong>: <code class="inline-code">r4ds.hadley.nz</code>, free online, follows the same verbs used here.
+    <strong>Cheatsheets</strong>: <code class="inline-code">posit.co/resources/cheatsheets</code>, one-pagers for dplyr, ggplot2, tidyr, readr, stringr.
+    <strong>Ask the community</strong>: post a reproducible example on <code class="inline-code">community.rstudio.com</code> or search Stack Overflow. A small self-contained chunk of code plus the error message will get you an answer faster than a screenshot.
+  </p>
+</section>
+
+</div>
+
+<footer>
+  DCDC Network · Introduction to R for SPSS users · page 2 of 2 · CC-BY 4.0
+</footer>
+
+</div>
+
+</body>
+</html>

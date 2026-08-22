@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+title: "Blue Wave Analytics: Introduction to R (Curacao edition)"
+message: >-
+  Please cite this lesson using the information in this file
+  when you refer to it in publications, and/or if you
+  re-use, adapt, or expand on the content in your own
+  training material.
+type: dataset
+authors:
+  - given-names: Rendell
+    family-names: de Kort
+    affiliation: University of Aruba / DCDC Network
+    orcid: 'https://orcid.org/0009-0006-5402-0500'
+abstract: >-
+  The Curacao edition of Introduction to R for SPSS Users, a hands-on
+  workshop for researchers, students, and institutional staff who
+  currently use SPSS and want to transition to R. The course maps
+  common SPSS workflows to R equivalents, covering data manipulation
+  with tidyverse, visualization with ggplot2, statistical analysis,
+  and reproducible reporting with R Markdown. Teaching examples are
+  drawn from the squad composition of the four ABC island national
+  football teams and from FIFA ranking and diaspora data. Developed
+  by the DCDC Network as open educational materials.
+keywords:
+  - R programming
+  - SPSS
+  - statistical analysis
+  - Curacao
+  - Dutch Caribbean
+  - open educational resources
+  - DCDC Network
+license: CC-BY-4.0
+repository-code: 'https://github.com/University-of-Aruba/blue-wave-analytics'
+doi: 10.5281/zenodo.20057762
+version: v1.1.0
+date-released: '2026-09-15'
+references:
+  - type: generic
+    title: "Introduction to R for SPSS Users"
+    authors:
+      - given-names: Rendell
+        family-names: de Kort
+    doi: 10.5281/zenodo.20057762
+    notes: Master course of which this is the Curacao edition

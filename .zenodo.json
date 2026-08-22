@@ -1,0 +1,40 @@
+{
+  "title": "Blue Wave Analytics: Introduction to R (Curacao edition) - DCDC Network Training Materials",
+  "upload_type": "lesson",
+  "description": "The Curacao edition of Introduction to R for SPSS Users. A hands-on workshop for researchers, students, and institutional staff who currently use SPSS and want to transition to R. The course maps common SPSS workflows to R equivalents, covering data manipulation with tidyverse, visualization with ggplot2, statistical analysis, and reproducible reporting with R Markdown. Teaching examples are drawn from the squad composition of the four ABC island national football teams and from FIFA ranking and diaspora data. Developed by the DCDC Network at the University of Aruba and delivered with the University of Curacao.",
+  "creators": [
+    {
+      "name": "de Kort, Rendell",
+      "affiliation": "University of Aruba / DCDC Network",
+      "orcid": "0009-0006-5402-0500"
+    }
+  ],
+  "keywords": [
+    "R programming",
+    "SPSS",
+    "statistical analysis",
+    "tidyverse",
+    "ggplot2",
+    "Curacao",
+    "Dutch Caribbean",
+    "open educational resources",
+    "DCDC Network",
+    "reproducible research"
+  ],
+  "license": {
+    "id": "CC-BY-4.0"
+  },
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/University-of-Aruba/blue-wave-analytics",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.20057762",
+      "relation": "isNewVersionOf",
+      "scheme": "doi"
+    }
+  ]
+}

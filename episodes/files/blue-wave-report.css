@@ -1,0 +1,278 @@
+/* Blue Wave squad report — LovelyData style */
+@import url('https://fonts.googleapis.com/css2?family=Georgia&family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --blue: #44759e;
+  --orange: #f38439;
+  --beige: #dee3c8;
+  --green: #749c4c;
+  --gray: #605b54;
+  --ink: #1d2433;
+}
+
+@page { size: A4 portrait; margin: 18mm 16mm; }
+html, body { background: #fff; }
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 11.5pt;
+  max-width: 220mm;
+  margin: 0 auto;
+  padding: 0 18mm 24mm 18mm;
+  box-sizing: border-box;
+}
+
+/* Force all htmlwidgets (plotly, dygraphs, DT) to fit the container */
+.html-widget,
+.html-widget-static-bound,
+.plotly,
+.plot-container,
+.dygraph,
+.dygraphs,
+.datatables,
+.dataTables_wrapper {
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+.plotly .main-svg { max-width: 100% !important; }
+
+/* DT tables: allow horizontal scroll if they still don't fit */
+.dataTables_wrapper { overflow-x: auto; }
+table.dataTable { width: 100% !important; }
+
+/* Constrain widget block to avoid any lingering right bleed */
+div[id^="htmlwidget-"] {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 4mm 0 6mm 0;
+}
+
+/* Kill pandoc's auto title block */
+h1.title, h1.title.toc-ignore,
+h3.subtitle, h4.author, h4.date { display: none !important; }
+
+h2, h3 { font-family: Inter, "Helvetica Neue", Arial, sans-serif; line-height: 1.25; }
+h2 {
+  font-size: 17pt;
+  font-weight: 700;
+  color: var(--blue);
+  margin-top: 10mm;
+  margin-bottom: 3mm;
+  padding-bottom: 2mm;
+  border-bottom: 1px solid var(--beige);
+  page-break-after: avoid;
+}
+h3 { font-size: 13pt; margin-top: 6mm; color: var(--ink); }
+p { margin: 2.5mm 0 3.5mm 0; }
+strong { color: var(--ink); }
+
+/* Cover page */
+.cover {
+  page-break-after: always;
+  min-height: 260mm;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(243,132,57,0.14) 0, transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(68,117,158,0.16) 0, transparent 50%),
+    linear-gradient(180deg, #fff 0%, #fafbf7 100%);
+  border: 1px solid var(--beige);
+  padding: 22mm 20mm 18mm 20mm;
+  margin: 8mm auto 14mm auto;
+  position: relative;
+  max-width: 190mm;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cover-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 12mm;
+  align-items: start;
+}
+.cover-left { }
+.cover-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cover-photo {
+  width: 100%;
+  max-width: 60mm;
+  border-radius: 3mm;
+  box-shadow: 0 4mm 10mm rgba(0,0,0,0.12);
+  border: 3px solid #fff;
+  background: var(--beige);
+}
+.cover-photo-cap {
+  font-family: Inter, sans-serif;
+  font-size: 9pt;
+  color: var(--gray);
+  margin-top: 4mm;
+  text-align: center;
+  letter-spacing: 0.5pt;
+}
+.cover-tag {
+  font-family: Inter, sans-serif;
+  font-size: 9.5pt;
+  letter-spacing: 1.4pt;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 600;
+  margin-bottom: 10mm;
+}
+.cover-title {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 42pt;
+  line-height: 1.02;
+  color: var(--blue);
+  margin: 0 0 5mm 0;
+  letter-spacing: -0.5pt;
+}
+.cover-sub {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 15pt;
+  color: var(--ink);
+  margin-bottom: 8mm;
+  max-width: 110mm;
+}
+.cover-accent {
+  width: 40mm;
+  height: 2mm;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--orange) 100%);
+  margin: 6mm 0 10mm 0;
+  border-radius: 1mm;
+}
+.cover-stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3mm;
+  margin-top: 4mm;
+}
+.cs-item {
+  text-align: center;
+  padding: 3mm 2mm;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid var(--beige);
+  border-radius: 2mm;
+}
+.cs-num {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 13pt;
+  color: var(--blue);
+  font-variant-numeric: tabular-nums;
+}
+.cs-lbl {
+  font-family: Inter, sans-serif;
+  font-size: 7.5pt;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 1mm;
+}
+.cover-footer {
+  font-size: 9.5pt;
+  color: var(--gray);
+  font-style: italic;
+  border-top: 1px solid var(--beige);
+  padding-top: 4mm;
+  margin-top: 10mm;
+}
+.cover-footer strong { color: var(--ink); font-style: normal; }
+
+/* Callout boxes */
+.callout {
+  background: var(--beige);
+  border-left: 4px solid var(--green);
+  padding: 5mm 7mm;
+  margin: 5mm 0;
+  font-size: 10.5pt;
+  line-height: 1.55;
+  page-break-inside: avoid;
+}
+.callout-h {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 10pt;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+  margin-bottom: 2mm;
+}
+.callout p { margin: 1.5mm 0; }
+
+.meta-box {
+  background: #f5f8fb;
+  border: 1px solid var(--blue);
+  border-radius: 2mm;
+  padding: 6mm 8mm;
+  margin-top: 6mm;
+  font-size: 10.5pt;
+  line-height: 1.55;
+  page-break-inside: avoid;
+}
+.meta-box p { margin: 2mm 0; }
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Inter, sans-serif;
+  font-size: 10pt;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+th {
+  background: var(--blue);
+  color: #fff;
+  text-align: right;
+  padding: 2.5mm 3mm;
+  font-weight: 600;
+  font-size: 9.5pt;
+  letter-spacing: 0.5pt;
+  text-transform: uppercase;
+}
+th:first-child { text-align: left; }
+td {
+  padding: 2.5mm 3mm;
+  border-bottom: 1px solid var(--beige);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+td:first-child { text-align: left; font-weight: 600; }
+tbody tr:last-child td { border-bottom: 2px solid var(--blue); }
+
+caption {
+  caption-side: bottom;
+  font-family: Inter, sans-serif;
+  font-size: 9pt;
+  color: var(--gray);
+  font-style: italic;
+  text-align: left;
+  padding-top: 2mm;
+}
+
+img { max-width: 100%; height: auto; page-break-inside: avoid; }
+.figure { margin: 3mm 0; }
+
+.footer {
+  margin-top: 12mm;
+  padding-top: 4mm;
+  border-top: 1px solid var(--beige);
+  font-family: Inter, sans-serif;
+  font-size: 9pt;
+  color: var(--gray);
+}
+.footer a { color: var(--blue); text-decoration: none; }
+
+@media print {
+  body { padding: 0; max-width: none; }
+  .cover { margin: 0; border: none; box-shadow: none; min-height: 255mm; }
+  h2 { page-break-after: avoid; }
+}

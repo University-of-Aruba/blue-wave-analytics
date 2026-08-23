@@ -12,12 +12,11 @@ Built with [The Carpentries Workbench][workbench] and developed by the
 [University of Aruba](https://www.ua.aw/), delivered in Curaçao with the
 University of Curaçao.
 
-> **Where this lives.** The repository sits under a personal account rather than
-> the University of Aruba org, deliberately. The lesson is a DCDC deliverable but
-> the teaching data belongs to Cornerstone Economics, and filing it under UA would
-> blur that and commit the network without its project lead having been consulted.
-> See [DATA-PROVENANCE.md](DATA-PROVENANCE.md). The intended end state is a
-> transfer to `University-of-Aruba` once that conversation has happened.
+> **Two owners, one repository.** The lesson is a DCDC training deliverable and
+> lives in the University of Aruba org alongside the master course. The squad
+> dataset it teaches on is **Cornerstone Economics** research data from working
+> paper WP-2026-01, licensed for teaching use and not a network output. Cite them
+> separately: [DATA-PROVENANCE.md](DATA-PROVENANCE.md) sets out which is which.
 
 ## How this edition relates to the master course
 

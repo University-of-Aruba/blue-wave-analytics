@@ -31,17 +31,14 @@ because several later items depend on the answers.
       are the April 2026 Aruba pilot forms. Either create Curacao cohort forms
       and swap them, or add a cohort question to the existing forms and accept
       mixed responses. Decide before promotion goes out.
-- [ ] **Settle the institutional home.** The repository is published under
-      `rendell/blue-wave-analytics` rather than the University of Aruba org on
-      purpose: the teaching data belongs to Cornerstone Economics, and filing it
-      under UA would blur whose data it is and would commit DCDC without Esther
-      having been asked. `DATA-PROVENANCE.md` sets out the split. Raise it with
-      Esther, then transfer the repository to `University-of-Aruba` from
-      Settings > Transfer ownership. History survives and the old `github.com`
-      links redirect, but **`raw.githubusercontent.com` URLs do not redirect**,
-      so after the transfer run a find-and-replace of `rendell/blue-wave-analytics`
-      to `University-of-Aruba/blue-wave-analytics` across the repository and
-      rebuild.
+- [ ] **Tell Esther the repository exists.** It sits in the University of Aruba
+      org alongside `r-for-spss-users`, which is the right home for a DCDC
+      training deliverable. The wrinkle is the data: the squad file belongs to
+      Cornerstone Economics, not to the university or the network, and it is now
+      published under UA's name without the project lead having been asked first.
+      `DATA-PROVENANCE.md` states the split, gives separate citations for the
+      lesson and the dataset, and is the document to put in front of her. Do this
+      before the course is promoted, not after somebody notices.
 
 ## Content verification
 
@@ -58,9 +55,11 @@ because several later items depend on the answers.
 - [ ] **Verify both survey links** in an incognito window, so your own Google
       login does not mask a broken link. Confirm each form loads and accepts a
       test response.
-- [ ] **Check the download links in Episode 2 and the setup page** resolve
-      against whichever account currently owns the repository. They point at
-      `rendell/blue-wave-analytics` and must be updated if it is transferred.
+- [ ] **Check the download links in Episode 2 and the setup page** resolve. They
+      point at `University-of-Aruba/blue-wave-analytics`. If the repository is
+      ever renamed or moved, `github.com` links redirect but
+      **`raw.githubusercontent.com` links do not**, so the capstone
+      `download.file()` block in Episode 6 needs a find-and-replace at that point.
 
 ## Delivery dry-run
 

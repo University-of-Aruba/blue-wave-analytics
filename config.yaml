@@ -35,7 +35,7 @@ life_cycle: 'pre-alpha'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/rendell/blue-wave-analytics'
+source: 'https://github.com/University-of-Aruba/blue-wave-analytics'
 
 # Default branch of your lesson
 branch: 'main'

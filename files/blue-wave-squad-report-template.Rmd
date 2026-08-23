@@ -38,12 +38,13 @@ theme_report <- function(base_size = 13) {
     )
 }
 
-tier_colours <- c(
-  "European professional"     = ld$blue,
-  "European amateur or lower" = ld$green,
-  "Reserve or youth"          = ld$beige,
-  "Island league"             = ld$orange,
-  "Unknown"                   = ld$gray
+region_colours <- c(
+  "Netherlands"    = ld$blue,
+  "Rest of Europe" = ld$green,
+  "North America"  = "#8fb3d0",
+  "Rest of world"  = ld$beige,
+  "Home island"    = ld$orange,
+  "Unknown"        = ld$gray
 )
 
 pct <- function(x, d = 0) sprintf(paste0("%.", d, "f%%"), 100 * x)
@@ -57,12 +58,13 @@ squad <- read_csv(file.path(params$data_dir, "blue_wave_squad.csv"),
     gender = if_else(str_ends(team_code, "M"), "Men", "Women"),
     home_code = if_else(str_starts(team_code, "CUW"), "CUW", "ABW"),
     based_abroad = !(club_country %in% c("CUW", "ABW", "X")),
-    tier_group = case_when(
-      league_tier %in% c("1", "2") ~ "European professional",
-      league_tier == "3"           ~ "European amateur or lower",
-      league_tier %in% c("R", "Y") ~ "Reserve or youth",
-      league_tier == "L"           ~ "Island league",
-      .default                     = "Unknown"
+    region = case_when(
+      club_country == "X"       ~ "Unknown",
+      club_country == home_code ~ "Home island",
+      club_country == "NLD"     ~ "Netherlands",
+      club_country == "USA"     ~ "North America",
+      club_country %in% c("GBR", "GRC", "TUR", "DEU", "BEL", "CHE", "XKX") ~ "Rest of Europe",
+      .default                  = "Rest of world"
     )
   )
 
@@ -79,7 +81,7 @@ fifa_row <- filter(fifa, iso3 == this_iso)
 n_players    <- nrow(this)
 n_abroad     <- sum(this$based_abroad)
 share_abroad <- n_abroad / n_players
-n_topflight  <- sum(this$league_tier %in% c("1", "2"))
+n_nld        <- sum(this$club_country == "NLD")
 n_countries  <- n_distinct(this$club_country[this$club_country != "X"])
 n_unknown    <- sum(this$club_country == "X")
 n_home       <- sum(this$club_country == this_iso)
@@ -101,7 +103,7 @@ n_home       <- sum(this$club_country == this_iso)
 <div class="cover-stats">
   <div class="cs-item"><div class="cs-num">`r n_players`</div><div class="cs-lbl">Players</div></div>
   <div class="cs-item"><div class="cs-num">`r pct(share_abroad)`</div><div class="cs-lbl">Abroad</div></div>
-  <div class="cs-item"><div class="cs-num">`r n_topflight`</div><div class="cs-lbl">Top two tiers</div></div>
+  <div class="cs-item"><div class="cs-num">`r n_nld`</div><div class="cs-lbl">In Netherlands</div></div>
   <div class="cs-item"><div class="cs-num">`r n_home`</div><div class="cs-lbl">Island league</div></div>
   <div class="cs-item"><div class="cs-num">`r n_countries`</div><div class="cs-lbl">Countries</div></div>
   <div class="cs-item"><div class="cs-num">`r if (nrow(fifa_row)) fifa_row$rank else NA`</div><div class="cs-lbl">FIFA rank</div></div>
@@ -142,26 +144,26 @@ this |>
       sprintf("%d further players could not be placed and are excluded", n_unknown)
       else NULL,
     x = NULL, y = "Players",
-    caption = "Source: Cornerstone Economics squad dataset, 2026"
+    caption = "Source: Wikipedia national squad tables"
   ) +
   theme_report()
 ```
 
-## At what level
+## How widely spread
 
-Country of club is only half the story. A player at a Dutch third-tier amateur
-side and a player in the Eredivisie are both "abroad", and they are not the same
-thing. Grouping by the level of the league they play in separates them.
+Counting countries one by one buries the pattern. Grouping them into regions
+shows how far the squad reaches, and whether it leans on a single destination or
+spreads across several.
 
 ```{r level, fig.height=3.6}
 this |>
-  count(tier_group) |>
-  mutate(tier_group = fct_reorder(tier_group, n)) |>
-  ggplot(aes(x = tier_group, y = n, fill = tier_group)) +
+  count(region) |>
+  mutate(region = fct_reorder(region, n)) |>
+  ggplot(aes(x = region, y = n, fill = region)) +
   geom_col(width = 0.7) +
-  scale_fill_manual(values = tier_colours) +
+  scale_fill_manual(values = region_colours) +
   coord_flip() +
-  labs(title = "Level of club football", x = NULL, y = "Players") +
+  labs(title = "Where the squad plays, by region", x = NULL, y = "Players") +
   theme_report() +
   theme(legend.position = "none")
 ```
@@ -177,22 +179,22 @@ comparison <- squad |>
     players     = n(),
     abroad      = sum(based_abroad),
     pct_abroad  = round(100 * mean(based_abroad)),
-    top_two     = sum(league_tier %in% c("1", "2")),
-    island_league = sum(league_tier == "L"),
+    in_nld      = sum(club_country == "NLD"),
+    countries   = n_distinct(club_country[club_country != "X"]),
     .groups = "drop"
   ) |>
   arrange(desc(pct_abroad))
 
 kable(comparison, col.names = c("Island", "Squad", "Players", "Abroad",
-                                "% abroad", "Top two tiers", "Island league"))
+                                "% abroad", "In Netherlands", "Countries"))
 ```
 
 ```{r compare-chart, fig.height=3.4}
 squad |>
-  count(team_code, tier_group) |>
-  ggplot(aes(x = team_code, y = n, fill = tier_group)) +
+  count(team_code, region) |>
+  ggplot(aes(x = team_code, y = n, fill = region)) +
   geom_col(position = "fill", width = 0.7) +
-  scale_fill_manual(values = tier_colours) +
+  scale_fill_manual(values = region_colours) +
   scale_y_continuous(labels = scales::percent) +
   labs(
     title = "Squad composition, all four ABC island teams",
@@ -207,17 +209,19 @@ sq <- squad |>
   filter(club_country != "X") |>
   mutate(where_playing = if_else(club_country %in% c("CUW", "ABW"),
                                  "Island league", "Abroad"))
-ct <- table(sq$island, sq$where_playing)
+ct <- table(sq$gender, sq$where_playing)
 cs <- suppressWarnings(chisq.test(ct))
+n_excluded <- sum(squad$club_country == "X")
 ```
 
 <div class="callout">
-<div class="callout-h">Is the difference real?</div>
-<p>A chi-square test of independence on the two islands' squads gives
-X-squared = `r round(cs$statistic, 2)` on `r cs$parameter` degree of freedom,
-p = `r format.pval(cs$p.value, digits = 2)`. The two islands build their squads
-differently, and the gap is larger than sampling noise would comfortably
-produce. `r n_unknown_all <- sum(squad$club_country == "X"); sprintf("%d of %d players were excluded from this test because their club could not be established.", n_unknown_all, nrow(squad))`</p>
+<div class="callout-h">Where the sharper split actually is</div>
+<p>Comparing the two islands on whether players are based abroad turns up very
+little: both send most of their squads overseas. Splitting by gender instead
+gives X-squared = `r round(cs$statistic, 2)` on `r cs$parameter` degree of
+freedom, p = `r format.pval(cs$p.value, digits = 2)`. The men's squads are almost
+entirely overseas; the women's squads keep a substantial share at home.
+`r sprintf("%d of %d players were excluded from this test because their club could not be established.", n_excluded, nrow(squad))`</p>
 </div>
 
 ## Punching above the population
@@ -282,17 +286,17 @@ fifa_resid |>
 ```{r squad-table}
 this |>
   arrange(position, player_name) |>
-  select(player_name, position, club, club_country, league_tier, confidence) |>
-  kable(col.names = c("Player", "Position", "Club", "Country", "Tier", "Confidence"))
+  select(player_name, position, club, club_country, region) |>
+  kable(col.names = c("Player", "Position", "Club", "Country", "Region"))
 ```
 
 <div class="callout">
 <div class="callout-h">What this dataset cannot tell you</div>
-<p>The squad list was compiled from federation announcements, Wikipedia squad
-tables, and commercial football databases, and each record carries a confidence
-code. `r sum(this$confidence == "H")` of `r n_players` entries in this squad are
-verified against a named recent source; the rest rest on a single source or an
-inference. `r n_unknown` players could not be placed at a club at all.</p>
+<p>The squad list is scraped from the current-squad table of an English Wikipedia
+article. Those tables are maintained by volunteers, they lag real call-ups by
+weeks or months, and the four island pages are not necessarily current as of the
+same date. `r n_unknown` players in this squad could not be placed at a club at
+all and are excluded from the country and region charts above.</p>
 <p>Squad composition is also a snapshot of one call-up, not a measure of a
 football system. It says nothing about youth development, coaching, or the
 domestic game, and a report that reads it as such is reading too much into
@@ -300,7 +304,7 @@ domestic game, and a report that reads it as such is reading too much into
 </div>
 
 <div class="cover-footer">
-Blue Wave Analytics, a DCDC Network training deliverable. Data and course
-materials CC-BY 4.0. Squad dataset compiled for Cornerstone Economics working
-paper WP-2026-01.
+Blue Wave Analytics, a DCDC Network training deliverable. Course materials
+CC-BY 4.0. Squad data derived from Wikipedia national-team squad tables,
+CC-BY-SA 4.0.
 </div>

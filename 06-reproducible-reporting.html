@@ -408,11 +408,12 @@ physically impossible for them to drift apart. That matters for policy
 reports, academic papers, and any situation where someone else relies on
 your numbers.</p>
 <p>It matters more when the numbers are about people. The squad dataset
-behind this course carries a confidence code on every row, and roughly
-one player in ten could not be placed at a club at all. A report that
-hard-codes “72 percent play abroad” into a Word file loses that context
-the moment the file leaves your hands. A report that computes the figure
-at knit time can carry the caveat with it, and update both together.</p>
+behind this course is scraped from Wikipedia squad tables that are
+edited continuously, and two players in it have no club listed at all. A
+report that hard-codes “87 percent play abroad” into a Word file loses
+that context the moment the file leaves your hands, and is quietly wrong
+the next time a squad is called. A report that computes the figure at
+knit time can carry the caveat with it, and update both together.</p>
 </div>
 </div>
 </div>
@@ -553,7 +554,7 @@ calculations directly inside your sentences:</p>
 <pre><code>The dataset contains `r nrow(squad)` players.</code></pre>
 <p>When knitted, this becomes:</p>
 <blockquote>
-<p>The dataset contains 103 players.</p>
+<p>The dataset contains 94 players.</p>
 </blockquote>
 <p>If the data changes and you re-knit, that number updates. No more
 searching through a Word document for every number that needs
@@ -645,13 +646,13 @@ table in your output document:</p>
 <span>    players    <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    abroad     <span class="op">=</span> <span class="fu">sum</span><span class="op">(</span><span class="va">based_abroad</span><span class="op">)</span>,</span>
 <span>    pct_abroad <span class="op">=</span> <span class="fu">round</span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fu">mean</span><span class="op">(</span><span class="va">based_abroad</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    top_two    <span class="op">=</span> <span class="fu">sum</span><span class="op">(</span><span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    in_nld     <span class="op">=</span> <span class="fu">sum</span><span class="op">(</span><span class="va">club_country</span> <span class="op">==</span> <span class="st">"NLD"</span><span class="op">)</span>,</span>
 <span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">pct_abroad</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu">kable</span><span class="op">(</span><span class="va">squad_summary</span>, col.names <span class="op">=</span> <span class="fu">c</span><span class="op">(</span></span>
-<span>  <span class="st">"Island"</span>, <span class="st">"Squad"</span>, <span class="st">"Players"</span>, <span class="st">"Abroad"</span>, <span class="st">"% abroad"</span>, <span class="st">"Top two tiers"</span></span>
+<span>  <span class="st">"Island"</span>, <span class="st">"Squad"</span>, <span class="st">"Players"</span>, <span class="st">"Abroad"</span>, <span class="st">"% abroad"</span>, <span class="st">"In Netherlands"</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <table class="table"><thead><tr><th align="left">Island</th>
@@ -659,31 +660,31 @@ table in your output document:</p>
 <th align="right">Players</th>
 <th align="right">Abroad</th>
 <th align="right">% abroad</th>
-<th align="right">Top two tiers</th>
+<th align="right">In Netherlands</th>
 </tr></thead><tbody><tr><td align="left">Curaçao</td>
 <td align="left">Men</td>
-<td align="right">32</td>
+<td align="right">26</td>
+<td align="right">26</td>
+<td align="right">100</td>
+<td align="right">10</td>
+</tr><tr><td align="left">Aruba</td>
+<td align="left">Men</td>
 <td align="right">23</td>
-<td align="right">72</td>
-<td align="right">23</td>
+<td align="right">20</td>
+<td align="right">87</td>
+<td align="right">18</td>
+</tr><tr><td align="left">Curaçao</td>
+<td align="left">Women</td>
+<td align="right">22</td>
+<td align="right">15</td>
+<td align="right">68</td>
+<td align="right">12</td>
 </tr><tr><td align="left">Aruba</td>
 <td align="left">Women</td>
 <td align="right">23</td>
 <td align="right">15</td>
 <td align="right">65</td>
-<td align="right">5</td>
-</tr><tr><td align="left">Curaçao</td>
-<td align="left">Women</td>
-<td align="right">22</td>
-<td align="right">13</td>
-<td align="right">59</td>
-<td align="right">4</td>
-</tr><tr><td align="left">Aruba</td>
-<td align="left">Men</td>
-<td align="right">26</td>
-<td align="right">12</td>
-<td align="right">46</td>
-<td align="right">2</td>
+<td align="right">14</td>
 </tr></tbody></table></div>
 <div class="section level3">
 <h3 id="step-4-a-visualization">Step 4: A visualization<a class="anchor" aria-label="anchor" href="#step-4-a-visualization"></a></h3>
@@ -772,10 +773,10 @@ knitr::kable(by_island, col.names = c("Island", "Players", "Abroad"))
 ```
 
 ```{r composition-chart, echo = FALSE, fig.width = 7, fig.height = 4}
-ggplot(squad, aes(x = team_code, fill = league_tier)) +
+ggplot(squad, aes(x = team_code, fill = club_country)) +
   geom_bar(position = "fill") +
   scale_y_continuous(labels = scales::percent) +
-  labs(title = "Squad composition by league tier", x = NULL, y = NULL) +
+  labs(title = "Squad composition by club country", x = NULL, y = NULL) +
   theme_minimal()
 ```
 
@@ -804,7 +805,7 @@ and build a short report that does the following:</p>
 <ol style="list-style-type: decimal"><li>Loads <code>data/blue_wave_squad.csv</code>
 </li>
 <li>Produces a summary table showing <strong>the number of players by
-position and league tier</strong> for one squad of your choice, using
+position and club country</strong> for one squad of your choice, using
 <code>knitr::kable()</code>
 </li>
 <li>Creates a <strong>bar chart</strong> of club country for that
@@ -820,7 +821,7 @@ interpretation sentence</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>One way to approach it. Your file would look like this:</p>
 <pre><code>---
@@ -839,7 +840,7 @@ this &lt;- filter(squad, team_code == "CUW-M")
 ## Squad composition
 
 ```{r position-table, echo = FALSE}
-knitr::kable(table(this$position, this$league_tier))
+knitr::kable(table(this$position, this$club_country))
 ```
 
 ```{r country-chart, echo = FALSE, fig.width = 7, fig.height = 4}

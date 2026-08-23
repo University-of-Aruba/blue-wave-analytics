@@ -381,16 +381,16 @@ demonstrate what R can do. By the end you should have a clear picture of
 <div class="section level3">
 <h3 id="the-question-the-course-is-built-around">The question the course is built around<a class="anchor" aria-label="anchor" href="#the-question-the-course-is-built-around"></a></h3>
 <p>Curaçao has about 149,000 residents. In 2026 it put a national team
-into the World Cup, unbeaten through CONCACAF qualifying, and the squad
-that did it is almost entirely based in European professional football.
-Very few of those players play their club football on the island.</p>
+into the World Cup, unbeaten through CONCACAF qualifying. Of the 26
+players in that squad, not one plays club football on the island. They
+are spread across ten countries.</p>
 <p>That is a striking fact, and it is a data fact before it is a
-football fact. Where do the players actually play? At what level? How
-does the men’s squad compare with the women’s, and how does Curaçao
-compare with Aruba, which has a similar history and a very different
-result? Every one of those questions is a table, a filter, a group
-summary, and a chart. By Wednesday afternoon you will be answering them
-yourself, from a script you wrote.</p>
+football fact. Where do the players actually play? How does the men’s
+squad compare with the women’s, and how does Curaçao compare with Aruba,
+which has a similar history and builds its squad differently? Every one
+of those questions is a table, a filter, a group summary, and a chart.
+By Wednesday afternoon you will be answering them yourself, from a
+script you wrote.</p>
 </div>
 <div class="section level3">
 <h3 id="what-you-will-be-able-to-produce">What you will be able to produce<a class="anchor" aria-label="anchor" href="#what-you-will-be-able-to-produce"></a></h3>
@@ -521,7 +521,7 @@ starting in the next episode.</p>
   Live demo script
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>This is the complete script to run live. <strong>Practice this before
 the workshop.</strong> Make sure <code>tidyverse</code> is installed.
@@ -616,16 +616,18 @@ squad data and answer the question the island already argues about.</p>
 <code class="sourceCode R"><span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span></span>
 <span>    island <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu">str_starts</span><span class="op">(</span><span class="va">team_code</span>, <span class="st">"CUW"</span><span class="op">)</span>, <span class="st">"Curaçao"</span>, <span class="st">"Aruba"</span><span class="op">)</span>,</span>
-<span>    tier_group <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
-<span>      <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"European professional"</span>,</span>
-<span>      <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"3"</span>           <span class="op">~</span> <span class="st">"European amateur or lower"</span>,</span>
-<span>      <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"R"</span>, <span class="st">"Y"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Reserve or youth"</span>,</span>
-<span>      <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"L"</span>           <span class="op">~</span> <span class="st">"Island league"</span>,</span>
-<span>      <span class="cn">TRUE</span>                         <span class="op">~</span> <span class="st">"Unknown"</span></span>
+<span>    home_code <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu">str_starts</span><span class="op">(</span><span class="va">team_code</span>, <span class="st">"CUW"</span><span class="op">)</span>, <span class="st">"CUW"</span>, <span class="st">"ABW"</span><span class="op">)</span>,</span>
+<span>    region <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="st">"X"</span>       <span class="op">~</span> <span class="st">"Unknown"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="va">home_code</span> <span class="op">~</span> <span class="st">"Home island"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="st">"NLD"</span>     <span class="op">~</span> <span class="st">"Netherlands"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="st">"USA"</span>     <span class="op">~</span> <span class="st">"North America"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"GBR"</span>, <span class="st">"GRC"</span>, <span class="st">"TUR"</span>, <span class="st">"DEU"</span>, <span class="st">"BEL"</span>, <span class="st">"CHE"</span>, <span class="st">"XKX"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Rest of Europe"</span>,</span>
+<span>      .default                  <span class="op">=</span> <span class="st">"Rest of world"</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">island</span>, <span class="va">tier_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">n</span>, fill <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">island</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">n</span>, fill <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_col</span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va">percent</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span></span>
@@ -636,10 +638,11 @@ squad data and answer the question the island already argues about.</p>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Talking point: “Two islands, 80 kilometres apart, with populations
-and colonial histories that track each other closely. Completely
-different answers. Nobody in this room needed a statistician to care
-about that question. What you needed was a way to ask it, and you just
-watched it take twelve lines.”</p>
+and colonial histories that track each other closely. Both send most of
+their players abroad. But look where. Curaçao’s are scattered across ten
+countries. Aruba’s are overwhelmingly in one. Nobody in this room needed
+a statistician to care about that question. What you needed was a way to
+ask it, and you just watched it take twelve lines.”</p>
 <p>Do not resolve the question. Let the room argue. Say: “By Wednesday
 you will be able to run this yourself, and change it to ask what you
 actually want to know.”</p>
@@ -651,12 +654,12 @@ actually want to know.”</p>
 the cost of the current workflow lands.</p>
 <ol style="list-style-type: decimal"><li>Go looking for the squad lists. Wikipedia? FotMob? The federation’s
 Facebook page? Pick one and hope it is current.</li>
-<li>Copy 103 player names, clubs, and positions into Excel by hand. An
+<li>Copy 94 player names, clubs, and positions into Excel by hand. An
 hour if you are quick and do not lose concentration.</li>
-<li>Discover that club names are spelled three different ways, that some
-players have no club listed, and that Jong Holland is a Curaçao club
-despite the name. Clean by hand.</li>
-<li>Import into SPSS. Recode league level into a grouping variable,
+<li>Discover that the club’s country is only shown as a little flag you
+cannot copy, that two players have no club listed at all, and that Jong
+Holland is a Curaçao club despite the name. Clean by hand.</li>
+<li>Import into SPSS. Recode club country into a grouping variable,
 because the raw text is unusable as it stands.</li>
 <li>
 <strong>Analyze &gt; Descriptive Statistics &gt;

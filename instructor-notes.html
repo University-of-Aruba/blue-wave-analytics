@@ -632,11 +632,13 @@ room.</p>
 <ul>
 <li>
 <strong>blue_wave_squad.csv</strong> — player-level squad lists for
-the four ABC island national teams, 2026. Primary teaching dataset,
-Episodes 2 to 4 and 6. Also shipped as <code>.xlsx</code> (two sheets)
-and <code>.sav</code> for the import demonstrations. Compiled for
-Cornerstone Economics working paper WP-2026-01; coding decisions are
-documented in <code>episodes/data/curacao_squad_codebook.md</code>.</li>
+the four ABC island national teams, 94 players. Primary teaching
+dataset, Episodes 2 to 4 and 6. Also shipped as <code>.xlsx</code> (two
+sheets) and <code>.sav</code> for the import demonstrations. Scraped
+from Wikipedia current-squad tables by
+<code>scripts/00_build_teaching_data.R</code>; variable definitions and
+limitations are in
+<code>episodes/data/blue_wave_squad_codebook.md</code>.</li>
 <li>
 <strong>fifa_rankings.csv</strong> — FIFA rank and points against
 population and diaspora for 211 national associations. Continuous
@@ -660,14 +662,26 @@ Netherlands via <code>cbsodataR</code> (Episode 7).</li>
 repository root. Test all live downloads before the course; URLs and
 APIs change.</p>
 <div class="section level3">
-<h3 id="the-squad-data-is-unusually-honest-and-that-is-the-point">The squad data is unusually honest, and that is the point<a class="anchor" aria-label="anchor" href="#the-squad-data-is-unusually-honest-and-that-is-the-point"></a>
+<h3 id="the-gaps-in-the-squad-data-are-the-point">The gaps in the squad data are the point<a class="anchor" aria-label="anchor" href="#the-gaps-in-the-squad-data-are-the-point"></a>
 </h3>
-<p>Ten of 103 players cannot be placed at a club, 22 have an unknown
-position, and every row carries a confidence code. Episodes 3, 5, and 6
-each stop to name what is being excluded and what it costs. Do not tidy
-this away or apologise for it. Most participants have never been shown
-what to do with a gap other than delete it, and this is the most
-transferable thing in the two days.</p>
+<p>Two of 94 players cannot be placed at a club, and the squads are only
+as current as Wikipedia. Episodes 3, 5, and 6 each stop to name what is
+being excluded and what it costs. Do not tidy this away or apologise for
+it. Most participants have never been shown what to do with a gap other
+than delete it, and this is the most transferable thing in the two
+days.</p>
+<p>Two is a small number, and that is deliberate rather than
+unfortunate. The habit of reporting exclusions is easiest to build when
+the exclusion changes nothing.</p>
+</div>
+<div class="section level3">
+<h3 id="the-island-comparison-does-not-work-and-episode-5-uses-that">The island comparison does not work, and Episode 5 uses that<a class="anchor" aria-label="anchor" href="#the-island-comparison-does-not-work-and-episode-5-uses-that"></a>
+</h3>
+<p>Testing whether Curaçao and Aruba differ on players-based-abroad
+returns a p-value around 0.64. Testing men against women returns 0.006.
+Episode 5 runs both in that order on purpose: the first thing you try
+fails, the second works, and the write-up has to admit both. Do not skip
+to the one that works.</p>
 </div>
 <div class="section level3">
 <h3 id="note-on-the-elections-example">Note on the elections example<a class="anchor" aria-label="anchor" href="#note-on-the-elections-example"></a>

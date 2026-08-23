@@ -324,79 +324,75 @@
         
 <div class="section level1">
 <h1 id="data-provenance-and-licensing">Data provenance and licensing<a class="anchor" aria-label="anchor" href="#data-provenance-and-licensing"></a></h1>
-<p>The lesson and the data in this repository have different owners.
-This file says which is which, because a single repository licence would
-blur them.</p>
+<p>Everything in this repository is either the lesson itself or public
+data. There is no Cornerstone Economics research data here. This file
+records what came from where, and what was deliberately removed.</p>
 <div class="section level2">
 <h2 id="the-lesson">The lesson<a class="anchor" aria-label="anchor" href="#the-lesson"></a></h2>
 <p>The seven episodes, the instructor and learner pages, the build
 scripts, and the site are training material of the <strong>Dutch
 Caribbean Digital Competence Network (DCDC)</strong>, authored by
-Rendell de Kort. They are released under <strong>CC-BY 4.0</strong> for
-the instructional text and <strong>MIT</strong> for the code, as
-recorded in <code>LICENSE.md</code>.</p>
+Rendell de Kort. Instructional text is <strong>CC-BY 4.0</strong> and
+code is <strong>MIT</strong>, as recorded in
+<code>LICENSE.md</code>.</p>
 <p>This edition sits under the concept DOI <a href="https://doi.org/10.5281/zenodo.20057762" class="external-link">10.5281/zenodo.20057762</a>,
 which covers <em>Introduction to R for SPSS Users</em> and each island
 edition beneath it.</p>
 </div>
 <div class="section level2">
 <h2 id="the-squad-dataset">The squad dataset<a class="anchor" aria-label="anchor" href="#the-squad-dataset"></a></h2>
-<p><code>curacao_squad_raw.csv</code>,
-<code>curacao_squad_codebook.md</code>, and everything derived from them
-(<code>blue_wave_squad.csv</code>, <code>.xlsx</code>,
-<code>.sav</code>) are <strong>not DCDC or University of Aruba
-data</strong>.</p>
-<p>They were compiled by <strong>Cornerstone Economics</strong> as the
-research dataset behind working paper WP-2026-01 on diaspora football
-economies in the ABC islands. Cornerstone Economics holds them. They
-appear here because the author of the lesson is also the author of the
-working paper and has licensed them for teaching use; they are not a
-network output and should not be cited as one.</p>
-<p>Cite the data as:</p>
-<blockquote>
-<p>de Kort, R. (2026). <em>ABC islands diaspora squad dataset</em>
-(iteration 1). Cornerstone Economics. Compiled for working paper
-WP-2026-01.</p>
-</blockquote>
-<p>Cite the lesson separately, using <code>CITATION.cff</code>.</p>
-<div class="section level3">
-<h3 id="what-the-dataset-is-and-what-it-is-not">What the dataset is, and what it is not<a class="anchor" aria-label="anchor" href="#what-the-dataset-is-and-what-it-is-not"></a></h3>
-<p>One row is one player called up to one of four 2026 national squads:
-Curaçao men and women, Aruba men and women. Sources are federation
-announcements, Wikipedia squad tables, and commercial football
-databases, and every row carries a confidence code recording how well it
-is sourced. Ten players could not be placed at a club at all. The coding
-decisions are written down in
-<code>episodes/data/curacao_squad_codebook.md</code>.</p>
-<p>It is a snapshot of squad composition at one moment. It is not a
-measure of a football system, and it says nothing about youth
-development, coaching, or the domestic game.</p>
-</div>
+<p><code>blue_wave_squad.csv</code> and the <code>.xlsx</code> and
+<code>.sav</code> versions of it are built by
+<code>scripts/00_build_teaching_data.R</code> from the “Current squad”
+tables of four English Wikipedia articles, covering the Curaçao and
+Aruba men’s and women’s national teams. Wikipedia text is
+<strong>CC-BY-SA 4.0</strong> and the derived dataset inherits that
+licence.</p>
+<p>Coding decisions, variable definitions, and known limitations are in
+<code>episodes/data/blue_wave_squad_codebook.md</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="third-party-data">Third-party data<a class="anchor" aria-label="anchor" href="#third-party-data"></a></h2>
 <ul><li>
-<code>fifa_global_panel.csv</code>, <code>fifa_rankings.csv</code> —
-FIFA world ranking points and positions, joined to UN DESA population
-estimates. Assembled for WP-2026-01 from public sources.</li>
+<code>fifa_global_panel.csv</code> and
+<code>fifa_rankings.csv</code> carry FIFA world ranking points and
+positions joined to UN DESA population estimates. Published statistics,
+tabulated into a CSV.</li>
 <li>
-<code>diaspora_global.csv</code>, <code>diaspora_change.csv</code> —
-UN DESA international migrant stock by country of origin, 1990, 2010,
-and 2024.</li>
+<code>diaspora_global.csv</code> and
+<code>diaspora_change.csv</code> carry UN DESA international migrant
+stock by country of origin for 1990, 2010 and 2024. Published
+statistics.</li>
 <li>
-<code>countries_backup.csv</code> — offline copy of the University
-of Aruba <code>island-research-reference-data</code> country reference
-list, which is UA data and carries its own licence in its own
+<code>countries_backup.csv</code> is an offline copy of the
+University of Aruba <code>island-research-reference-data</code> country
+reference list, which is UA data and carries its own licence in its own
 repository.</li>
 </ul></div>
 <div class="section level2">
-<h2 id="if-you-are-reusing-this-lesson">If you are reusing this lesson<a class="anchor" aria-label="anchor" href="#if-you-are-reusing-this-lesson"></a></h2>
-<p>Take the episodes and the structure freely under CC-BY. If you are
-adapting the course for another island, the intended move is to
-<strong>replace the dataset with a locally relevant one</strong> rather
-than reuse this one, which is the rule the three-island rollout was
-built on. If you do want to reuse the squad data itself, contact
-Cornerstone Economics.</p>
+<h2 id="what-was-removed-and-why">What was removed, and why<a class="anchor" aria-label="anchor" href="#what-was-removed-and-why"></a></h2>
+<p>Until 23 August 2026 the teaching dataset was
+<code>curacao_squad_raw.csv</code>, a hand-coded research file compiled
+for <strong>Cornerstone Economics</strong> working paper WP-2026-01 on
+diaspora football economies. It was richer than what replaced it: it
+carried league tier and a per-row source-confidence code.</p>
+<p>It was removed because it did not belong here. Cornerstone Economics
+is a commercial consultancy; this is a DCDC training repository in the
+University of Aruba organisation. Publishing CE research data under the
+university’s name blurs who owns it and mixes a commercial portfolio
+into network-funded work, which is a conflict of interest whatever the
+intent. The fact that the author of the working paper and the author of
+the lesson are the same person makes the mixing easier to do and no more
+appropriate.</p>
+<p>The replacement is public, reproducible from a committed script, and
+licensed for reuse. Anyone adapting this course for another island
+should replace the dataset again rather than reuse this one, which is
+the rule the three-island rollout was built on.</p>
+</div>
+<div class="section level2">
+<h2 id="if-you-want-the-research-data">If you want the research data<a class="anchor" aria-label="anchor" href="#if-you-want-the-research-data"></a></h2>
+<p>The WP-2026-01 squad dataset is Cornerstone Economics’. Contact
+them.</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.

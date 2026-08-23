@@ -417,10 +417,10 @@ episode. If you are starting a fresh R session, load it now:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Rows: 103 Columns: 7
+<pre class="output" tabindex="0"><code>Rows: 94 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (7): team_code, player_name, position, club, club_country, league_tier, ...
+chr (5): team_code, player_name, position, club, club_country
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -498,20 +498,20 @@ click “If condition is satisfied”, and type a condition. In R:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 32 × 7
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 CUW-M     ArJany Martha    DEF      unkn… X            X           L
- 2 CUW-M     Armando Obispo   DEF      PSV … NLD          1           H
- 3 CUW-M     Cuco Martina     DEF      unkn… X            X           L
- 4 CUW-M     Deveron Fonville DEF      NEC … NLD          1           H
- 5 CUW-M     Joshua Brenet    DEF      Kays… TUR          1           H
- 6 CUW-M     Juriën Gaari     DEF      Abha  SAU          1           H
- 7 CUW-M     Riechedly Bazoer DEF      Kony… TUR          1           H
- 8 CUW-M     Roshon van Eijma DEF      RKC … NLD          1           H
- 9 CUW-M     Sherel Floranus  DEF      PEC … NLD          1           H
-10 CUW-M     Shurandy Sambo   DEF      Spar… NLD          1           H
-# ℹ 22 more rows</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 26 × 5
+   team_code player_name       position club             club_country
+   &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
+ 1 CUW-M     Armando Obispo    DEF      PSV              NLD
+ 2 CUW-M     Deveron Fonville  DEF      NEC              NLD
+ 3 CUW-M     Joshua Brenet     DEF      Kayserispor      TUR
+ 4 CUW-M     Juriën Gaari      DEF      Abha             SAU
+ 5 CUW-M     Riechedly Bazoer  DEF      Konyaspor        TUR
+ 6 CUW-M     Roshon van Eijma  DEF      A.E. Kifisia     GRC
+ 7 CUW-M     Sherel Floranus   DEF      PEC Zwolle       NLD
+ 8 CUW-M     Shurandy Sambo    DEF      Sparta Rotterdam NLD
+ 9 CUW-M     Brandley Kuwas    FWD      Volendam         NLD
+10 CUW-M     Gervane Kastaneer FWD      Terengganu       MYS
+# ℹ 16 more rows</code></pre>
 </div>
 <p>Notice the <strong>double equals sign</strong> <code>==</code>. This
 is how R tests equality. A single <code>=</code> is for assigning values
@@ -530,20 +530,19 @@ to function arguments, like <code>digits = 1</code>. A double
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 11 × 7
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 CUW-M     Armando Obispo   DEF      PSV … NLD          1           H
- 2 CUW-M     Deveron Fonville DEF      NEC … NLD          1           H
- 3 CUW-M     Roshon van Eijma DEF      RKC … NLD          1           H
- 4 CUW-M     Sherel Floranus  DEF      PEC … NLD          1           H
- 5 CUW-M     Shurandy Sambo   DEF      Spar… NLD          1           H
- 6 CUW-M     Trevor Doornbus… GK       VVV-… NLD          2           H
- 7 CUW-M     Tyrick Bodak     GK       Tels… NLD          2           H
- 8 CUW-M     Godfried Roemer… MID      RKC … NLD          1           H
- 9 CUW-M     Juninho Bacuna   MID      FC V… NLD          2           H
-10 CUW-M     Kevin Felida     MID      FC D… NLD          2           H
-11 CUW-M     Tyrese Noslin    MID      Tels… NLD          2           H         </code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 10 × 5
+   team_code player_name         position club             club_country
+   &lt;chr&gt;     &lt;chr&gt;               &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
+ 1 CUW-M     Armando Obispo      DEF      PSV              NLD
+ 2 CUW-M     Deveron Fonville    DEF      NEC              NLD
+ 3 CUW-M     Sherel Floranus     DEF      PEC Zwolle       NLD
+ 4 CUW-M     Shurandy Sambo      DEF      Sparta Rotterdam NLD
+ 5 CUW-M     Brandley Kuwas      FWD      Volendam         NLD
+ 6 CUW-M     Trevor Doornbusch   GK       VVV-Venlo        NLD
+ 7 CUW-M     Tyrick Bodak        GK       Vitesse          NLD
+ 8 CUW-M     Godfried Roemeratoe MID      RKC Waalwijk     NLD
+ 9 CUW-M     Juninho Bacuna      MID      Volendam         NLD
+10 CUW-M     Kevin Felida        MID      Den Bosch        NLD         </code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -556,20 +555,25 @@ to function arguments, like <code>digits = 1</code>. A double
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 30 × 7
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 ARU-M     Gladwin Curiel   DEF      Arub… ABW          L           H
- 2 ARU-M     Jeremy Trimon    DEF      Arub… ABW          L           H
- 3 ARU-M     Kymani Nedd      DEF      Arub… ABW          L           H
- 4 ARU-M     Nickenson Paul   DEF      Arub… ABW          L           H
- 5 ARU-M     Javier Jiménez   FWD      Arub… ABW          L           H
- 6 ARU-M     Jayden Kruydenh… FWD      Arub… ABW          L           H
- 7 ARU-M     Jahmani Eisden   GK       Arub… ABW          L           H
- 8 ARU-M     Josthan Maduro   GK       Arub… ABW          L           H
- 9 ARU-M     Dimaggio Senchi  MID      Arub… ABW          L           H
-10 ARU-M     Gianni Vandepit… MID      Arub… ABW          L           H
-# ℹ 20 more rows</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 16 × 5
+   team_code player_name           position club           club_country
+   &lt;chr&gt;     &lt;chr&gt;                 &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;
+ 1 ARU-M     Diederick Luydens     DEF      Dakota         ABW
+ 2 ARU-M     Nickenson Paul        DEF      Dakota         ABW
+ 3 ARU-M     Josthan Maduro        GK       SV Britannia   ABW
+ 4 ARU-W     Joyce Chen            DEF      SV Racing Club ABW
+ 5 ARU-W     Sofia Mora            DEF      SV Bubali      ABW
+ 6 ARU-W     Zyana Rogers          FWD      SV Britannia   ABW
+ 7 ARU-W     Dylana Veenstra       GK       SV Britannia   ABW
+ 8 ARU-W     Jennifer Henao        MID      SV Britannia   ABW
+ 9 ARU-W     Kim Schoppema         MID      SV Britannia   ABW
+10 CUW-W     Charnainelys Andrea   DEF      Excellence     CUW
+11 CUW-W     Ignarda Pieternella   DEF      Victory Boys   CUW
+12 CUW-W     Ruwenna Cristina      DEF      UNDEBA         CUW
+13 CUW-W     Gervionna Martina     FWD      Victory Boys   CUW
+14 CUW-W     Kingnaichely Provence GK       Jong Holland   CUW
+15 CUW-W     Thiheyna Susana       GK       Undeba         CUW
+16 CUW-W     Riesmarly Tokaay      MID      Victory Boys   CUW         </code></pre>
 </div>
 <p>That last result is worth a pause. Run it and look at which team
 codes appear.</p>
@@ -631,31 +635,31 @@ might delete variables or simply ignore them. In R,
   &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;
 1 ARU-M     Bradley Martis    DEF      NLD
 2 ARU-M     Darryl Bäly       DEF      NLD
-3 ARU-M     Diederick Luydens DEF      NLD
-4 ARU-M     Gladwin Curiel    DEF      ABW
-5 ARU-M     Jeremy Trimon     DEF      ABW
-6 ARU-M     Kymani Nedd       DEF      ABW         </code></pre>
+3 ARU-M     Diederick Luydens DEF      ABW
+4 ARU-M     Gladwin Curiel    DEF      XKX
+5 ARU-M     Kymani Nedd       DEF      NLD
+6 ARU-M     Nickenson Paul    DEF      ABW         </code></pre>
 </div>
 <p>You can also drop columns by putting a minus sign in front:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">no_confidence</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">squad</span>, <span class="op">-</span><span class="va">confidence</span><span class="op">)</span></span>
-<span><span class="fu">head</span><span class="op">(</span><span class="va">no_confidence</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">no_club</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">squad</span>, <span class="op">-</span><span class="va">club</span><span class="op">)</span></span>
+<span><span class="fu">head</span><span class="op">(</span><span class="va">no_club</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 6 × 6
-  team_code player_name       position club             club_country league_tier
-  &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;
-1 ARU-M     Bradley Martis    DEF      IJsselmeervogels NLD          3
-2 ARU-M     Darryl Bäly       DEF      OFC Oostzaan     NLD          3
-3 ARU-M     Diederick Luydens DEF      Jong Sparta Rot… NLD          R
-4 ARU-M     Gladwin Curiel    DEF      Aruba (local cl… ABW          L
-5 ARU-M     Jeremy Trimon     DEF      Aruba (local cl… ABW          L
-6 ARU-M     Kymani Nedd       DEF      Aruba (local cl… ABW          L          </code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 4
+  team_code player_name       position club_country
+  &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;
+1 ARU-M     Bradley Martis    DEF      NLD
+2 ARU-M     Darryl Bäly       DEF      NLD
+3 ARU-M     Diederick Luydens DEF      ABW
+4 ARU-M     Gladwin Curiel    DEF      XKX
+5 ARU-M     Kymani Nedd       DEF      NLD
+6 ARU-M     Nickenson Paul    DEF      ABW         </code></pre>
 </div>
 </section><section><h2 class="section-heading" id="mutate-compute-variable">
 <code>mutate()</code>, Compute Variable<a class="anchor" aria-label="anchor" href="#mutate-compute-variable"></a></h2>
@@ -686,8 +690,8 @@ analysis. Let us split it into the two things it actually encodes:</p>
 2 ARU-M     Aruba  Men    Darryl Bäly
 3 ARU-M     Aruba  Men    Diederick Luydens
 4 ARU-M     Aruba  Men    Gladwin Curiel
-5 ARU-M     Aruba  Men    Jeremy Trimon
-6 ARU-M     Aruba  Men    Kymani Nedd      </code></pre>
+5 ARU-M     Aruba  Men    Kymani Nedd
+6 ARU-M     Aruba  Men    Nickenson Paul   </code></pre>
 </div>
 <p><code>if_else()</code> takes a condition, a value to use when it is
 true, and a value to use when it is false. It is the R equivalent of an
@@ -712,10 +716,10 @@ often the most useful thing you can make:</p>
   &lt;chr&gt;             &lt;chr&gt;        &lt;lgl&gt;        &lt;lgl&gt;
 1 Bradley Martis    NLD          TRUE         TRUE
 2 Darryl Bäly       NLD          TRUE         TRUE
-3 Diederick Luydens NLD          TRUE         TRUE
-4 Gladwin Curiel    ABW          FALSE        TRUE
-5 Jeremy Trimon     ABW          FALSE        TRUE
-6 Kymani Nedd       ABW          FALSE        TRUE      </code></pre>
+3 Diederick Luydens ABW          FALSE        TRUE
+4 Gladwin Curiel    XKX          TRUE         TRUE
+5 Kymani Nedd       NLD          TRUE         TRUE
+6 Nickenson Paul    ABW          FALSE        TRUE      </code></pre>
 </div>
 <div id="why-a-truefalse-column-is-worth-making" class="callout">
 <div class="callout-square">
@@ -745,7 +749,7 @@ almost anything else in this episode.</p>
 <p>Look again at how <code>based_abroad</code> was defined. A player
 whose <code>club_country</code> is <code>X</code>, meaning nobody could
 establish where they play, is being recorded as <code>FALSE</code>, not
-abroad. Nine players in the Curaçao men’s pool are in that position.
+abroad. Two players in the Aruba women’s squad are in that position.
 Every share we calculate from this column is therefore a little lower
 than the truth, and nothing in the output says so.</p>
 <p>That is not a bug in R. It is an analytical choice, made in passing,
@@ -777,7 +781,7 @@ so explicitly:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.6774194</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.826087</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -788,7 +792,7 @@ so explicitly:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 10</code></pre>
+<pre class="output" tabindex="0"><code>[1] 2</code></pre>
 </div>
 <p><code>NA</code> is R’s marker for “missing”. Most calculations return
 <code>NA</code> if any input is missing, which feels obstructive until
@@ -806,32 +810,36 @@ costs.</p>
 <hr class="half-width"><p>In SPSS: <strong>Transform &gt; Recode into Different
 Variables</strong>, where you map old values to new values. In R you use
 <code>case_when()</code> inside <code>mutate()</code>.</p>
-<p>The <code>league_tier</code> column holds seven different codes. For
-most questions that is too fine-grained. Let us collapse it:</p>
+<p>The <code>club_country</code> column holds fourteen different codes
+plus <code>X</code>. For most questions that is too fine-grained: you do
+not want a bar chart with fourteen bars, most of them height one. Let us
+collapse it into regions:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">squad</span> <span class="op">&lt;-</span> <span class="fu">mutate</span><span class="op">(</span><span class="va">squad</span>,</span>
-<span>  tier_group <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
-<span>    <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"European professional"</span>,</span>
-<span>    <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"3"</span>           <span class="op">~</span> <span class="st">"European amateur or lower"</span>,</span>
-<span>    <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"R"</span>, <span class="st">"Y"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Reserve or youth"</span>,</span>
-<span>    <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"L"</span>           <span class="op">~</span> <span class="st">"Island league"</span>,</span>
-<span>    .default                     <span class="op">=</span> <span class="st">"Unknown"</span></span>
+<span>  home_code <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">island</span> <span class="op">==</span> <span class="st">"Curaçao"</span>, <span class="st">"CUW"</span>, <span class="st">"ABW"</span><span class="op">)</span>,</span>
+<span>  region <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>    <span class="va">club_country</span> <span class="op">==</span> <span class="st">"X"</span>       <span class="op">~</span> <span class="st">"Unknown"</span>,</span>
+<span>    <span class="va">club_country</span> <span class="op">==</span> <span class="va">home_code</span> <span class="op">~</span> <span class="st">"Home island"</span>,</span>
+<span>    <span class="va">club_country</span> <span class="op">==</span> <span class="st">"NLD"</span>     <span class="op">~</span> <span class="st">"Netherlands"</span>,</span>
+<span>    <span class="va">club_country</span> <span class="op">==</span> <span class="st">"USA"</span>     <span class="op">~</span> <span class="st">"North America"</span>,</span>
+<span>    <span class="va">club_country</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"GBR"</span>, <span class="st">"GRC"</span>, <span class="st">"TUR"</span>, <span class="st">"DEU"</span>, <span class="st">"BEL"</span>, <span class="st">"CHE"</span>, <span class="st">"XKX"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Rest of Europe"</span>,</span>
+<span>    .default                  <span class="op">=</span> <span class="st">"Rest of world"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">table</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">tier_group</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">table</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">region</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>
-European amateur or lower     European professional             Island league
-                       22                        34                        30
-         Reserve or youth                   Unknown
-                        7                        10 </code></pre>
+   Home island    Netherlands  North America Rest of Europe  Rest of world
+            16             54              3             16              3
+       Unknown
+             2 </code></pre>
 </div>
 <p>The syntax is <code>condition ~ value_to_assign</code>. The
 <code>.default</code> line catches everything that did not match a
@@ -845,14 +853,18 @@ previous condition, like the Else box in SPSS Recode.</p>
 <h3 class="callout-title">Order matters, and Unknown is a category</h3>
 <div class="callout-content">
 <p><code>case_when()</code> works top to bottom and stops at the first
-match. If you put a broad condition first, the narrower ones below it
-never fire.</p>
-<p>Notice also that we sent <code>X</code> to “Unknown” rather than
-quietly dropping those players. Ten of the men’s squad entries have an
-unknown tier. Deleting them would make every percentage you report
-afterwards slightly wrong and completely untraceable. Keeping the
-category visible means the reader can see the size of the gap and judge
-for themselves. Do this in your own work.</p>
+match. That is why the <code>club_country == home_code</code> line sits
+above the <code>"NLD"</code> line: reverse them and every Dutch-based
+player would be caught by the Netherlands branch before the home-island
+test ever ran. Which happens to be harmless here and would not be if the
+home island were the Netherlands.</p>
+<p>We also sent <code>X</code> to “Unknown” rather than quietly dropping
+those two players. Two out of 94 will not move a percentage much, and
+that is not the point. The point is that dropping them silently makes
+every figure you report afterwards slightly wrong in a way no reader can
+detect. Keeping the category visible lets them see the size of the gap
+and judge for themselves. Do this in your own work, where the gap will
+rarely be two rows.</p>
 </div>
 </div>
 </div>
@@ -869,17 +881,17 @@ for themselves. Do this in your own work.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 6 × 13
-  team_code player_name     position club    club_country league_tier confidence
-  &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
-1 ARU-W     Aisse Gumbs     MID      AA Gent BEL          1           H
-2 ARU-W     Vanessa Susanna FWD      ADO De… NLD          1           H
-3 CUW-M     Juriën Gaari    DEF      Abha    SAU          1           H
-4 CUW-W     Jeleaugh Rosa   X        Acharn… GRC          1           H
-5 ARU-M     Gladwin Curiel  DEF      Aruba … ABW          L           H
-6 ARU-M     Jeremy Trimon   DEF      Aruba … ABW          L           H
-# ℹ 6 more variables: island &lt;chr&gt;, gender &lt;chr&gt;, based_abroad &lt;lgl&gt;,
-#   club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, tier_group &lt;chr&gt;</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 12
+  team_code player_name   position club  club_country island gender based_abroad
+  &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;
+1 CUW-M     Roshon van E… DEF      A.E.… GRC          Curaç… Men    TRUE
+2 CUW-M     Jeremy Anton… FWD      A.E.… GRC          Curaç… Men    TRUE
+3 ARU-W     Vanessa Susa… FWD      ADO … NLD          Aruba  Women  TRUE
+4 ARU-M     Dimaggio Sen… MID      AFC … NLD          Aruba  Men    TRUE
+5 CUW-M     Juriën Gaari  DEF      Abha  SAU          Curaç… Men    TRUE
+6 CUW-W     Jeleaugh Rosa MID      Acha… GRC          Curaç… Women  TRUE
+# ℹ 4 more variables: club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, home_code &lt;chr&gt;,
+#   region &lt;chr&gt;</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -891,17 +903,17 @@ for themselves. Do this in your own work.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 6 × 13
-  team_code player_name     position club    club_country league_tier confidence
-  &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
-1 ARU-W     Zyana Rogers    FWD      SV Bri… ABW          L           M
-2 ARU-M     Walter Bennett  MID      Aruba … ABW          L           H
-3 ARU-W     Vanessa Susanna FWD      ADO De… NLD          1           H
-4 CUW-M     Tyrique Mercera DEF      unknown X            X           L
-5 CUW-M     Tyrick Bodak    GK       Telstar NLD          2           H
-6 CUW-M     Tyrese Noslin   MID      Telstar NLD          2           H
-# ℹ 6 more variables: island &lt;chr&gt;, gender &lt;chr&gt;, based_abroad &lt;lgl&gt;,
-#   club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, tier_group &lt;chr&gt;</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 12
+  team_code player_name   position club  club_country island gender based_abroad
+  &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;
+1 ARU-W     Zyana Rogers  FWD      SV B… ABW          Aruba  Women  FALSE
+2 ARU-M     Walter Benne… MID      SC F… NLD          Aruba  Men    TRUE
+3 ARU-W     Vanessa Susa… FWD      ADO … NLD          Aruba  Women  TRUE
+4 CUW-M     Tyrick Bodak  GK       Vite… NLD          Curaç… Men    TRUE
+5 CUW-M     Tyrese Noslin MID      Barn… GBR          Curaç… Men    TRUE
+6 CUW-M     Trevor Doorn… GK       VVV-… NLD          Curaç… Men    TRUE
+# ℹ 4 more variables: club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, home_code &lt;chr&gt;,
+#   region &lt;chr&gt;</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -913,21 +925,21 @@ for themselves. Do this in your own work.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 10 × 13
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 ARU-M     Bradley Martis   DEF      IJss… NLD          3           H
- 2 ARU-M     Darryl Bäly      DEF      OFC … NLD          3           H
- 3 ARU-M     Diederick Luyde… DEF      Jong… NLD          R           H
- 4 ARU-M     Gladwin Curiel   DEF      Arub… ABW          L           H
- 5 ARU-M     Jeremy Trimon    DEF      Arub… ABW          L           H
- 6 ARU-M     Kymani Nedd      DEF      Arub… ABW          L           H
- 7 ARU-M     Nickenson Paul   DEF      Arub… ABW          L           H
- 8 ARU-M     Rainey Breinburg DEF      Feye… NLD          Y           H
- 9 ARU-M     Carlito Fermina  FWD      Koza… NLD          3           H
-10 ARU-M     Conner van Kils… FWD      TOP … NLD          2           H
-# ℹ 6 more variables: island &lt;chr&gt;, gender &lt;chr&gt;, based_abroad &lt;lgl&gt;,
-#   club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, tier_group &lt;chr&gt;</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 10 × 12
+   team_code player_name  position club  club_country island gender based_abroad
+   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;
+ 1 ARU-M     Bradley Mar… DEF      IJss… NLD          Aruba  Men    TRUE
+ 2 ARU-M     Darryl Bäly  DEF      Lisse NLD          Aruba  Men    TRUE
+ 3 ARU-M     Diederick L… DEF      Dako… ABW          Aruba  Men    FALSE
+ 4 ARU-M     Gladwin Cur… DEF      FC P… XKX          Aruba  Men    TRUE
+ 5 ARU-M     Kymani Nedd  DEF      VV Z… NLD          Aruba  Men    TRUE
+ 6 ARU-M     Nickenson P… DEF      Dako… ABW          Aruba  Men    FALSE
+ 7 ARU-M     Rainey Brei… DEF      Exce… NLD          Aruba  Men    TRUE
+ 8 ARU-M     Rovien Osti… DEF      TOGB  NLD          Aruba  Men    TRUE
+ 9 ARU-M     Arenchelo L… FWD      RKAV… NLD          Aruba  Men    TRUE
+10 ARU-M     Carlito Fer… FWD      Koza… NLD          Aruba  Men    TRUE
+# ℹ 4 more variables: club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, home_code &lt;chr&gt;,
+#   region &lt;chr&gt;</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="group_by-and-summarise-split-file-and-aggregate">
 <code>group_by()</code> and <code>summarise()</code>, Split File and
@@ -959,10 +971,10 @@ statistics by group</li>
 <pre class="output" tabindex="0"><code># A tibble: 4 × 3
   team_code players share_abroad
   &lt;chr&gt;       &lt;int&gt;        &lt;dbl&gt;
-1 ARU-M          26        0.462
+1 ARU-M          23        0.870
 2 ARU-W          23        0.652
-3 CUW-M          32        0.719
-4 CUW-W          22        0.591</code></pre>
+3 CUW-M          26        1
+4 CUW-W          22        0.682</code></pre>
 </div>
 <p>There is the answer to the question Episode 1 opened with, in five
 lines.</p>
@@ -999,8 +1011,8 @@ the same code becomes:</p>
 <pre class="output" tabindex="0"><code># A tibble: 2 × 2
   island  share
   &lt;chr&gt;   &lt;dbl&gt;
-1 Aruba   0.462
-2 Curaçao 0.719</code></pre>
+1 Aruba   0.870
+2 Curaçao 1    </code></pre>
 </div>
 <p>Read this as: “Take <code>squad</code>, <strong>and then</strong>
 keep the men’s squads, <strong>and then</strong> group by island,
@@ -1041,22 +1053,22 @@ checking the result after each line. Let us work through an example.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 54 × 13
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 CUW-M     ArJany Martha    DEF      unkn… X            X           L
- 2 CUW-M     Armando Obispo   DEF      PSV … NLD          1           H
- 3 CUW-M     Cuco Martina     DEF      unkn… X            X           L
- 4 CUW-M     Deveron Fonville DEF      NEC … NLD          1           H
- 5 CUW-M     Joshua Brenet    DEF      Kays… TUR          1           H
- 6 CUW-M     Juriën Gaari     DEF      Abha  SAU          1           H
- 7 CUW-M     Riechedly Bazoer DEF      Kony… TUR          1           H
- 8 CUW-M     Roshon van Eijma DEF      RKC … NLD          1           H
- 9 CUW-M     Sherel Floranus  DEF      PEC … NLD          1           H
-10 CUW-M     Shurandy Sambo   DEF      Spar… NLD          1           H
-# ℹ 44 more rows
-# ℹ 6 more variables: island &lt;chr&gt;, gender &lt;chr&gt;, based_abroad &lt;lgl&gt;,
-#   club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, tier_group &lt;chr&gt;</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 48 × 12
+   team_code player_name  position club  club_country island gender based_abroad
+   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;
+ 1 CUW-M     Armando Obi… DEF      PSV   NLD          Curaç… Men    TRUE
+ 2 CUW-M     Deveron Fon… DEF      NEC   NLD          Curaç… Men    TRUE
+ 3 CUW-M     Joshua Bren… DEF      Kays… TUR          Curaç… Men    TRUE
+ 4 CUW-M     Juriën Gaari DEF      Abha  SAU          Curaç… Men    TRUE
+ 5 CUW-M     Riechedly B… DEF      Kony… TUR          Curaç… Men    TRUE
+ 6 CUW-M     Roshon van … DEF      A.E.… GRC          Curaç… Men    TRUE
+ 7 CUW-M     Sherel Flor… DEF      PEC … NLD          Curaç… Men    TRUE
+ 8 CUW-M     Shurandy Sa… DEF      Spar… NLD          Curaç… Men    TRUE
+ 9 CUW-M     Brandley Ku… FWD      Vole… NLD          Curaç… Men    TRUE
+10 CUW-M     Gervane Kas… FWD      Tere… MYS          Curaç… Men    TRUE
+# ℹ 38 more rows
+# ℹ 4 more variables: club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, home_code &lt;chr&gt;,
+#   region &lt;chr&gt;</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1065,25 +1077,25 @@ checking the result after each line. Let us work through an example.</p>
 <code class="sourceCode R"><span><span class="co"># Step 2: Add a column selection</span></span>
 <span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">island</span> <span class="op">==</span> <span class="st">"Curaçao"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gender</span>, <span class="va">player_name</span>, <span class="va">position</span>, <span class="va">club</span>, <span class="va">tier_group</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gender</span>, <span class="va">player_name</span>, <span class="va">position</span>, <span class="va">club</span>, <span class="va">region</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 54 × 5
-   gender player_name      position club             tier_group
-   &lt;chr&gt;  &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
- 1 Men    ArJany Martha    DEF      unknown          Unknown
- 2 Men    Armando Obispo   DEF      PSV Eindhoven    European professional
- 3 Men    Cuco Martina     DEF      unknown          Unknown
- 4 Men    Deveron Fonville DEF      NEC Nijmegen     European professional
- 5 Men    Joshua Brenet    DEF      Kayserispor      European professional
- 6 Men    Juriën Gaari     DEF      Abha             European professional
- 7 Men    Riechedly Bazoer DEF      Konyaspor        European professional
- 8 Men    Roshon van Eijma DEF      RKC Waalwijk     European professional
- 9 Men    Sherel Floranus  DEF      PEC Zwolle       European professional
-10 Men    Shurandy Sambo   DEF      Sparta Rotterdam European professional
-# ℹ 44 more rows</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 48 × 5
+   gender player_name       position club             region
+   &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
+ 1 Men    Armando Obispo    DEF      PSV              Netherlands
+ 2 Men    Deveron Fonville  DEF      NEC              Netherlands
+ 3 Men    Joshua Brenet     DEF      Kayserispor      Rest of Europe
+ 4 Men    Juriën Gaari      DEF      Abha             Rest of world
+ 5 Men    Riechedly Bazoer  DEF      Konyaspor        Rest of Europe
+ 6 Men    Roshon van Eijma  DEF      A.E. Kifisia     Rest of Europe
+ 7 Men    Sherel Floranus   DEF      PEC Zwolle       Netherlands
+ 8 Men    Shurandy Sambo    DEF      Sparta Rotterdam Netherlands
+ 9 Men    Brandley Kuwas    FWD      Volendam         Netherlands
+10 Men    Gervane Kastaneer FWD      Terengganu       Rest of world
+# ℹ 38 more rows</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1092,20 +1104,23 @@ checking the result after each line. Let us work through an example.</p>
 <code class="sourceCode R"><span><span class="co"># Step 3: Group and summarise</span></span>
 <span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">island</span> <span class="op">==</span> <span class="st">"Curaçao"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">gender</span>, <span class="va">tier_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">gender</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">gender</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 5 × 3
-  gender tier_group                    n
-  &lt;chr&gt;  &lt;chr&gt;                     &lt;int&gt;
-1 Men    European professional        23
-2 Men    Unknown                       9
-3 Women  European amateur or lower     9
-4 Women  Island league                 9
-5 Women  European professional         4</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 8 × 3
+  gender region             n
+  &lt;chr&gt;  &lt;chr&gt;          &lt;int&gt;
+1 Men    Rest of Europe    11
+2 Men    Netherlands       10
+3 Men    Rest of world      3
+4 Men    North America      2
+5 Women  Netherlands       12
+6 Women  Home island        7
+7 Women  Rest of Europe     2
+8 Women  North America      1</code></pre>
 </div>
 <p>This pipeline reads: “Take the squad data, keep the Curaçao players,
 count how many fall in each combination of gender and tier group, then
@@ -1139,7 +1154,7 @@ print it. How many of them play their club football on Curaçao?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1157,21 +1172,21 @@ print it. How many of them play their club football on Curaçao?</p>
 <pre class="output" tabindex="0"><code># A tibble: 10 × 2
    club_country     n
    &lt;chr&gt;        &lt;int&gt;
- 1 NLD             11
- 2 X                9
+ 1 NLD             10
+ 2 GBR              4
  3 TUR              3
- 4 GBR              2
+ 4 GRC              2
  5 USA              2
- 6 CHE              1
- 7 DEU              1
- 8 GRC              1
+ 6 BEL              1
+ 7 CHE              1
+ 8 ISR              1
  9 MYS              1
 10 SAU              1</code></pre>
 </div>
-<p>None. Not one player in the Curaçao men’s pool plays club football on
-the island. The Netherlands dominates, with a scatter of other European
-and North American leagues, and a block of unknowns coded
-<code>X</code>.</p>
+<p>None. Not one of the 26 players plays club football on Curaçao. The
+Netherlands is the largest single destination with 10, but it is not a
+majority: the other 16 are scattered across nine more countries, from
+England and Turkey to Malaysia and Saudi Arabia.</p>
 </div>
 </div>
 </div>
@@ -1196,7 +1211,7 @@ share to the lowest.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1217,16 +1232,18 @@ share to the lowest.</p>
 <pre class="output" tabindex="0"><code># A tibble: 4 × 4
   island  gender players pct_abroad
   &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;
-1 Curaçao Men         32         72
-2 Aruba   Women       23         65
-3 Curaçao Women       22         59
-4 Aruba   Men         26         46</code></pre>
+1 Curaçao Men         26        100
+2 Aruba   Men         23         87
+3 Curaçao Women       22         68
+4 Aruba   Women       23         65</code></pre>
 </div>
-<p>The ordering is the finding. The two islands are 80 kilometres apart
-with comparable populations, and their squads are built in almost
-opposite ways. Note also the gap between the men’s and women’s squads
-within each island, which is a second story sitting inside the same
-table.</p>
+<p>Both men’s squads sit high and both women’s squads sit lower, so the
+sharper split here is by gender rather than by island. That is worth
+noticing precisely because it is not the split you were probably looking
+for. Episode 5 puts a test on it.</p>
+<p>The island difference is real but it does not live in this column.
+Both islands send most of their players abroad; where they send them is
+the interesting part, which is what <code>region</code> is for.</p>
 </div>
 </div>
 </div>
@@ -1239,11 +1256,11 @@ table.</p>
 <div id="challenge-3-composition-by-position" class="callout-inner">
 <h3 class="callout-title">Challenge 3: Composition by position</h3>
 <div class="callout-content">
-<p>Using the <code>tier_group</code> column we created with
+<p>Using the <code>region</code> column we created with
 <code>case_when()</code>, write a pipeline that shows, for the Curaçao
 men’s squad only, how many players fall in each combination of
-<code>position</code> and <code>tier_group</code>. Sort by position and
-then by count descending.</p>
+<code>position</code> and <code>region</code>. Sort by position and then
+by count descending.</p>
 <p>Hint: you will need to group by two columns, and <code>count()</code>
 accepts more than one.</p>
 </div>
@@ -1254,7 +1271,7 @@ accepts more than one.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1262,22 +1279,26 @@ accepts more than one.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">team_code</span> <span class="op">==</span> <span class="st">"CUW-M"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">position</span>, <span class="va">tier_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">position</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">position</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 7 × 3
-  position tier_group                n
-  &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;
-1 DEF      European professional     8
-2 DEF      Unknown                   3
-3 FWD      European professional     4
-4 FWD      Unknown                   2
-5 GK       European professional     3
-6 MID      European professional     8
-7 MID      Unknown                   4</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 11 × 3
+   position region             n
+   &lt;chr&gt;    &lt;chr&gt;          &lt;int&gt;
+ 1 DEF      Netherlands        4
+ 2 DEF      Rest of Europe     3
+ 3 DEF      Rest of world      1
+ 4 FWD      Rest of Europe     4
+ 5 FWD      Rest of world      2
+ 6 FWD      Netherlands        1
+ 7 FWD      North America      1
+ 8 GK       Netherlands        2
+ 9 GK       North America      1
+10 MID      Rest of Europe     4
+11 MID      Netherlands        3</code></pre>
 </div>
 <p>If you used <code>group_by()</code> and <code>summarise()</code>
 instead, add <code>.groups = "drop"</code>:</p>
@@ -1287,23 +1308,27 @@ instead, add <code>.groups = "drop"</code>:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">team_code</span> <span class="op">==</span> <span class="st">"CUW-M"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">position</span>, <span class="va">tier_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">position</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">position</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 7 × 3
-  position tier_group                n
-  &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;
-1 DEF      European professional     8
-2 DEF      Unknown                   3
-3 FWD      European professional     4
-4 FWD      Unknown                   2
-5 GK       European professional     3
-6 MID      European professional     8
-7 MID      Unknown                   4</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 11 × 3
+   position region             n
+   &lt;chr&gt;    &lt;chr&gt;          &lt;int&gt;
+ 1 DEF      Netherlands        4
+ 2 DEF      Rest of Europe     3
+ 3 DEF      Rest of world      1
+ 4 FWD      Rest of Europe     4
+ 5 FWD      Rest of world      2
+ 6 FWD      Netherlands        1
+ 7 FWD      North America      1
+ 8 GK       Netherlands        2
+ 9 GK       North America      1
+10 MID      Rest of Europe     4
+11 MID      Netherlands        3</code></pre>
 </div>
 <p>The <code>.groups = "drop"</code> argument tells
 <code>summarise()</code> to remove the grouping after calculation.

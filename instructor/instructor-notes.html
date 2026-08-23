@@ -634,11 +634,13 @@ room.</p>
 <ul>
 <li>
 <strong>blue_wave_squad.csv</strong> — player-level squad lists for
-the four ABC island national teams, 2026. Primary teaching dataset,
-Episodes 2 to 4 and 6. Also shipped as <code>.xlsx</code> (two sheets)
-and <code>.sav</code> for the import demonstrations. Compiled for
-Cornerstone Economics working paper WP-2026-01; coding decisions are
-documented in <code>episodes/data/curacao_squad_codebook.md</code>.</li>
+the four ABC island national teams, 94 players. Primary teaching
+dataset, Episodes 2 to 4 and 6. Also shipped as <code>.xlsx</code> (two
+sheets) and <code>.sav</code> for the import demonstrations. Scraped
+from Wikipedia current-squad tables by
+<code>scripts/00_build_teaching_data.R</code>; variable definitions and
+limitations are in
+<code>episodes/data/blue_wave_squad_codebook.md</code>.</li>
 <li>
 <strong>fifa_rankings.csv</strong> — FIFA rank and points against
 population and diaspora for 211 national associations. Continuous
@@ -662,14 +664,26 @@ Netherlands via <code>cbsodataR</code> (Episode 7).</li>
 repository root. Test all live downloads before the course; URLs and
 APIs change.</p>
 <div class="section level3">
-<h3 id="the-squad-data-is-unusually-honest-and-that-is-the-point">The squad data is unusually honest, and that is the point<a class="anchor" aria-label="anchor" href="#the-squad-data-is-unusually-honest-and-that-is-the-point"></a>
+<h3 id="the-gaps-in-the-squad-data-are-the-point">The gaps in the squad data are the point<a class="anchor" aria-label="anchor" href="#the-gaps-in-the-squad-data-are-the-point"></a>
 </h3>
-<p>Ten of 103 players cannot be placed at a club, 22 have an unknown
-position, and every row carries a confidence code. Episodes 3, 5, and 6
-each stop to name what is being excluded and what it costs. Do not tidy
-this away or apologise for it. Most participants have never been shown
-what to do with a gap other than delete it, and this is the most
-transferable thing in the two days.</p>
+<p>Two of 94 players cannot be placed at a club, and the squads are only
+as current as Wikipedia. Episodes 3, 5, and 6 each stop to name what is
+being excluded and what it costs. Do not tidy this away or apologise for
+it. Most participants have never been shown what to do with a gap other
+than delete it, and this is the most transferable thing in the two
+days.</p>
+<p>Two is a small number, and that is deliberate rather than
+unfortunate. The habit of reporting exclusions is easiest to build when
+the exclusion changes nothing.</p>
+</div>
+<div class="section level3">
+<h3 id="the-island-comparison-does-not-work-and-episode-5-uses-that">The island comparison does not work, and Episode 5 uses that<a class="anchor" aria-label="anchor" href="#the-island-comparison-does-not-work-and-episode-5-uses-that"></a>
+</h3>
+<p>Testing whether Curaçao and Aruba differ on players-based-abroad
+returns a p-value around 0.64. Testing men against women returns 0.006.
+Episode 5 runs both in that order on purpose: the first thing you try
+fails, the second works, and the write-up has to admit both. Do not skip
+to the one that works.</p>
 </div>
 <div class="section level3">
 <h3 id="note-on-the-elections-example">Note on the elections example<a class="anchor" aria-label="anchor" href="#note-on-the-elections-example"></a>
@@ -809,16 +823,18 @@ squad data and answer the question the island already argues about.</p>
 <code class="sourceCode R"><span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span></span>
 <span>    island <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu">str_starts</span><span class="op">(</span><span class="va">team_code</span>, <span class="st">"CUW"</span><span class="op">)</span>, <span class="st">"Curaçao"</span>, <span class="st">"Aruba"</span><span class="op">)</span>,</span>
-<span>    tier_group <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
-<span>      <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"European professional"</span>,</span>
-<span>      <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"3"</span>           <span class="op">~</span> <span class="st">"European amateur or lower"</span>,</span>
-<span>      <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"R"</span>, <span class="st">"Y"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Reserve or youth"</span>,</span>
-<span>      <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"L"</span>           <span class="op">~</span> <span class="st">"Island league"</span>,</span>
-<span>      <span class="cn">TRUE</span>                         <span class="op">~</span> <span class="st">"Unknown"</span></span>
+<span>    home_code <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu">str_starts</span><span class="op">(</span><span class="va">team_code</span>, <span class="st">"CUW"</span><span class="op">)</span>, <span class="st">"CUW"</span>, <span class="st">"ABW"</span><span class="op">)</span>,</span>
+<span>    region <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="st">"X"</span>       <span class="op">~</span> <span class="st">"Unknown"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="va">home_code</span> <span class="op">~</span> <span class="st">"Home island"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="st">"NLD"</span>     <span class="op">~</span> <span class="st">"Netherlands"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="st">"USA"</span>     <span class="op">~</span> <span class="st">"North America"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"GBR"</span>, <span class="st">"GRC"</span>, <span class="st">"TUR"</span>, <span class="st">"DEU"</span>, <span class="st">"BEL"</span>, <span class="st">"CHE"</span>, <span class="st">"XKX"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Rest of Europe"</span>,</span>
+<span>      .default                  <span class="op">=</span> <span class="st">"Rest of world"</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">island</span>, <span class="va">tier_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">n</span>, fill <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">island</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">n</span>, fill <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_col</span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va">percent</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span></span>
@@ -829,10 +845,11 @@ squad data and answer the question the island already argues about.</p>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Talking point: “Two islands, 80 kilometres apart, with populations
-and colonial histories that track each other closely. Completely
-different answers. Nobody in this room needed a statistician to care
-about that question. What you needed was a way to ask it, and you just
-watched it take twelve lines.”</p>
+and colonial histories that track each other closely. Both send most of
+their players abroad. But look where. Curaçao’s are scattered across ten
+countries. Aruba’s are overwhelmingly in one. Nobody in this room needed
+a statistician to care about that question. What you needed was a way to
+ask it, and you just watched it take twelve lines.”</p>
 <p>Do not resolve the question. Let the room argue. Say: “By Wednesday
 you will be able to run this yourself, and change it to ask what you
 actually want to know.”</p>
@@ -846,12 +863,12 @@ the cost of the current workflow lands.</p>
 <ol style="list-style-type: decimal">
 <li>Go looking for the squad lists. Wikipedia? FotMob? The federation’s
 Facebook page? Pick one and hope it is current.</li>
-<li>Copy 103 player names, clubs, and positions into Excel by hand. An
+<li>Copy 94 player names, clubs, and positions into Excel by hand. An
 hour if you are quick and do not lose concentration.</li>
-<li>Discover that club names are spelled three different ways, that some
-players have no club listed, and that Jong Holland is a Curaçao club
-despite the name. Clean by hand.</li>
-<li>Import into SPSS. Recode league level into a grouping variable,
+<li>Discover that the club’s country is only shown as a little flag you
+cannot copy, that two players have no club listed at all, and that Jong
+Holland is a Curaçao club despite the name. Clean by hand.</li>
+<li>Import into SPSS. Recode club country into a grouping variable,
 because the raw text is unusable as it stands.</li>
 <li>
 <strong>Analyze &gt; Descriptive Statistics &gt;
@@ -940,12 +957,17 @@ otherwise have used, and let the contrast do the work.</li>
 <li>The <code>filter(club_country %in% c("CUW", "ABW"))</code> result
 usually produces an audible reaction in a Curaçao room. Let it. Then say
 “we are not explaining that today, we are learning how to ask it.”</li>
-<li>If someone asks why 22 players have position <code>X</code> and 10
-have tier <code>X</code>, the honest answer is that the underlying
-sources are federation Facebook posts and Wikipedia squad tables, and
-the compiler recorded uncertainty rather than guessing. Point them to
-the codebook in the data folder. This is a good moment for a word about
-documenting your own uncertainty.</li>
+<li>If someone asks why two players have
+<code>club_country == "X"</code>, the honest answer is that the source
+is a Wikipedia squad table, those two rows list no club, and the build
+script recorded that rather than guessing. Point them to
+<code>blue_wave_squad_codebook.md</code> in the data folder. This is a
+good moment for a word about documenting your own uncertainty.</li>
+<li>Someone may well ask how current the squads are. They are as current
+as Wikipedia, which is to say: maintained by volunteers, lagging real
+call-ups by weeks or months, and not necessarily consistent across the
+four pages. Say so. It is a better answer than pretending, and it sets
+up Episode 5.</li>
 </ul>
 <hr>
 <br></section><section id="04-visualization"><h2 class="section-heading"><a href="04-visualization.html">Visualization with ggplot2</a></h2>
@@ -987,17 +1009,24 @@ and re-run the script.</p>
 learners can use every dplyr verb from Episode 3 on their statistical
 results: filter to significant terms, arrange by p-value, join to
 labels.</p>
-<p>Two moments are worth slowing down for, and neither is about
+<p>Three moments are worth slowing down for, and none of them is about
 syntax.</p>
-<p>The non-significant diaspora coefficient is the more important of the
-two. Most of the room has been taught, implicitly, that a good table has
-stars in it. Say plainly that you are leaving a dead predictor in the
-model on purpose, and why. If anyone asks whether they should drop it,
-that is the discussion you want.</p>
-<p>The second is the <code>filter(club_country != "X")</code> line in
-the chi-square section. Ask the room what that line did before you tell
-them. Someone will spot that it removed ten players. Then ask where that
-fact would appear in a paper.</p>
+<p>The non-significant diaspora coefficient is the most important. Most
+of the room has been taught, implicitly, that a good table has stars in
+it. Say plainly that you are leaving a dead predictor in the model on
+purpose, and why. If anyone asks whether they should drop it, that is
+the discussion you want.</p>
+<p>The pair of chi-square tests is the second. Run the island one, let
+the room see the p-value, and let the disappointment sit for a moment
+before you run the gender one. The sequence is the lesson: the first
+thing you tried did not work, you tried a second thing, and the write-up
+has to admit both. Almost everyone in the room has at some point
+reported only the second.</p>
+<p>The third is the <code>filter(club_country != "X")</code> line. Ask
+what it did before you tell them. Someone will spot that it removed two
+players. Two is small enough that nobody would object, which is exactly
+why it is a good example: the habit has to be built when the stakes are
+low.</p>
 <hr>
 <br></section><section id="06-reproducible-reporting"><h2 class="section-heading"><a href="06-reproducible-reporting.html">Reproducible Reporting</a></h2>
 <hr class="half-width">

@@ -562,7 +562,7 @@ but it needs R installed to run.</p>
   Windows
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">CRAN</a> — click
 “Download R for Windows”, then “base”, then the download link.</li>
@@ -584,7 +584,7 @@ you are ready.</li>
   macOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/macosx/" class="external-link">CRAN</a> — choose the
 <code>.pkg</code> file that matches your Mac (Apple Silicon or
@@ -606,7 +606,7 @@ you are ready.</li>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Follow the instructions for your distribution at <a href="https://cran.r-project.org/bin/linux/" class="external-link">CRAN</a>.</li>
 <li>Download RStudio from <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Posit</a> — choose the
@@ -656,7 +656,7 @@ SPSS <code>.sav</code> file. Download <strong>all three</strong> now and
 keep them together.</p>
 <ul><li>
 <a href="https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/blue_wave_squad.csv" class="external-link">blue_wave_squad.csv</a>
-plain-text version, one flat table of 103 rows</li>
+plain-text version, one flat table of 94 rows</li>
 <li>
 <a href="https://github.com/University-of-Aruba/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.xlsx" class="external-link">blue_wave_squad.xlsx</a>
 Excel version, two sheets: <code>curacao</code> and
@@ -700,15 +700,14 @@ any extra path work.</p>
 this step together at the start of Episode 2. Bring the links.</p>
 </div>
 </section><section><h2 class="section-heading" id="what-the-data-is">What the data is<a class="anchor" aria-label="anchor" href="#what-the-data-is"></a></h2>
-<hr class="half-width"><p>The squad file lists the players called up to four Dutch Caribbean
-national football teams in 2026: Curacao men and women, Aruba men and
-women. One row is one player, with their club, the country that club
-plays in, and the level of that league.</p>
-<p>It was compiled for a Cornerstone Economics working paper, and it is
-a real research dataset rather than a teaching toy. Some players could
-not be placed at a club at all, and every row carries a confidence code
-recording how well the entry is sourced. Those gaps are part of what you
-will learn to handle.</p>
+<hr class="half-width"><p>The squad file lists the players in the current squads of four Dutch
+Caribbean national football teams: Curacao men and women, Aruba men and
+women. One row is one player, with their position, their club, and the
+country that club plays in. 94 rows in total.</p>
+<p>It is scraped from Wikipedia, which makes it real data rather than a
+teaching toy. Two players have no club listed at all, and the squads are
+only as current as the volunteers who maintain those pages. Those gaps
+are part of what you will learn to handle.</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.

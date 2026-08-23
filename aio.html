@@ -423,16 +423,16 @@ demonstrate what R can do. By the end you should have a clear picture of
 <h3 id="the-question-the-course-is-built-around">The question the course is built around<a class="anchor" aria-label="anchor" href="#the-question-the-course-is-built-around"></a>
 </h3>
 <p>Curaçao has about 149,000 residents. In 2026 it put a national team
-into the World Cup, unbeaten through CONCACAF qualifying, and the squad
-that did it is almost entirely based in European professional football.
-Very few of those players play their club football on the island.</p>
+into the World Cup, unbeaten through CONCACAF qualifying. Of the 26
+players in that squad, not one plays club football on the island. They
+are spread across ten countries.</p>
 <p>That is a striking fact, and it is a data fact before it is a
-football fact. Where do the players actually play? At what level? How
-does the men’s squad compare with the women’s, and how does Curaçao
-compare with Aruba, which has a similar history and a very different
-result? Every one of those questions is a table, a filter, a group
-summary, and a chart. By Wednesday afternoon you will be answering them
-yourself, from a script you wrote.</p>
+football fact. Where do the players actually play? How does the men’s
+squad compare with the women’s, and how does Curaçao compare with Aruba,
+which has a similar history and builds its squad differently? Every one
+of those questions is a table, a filter, a group summary, and a chart.
+By Wednesday afternoon you will be answering them yourself, from a
+script you wrote.</p>
 </div>
 <div class="section level3">
 <h3 id="what-you-will-be-able-to-produce">What you will be able to produce<a class="anchor" aria-label="anchor" href="#what-you-will-be-able-to-produce"></a>
@@ -1001,12 +1001,11 @@ you can hand to a colleague or archive at the end of a study.</p>
 <h3 id="what-is-in-the-data">What is in the data<a class="anchor" aria-label="anchor" href="#what-is-in-the-data"></a>
 </h3>
 <p>The dataset is the player-level squad list for four Dutch Caribbean
-national teams as called up in 2026: Curaçao men and women, Aruba men
-and women. One row is one player. It was compiled for a Cornerstone
-Economics working paper on diaspora football, and it is a real research
-dataset, which means it has real gaps in it. That is deliberate. Clean
-textbook data teaches you nothing about the afternoon you will actually
-spend with your own file.</p>
+national teams: Curaçao men and women, Aruba men and women. One row is
+one player, 94 in total. It was scraped from the current-squad tables on
+Wikipedia, which means it has the gaps and inconsistencies real data
+has. That is deliberate. Clean textbook data teaches you nothing about
+the afternoon you will actually spend with your own file.</p>
 <table class="table">
 <colgroup>
 <col width="50%">
@@ -1032,7 +1031,8 @@ spend with your own file.</p>
 <td><code>position</code></td>
 <td>
 <code>GK</code>, <code>DEF</code>, <code>MID</code>,
-<code>FWD</code>, <code>X</code> for unknown</td>
+<code>FWD</code>
+</td>
 </tr>
 <tr>
 <td><code>club</code></td>
@@ -1041,24 +1041,15 @@ spend with your own file.</p>
 </tr>
 <tr>
 <td><code>club_country</code></td>
-<td>ISO 3-letter country code of the club, <code>X</code> for
-unknown</td>
-</tr>
-<tr>
-<td><code>league_tier</code></td>
-<td>
-<code>1</code> top flight, <code>2</code> second tier,
-<code>3</code> third or amateur, <code>R</code> reserve, <code>Y</code>
-youth, <code>L</code> local island league, <code>X</code> unknown</td>
-</tr>
-<tr>
-<td><code>confidence</code></td>
-<td>
-<code>H</code> verified, <code>M</code> single source,
-<code>L</code> inferred, <code>U</code> unknown</td>
+<td>ISO 3-letter country code of the club, <code>X</code> where it could
+not be established</td>
 </tr>
 </tbody>
 </table>
+<p>Five columns is all you get. Everything else this course does with
+the data, which island, which gender, whether a player is based abroad,
+which part of the world they play in, you will build yourself out of
+these five. That is the job.</p>
 </div>
 <div class="section level3">
 <h3 id="csv-files-with-read_csv">CSV files with <code>read_csv()</code>
@@ -1076,10 +1067,10 @@ provides <code>read_csv()</code>:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Rows: 103 Columns: 7
+<pre class="output" tabindex="0"><code>Rows: 94 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (7): team_code, player_name, position, club, club_country, league_tier, ...
+chr (5): team_code, player_name, position, club, club_country
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -1106,15 +1097,15 @@ reads them directly, including variable labels and value labels:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 6 × 7
-  team_code player_name       position club  club_country league_tier confidence
-  &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
-1 ARU-M     Bradley Martis    DEF      IJss… NLD          3           H
-2 ARU-M     Darryl Bäly       DEF      OFC … NLD          3           H
-3 ARU-M     Diederick Luydens DEF      Jong… NLD          R           H
-4 ARU-M     Gladwin Curiel    DEF      Arub… ABW          L           H
-5 ARU-M     Jeremy Trimon     DEF      Arub… ABW          L           H
-6 ARU-M     Kymani Nedd       DEF      Arub… ABW          L           H         </code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 5
+  team_code player_name       position club             club_country
+  &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
+1 ARU-M     Bradley Martis    DEF      IJsselmeervogels NLD
+2 ARU-M     Darryl Bäly       DEF      Lisse            NLD
+3 ARU-M     Diederick Luydens DEF      Dakota           ABW
+4 ARU-M     Gladwin Curiel    DEF      FC Prishtina     XKX
+5 ARU-M     Kymani Nedd       DEF      VV Zwaluwen      NLD
+6 ARU-M     Nickenson Paul    DEF      Dakota           ABW         </code></pre>
 </div>
 <p>Look at that output. It is the same data, and nothing was converted
 or exported to get it there. R reads your existing SPSS files as they
@@ -1217,7 +1208,7 @@ called <code>aruba_squad</code>.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1236,7 +1227,7 @@ called <code>aruba_squad</code>.</li>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 49  7</code></pre>
+<pre class="output" tabindex="0"><code>[1] 46  5</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1282,15 +1273,15 @@ the capital V.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 6 × 7
-  team_code player_name       position club  club_country league_tier confidence
-  &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
-1 ARU-M     Bradley Martis    DEF      IJss… NLD          3           H
-2 ARU-M     Darryl Bäly       DEF      OFC … NLD          3           H
-3 ARU-M     Diederick Luydens DEF      Jong… NLD          R           H
-4 ARU-M     Gladwin Curiel    DEF      Arub… ABW          L           H
-5 ARU-M     Jeremy Trimon     DEF      Arub… ABW          L           H
-6 ARU-M     Kymani Nedd       DEF      Arub… ABW          L           H         </code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 5
+  team_code player_name       position club             club_country
+  &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
+1 ARU-M     Bradley Martis    DEF      IJsselmeervogels NLD
+2 ARU-M     Darryl Bäly       DEF      Lisse            NLD
+3 ARU-M     Diederick Luydens DEF      Dakota           ABW
+4 ARU-M     Gladwin Curiel    DEF      FC Prishtina     XKX
+5 ARU-M     Kymani Nedd       DEF      VV Zwaluwen      NLD
+6 ARU-M     Nickenson Paul    DEF      Dakota           ABW         </code></pre>
 </div>
 <p>This is faster than <code>View()</code> when you just want a quick
 look. By default it shows 6 rows. You can change that with
@@ -1312,25 +1303,21 @@ same thing:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>spc_tbl_ [103 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
- $ team_code   : chr [1:103] "ARU-M" "ARU-M" "ARU-M" "ARU-M" ...
- $ player_name : chr [1:103] "Bradley Martis" "Darryl Bäly" "Diederick Luydens" "Gladwin Curiel" ...
- $ position    : chr [1:103] "DEF" "DEF" "DEF" "DEF" ...
- $ club        : chr [1:103] "IJsselmeervogels" "OFC Oostzaan" "Jong Sparta Rotterdam" "Aruba (local club)" ...
- $ club_country: chr [1:103] "NLD" "NLD" "NLD" "ABW" ...
- $ league_tier : chr [1:103] "3" "3" "R" "L" ...
- $ confidence  : chr [1:103] "H" "H" "H" "H" ...
+<pre class="output" tabindex="0"><code>spc_tbl_ [94 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ team_code   : chr [1:94] "ARU-M" "ARU-M" "ARU-M" "ARU-M" ...
+ $ player_name : chr [1:94] "Bradley Martis" "Darryl Bäly" "Diederick Luydens" "Gladwin Curiel" ...
+ $ position    : chr [1:94] "DEF" "DEF" "DEF" "DEF" ...
+ $ club        : chr [1:94] "IJsselmeervogels" "Lisse" "Dakota" "FC Prishtina" ...
+ $ club_country: chr [1:94] "NLD" "NLD" "ABW" "XKX" ...
  - attr(*, "spec")=
   .. cols(
   ..   team_code = col_character(),
   ..   player_name = col_character(),
   ..   position = col_character(),
   ..   club = col_character(),
-  ..   club_country = col_character(),
-  ..   league_tier = col_character(),
-  ..   confidence = col_character()
+  ..   club_country = col_character()
   .. )
- - attr(*, "problems")=&lt;pointer: 0x55b11f4702c0&gt; </code></pre>
+ - attr(*, "problems")=&lt;pointer: 0x564bee233350&gt; </code></pre>
 </div>
 <p>This tells you how many observations (rows), how many variables
 (columns), and the type of each variable: <code>num</code> for numbers,
@@ -1353,15 +1340,13 @@ similar information in a tidier format:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Rows: 103
-Columns: 7
+<pre class="output" tabindex="0"><code>Rows: 94
+Columns: 5
 $ team_code    &lt;chr&gt; "ARU-M", "ARU-M", "ARU-M", "ARU-M", "ARU-M", "ARU-M", "AR…
 $ player_name  &lt;chr&gt; "Bradley Martis", "Darryl Bäly", "Diederick Luydens", "Gl…
 $ position     &lt;chr&gt; "DEF", "DEF", "DEF", "DEF", "DEF", "DEF", "DEF", "DEF", "…
-$ club         &lt;chr&gt; "IJsselmeervogels", "OFC Oostzaan", "Jong Sparta Rotterda…
-$ club_country &lt;chr&gt; "NLD", "NLD", "NLD", "ABW", "ABW", "ABW", "ABW", "NLD", "…
-$ league_tier  &lt;chr&gt; "3", "3", "R", "L", "L", "L", "L", "Y", "3", "2", "3", "L…
-$ confidence   &lt;chr&gt; "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H…</code></pre>
+$ club         &lt;chr&gt; "IJsselmeervogels", "Lisse", "Dakota", "FC Prishtina", "V…
+$ club_country &lt;chr&gt; "NLD", "NLD", "ABW", "XKX", "NLD", "ABW", "NLD", "NLD", "…</code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -1379,18 +1364,12 @@ Descriptives</strong>. In R:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>     team_code      player_name       position          club
- Length   :103   Length   :103   Length   :103   Length   :103
- N.unique :  4   N.unique :103   N.unique :  5   N.unique : 62
- N.blank  :  0   N.blank  :  0   N.blank  :  0   N.blank  :  0
- Min.nchar:  5   Min.nchar:  9   Min.nchar:  1   Min.nchar:  3
- Max.nchar:  5   Max.nchar: 23   Max.nchar:  3   Max.nchar: 32
-    club_country    league_tier      confidence
- Length   :103   Length   :103   Length   :103
- N.unique : 13   N.unique :  7   N.unique :  4
- N.blank  :  0   N.blank  :  0   N.blank  :  0
- Min.nchar:  1   Min.nchar:  1   Min.nchar:  1
- Max.nchar:  3   Max.nchar:  1   Max.nchar:  1  </code></pre>
+<pre class="output" tabindex="0"><code>     team_code     player_name      position         club       club_country
+ Length   :94   Length   :94   Length   :94   Length   :94   Length   :94
+ N.unique : 4   N.unique :94   N.unique : 4   N.unique :71   N.unique :15
+ N.blank  : 0   N.blank  : 0   N.blank  : 0   N.blank  : 0   N.blank  : 0
+ Min.nchar: 5   Min.nchar: 9   Min.nchar: 2   Min.nchar: 3   Min.nchar: 1
+ Max.nchar: 5   Max.nchar:25   Max.nchar: 3   Max.nchar:31   Max.nchar: 3   </code></pre>
 </div>
 <p>For numeric columns you get the minimum, maximum, mean, median, and
 quartiles. For character columns you get the length and type. Most of
@@ -1414,7 +1393,7 @@ Frequencies</strong>. In R:</p>
 </h3>
 <pre class="output" tabindex="0"><code>
 ARU-M ARU-W CUW-M CUW-W
-   26    23    32    22 </code></pre>
+   23    23    26    22 </code></pre>
 </div>
 <p>The <code>$</code> operator extracts a single column from a data
 frame. So <code>squad$team_code</code> means “the team_code column from
@@ -1429,8 +1408,8 @@ the squad dataset”, like clicking on a single variable in SPSS.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>
-DEF FWD  GK MID   X
- 26  15  10  30  22 </code></pre>
+DEF FWD  GK MID
+ 30  25  11  28 </code></pre>
 </div>
 <p>You can also make two-way frequency tables, which is where this
 dataset starts to become interesting:</p>
@@ -1438,22 +1417,23 @@ dataset starts to become interesting:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">table</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">team_code</span>, <span class="va">squad</span><span class="op">$</span><span class="va">league_tier</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">table</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">team_code</span>, <span class="va">squad</span><span class="op">$</span><span class="va">club_country</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>
-         1  2  3  L  R  X  Y
-  ARU-M  0  2  7 14  2  0  1
-  ARU-W  3  2  6  7  1  1  3
-  CUW-M 12 11  0  0  0  9  0
-  CUW-W  3  1  9  9  0  0  0</code></pre>
+        ABW BEL CHE CUW DEU GBR GRC ISR MYS NLD SAU TUR USA  X XKX
+  ARU-M   3   0   0   0   1   0   0   0   0  18   0   0   0  0   1
+  ARU-W   6   0   0   0   0   0   1   0   0  14   0   0   0  2   0
+  CUW-M   0   1   1   0   0   4   2   1   1  10   1   3   2  0   0
+  CUW-W   0   0   0   7   1   0   1   0   0  12   0   0   1  0   0</code></pre>
 </div>
 <p>Read that table across the rows. <code>CUW-M</code> and
-<code>ARU-M</code> are two men’s squads from neighbouring islands, and
-their distributions across league tiers are not remotely alike. Hold
-onto that. Episode 3 is where you learn to interrogate it properly.</p>
+<code>ARU-M</code> are two men’s squads from neighbouring islands. One
+is spread thinly across a lot of columns; the other piles up in one.
+Hold onto that. Episode 3 is where you learn to interrogate it
+properly.</p>
 
 <div id="challenge-1-explore-the-squad-dataset" class="callout challenge">
 <div class="callout-square">
@@ -1467,10 +1447,10 @@ onto that. Episode 3 is where you learn to interrogate it properly.</p>
 Write your code in the Source Editor and run each line.</p>
 <ol style="list-style-type: decimal">
 <li>How many rows and how many columns does the dataset have?</li>
-<li>What data type is the <code>league_tier</code> column? Does that
+<li>What data type is the <code>club_country</code> column? Does that
 surprise you?</li>
 <li>How many players are in each of the four squads?</li>
-<li>How many players have an unknown position?</li>
+<li>How many players have a club that could not be established?</li>
 </ol>
 </div>
 </div>
@@ -1480,7 +1460,7 @@ surprise you?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1493,10 +1473,10 @@ surprise you?</li>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Rows: 103 Columns: 7
+<pre class="output" tabindex="0"><code>Rows: 94 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (7): team_code, player_name, position, club, club_country, league_tier, ...
+chr (5): team_code, player_name, position, club, club_country
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -1511,28 +1491,27 @@ chr (7): team_code, player_name, position, club, club_country, league_tier, ...
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 103   7</code></pre>
+<pre class="output" tabindex="0"><code>[1] 94  5</code></pre>
 </div>
-<p>103 players and 7 columns.</p>
+<p>94 players and 5 columns.</p>
 <p><strong>Question 2:</strong> Data type of
-<code>league_tier</code>?</p>
+<code>club_country</code>?</p>
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">str</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">league_tier</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">str</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">club_country</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code> chr [1:103] "3" "3" "R" "L" "L" "L" "L" "Y" "3" "2" "3" "L" "L" "L" "L" ...</code></pre>
+<pre class="output" tabindex="0"><code> chr [1:94] "NLD" "NLD" "ABW" "XKX" "NLD" "ABW" "NLD" "NLD" "NLD" "NLD" ...</code></pre>
 </div>
-<p>It is character (<code>chr</code>), not numeric, even though most of
-its values look like numbers. That is because the column also holds
-<code>L</code>, <code>R</code>, <code>Y</code>, and <code>X</code>. R
-will not guess a type that only fits some of the values. This is a good
-thing: it is telling you the truth about the column rather than silently
-discarding the codes it cannot parse.</p>
+<p>It is character (<code>chr</code>). Most values are three-letter
+country codes, but the column also holds <code>X</code> for the players
+whose club nobody could establish. R will not invent a type that fits
+only some of the values, and it will not quietly drop the ones that do
+not fit. That is the behaviour you want.</p>
 <p><strong>Question 3:</strong> Players per squad?</p>
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1545,23 +1524,22 @@ discarding the codes it cannot parse.</p>
 </h3>
 <pre class="output" tabindex="0"><code>
 ARU-M ARU-W CUW-M CUW-W
-   26    23    32    22 </code></pre>
+   23    23    26    22 </code></pre>
 </div>
-<p><strong>Question 4:</strong> Unknown positions?</p>
+<p><strong>Question 4:</strong> Players with no established club?</p>
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">table</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">position</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">sum</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">club_country</span> <span class="op">==</span> <span class="st">"X"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>
-DEF FWD  GK MID   X
- 26  15  10  30  22 </code></pre>
+<pre class="output" tabindex="0"><code>[1] 2</code></pre>
 </div>
-<p>Count the <code>X</code> category.</p>
+<p>Two, both in the Aruba women’s squad. Remember them. They come back
+in Episode 3.</p>
 </div>
 </div>
 </div>
@@ -1583,7 +1561,7 @@ functions</h3>
 <li>Use the <code>nchar()</code> function to count the number of
 characters in <code>my_island</code>.</li>
 <li>Use <code>nrow()</code> inside <code>round()</code> to work out what
-percentage of all 103 players are in the Curaçao men’s squad. Hint: you
+percentage of all 94 players are in the Curaçao men’s squad. Hint: you
 can put one function inside another.</li>
 </ol>
 </div>
@@ -1594,7 +1572,7 @@ can put one function inside another.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1623,7 +1601,7 @@ can put one function inside another.</li>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 31.1</code></pre>
+<pre class="output" tabindex="0"><code>[1] 27.7</code></pre>
 </div>
 <p>Nesting functions, putting one inside another, is common in R. R
 evaluates from the inside out: first it calculates the division, then it
@@ -1757,10 +1735,10 @@ episode. If you are starting a fresh R session, load it now:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Rows: 103 Columns: 7
+<pre class="output" tabindex="0"><code>Rows: 94 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (7): team_code, player_name, position, club, club_country, league_tier, ...
+chr (5): team_code, player_name, position, club, club_country
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -1863,20 +1841,20 @@ click “If condition is satisfied”, and type a condition. In R:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 32 × 7
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 CUW-M     ArJany Martha    DEF      unkn… X            X           L
- 2 CUW-M     Armando Obispo   DEF      PSV … NLD          1           H
- 3 CUW-M     Cuco Martina     DEF      unkn… X            X           L
- 4 CUW-M     Deveron Fonville DEF      NEC … NLD          1           H
- 5 CUW-M     Joshua Brenet    DEF      Kays… TUR          1           H
- 6 CUW-M     Juriën Gaari     DEF      Abha  SAU          1           H
- 7 CUW-M     Riechedly Bazoer DEF      Kony… TUR          1           H
- 8 CUW-M     Roshon van Eijma DEF      RKC … NLD          1           H
- 9 CUW-M     Sherel Floranus  DEF      PEC … NLD          1           H
-10 CUW-M     Shurandy Sambo   DEF      Spar… NLD          1           H
-# ℹ 22 more rows</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 26 × 5
+   team_code player_name       position club             club_country
+   &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
+ 1 CUW-M     Armando Obispo    DEF      PSV              NLD
+ 2 CUW-M     Deveron Fonville  DEF      NEC              NLD
+ 3 CUW-M     Joshua Brenet     DEF      Kayserispor      TUR
+ 4 CUW-M     Juriën Gaari      DEF      Abha             SAU
+ 5 CUW-M     Riechedly Bazoer  DEF      Konyaspor        TUR
+ 6 CUW-M     Roshon van Eijma  DEF      A.E. Kifisia     GRC
+ 7 CUW-M     Sherel Floranus   DEF      PEC Zwolle       NLD
+ 8 CUW-M     Shurandy Sambo    DEF      Sparta Rotterdam NLD
+ 9 CUW-M     Brandley Kuwas    FWD      Volendam         NLD
+10 CUW-M     Gervane Kastaneer FWD      Terengganu       MYS
+# ℹ 16 more rows</code></pre>
 </div>
 <p>Notice the <strong>double equals sign</strong> <code>==</code>. This
 is how R tests equality. A single <code>=</code> is for assigning values
@@ -1895,20 +1873,19 @@ to function arguments, like <code>digits = 1</code>. A double
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 11 × 7
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 CUW-M     Armando Obispo   DEF      PSV … NLD          1           H
- 2 CUW-M     Deveron Fonville DEF      NEC … NLD          1           H
- 3 CUW-M     Roshon van Eijma DEF      RKC … NLD          1           H
- 4 CUW-M     Sherel Floranus  DEF      PEC … NLD          1           H
- 5 CUW-M     Shurandy Sambo   DEF      Spar… NLD          1           H
- 6 CUW-M     Trevor Doornbus… GK       VVV-… NLD          2           H
- 7 CUW-M     Tyrick Bodak     GK       Tels… NLD          2           H
- 8 CUW-M     Godfried Roemer… MID      RKC … NLD          1           H
- 9 CUW-M     Juninho Bacuna   MID      FC V… NLD          2           H
-10 CUW-M     Kevin Felida     MID      FC D… NLD          2           H
-11 CUW-M     Tyrese Noslin    MID      Tels… NLD          2           H         </code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 10 × 5
+   team_code player_name         position club             club_country
+   &lt;chr&gt;     &lt;chr&gt;               &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
+ 1 CUW-M     Armando Obispo      DEF      PSV              NLD
+ 2 CUW-M     Deveron Fonville    DEF      NEC              NLD
+ 3 CUW-M     Sherel Floranus     DEF      PEC Zwolle       NLD
+ 4 CUW-M     Shurandy Sambo      DEF      Sparta Rotterdam NLD
+ 5 CUW-M     Brandley Kuwas      FWD      Volendam         NLD
+ 6 CUW-M     Trevor Doornbusch   GK       VVV-Venlo        NLD
+ 7 CUW-M     Tyrick Bodak        GK       Vitesse          NLD
+ 8 CUW-M     Godfried Roemeratoe MID      RKC Waalwijk     NLD
+ 9 CUW-M     Juninho Bacuna      MID      Volendam         NLD
+10 CUW-M     Kevin Felida        MID      Den Bosch        NLD         </code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1921,20 +1898,25 @@ to function arguments, like <code>digits = 1</code>. A double
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 30 × 7
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 ARU-M     Gladwin Curiel   DEF      Arub… ABW          L           H
- 2 ARU-M     Jeremy Trimon    DEF      Arub… ABW          L           H
- 3 ARU-M     Kymani Nedd      DEF      Arub… ABW          L           H
- 4 ARU-M     Nickenson Paul   DEF      Arub… ABW          L           H
- 5 ARU-M     Javier Jiménez   FWD      Arub… ABW          L           H
- 6 ARU-M     Jayden Kruydenh… FWD      Arub… ABW          L           H
- 7 ARU-M     Jahmani Eisden   GK       Arub… ABW          L           H
- 8 ARU-M     Josthan Maduro   GK       Arub… ABW          L           H
- 9 ARU-M     Dimaggio Senchi  MID      Arub… ABW          L           H
-10 ARU-M     Gianni Vandepit… MID      Arub… ABW          L           H
-# ℹ 20 more rows</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 16 × 5
+   team_code player_name           position club           club_country
+   &lt;chr&gt;     &lt;chr&gt;                 &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;
+ 1 ARU-M     Diederick Luydens     DEF      Dakota         ABW
+ 2 ARU-M     Nickenson Paul        DEF      Dakota         ABW
+ 3 ARU-M     Josthan Maduro        GK       SV Britannia   ABW
+ 4 ARU-W     Joyce Chen            DEF      SV Racing Club ABW
+ 5 ARU-W     Sofia Mora            DEF      SV Bubali      ABW
+ 6 ARU-W     Zyana Rogers          FWD      SV Britannia   ABW
+ 7 ARU-W     Dylana Veenstra       GK       SV Britannia   ABW
+ 8 ARU-W     Jennifer Henao        MID      SV Britannia   ABW
+ 9 ARU-W     Kim Schoppema         MID      SV Britannia   ABW
+10 CUW-W     Charnainelys Andrea   DEF      Excellence     CUW
+11 CUW-W     Ignarda Pieternella   DEF      Victory Boys   CUW
+12 CUW-W     Ruwenna Cristina      DEF      UNDEBA         CUW
+13 CUW-W     Gervionna Martina     FWD      Victory Boys   CUW
+14 CUW-W     Kingnaichely Provence GK       Jong Holland   CUW
+15 CUW-W     Thiheyna Susana       GK       Undeba         CUW
+16 CUW-W     Riesmarly Tokaay      MID      Victory Boys   CUW         </code></pre>
 </div>
 <p>That last result is worth a pause. Run it and look at which team
 codes appear.</p>
@@ -2025,31 +2007,31 @@ might delete variables or simply ignore them. In R,
   &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;
 1 ARU-M     Bradley Martis    DEF      NLD
 2 ARU-M     Darryl Bäly       DEF      NLD
-3 ARU-M     Diederick Luydens DEF      NLD
-4 ARU-M     Gladwin Curiel    DEF      ABW
-5 ARU-M     Jeremy Trimon     DEF      ABW
-6 ARU-M     Kymani Nedd       DEF      ABW         </code></pre>
+3 ARU-M     Diederick Luydens DEF      ABW
+4 ARU-M     Gladwin Curiel    DEF      XKX
+5 ARU-M     Kymani Nedd       DEF      NLD
+6 ARU-M     Nickenson Paul    DEF      ABW         </code></pre>
 </div>
 <p>You can also drop columns by putting a minus sign in front:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">no_confidence</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">squad</span>, <span class="op">-</span><span class="va">confidence</span><span class="op">)</span></span>
-<span><span class="fu">head</span><span class="op">(</span><span class="va">no_confidence</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">no_club</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">squad</span>, <span class="op">-</span><span class="va">club</span><span class="op">)</span></span>
+<span><span class="fu">head</span><span class="op">(</span><span class="va">no_club</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 6 × 6
-  team_code player_name       position club             club_country league_tier
-  &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;        &lt;chr&gt;
-1 ARU-M     Bradley Martis    DEF      IJsselmeervogels NLD          3
-2 ARU-M     Darryl Bäly       DEF      OFC Oostzaan     NLD          3
-3 ARU-M     Diederick Luydens DEF      Jong Sparta Rot… NLD          R
-4 ARU-M     Gladwin Curiel    DEF      Aruba (local cl… ABW          L
-5 ARU-M     Jeremy Trimon     DEF      Aruba (local cl… ABW          L
-6 ARU-M     Kymani Nedd       DEF      Aruba (local cl… ABW          L          </code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 4
+  team_code player_name       position club_country
+  &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;
+1 ARU-M     Bradley Martis    DEF      NLD
+2 ARU-M     Darryl Bäly       DEF      NLD
+3 ARU-M     Diederick Luydens DEF      ABW
+4 ARU-M     Gladwin Curiel    DEF      XKX
+5 ARU-M     Kymani Nedd       DEF      NLD
+6 ARU-M     Nickenson Paul    DEF      ABW         </code></pre>
 </div>
 </section><section><h2 class="section-heading" id="mutate-compute-variable">
 <code>mutate()</code>, Compute Variable<a class="anchor" aria-label="anchor" href="#mutate-compute-variable"></a>
@@ -2082,8 +2064,8 @@ analysis. Let us split it into the two things it actually encodes:</p>
 2 ARU-M     Aruba  Men    Darryl Bäly
 3 ARU-M     Aruba  Men    Diederick Luydens
 4 ARU-M     Aruba  Men    Gladwin Curiel
-5 ARU-M     Aruba  Men    Jeremy Trimon
-6 ARU-M     Aruba  Men    Kymani Nedd      </code></pre>
+5 ARU-M     Aruba  Men    Kymani Nedd
+6 ARU-M     Aruba  Men    Nickenson Paul   </code></pre>
 </div>
 <p><code>if_else()</code> takes a condition, a value to use when it is
 true, and a value to use when it is false. It is the R equivalent of an
@@ -2108,10 +2090,10 @@ often the most useful thing you can make:</p>
   &lt;chr&gt;             &lt;chr&gt;        &lt;lgl&gt;        &lt;lgl&gt;
 1 Bradley Martis    NLD          TRUE         TRUE
 2 Darryl Bäly       NLD          TRUE         TRUE
-3 Diederick Luydens NLD          TRUE         TRUE
-4 Gladwin Curiel    ABW          FALSE        TRUE
-5 Jeremy Trimon     ABW          FALSE        TRUE
-6 Kymani Nedd       ABW          FALSE        TRUE      </code></pre>
+3 Diederick Luydens ABW          FALSE        TRUE
+4 Gladwin Curiel    XKX          TRUE         TRUE
+5 Kymani Nedd       NLD          TRUE         TRUE
+6 Nickenson Paul    ABW          FALSE        TRUE      </code></pre>
 </div>
 <div id="why-a-truefalse-column-is-worth-making" class="callout">
 <div class="callout-square">
@@ -2141,7 +2123,7 @@ almost anything else in this episode.</p>
 <p>Look again at how <code>based_abroad</code> was defined. A player
 whose <code>club_country</code> is <code>X</code>, meaning nobody could
 establish where they play, is being recorded as <code>FALSE</code>, not
-abroad. Nine players in the Curaçao men’s pool are in that position.
+abroad. Two players in the Aruba women’s squad are in that position.
 Every share we calculate from this column is therefore a little lower
 than the truth, and nothing in the output says so.</p>
 <p>That is not a bug in R. It is an analytical choice, made in passing,
@@ -2173,7 +2155,7 @@ so explicitly:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.6774194</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.826087</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2184,7 +2166,7 @@ so explicitly:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 10</code></pre>
+<pre class="output" tabindex="0"><code>[1] 2</code></pre>
 </div>
 <p><code>NA</code> is R’s marker for “missing”. Most calculations return
 <code>NA</code> if any input is missing, which feels obstructive until
@@ -2204,32 +2186,36 @@ costs.</p>
 <p>In SPSS: <strong>Transform &gt; Recode into Different
 Variables</strong>, where you map old values to new values. In R you use
 <code>case_when()</code> inside <code>mutate()</code>.</p>
-<p>The <code>league_tier</code> column holds seven different codes. For
-most questions that is too fine-grained. Let us collapse it:</p>
+<p>The <code>club_country</code> column holds fourteen different codes
+plus <code>X</code>. For most questions that is too fine-grained: you do
+not want a bar chart with fourteen bars, most of them height one. Let us
+collapse it into regions:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">squad</span> <span class="op">&lt;-</span> <span class="fu">mutate</span><span class="op">(</span><span class="va">squad</span>,</span>
-<span>  tier_group <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
-<span>    <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"European professional"</span>,</span>
-<span>    <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"3"</span>           <span class="op">~</span> <span class="st">"European amateur or lower"</span>,</span>
-<span>    <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"R"</span>, <span class="st">"Y"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Reserve or youth"</span>,</span>
-<span>    <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"L"</span>           <span class="op">~</span> <span class="st">"Island league"</span>,</span>
-<span>    .default                     <span class="op">=</span> <span class="st">"Unknown"</span></span>
+<span>  home_code <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">island</span> <span class="op">==</span> <span class="st">"Curaçao"</span>, <span class="st">"CUW"</span>, <span class="st">"ABW"</span><span class="op">)</span>,</span>
+<span>  region <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>    <span class="va">club_country</span> <span class="op">==</span> <span class="st">"X"</span>       <span class="op">~</span> <span class="st">"Unknown"</span>,</span>
+<span>    <span class="va">club_country</span> <span class="op">==</span> <span class="va">home_code</span> <span class="op">~</span> <span class="st">"Home island"</span>,</span>
+<span>    <span class="va">club_country</span> <span class="op">==</span> <span class="st">"NLD"</span>     <span class="op">~</span> <span class="st">"Netherlands"</span>,</span>
+<span>    <span class="va">club_country</span> <span class="op">==</span> <span class="st">"USA"</span>     <span class="op">~</span> <span class="st">"North America"</span>,</span>
+<span>    <span class="va">club_country</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"GBR"</span>, <span class="st">"GRC"</span>, <span class="st">"TUR"</span>, <span class="st">"DEU"</span>, <span class="st">"BEL"</span>, <span class="st">"CHE"</span>, <span class="st">"XKX"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Rest of Europe"</span>,</span>
+<span>    .default                  <span class="op">=</span> <span class="st">"Rest of world"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">table</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">tier_group</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">table</span><span class="op">(</span><span class="va">squad</span><span class="op">$</span><span class="va">region</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>
-European amateur or lower     European professional             Island league
-                       22                        34                        30
-         Reserve or youth                   Unknown
-                        7                        10 </code></pre>
+   Home island    Netherlands  North America Rest of Europe  Rest of world
+            16             54              3             16              3
+       Unknown
+             2 </code></pre>
 </div>
 <p>The syntax is <code>condition ~ value_to_assign</code>. The
 <code>.default</code> line catches everything that did not match a
@@ -2243,14 +2229,18 @@ previous condition, like the Else box in SPSS Recode.</p>
 <h3 class="callout-title">Order matters, and Unknown is a category</h3>
 <div class="callout-content">
 <p><code>case_when()</code> works top to bottom and stops at the first
-match. If you put a broad condition first, the narrower ones below it
-never fire.</p>
-<p>Notice also that we sent <code>X</code> to “Unknown” rather than
-quietly dropping those players. Ten of the men’s squad entries have an
-unknown tier. Deleting them would make every percentage you report
-afterwards slightly wrong and completely untraceable. Keeping the
-category visible means the reader can see the size of the gap and judge
-for themselves. Do this in your own work.</p>
+match. That is why the <code>club_country == home_code</code> line sits
+above the <code>"NLD"</code> line: reverse them and every Dutch-based
+player would be caught by the Netherlands branch before the home-island
+test ever ran. Which happens to be harmless here and would not be if the
+home island were the Netherlands.</p>
+<p>We also sent <code>X</code> to “Unknown” rather than quietly dropping
+those two players. Two out of 94 will not move a percentage much, and
+that is not the point. The point is that dropping them silently makes
+every figure you report afterwards slightly wrong in a way no reader can
+detect. Keeping the category visible lets them see the size of the gap
+and judge for themselves. Do this in your own work, where the gap will
+rarely be two rows.</p>
 </div>
 </div>
 </div>
@@ -2269,17 +2259,17 @@ for themselves. Do this in your own work.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 6 × 13
-  team_code player_name     position club    club_country league_tier confidence
-  &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
-1 ARU-W     Aisse Gumbs     MID      AA Gent BEL          1           H
-2 ARU-W     Vanessa Susanna FWD      ADO De… NLD          1           H
-3 CUW-M     Juriën Gaari    DEF      Abha    SAU          1           H
-4 CUW-W     Jeleaugh Rosa   X        Acharn… GRC          1           H
-5 ARU-M     Gladwin Curiel  DEF      Aruba … ABW          L           H
-6 ARU-M     Jeremy Trimon   DEF      Aruba … ABW          L           H
-# ℹ 6 more variables: island &lt;chr&gt;, gender &lt;chr&gt;, based_abroad &lt;lgl&gt;,
-#   club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, tier_group &lt;chr&gt;</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 12
+  team_code player_name   position club  club_country island gender based_abroad
+  &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;
+1 CUW-M     Roshon van E… DEF      A.E.… GRC          Curaç… Men    TRUE
+2 CUW-M     Jeremy Anton… FWD      A.E.… GRC          Curaç… Men    TRUE
+3 ARU-W     Vanessa Susa… FWD      ADO … NLD          Aruba  Women  TRUE
+4 ARU-M     Dimaggio Sen… MID      AFC … NLD          Aruba  Men    TRUE
+5 CUW-M     Juriën Gaari  DEF      Abha  SAU          Curaç… Men    TRUE
+6 CUW-W     Jeleaugh Rosa MID      Acha… GRC          Curaç… Women  TRUE
+# ℹ 4 more variables: club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, home_code &lt;chr&gt;,
+#   region &lt;chr&gt;</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2291,17 +2281,17 @@ for themselves. Do this in your own work.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 6 × 13
-  team_code player_name     position club    club_country league_tier confidence
-  &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
-1 ARU-W     Zyana Rogers    FWD      SV Bri… ABW          L           M
-2 ARU-M     Walter Bennett  MID      Aruba … ABW          L           H
-3 ARU-W     Vanessa Susanna FWD      ADO De… NLD          1           H
-4 CUW-M     Tyrique Mercera DEF      unknown X            X           L
-5 CUW-M     Tyrick Bodak    GK       Telstar NLD          2           H
-6 CUW-M     Tyrese Noslin   MID      Telstar NLD          2           H
-# ℹ 6 more variables: island &lt;chr&gt;, gender &lt;chr&gt;, based_abroad &lt;lgl&gt;,
-#   club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, tier_group &lt;chr&gt;</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 12
+  team_code player_name   position club  club_country island gender based_abroad
+  &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;
+1 ARU-W     Zyana Rogers  FWD      SV B… ABW          Aruba  Women  FALSE
+2 ARU-M     Walter Benne… MID      SC F… NLD          Aruba  Men    TRUE
+3 ARU-W     Vanessa Susa… FWD      ADO … NLD          Aruba  Women  TRUE
+4 CUW-M     Tyrick Bodak  GK       Vite… NLD          Curaç… Men    TRUE
+5 CUW-M     Tyrese Noslin MID      Barn… GBR          Curaç… Men    TRUE
+6 CUW-M     Trevor Doorn… GK       VVV-… NLD          Curaç… Men    TRUE
+# ℹ 4 more variables: club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, home_code &lt;chr&gt;,
+#   region &lt;chr&gt;</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2313,21 +2303,21 @@ for themselves. Do this in your own work.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 10 × 13
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 ARU-M     Bradley Martis   DEF      IJss… NLD          3           H
- 2 ARU-M     Darryl Bäly      DEF      OFC … NLD          3           H
- 3 ARU-M     Diederick Luyde… DEF      Jong… NLD          R           H
- 4 ARU-M     Gladwin Curiel   DEF      Arub… ABW          L           H
- 5 ARU-M     Jeremy Trimon    DEF      Arub… ABW          L           H
- 6 ARU-M     Kymani Nedd      DEF      Arub… ABW          L           H
- 7 ARU-M     Nickenson Paul   DEF      Arub… ABW          L           H
- 8 ARU-M     Rainey Breinburg DEF      Feye… NLD          Y           H
- 9 ARU-M     Carlito Fermina  FWD      Koza… NLD          3           H
-10 ARU-M     Conner van Kils… FWD      TOP … NLD          2           H
-# ℹ 6 more variables: island &lt;chr&gt;, gender &lt;chr&gt;, based_abroad &lt;lgl&gt;,
-#   club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, tier_group &lt;chr&gt;</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 10 × 12
+   team_code player_name  position club  club_country island gender based_abroad
+   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;
+ 1 ARU-M     Bradley Mar… DEF      IJss… NLD          Aruba  Men    TRUE
+ 2 ARU-M     Darryl Bäly  DEF      Lisse NLD          Aruba  Men    TRUE
+ 3 ARU-M     Diederick L… DEF      Dako… ABW          Aruba  Men    FALSE
+ 4 ARU-M     Gladwin Cur… DEF      FC P… XKX          Aruba  Men    TRUE
+ 5 ARU-M     Kymani Nedd  DEF      VV Z… NLD          Aruba  Men    TRUE
+ 6 ARU-M     Nickenson P… DEF      Dako… ABW          Aruba  Men    FALSE
+ 7 ARU-M     Rainey Brei… DEF      Exce… NLD          Aruba  Men    TRUE
+ 8 ARU-M     Rovien Osti… DEF      TOGB  NLD          Aruba  Men    TRUE
+ 9 ARU-M     Arenchelo L… FWD      RKAV… NLD          Aruba  Men    TRUE
+10 ARU-M     Carlito Fer… FWD      Koza… NLD          Aruba  Men    TRUE
+# ℹ 4 more variables: club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, home_code &lt;chr&gt;,
+#   region &lt;chr&gt;</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="group_by-and-summarise-split-file-and-aggregate">
 <code>group_by()</code> and <code>summarise()</code>, Split File and
@@ -2363,10 +2353,10 @@ statistics by group</li>
 <pre class="output" tabindex="0"><code># A tibble: 4 × 3
   team_code players share_abroad
   &lt;chr&gt;       &lt;int&gt;        &lt;dbl&gt;
-1 ARU-M          26        0.462
+1 ARU-M          23        0.870
 2 ARU-W          23        0.652
-3 CUW-M          32        0.719
-4 CUW-W          22        0.591</code></pre>
+3 CUW-M          26        1
+4 CUW-W          22        0.682</code></pre>
 </div>
 <p>There is the answer to the question Episode 1 opened with, in five
 lines.</p>
@@ -2405,8 +2395,8 @@ the same code becomes:</p>
 <pre class="output" tabindex="0"><code># A tibble: 2 × 2
   island  share
   &lt;chr&gt;   &lt;dbl&gt;
-1 Aruba   0.462
-2 Curaçao 0.719</code></pre>
+1 Aruba   0.870
+2 Curaçao 1    </code></pre>
 </div>
 <p>Read this as: “Take <code>squad</code>, <strong>and then</strong>
 keep the men’s squads, <strong>and then</strong> group by island,
@@ -2448,22 +2438,22 @@ checking the result after each line. Let us work through an example.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 54 × 13
-   team_code player_name      position club  club_country league_tier confidence
-   &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;
- 1 CUW-M     ArJany Martha    DEF      unkn… X            X           L
- 2 CUW-M     Armando Obispo   DEF      PSV … NLD          1           H
- 3 CUW-M     Cuco Martina     DEF      unkn… X            X           L
- 4 CUW-M     Deveron Fonville DEF      NEC … NLD          1           H
- 5 CUW-M     Joshua Brenet    DEF      Kays… TUR          1           H
- 6 CUW-M     Juriën Gaari     DEF      Abha  SAU          1           H
- 7 CUW-M     Riechedly Bazoer DEF      Kony… TUR          1           H
- 8 CUW-M     Roshon van Eijma DEF      RKC … NLD          1           H
- 9 CUW-M     Sherel Floranus  DEF      PEC … NLD          1           H
-10 CUW-M     Shurandy Sambo   DEF      Spar… NLD          1           H
-# ℹ 44 more rows
-# ℹ 6 more variables: island &lt;chr&gt;, gender &lt;chr&gt;, based_abroad &lt;lgl&gt;,
-#   club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, tier_group &lt;chr&gt;</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 48 × 12
+   team_code player_name  position club  club_country island gender based_abroad
+   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;
+ 1 CUW-M     Armando Obi… DEF      PSV   NLD          Curaç… Men    TRUE
+ 2 CUW-M     Deveron Fon… DEF      NEC   NLD          Curaç… Men    TRUE
+ 3 CUW-M     Joshua Bren… DEF      Kays… TUR          Curaç… Men    TRUE
+ 4 CUW-M     Juriën Gaari DEF      Abha  SAU          Curaç… Men    TRUE
+ 5 CUW-M     Riechedly B… DEF      Kony… TUR          Curaç… Men    TRUE
+ 6 CUW-M     Roshon van … DEF      A.E.… GRC          Curaç… Men    TRUE
+ 7 CUW-M     Sherel Flor… DEF      PEC … NLD          Curaç… Men    TRUE
+ 8 CUW-M     Shurandy Sa… DEF      Spar… NLD          Curaç… Men    TRUE
+ 9 CUW-M     Brandley Ku… FWD      Vole… NLD          Curaç… Men    TRUE
+10 CUW-M     Gervane Kas… FWD      Tere… MYS          Curaç… Men    TRUE
+# ℹ 38 more rows
+# ℹ 4 more variables: club_known &lt;lgl&gt;, abroad_strict &lt;lgl&gt;, home_code &lt;chr&gt;,
+#   region &lt;chr&gt;</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2472,25 +2462,25 @@ checking the result after each line. Let us work through an example.</p>
 <code class="sourceCode R"><span><span class="co"># Step 2: Add a column selection</span></span>
 <span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">island</span> <span class="op">==</span> <span class="st">"Curaçao"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gender</span>, <span class="va">player_name</span>, <span class="va">position</span>, <span class="va">club</span>, <span class="va">tier_group</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">gender</span>, <span class="va">player_name</span>, <span class="va">position</span>, <span class="va">club</span>, <span class="va">region</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 54 × 5
-   gender player_name      position club             tier_group
-   &lt;chr&gt;  &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
- 1 Men    ArJany Martha    DEF      unknown          Unknown
- 2 Men    Armando Obispo   DEF      PSV Eindhoven    European professional
- 3 Men    Cuco Martina     DEF      unknown          Unknown
- 4 Men    Deveron Fonville DEF      NEC Nijmegen     European professional
- 5 Men    Joshua Brenet    DEF      Kayserispor      European professional
- 6 Men    Juriën Gaari     DEF      Abha             European professional
- 7 Men    Riechedly Bazoer DEF      Konyaspor        European professional
- 8 Men    Roshon van Eijma DEF      RKC Waalwijk     European professional
- 9 Men    Sherel Floranus  DEF      PEC Zwolle       European professional
-10 Men    Shurandy Sambo   DEF      Sparta Rotterdam European professional
-# ℹ 44 more rows</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 48 × 5
+   gender player_name       position club             region
+   &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;
+ 1 Men    Armando Obispo    DEF      PSV              Netherlands
+ 2 Men    Deveron Fonville  DEF      NEC              Netherlands
+ 3 Men    Joshua Brenet     DEF      Kayserispor      Rest of Europe
+ 4 Men    Juriën Gaari      DEF      Abha             Rest of world
+ 5 Men    Riechedly Bazoer  DEF      Konyaspor        Rest of Europe
+ 6 Men    Roshon van Eijma  DEF      A.E. Kifisia     Rest of Europe
+ 7 Men    Sherel Floranus   DEF      PEC Zwolle       Netherlands
+ 8 Men    Shurandy Sambo    DEF      Sparta Rotterdam Netherlands
+ 9 Men    Brandley Kuwas    FWD      Volendam         Netherlands
+10 Men    Gervane Kastaneer FWD      Terengganu       Rest of world
+# ℹ 38 more rows</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2499,20 +2489,23 @@ checking the result after each line. Let us work through an example.</p>
 <code class="sourceCode R"><span><span class="co"># Step 3: Group and summarise</span></span>
 <span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">island</span> <span class="op">==</span> <span class="st">"Curaçao"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">gender</span>, <span class="va">tier_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">gender</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">gender</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 5 × 3
-  gender tier_group                    n
-  &lt;chr&gt;  &lt;chr&gt;                     &lt;int&gt;
-1 Men    European professional        23
-2 Men    Unknown                       9
-3 Women  European amateur or lower     9
-4 Women  Island league                 9
-5 Women  European professional         4</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 8 × 3
+  gender region             n
+  &lt;chr&gt;  &lt;chr&gt;          &lt;int&gt;
+1 Men    Rest of Europe    11
+2 Men    Netherlands       10
+3 Men    Rest of world      3
+4 Men    North America      2
+5 Women  Netherlands       12
+6 Women  Home island        7
+7 Women  Rest of Europe     2
+8 Women  North America      1</code></pre>
 </div>
 <p>This pipeline reads: “Take the squad data, keep the Curaçao players,
 count how many fall in each combination of gender and tier group, then
@@ -2548,7 +2541,7 @@ print it. How many of them play their club football on Curaçao?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2566,21 +2559,21 @@ print it. How many of them play their club football on Curaçao?</p>
 <pre class="output" tabindex="0"><code># A tibble: 10 × 2
    club_country     n
    &lt;chr&gt;        &lt;int&gt;
- 1 NLD             11
- 2 X                9
+ 1 NLD             10
+ 2 GBR              4
  3 TUR              3
- 4 GBR              2
+ 4 GRC              2
  5 USA              2
- 6 CHE              1
- 7 DEU              1
- 8 GRC              1
+ 6 BEL              1
+ 7 CHE              1
+ 8 ISR              1
  9 MYS              1
 10 SAU              1</code></pre>
 </div>
-<p>None. Not one player in the Curaçao men’s pool plays club football on
-the island. The Netherlands dominates, with a scatter of other European
-and North American leagues, and a block of unknowns coded
-<code>X</code>.</p>
+<p>None. Not one of the 26 players plays club football on Curaçao. The
+Netherlands is the largest single destination with 10, but it is not a
+majority: the other 16 are scattered across nine more countries, from
+England and Turkey to Malaysia and Saudi Arabia.</p>
 </div>
 </div>
 </div>
@@ -2605,7 +2598,7 @@ share to the lowest.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2626,16 +2619,18 @@ share to the lowest.</p>
 <pre class="output" tabindex="0"><code># A tibble: 4 × 4
   island  gender players pct_abroad
   &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;
-1 Curaçao Men         32         72
-2 Aruba   Women       23         65
-3 Curaçao Women       22         59
-4 Aruba   Men         26         46</code></pre>
+1 Curaçao Men         26        100
+2 Aruba   Men         23         87
+3 Curaçao Women       22         68
+4 Aruba   Women       23         65</code></pre>
 </div>
-<p>The ordering is the finding. The two islands are 80 kilometres apart
-with comparable populations, and their squads are built in almost
-opposite ways. Note also the gap between the men’s and women’s squads
-within each island, which is a second story sitting inside the same
-table.</p>
+<p>Both men’s squads sit high and both women’s squads sit lower, so the
+sharper split here is by gender rather than by island. That is worth
+noticing precisely because it is not the split you were probably looking
+for. Episode 5 puts a test on it.</p>
+<p>The island difference is real but it does not live in this column.
+Both islands send most of their players abroad; where they send them is
+the interesting part, which is what <code>region</code> is for.</p>
 </div>
 </div>
 </div>
@@ -2648,11 +2643,11 @@ table.</p>
 <div id="challenge-3-composition-by-position" class="callout-inner">
 <h3 class="callout-title">Challenge 3: Composition by position</h3>
 <div class="callout-content">
-<p>Using the <code>tier_group</code> column we created with
+<p>Using the <code>region</code> column we created with
 <code>case_when()</code>, write a pipeline that shows, for the Curaçao
 men’s squad only, how many players fall in each combination of
-<code>position</code> and <code>tier_group</code>. Sort by position and
-then by count descending.</p>
+<code>position</code> and <code>region</code>. Sort by position and then
+by count descending.</p>
 <p>Hint: you will need to group by two columns, and <code>count()</code>
 accepts more than one.</p>
 </div>
@@ -2663,7 +2658,7 @@ accepts more than one.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2671,22 +2666,26 @@ accepts more than one.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">team_code</span> <span class="op">==</span> <span class="st">"CUW-M"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">position</span>, <span class="va">tier_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">position</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">position</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 7 × 3
-  position tier_group                n
-  &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;
-1 DEF      European professional     8
-2 DEF      Unknown                   3
-3 FWD      European professional     4
-4 FWD      Unknown                   2
-5 GK       European professional     3
-6 MID      European professional     8
-7 MID      Unknown                   4</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 11 × 3
+   position region             n
+   &lt;chr&gt;    &lt;chr&gt;          &lt;int&gt;
+ 1 DEF      Netherlands        4
+ 2 DEF      Rest of Europe     3
+ 3 DEF      Rest of world      1
+ 4 FWD      Rest of Europe     4
+ 5 FWD      Rest of world      2
+ 6 FWD      Netherlands        1
+ 7 FWD      North America      1
+ 8 GK       Netherlands        2
+ 9 GK       North America      1
+10 MID      Rest of Europe     4
+11 MID      Netherlands        3</code></pre>
 </div>
 <p>If you used <code>group_by()</code> and <code>summarise()</code>
 instead, add <code>.groups = "drop"</code>:</p>
@@ -2696,23 +2695,27 @@ instead, add <code>.groups = "drop"</code>:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">team_code</span> <span class="op">==</span> <span class="st">"CUW-M"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">position</span>, <span class="va">tier_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">position</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">position</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 7 × 3
-  position tier_group                n
-  &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;
-1 DEF      European professional     8
-2 DEF      Unknown                   3
-3 FWD      European professional     4
-4 FWD      Unknown                   2
-5 GK       European professional     3
-6 MID      European professional     8
-7 MID      Unknown                   4</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 11 × 3
+   position region             n
+   &lt;chr&gt;    &lt;chr&gt;          &lt;int&gt;
+ 1 DEF      Netherlands        4
+ 2 DEF      Rest of Europe     3
+ 3 DEF      Rest of world      1
+ 4 FWD      Rest of Europe     4
+ 5 FWD      Rest of world      2
+ 6 FWD      Netherlands        1
+ 7 FWD      North America      1
+ 8 GK       Netherlands        2
+ 9 GK       North America      1
+10 MID      Rest of Europe     4
+11 MID      Netherlands        3</code></pre>
 </div>
 <p>The <code>.groups = "drop"</code> argument tells
 <code>summarise()</code> to remove the grouping after calculation.
@@ -2876,12 +2879,14 @@ load our packages and both datasets:</p>
 <span>  <span class="fu">mutate</span><span class="op">(</span></span>
 <span>    island <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu">str_starts</span><span class="op">(</span><span class="va">team_code</span>, <span class="st">"CUW"</span><span class="op">)</span>, <span class="st">"Curaçao"</span>, <span class="st">"Aruba"</span><span class="op">)</span>,</span>
 <span>    gender <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu">str_ends</span><span class="op">(</span><span class="va">team_code</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="st">"Men"</span>, <span class="st">"Women"</span><span class="op">)</span>,</span>
-<span>    tier_group <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
-<span>      <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"European professional"</span>,</span>
-<span>      <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"3"</span>           <span class="op">~</span> <span class="st">"European amateur or lower"</span>,</span>
-<span>      <span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"R"</span>, <span class="st">"Y"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Reserve or youth"</span>,</span>
-<span>      <span class="va">league_tier</span> <span class="op">==</span> <span class="st">"L"</span>           <span class="op">~</span> <span class="st">"Island league"</span>,</span>
-<span>      .default                     <span class="op">=</span> <span class="st">"Unknown"</span></span>
+<span>    home_code <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu">str_starts</span><span class="op">(</span><span class="va">team_code</span>, <span class="st">"CUW"</span><span class="op">)</span>, <span class="st">"CUW"</span>, <span class="st">"ABW"</span><span class="op">)</span>,</span>
+<span>    region <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="st">"X"</span>       <span class="op">~</span> <span class="st">"Unknown"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="va">home_code</span> <span class="op">~</span> <span class="st">"Home island"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="st">"NLD"</span>     <span class="op">~</span> <span class="st">"Netherlands"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">==</span> <span class="st">"USA"</span>     <span class="op">~</span> <span class="st">"North America"</span>,</span>
+<span>      <span class="va">club_country</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"GBR"</span>, <span class="st">"GRC"</span>, <span class="st">"TUR"</span>, <span class="st">"DEU"</span>, <span class="st">"BEL"</span>, <span class="st">"CHE"</span>, <span class="st">"XKX"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Rest of Europe"</span>,</span>
+<span>      .default                  <span class="op">=</span> <span class="st">"Rest of world"</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
@@ -2913,7 +2918,7 @@ aesthetics, with no geometry yet:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/04-visualization-rendered-empty-canvas-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This gives us an empty canvas with axes. Now we add a geometry
 layer:</p>
@@ -2921,7 +2926,7 @@ layer:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/04-visualization-rendered-first-bar-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>That is already a bar chart. The <code>+</code> operator is how you
@@ -2946,10 +2951,10 @@ similar but do different things. A common beginner mistake is using
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># WRONG, this will produce an error</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># CORRECT</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -3065,7 +3070,7 @@ bars split. The <code>position</code> argument controls how:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">team_code</span>, fill <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">team_code</span>, fill <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/04-visualization-rendered-stacked-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb8">
@@ -3073,7 +3078,7 @@ bars split. The <code>position</code> argument controls how:</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># position = "fill" converts to proportions, which is what you usually want</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">team_code</span>, fill <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">team_code</span>, fill <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_bar</span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va">percent</span><span class="op">)</span></span></code></pre>
 </div>
@@ -3217,7 +3222,7 @@ single line of code.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">team_code</span>, fill <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">squad</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">team_code</span>, fill <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_bar</span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span></span>
 <span><span class="va">p</span></span></code></pre>
 </div>
@@ -3233,7 +3238,7 @@ single line of code.</p>
 <span>    x <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>    y <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>    fill <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    caption <span class="op">=</span> <span class="st">"Source: Cornerstone Economics squad dataset, 2026"</span></span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: Wikipedia national squad tables, August 2026"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="va">p</span></span></code></pre>
 </div>
@@ -3252,15 +3257,16 @@ These are the LovelyData colours used across DCDC materials:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tier_colours</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span></span>
-<span>  <span class="st">"European professional"</span>     <span class="op">=</span> <span class="st">"#44759e"</span>,</span>
-<span>  <span class="st">"European amateur or lower"</span> <span class="op">=</span> <span class="st">"#749c4c"</span>,</span>
-<span>  <span class="st">"Reserve or youth"</span>          <span class="op">=</span> <span class="st">"#dee3c8"</span>,</span>
-<span>  <span class="st">"Island league"</span>             <span class="op">=</span> <span class="st">"#f38439"</span>,</span>
-<span>  <span class="st">"Unknown"</span>                   <span class="op">=</span> <span class="st">"#605b54"</span></span>
+<code class="sourceCode R"><span><span class="va">region_colours</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span></span>
+<span>  <span class="st">"Netherlands"</span>    <span class="op">=</span> <span class="st">"#44759e"</span>,</span>
+<span>  <span class="st">"Rest of Europe"</span> <span class="op">=</span> <span class="st">"#749c4c"</span>,</span>
+<span>  <span class="st">"North America"</span>  <span class="op">=</span> <span class="st">"#8fb3d0"</span>,</span>
+<span>  <span class="st">"Rest of world"</span>  <span class="op">=</span> <span class="st">"#dee3c8"</span>,</span>
+<span>  <span class="st">"Home island"</span>    <span class="op">=</span> <span class="st">"#f38439"</span>,</span>
+<span>  <span class="st">"Unknown"</span>        <span class="op">=</span> <span class="st">"#605b54"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu">scale_fill_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="va">tier_colours</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu">scale_fill_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="va">region_colours</span><span class="op">)</span></span>
 <span><span class="va">p</span></span></code></pre>
 </div>
 <figure><img src="fig/04-visualization-rendered-polish-step4-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p><strong>Step 5: Fine-tune text and formatting</strong></p>
@@ -3310,11 +3316,11 @@ one chart, you split the data into panels, one per group.</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">squad</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">island</span>, <span class="va">gender</span>, <span class="va">tier_group</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">tier_group</span>, y <span class="op">=</span> <span class="va">n</span>, fill <span class="op">=</span> <span class="va">tier_group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">island</span>, <span class="va">gender</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span>, y <span class="op">=</span> <span class="va">n</span>, fill <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">gender</span> <span class="op">~</span> <span class="va">island</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_fill_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="va">tier_colours</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="va">region_colours</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Squad composition by island and gender"</span>,</span>
@@ -3359,7 +3365,7 @@ with the following requirements:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3420,7 +3426,7 @@ gender.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3893,6 +3899,7 @@ which island called them up?</p>
 <code class="sourceCode R"><span><span class="va">sq</span> <span class="op">&lt;-</span> <span class="va">squad</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span></span>
 <span>    island <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu">str_starts</span><span class="op">(</span><span class="va">team_code</span>, <span class="st">"CUW"</span><span class="op">)</span>, <span class="st">"Curaçao"</span>, <span class="st">"Aruba"</span><span class="op">)</span>,</span>
+<span>    gender <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu">str_ends</span><span class="op">(</span><span class="va">team_code</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="st">"Men"</span>, <span class="st">"Women"</span><span class="op">)</span>,</span>
 <span>    where_playing <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">club_country</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"CUW"</span>, <span class="st">"ABW"</span><span class="op">)</span>,</span>
 <span>                            <span class="st">"Island league"</span>, <span class="st">"Abroad"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -3906,8 +3913,8 @@ which island called them up?</p>
 </h3>
 <pre class="output" tabindex="0"><code>
           Abroad Island league
-  Aruba       27            21
-  Curaçao     36             9</code></pre>
+  Aruba       35             9
+  Curaçao     41             7</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3922,11 +3929,69 @@ which island called them up?</p>
 	Pearson's Chi-squared test with Yates' continuity correction
 
 data:  crosstab
-X-squared = 4.9576, df = 1, p-value = 0.02598</code></pre>
+X-squared = 0.21795, df = 1, p-value = 0.6406</code></pre>
 </div>
-<p>The two islands really do build their squads differently, and the
-test says the difference is larger than sampling noise would comfortably
-produce.</p>
+<p>Read that p-value before you read anything into the table. It is
+nowhere near conventional significance. Both islands send most of their
+players abroad, and the small difference between them is the kind of
+thing 92 rows produce by chance. The honest conclusion is that this
+table does not show what it looked like it might show.</p>
+<p>That is a result, and it is the point at which most people quietly
+try a different variable and report whichever one works. Do it openly
+instead. Here is the same question asked of gender rather than
+island:</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">crosstab_gender</span> <span class="op">&lt;-</span> <span class="fu">table</span><span class="op">(</span><span class="va">sq</span><span class="op">$</span><span class="va">gender</span>, <span class="va">sq</span><span class="op">$</span><span class="va">where_playing</span><span class="op">)</span></span>
+<span><span class="va">crosstab_gender</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+        Abroad Island league
+  Men       46             3
+  Women     30            13</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb20">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">chisq.test</span><span class="op">(</span><span class="va">crosstab_gender</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  crosstab_gender
+X-squared = 7.6643, df = 1, p-value = 0.005632</code></pre>
+</div>
+<p>That one is real. The men’s squads are almost entirely based
+overseas; the women’s squads keep a substantial share playing at
+home.</p>
+<div id="two-tests-and-you-have-to-say-so" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="two-tests-and-you-have-to-say-so" class="callout-inner">
+<h3 class="callout-title">Two tests, and you have to say so</h3>
+<div class="callout-content">
+<p>You have now run two chi-square tests on the same data and reported
+one null and one significant result. If you write up only the second,
+your p-value is not what it claims to be: you searched for it, and
+searching changes the odds of finding something.</p>
+<p>The fix is not to avoid looking. It is to say how much you looked.
+“We tested island and gender; the island comparison was null” costs you
+one sentence and it is the difference between an analysis a reader can
+weigh and one they have to take on faith.</p>
+</div>
+</div>
+</div>
 <div id="what-that-filter-line-cost-you" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -3938,12 +4003,12 @@ you</h3>
 <div class="callout-content">
 <p>We dropped every player whose club country was unknown before
 building the table. That was necessary, because <code>X</code> is not a
-place, and it also removed ten players, nine of them from one squad. A
-reader who never sees that line has no way to know it happened.</p>
-<p>Report it. One sentence in your methods section: “Ten of 103 players
-were excluded because their club could not be established.” That
-sentence is the difference between an analysis someone can check and one
-they have to trust.</p>
+place, and it also removed two players. A reader who never sees that
+line has no way to know it happened.</p>
+<p>Report it. One sentence in your methods section: “Two of 94 players
+were excluded because their club could not be established.” Here the
+exclusion is small enough not to change anything. You will not always be
+that lucky, and the habit is worth more than the two rows.</p>
 </div>
 </div>
 </div>
@@ -3955,7 +4020,7 @@ the dependent variable to Dependent and the predictors to
 Independent(s).</p>
 <p>Does population size predict FIFA points, and does the size of a
 country’s diaspora add anything on top of it?</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4080,7 +4145,7 @@ re-running is so cheap.</p>
 <p>A model is also a benchmark. The residual, what a country actually
 scores minus what the model predicted, tells you who is punching above
 their weight.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4122,7 +4187,7 @@ data in Episodes 2 to 4 was describing from the other direction.</p>
 to export or combine with other results. The <code>broom</code> package
 converts statistical output into tidy data frames, one row per term,
 columns for estimate, standard error, test statistic, and p-value.</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4138,7 +4203,7 @@ columns for estimate, standard error, test statistic, and p-value.</p>
 1     342.     1310.      968.      10.9 4.60e-19      108.     280.      404.
 # ℹ 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4155,7 +4220,7 @@ columns for estimate, standard error, test statistic, and p-value.</p>
 2 log_population          68.7      7.53     9.14  7.55e-17
 3 diaspora_per_capita     52.1    131.       0.398 6.91e- 1</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4182,7 +4247,7 @@ possible, which is Episode 6.</p>
 <p>Let us put everything together in a workflow that mirrors what you
 would do in SPSS, entirely in code. The research question: <strong>do
 small states underperform in football, and does Curaçao?</strong></p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4204,7 +4269,7 @@ small states underperform in football, and does Curaçao?</strong></p>
 1 FALSE         163       1310.      255.
 2 TRUE           44        968.      161.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4220,7 +4285,7 @@ small states underperform in football, and does Curaçao?</strong></p>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/05-statistical-analysis-rendered-workflow-step2-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb31">
+<figure><img src="fig/05-statistical-analysis-rendered-workflow-step2-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4236,7 +4301,7 @@ small states underperform in football, and does Curaçao?</strong></p>
 1     342.     1310.      968.      10.9 4.60e-19      108.     280.      404.
 # ℹ 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4254,7 +4319,7 @@ small states underperform in football, and does Curaçao?</strong></p>
 2 log_population          68.7      7.52     9.14    0
 3 diaspora_per_capita     52.1    131.       0.398   0.691</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4305,9 +4370,9 @@ when <code>growth_1990_2024</code> is above the median</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4330,7 +4395,7 @@ when <code>growth_1990_2024</code> is above the median</li>
 1 FALSE         104       1231.      296.
 2 TRUE          103       1216.      255.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4346,7 +4411,7 @@ when <code>growth_1990_2024</code> is above the median</li>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/05-statistical-analysis-rendered-challenge1-solution-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb40">
+<figure><img src="fig/05-statistical-analysis-rendered-challenge1-solution-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4403,9 +4468,9 @@ would it have meant if it were positive?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb42">
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4427,7 +4492,7 @@ sample estimates:
        cor
 -0.5562756 </code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb44">
+<div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4443,7 +4508,7 @@ sample estimates:
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/05-statistical-analysis-rendered-challenge2-solution-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb45">
+<figure><img src="fig/05-statistical-analysis-rendered-challenge2-solution-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4460,7 +4525,7 @@ sample estimates:
 1 (Intercept)       340.      24.8      13.7  9.59e-31
 2 log_population    -15.1      1.58     -9.58 3.26e-18</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4596,11 +4661,12 @@ physically impossible for them to drift apart. That matters for policy
 reports, academic papers, and any situation where someone else relies on
 your numbers.</p>
 <p>It matters more when the numbers are about people. The squad dataset
-behind this course carries a confidence code on every row, and roughly
-one player in ten could not be placed at a club at all. A report that
-hard-codes “72 percent play abroad” into a Word file loses that context
-the moment the file leaves your hands. A report that computes the figure
-at knit time can carry the caveat with it, and update both together.</p>
+behind this course is scraped from Wikipedia squad tables that are
+edited continuously, and two players in it have no club listed at all. A
+report that hard-codes “87 percent play abroad” into a Word file loses
+that context the moment the file leaves your hands, and is quietly wrong
+the next time a squad is called. A report that computes the figure at
+knit time can carry the caveat with it, and update both together.</p>
 </div>
 </div>
 </div>
@@ -4784,7 +4850,7 @@ calculations directly inside your sentences:</p>
 <pre><code>The dataset contains `r nrow(squad)` players.</code></pre>
 <p>When knitted, this becomes:</p>
 <blockquote>
-<p>The dataset contains 103 players.</p>
+<p>The dataset contains 94 players.</p>
 </blockquote>
 <p>If the data changes and you re-knit, that number updates. No more
 searching through a Word document for every number that needs
@@ -4886,13 +4952,13 @@ table in your output document:</p>
 <span>    players    <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    abroad     <span class="op">=</span> <span class="fu">sum</span><span class="op">(</span><span class="va">based_abroad</span><span class="op">)</span>,</span>
 <span>    pct_abroad <span class="op">=</span> <span class="fu">round</span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fu">mean</span><span class="op">(</span><span class="va">based_abroad</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    top_two    <span class="op">=</span> <span class="fu">sum</span><span class="op">(</span><span class="va">league_tier</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    in_nld     <span class="op">=</span> <span class="fu">sum</span><span class="op">(</span><span class="va">club_country</span> <span class="op">==</span> <span class="st">"NLD"</span><span class="op">)</span>,</span>
 <span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">pct_abroad</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu">kable</span><span class="op">(</span><span class="va">squad_summary</span>, col.names <span class="op">=</span> <span class="fu">c</span><span class="op">(</span></span>
-<span>  <span class="st">"Island"</span>, <span class="st">"Squad"</span>, <span class="st">"Players"</span>, <span class="st">"Abroad"</span>, <span class="st">"% abroad"</span>, <span class="st">"Top two tiers"</span></span>
+<span>  <span class="st">"Island"</span>, <span class="st">"Squad"</span>, <span class="st">"Players"</span>, <span class="st">"Abroad"</span>, <span class="st">"% abroad"</span>, <span class="st">"In Netherlands"</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <table class="table">
@@ -4902,16 +4968,32 @@ table in your output document:</p>
 <th align="right">Players</th>
 <th align="right">Abroad</th>
 <th align="right">% abroad</th>
-<th align="right">Top two tiers</th>
+<th align="right">In Netherlands</th>
 </tr></thead>
 <tbody>
 <tr>
 <td align="left">Curaçao</td>
 <td align="left">Men</td>
-<td align="right">32</td>
+<td align="right">26</td>
+<td align="right">26</td>
+<td align="right">100</td>
+<td align="right">10</td>
+</tr>
+<tr>
+<td align="left">Aruba</td>
+<td align="left">Men</td>
 <td align="right">23</td>
-<td align="right">72</td>
-<td align="right">23</td>
+<td align="right">20</td>
+<td align="right">87</td>
+<td align="right">18</td>
+</tr>
+<tr>
+<td align="left">Curaçao</td>
+<td align="left">Women</td>
+<td align="right">22</td>
+<td align="right">15</td>
+<td align="right">68</td>
+<td align="right">12</td>
 </tr>
 <tr>
 <td align="left">Aruba</td>
@@ -4919,23 +5001,7 @@ table in your output document:</p>
 <td align="right">23</td>
 <td align="right">15</td>
 <td align="right">65</td>
-<td align="right">5</td>
-</tr>
-<tr>
-<td align="left">Curaçao</td>
-<td align="left">Women</td>
-<td align="right">22</td>
-<td align="right">13</td>
-<td align="right">59</td>
-<td align="right">4</td>
-</tr>
-<tr>
-<td align="left">Aruba</td>
-<td align="left">Men</td>
-<td align="right">26</td>
-<td align="right">12</td>
-<td align="right">46</td>
-<td align="right">2</td>
+<td align="right">14</td>
 </tr>
 </tbody>
 </table>
@@ -5033,10 +5099,10 @@ knitr::kable(by_island, col.names = c("Island", "Players", "Abroad"))
 ```
 
 ```{r composition-chart, echo = FALSE, fig.width = 7, fig.height = 4}
-ggplot(squad, aes(x = team_code, fill = league_tier)) +
+ggplot(squad, aes(x = team_code, fill = club_country)) +
   geom_bar(position = "fill") +
   scale_y_continuous(labels = scales::percent) +
-  labs(title = "Squad composition by league tier", x = NULL, y = NULL) +
+  labs(title = "Squad composition by club country", x = NULL, y = NULL) +
   theme_minimal()
 ```
 
@@ -5066,7 +5132,7 @@ and build a short report that does the following:</p>
 <li>Loads <code>data/blue_wave_squad.csv</code>
 </li>
 <li>Produces a summary table showing <strong>the number of players by
-position and league tier</strong> for one squad of your choice, using
+position and club country</strong> for one squad of your choice, using
 <code>knitr::kable()</code>
 </li>
 <li>Creates a <strong>bar chart</strong> of club country for that
@@ -5083,7 +5149,7 @@ interpretation sentence</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>One way to approach it. Your file would look like this:</p>
 <pre><code>---
@@ -5102,7 +5168,7 @@ this &lt;- filter(squad, team_code == "CUW-M")
 ## Squad composition
 
 ```{r position-table, echo = FALSE}
-knitr::kable(table(this$position, this$league_tier))
+knitr::kable(table(this$position, this$club_country))
 ```
 
 ```{r country-chart, echo = FALSE, fig.width = 7, fig.height = 4}
@@ -5873,7 +5939,7 @@ code <code>"CW"</code>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>An example using international tourism arrivals:</p>
 <div class="codewrapper sourceCode" id="cb21">

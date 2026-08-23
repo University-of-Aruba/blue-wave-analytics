@@ -50,12 +50,14 @@ squad <- read_csv("data/blue_wave_squad.csv") |>
   mutate(
     island = if_else(str_starts(team_code, "CUW"), "Curaçao", "Aruba"),
     gender = if_else(str_ends(team_code, "M"), "Men", "Women"),
-    tier_group = case_when(
-      league_tier %in% c("1", "2") ~ "European professional",
-      league_tier == "3"           ~ "European amateur or lower",
-      league_tier %in% c("R", "Y") ~ "Reserve or youth",
-      league_tier == "L"           ~ "Island league",
-      .default                     = "Unknown"
+    home_code = if_else(str_starts(team_code, "CUW"), "CUW", "ABW"),
+    region = case_when(
+      club_country == "X"       ~ "Unknown",
+      club_country == home_code ~ "Home island",
+      club_country == "NLD"     ~ "Netherlands",
+      club_country == "USA"     ~ "North America",
+      club_country %in% c("GBR", "GRC", "TUR", "DEU", "BEL", "CHE", "XKX") ~ "Rest of Europe",
+      .default                  = "Rest of world"
     )
   )
 
@@ -82,7 +84,7 @@ geometry yet:
 
 
 ``` r
-ggplot(data = squad, aes(x = tier_group))
+ggplot(data = squad, aes(x = region))
 ```
 
 <img src="fig/04-visualization-rendered-empty-canvas-1.png" alt="" style="display: block; margin: auto;" />
@@ -91,7 +93,7 @@ This gives us an empty canvas with axes. Now we add a geometry layer:
 
 
 ``` r
-ggplot(data = squad, aes(x = tier_group)) +
+ggplot(data = squad, aes(x = region)) +
   geom_bar()
 ```
 
@@ -110,10 +112,10 @@ using `|>` where `+` is needed:
 
 ```r
 # WRONG, this will produce an error
-ggplot(squad, aes(x = tier_group)) |> geom_bar()
+ggplot(squad, aes(x = region)) |> geom_bar()
 
 # CORRECT
-ggplot(squad, aes(x = tier_group)) + geom_bar()
+ggplot(squad, aes(x = region)) + geom_bar()
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -180,7 +182,7 @@ When you map a second categorical variable to `fill`, the bars split. The
 
 
 ``` r
-ggplot(squad, aes(x = team_code, fill = tier_group)) +
+ggplot(squad, aes(x = team_code, fill = region)) +
   geom_bar()
 ```
 
@@ -189,7 +191,7 @@ ggplot(squad, aes(x = team_code, fill = tier_group)) +
 
 ``` r
 # position = "fill" converts to proportions, which is what you usually want
-ggplot(squad, aes(x = team_code, fill = tier_group)) +
+ggplot(squad, aes(x = team_code, fill = region)) +
   geom_bar(position = "fill") +
   scale_y_continuous(labels = scales::percent)
 ```
@@ -325,7 +327,7 @@ ggplot2 outshines SPSS Chart Builder: every tweak is a single line of code.
 
 
 ``` r
-p <- ggplot(squad, aes(x = team_code, fill = tier_group)) +
+p <- ggplot(squad, aes(x = team_code, fill = region)) +
   geom_bar(position = "fill")
 p
 ```
@@ -343,7 +345,7 @@ p <- p +
     x = NULL,
     y = NULL,
     fill = NULL,
-    caption = "Source: Cornerstone Economics squad dataset, 2026"
+    caption = "Source: Wikipedia national squad tables, August 2026"
   )
 p
 ```
@@ -367,15 +369,16 @@ LovelyData colours used across DCDC materials:
 
 
 ``` r
-tier_colours <- c(
-  "European professional"     = "#44759e",
-  "European amateur or lower" = "#749c4c",
-  "Reserve or youth"          = "#dee3c8",
-  "Island league"             = "#f38439",
-  "Unknown"                   = "#605b54"
+region_colours <- c(
+  "Netherlands"    = "#44759e",
+  "Rest of Europe" = "#749c4c",
+  "North America"  = "#8fb3d0",
+  "Rest of world"  = "#dee3c8",
+  "Home island"    = "#f38439",
+  "Unknown"        = "#605b54"
 )
 
-p <- p + scale_fill_manual(values = tier_colours)
+p <- p + scale_fill_manual(values = region_colours)
 p
 ```
 
@@ -422,11 +425,11 @@ the data into panels, one per group.
 
 ``` r
 squad |>
-  count(island, gender, tier_group) |>
-  ggplot(aes(x = tier_group, y = n, fill = tier_group)) +
+  count(island, gender, region) |>
+  ggplot(aes(x = region, y = n, fill = region)) +
   geom_col() +
   facet_grid(gender ~ island) +
-  scale_fill_manual(values = tier_colours) +
+  scale_fill_manual(values = region_colours) +
   coord_flip() +
   labs(
     title = "Squad composition by island and gender",

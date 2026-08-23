@@ -79,10 +79,11 @@ verified sources and committed to `episodes/data/`. Nothing is scraped live in
 the room.
 
 - **blue_wave_squad.csv** — player-level squad lists for the four ABC island
-  national teams, 2026. Primary teaching dataset, Episodes 2 to 4 and 6. Also
-  shipped as `.xlsx` (two sheets) and `.sav` for the import demonstrations.
-  Compiled for Cornerstone Economics working paper WP-2026-01; coding decisions
-  are documented in `episodes/data/curacao_squad_codebook.md`.
+  national teams, 94 players. Primary teaching dataset, Episodes 2 to 4 and 6.
+  Also shipped as `.xlsx` (two sheets) and `.sav` for the import demonstrations.
+  Scraped from Wikipedia current-squad tables by `scripts/00_build_teaching_data.R`;
+  variable definitions and limitations are in
+  `episodes/data/blue_wave_squad_codebook.md`.
 - **fifa_rankings.csv** — FIFA rank and points against population and diaspora
   for 211 national associations. Continuous variables for Episodes 4 and 5.
 - **diaspora_change.csv** — diaspora stock in 1990, 2010, and 2024. Supplies the
@@ -99,13 +100,23 @@ Regenerate the derived files with `Rscript scripts/00_build_teaching_data.R` fro
 the repository root. Test all live downloads before the course; URLs and APIs
 change.
 
-### The squad data is unusually honest, and that is the point
+### The gaps in the squad data are the point
 
-Ten of 103 players cannot be placed at a club, 22 have an unknown position, and
-every row carries a confidence code. Episodes 3, 5, and 6 each stop to name what
-is being excluded and what it costs. Do not tidy this away or apologise for it.
-Most participants have never been shown what to do with a gap other than delete
-it, and this is the most transferable thing in the two days.
+Two of 94 players cannot be placed at a club, and the squads are only as current
+as Wikipedia. Episodes 3, 5, and 6 each stop to name what is being excluded and
+what it costs. Do not tidy this away or apologise for it. Most participants have
+never been shown what to do with a gap other than delete it, and this is the most
+transferable thing in the two days.
+
+Two is a small number, and that is deliberate rather than unfortunate. The habit
+of reporting exclusions is easiest to build when the exclusion changes nothing.
+
+### The island comparison does not work, and Episode 5 uses that
+
+Testing whether Curaçao and Aruba differ on players-based-abroad returns a
+p-value around 0.64. Testing men against women returns 0.006. Episode 5 runs both
+in that order on purpose: the first thing you try fails, the second works, and
+the write-up has to admit both. Do not skip to the one that works.
 
 ### Note on the elections example
 

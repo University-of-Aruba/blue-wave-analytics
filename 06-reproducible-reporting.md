@@ -55,11 +55,12 @@ impossible for them to drift apart. That matters for policy reports, academic
 papers, and any situation where someone else relies on your numbers.
 
 It matters more when the numbers are about people. The squad dataset behind this
-course carries a confidence code on every row, and roughly one player in ten
-could not be placed at a club at all. A report that hard-codes "72 percent play
-abroad" into a Word file loses that context the moment the file leaves your
-hands. A report that computes the figure at knit time can carry the caveat with
-it, and update both together.
+course is scraped from Wikipedia squad tables that are edited continuously, and
+two players in it have no club listed at all. A report that hard-codes "87
+percent play abroad" into a Word file loses that context the moment the file
+leaves your hands, and is quietly wrong the next time a squad is called. A report
+that computes the figure at knit time can carry the caveat with it, and update
+both together.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -199,7 +200,7 @@ The dataset contains `r nrow(squad)` players.
 
 When knitted, this becomes:
 
-> The dataset contains 103 players.
+> The dataset contains 94 players.
 
 If the data changes and you re-knit, that number updates. No more searching
 through a Word document for every number that needs correcting.
@@ -306,24 +307,24 @@ squad_summary <- squad |>
     players    = n(),
     abroad     = sum(based_abroad),
     pct_abroad = round(100 * mean(based_abroad)),
-    top_two    = sum(league_tier %in% c("1", "2")),
+    in_nld     = sum(club_country == "NLD"),
     .groups = "drop"
   ) |>
   arrange(desc(pct_abroad))
 
 knitr::kable(squad_summary, col.names = c(
-  "Island", "Squad", "Players", "Abroad", "% abroad", "Top two tiers"
+  "Island", "Squad", "Players", "Abroad", "% abroad", "In Netherlands"
 ))
 ```
 
 
 
-|Island  |Squad | Players| Abroad| % abroad| Top two tiers|
-|:-------|:-----|-------:|------:|--------:|-------------:|
-|Curaçao |Men   |      32|     23|       72|            23|
-|Aruba   |Women |      23|     15|       65|             5|
-|Curaçao |Women |      22|     13|       59|             4|
-|Aruba   |Men   |      26|     12|       46|             2|
+|Island  |Squad | Players| Abroad| % abroad| In Netherlands|
+|:-------|:-----|-------:|------:|--------:|--------------:|
+|Curaçao |Men   |      26|     26|      100|             10|
+|Aruba   |Men   |      23|     20|       87|             18|
+|Curaçao |Women |      22|     15|       68|             12|
+|Aruba   |Women |      23|     15|       65|             14|
 
 ### Step 4: A visualization
 
@@ -414,10 +415,10 @@ knitr::kable(by_island, col.names = c("Island", "Players", "Abroad"))
 ```
 
 ```{r composition-chart, echo = FALSE, fig.width = 7, fig.height = 4}
-ggplot(squad, aes(x = team_code, fill = league_tier)) +
+ggplot(squad, aes(x = team_code, fill = club_country)) +
   geom_bar(position = "fill") +
   scale_y_continuous(labels = scales::percent) +
-  labs(title = "Squad composition by league tier", x = NULL, y = NULL) +
+  labs(title = "Squad composition by club country", x = NULL, y = NULL) +
   theme_minimal()
 ```
 
@@ -444,7 +445,7 @@ report that does the following:
 
 1. Loads `data/blue_wave_squad.csv`
 2. Produces a summary table showing **the number of players by position and
-   league tier** for one squad of your choice, using `knitr::kable()`
+   club country** for one squad of your choice, using `knitr::kable()`
 3. Creates a **bar chart** of club country for that squad
 4. Includes at least **one inline R value** in a written interpretation sentence
 5. Knits to Word
@@ -472,7 +473,7 @@ this <- filter(squad, team_code == "CUW-M")
 ## Squad composition
 
 ```{r position-table, echo = FALSE}
-knitr::kable(table(this$position, this$league_tier))
+knitr::kable(table(this$position, this$club_country))
 ```
 
 ```{r country-chart, echo = FALSE, fig.width = 7, fig.height = 4}

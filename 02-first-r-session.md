@@ -265,21 +265,23 @@ hand to a colleague or archive at the end of a study.
 ### What is in the data
 
 The dataset is the player-level squad list for four Dutch Caribbean national
-teams as called up in 2026: Curaçao men and women, Aruba men and women. One row
-is one player. It was compiled for a Cornerstone Economics working paper on
-diaspora football, and it is a real research dataset, which means it has real
-gaps in it. That is deliberate. Clean textbook data teaches you nothing about
-the afternoon you will actually spend with your own file.
+teams: Curaçao men and women, Aruba men and women. One row is one player, 94 in
+total. It was scraped from the current-squad tables on Wikipedia, which means it
+has the gaps and inconsistencies real data has. That is deliberate. Clean
+textbook data teaches you nothing about the afternoon you will actually spend
+with your own file.
 
 | Variable | What it holds |
 |---|---|
 | `team_code` | `CUW-M`, `CUW-W`, `ARU-M`, `ARU-W` |
 | `player_name` | Player name |
-| `position` | `GK`, `DEF`, `MID`, `FWD`, `X` for unknown |
+| `position` | `GK`, `DEF`, `MID`, `FWD` |
 | `club` | Club name, or `unknown` |
-| `club_country` | ISO 3-letter country code of the club, `X` for unknown |
-| `league_tier` | `1` top flight, `2` second tier, `3` third or amateur, `R` reserve, `Y` youth, `L` local island league, `X` unknown |
-| `confidence` | `H` verified, `M` single source, `L` inferred, `U` unknown |
+| `club_country` | ISO 3-letter country code of the club, `X` where it could not be established |
+
+Five columns is all you get. Everything else this course does with the data,
+which island, which gender, whether a player is based abroad, which part of the
+world they play in, you will build yourself out of these five. That is the job.
 
 ### CSV files with `read_csv()`
 
@@ -292,10 +294,10 @@ squad <- read_csv("data/blue_wave_squad.csv")
 ```
 
 ``` output
-Rows: 103 Columns: 7
+Rows: 94 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (7): team_code, player_name, position, club, club_country, league_tier, ...
+chr (5): team_code, player_name, position, club, club_country
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -319,15 +321,15 @@ head(squad_spss)
 ```
 
 ``` output
-# A tibble: 6 × 7
-  team_code player_name       position club  club_country league_tier confidence
-  <chr>     <chr>             <chr>    <chr> <chr>        <chr>       <chr>     
-1 ARU-M     Bradley Martis    DEF      IJss… NLD          3           H         
-2 ARU-M     Darryl Bäly       DEF      OFC … NLD          3           H         
-3 ARU-M     Diederick Luydens DEF      Jong… NLD          R           H         
-4 ARU-M     Gladwin Curiel    DEF      Arub… ABW          L           H         
-5 ARU-M     Jeremy Trimon     DEF      Arub… ABW          L           H         
-6 ARU-M     Kymani Nedd       DEF      Arub… ABW          L           H         
+# A tibble: 6 × 5
+  team_code player_name       position club             club_country
+  <chr>     <chr>             <chr>    <chr>            <chr>       
+1 ARU-M     Bradley Martis    DEF      IJsselmeervogels NLD         
+2 ARU-M     Darryl Bäly       DEF      Lisse            NLD         
+3 ARU-M     Diederick Luydens DEF      Dakota           ABW         
+4 ARU-M     Gladwin Curiel    DEF      FC Prishtina     XKX         
+5 ARU-M     Kymani Nedd       DEF      VV Zwaluwen      NLD         
+6 ARU-M     Nickenson Paul    DEF      Dakota           ABW         
 ```
 
 Look at that output. It is the same data, and nothing was converted or exported
@@ -421,7 +423,7 @@ dim(aruba_squad)
 ```
 
 ``` output
-[1] 49  7
+[1] 46  5
 ```
 
 ``` r
@@ -454,15 +456,15 @@ head(squad)
 ```
 
 ``` output
-# A tibble: 6 × 7
-  team_code player_name       position club  club_country league_tier confidence
-  <chr>     <chr>             <chr>    <chr> <chr>        <chr>       <chr>     
-1 ARU-M     Bradley Martis    DEF      IJss… NLD          3           H         
-2 ARU-M     Darryl Bäly       DEF      OFC … NLD          3           H         
-3 ARU-M     Diederick Luydens DEF      Jong… NLD          R           H         
-4 ARU-M     Gladwin Curiel    DEF      Arub… ABW          L           H         
-5 ARU-M     Jeremy Trimon     DEF      Arub… ABW          L           H         
-6 ARU-M     Kymani Nedd       DEF      Arub… ABW          L           H         
+# A tibble: 6 × 5
+  team_code player_name       position club             club_country
+  <chr>     <chr>             <chr>    <chr>            <chr>       
+1 ARU-M     Bradley Martis    DEF      IJsselmeervogels NLD         
+2 ARU-M     Darryl Bäly       DEF      Lisse            NLD         
+3 ARU-M     Diederick Luydens DEF      Dakota           ABW         
+4 ARU-M     Gladwin Curiel    DEF      FC Prishtina     XKX         
+5 ARU-M     Kymani Nedd       DEF      VV Zwaluwen      NLD         
+6 ARU-M     Nickenson Paul    DEF      Dakota           ABW         
 ```
 
 This is faster than `View()` when you just want a quick look. By default it
@@ -479,25 +481,21 @@ str(squad)
 ```
 
 ``` output
-spc_tbl_ [103 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
- $ team_code   : chr [1:103] "ARU-M" "ARU-M" "ARU-M" "ARU-M" ...
- $ player_name : chr [1:103] "Bradley Martis" "Darryl Bäly" "Diederick Luydens" "Gladwin Curiel" ...
- $ position    : chr [1:103] "DEF" "DEF" "DEF" "DEF" ...
- $ club        : chr [1:103] "IJsselmeervogels" "OFC Oostzaan" "Jong Sparta Rotterdam" "Aruba (local club)" ...
- $ club_country: chr [1:103] "NLD" "NLD" "NLD" "ABW" ...
- $ league_tier : chr [1:103] "3" "3" "R" "L" ...
- $ confidence  : chr [1:103] "H" "H" "H" "H" ...
+spc_tbl_ [94 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ team_code   : chr [1:94] "ARU-M" "ARU-M" "ARU-M" "ARU-M" ...
+ $ player_name : chr [1:94] "Bradley Martis" "Darryl Bäly" "Diederick Luydens" "Gladwin Curiel" ...
+ $ position    : chr [1:94] "DEF" "DEF" "DEF" "DEF" ...
+ $ club        : chr [1:94] "IJsselmeervogels" "Lisse" "Dakota" "FC Prishtina" ...
+ $ club_country: chr [1:94] "NLD" "NLD" "ABW" "XKX" ...
  - attr(*, "spec")=
   .. cols(
   ..   team_code = col_character(),
   ..   player_name = col_character(),
   ..   position = col_character(),
   ..   club = col_character(),
-  ..   club_country = col_character(),
-  ..   league_tier = col_character(),
-  ..   confidence = col_character()
+  ..   club_country = col_character()
   .. )
- - attr(*, "problems")=<pointer: 0x55b11f4702c0> 
+ - attr(*, "problems")=<pointer: 0x564bee233350> 
 ```
 
 This tells you how many observations (rows), how many variables (columns), and
@@ -514,15 +512,13 @@ glimpse(squad)
 ```
 
 ``` output
-Rows: 103
-Columns: 7
+Rows: 94
+Columns: 5
 $ team_code    <chr> "ARU-M", "ARU-M", "ARU-M", "ARU-M", "ARU-M", "ARU-M", "AR…
 $ player_name  <chr> "Bradley Martis", "Darryl Bäly", "Diederick Luydens", "Gl…
 $ position     <chr> "DEF", "DEF", "DEF", "DEF", "DEF", "DEF", "DEF", "DEF", "…
-$ club         <chr> "IJsselmeervogels", "OFC Oostzaan", "Jong Sparta Rotterda…
-$ club_country <chr> "NLD", "NLD", "NLD", "ABW", "ABW", "ABW", "ABW", "NLD", "…
-$ league_tier  <chr> "3", "3", "R", "L", "L", "L", "L", "Y", "3", "2", "3", "L…
-$ confidence   <chr> "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H…
+$ club         <chr> "IJsselmeervogels", "Lisse", "Dakota", "FC Prishtina", "V…
+$ club_country <chr> "NLD", "NLD", "ABW", "XKX", "NLD", "ABW", "NLD", "NLD", "…
 ```
 
 ### `summary()`, Descriptives in one command
@@ -535,18 +531,12 @@ summary(squad)
 ```
 
 ``` output
-     team_code      player_name       position          club    
- Length   :103   Length   :103   Length   :103   Length   :103  
- N.unique :  4   N.unique :103   N.unique :  5   N.unique : 62  
- N.blank  :  0   N.blank  :  0   N.blank  :  0   N.blank  :  0  
- Min.nchar:  5   Min.nchar:  9   Min.nchar:  1   Min.nchar:  3  
- Max.nchar:  5   Max.nchar: 23   Max.nchar:  3   Max.nchar: 32  
-    club_country    league_tier      confidence 
- Length   :103   Length   :103   Length   :103  
- N.unique : 13   N.unique :  7   N.unique :  4  
- N.blank  :  0   N.blank  :  0   N.blank  :  0  
- Min.nchar:  1   Min.nchar:  1   Min.nchar:  1  
- Max.nchar:  3   Max.nchar:  1   Max.nchar:  1  
+     team_code     player_name      position         club       club_country
+ Length   :94   Length   :94   Length   :94   Length   :94   Length   :94   
+ N.unique : 4   N.unique :94   N.unique : 4   N.unique :71   N.unique :15   
+ N.blank  : 0   N.blank  : 0   N.blank  : 0   N.blank  : 0   N.blank  : 0   
+ Min.nchar: 5   Min.nchar: 9   Min.nchar: 2   Min.nchar: 3   Min.nchar: 1   
+ Max.nchar: 5   Max.nchar:25   Max.nchar: 3   Max.nchar:31   Max.nchar: 3   
 ```
 
 For numeric columns you get the minimum, maximum, mean, median, and quartiles.
@@ -566,7 +556,7 @@ table(squad$team_code)
 ``` output
 
 ARU-M ARU-W CUW-M CUW-W 
-   26    23    32    22 
+   23    23    26    22 
 ```
 
 The `$` operator extracts a single column from a data frame. So
@@ -580,8 +570,8 @@ table(squad$position)
 
 ``` output
 
-DEF FWD  GK MID   X 
- 26  15  10  30  22 
+DEF FWD  GK MID 
+ 30  25  11  28 
 ```
 
 You can also make two-way frequency tables, which is where this dataset starts
@@ -589,21 +579,22 @@ to become interesting:
 
 
 ``` r
-table(squad$team_code, squad$league_tier)
+table(squad$team_code, squad$club_country)
 ```
 
 ``` output
        
-         1  2  3  L  R  X  Y
-  ARU-M  0  2  7 14  2  0  1
-  ARU-W  3  2  6  7  1  1  3
-  CUW-M 12 11  0  0  0  9  0
-  CUW-W  3  1  9  9  0  0  0
+        ABW BEL CHE CUW DEU GBR GRC ISR MYS NLD SAU TUR USA  X XKX
+  ARU-M   3   0   0   0   1   0   0   0   0  18   0   0   0  0   1
+  ARU-W   6   0   0   0   0   0   1   0   0  14   0   0   0  2   0
+  CUW-M   0   1   1   0   0   4   2   1   1  10   1   3   2  0   0
+  CUW-W   0   0   0   7   1   0   1   0   0  12   0   0   1  0   0
 ```
 
 Read that table across the rows. `CUW-M` and `ARU-M` are two men's squads from
-neighbouring islands, and their distributions across league tiers are not remotely
-alike. Hold onto that. Episode 3 is where you learn to interrogate it properly.
+neighbouring islands. One is spread thinly across a lot of columns; the other
+piles up in one. Hold onto that. Episode 3 is where you learn to interrogate it
+properly.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
@@ -642,9 +633,9 @@ Import the squad dataset and answer the following using R functions. Write your
 code in the Source Editor and run each line.
 
 1. How many rows and how many columns does the dataset have?
-2. What data type is the `league_tier` column? Does that surprise you?
+2. What data type is the `club_country` column? Does that surprise you?
 3. How many players are in each of the four squads?
-4. How many players have an unknown position?
+4. How many players have a club that could not be established?
 
 :::::::::::::::::::::::: solution
 
@@ -658,10 +649,10 @@ squad <- read_csv("data/blue_wave_squad.csv")
 ```
 
 ``` output
-Rows: 103 Columns: 7
+Rows: 94 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (7): team_code, player_name, position, club, club_country, league_tier, ...
+chr (5): team_code, player_name, position, club, club_country
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -675,27 +666,26 @@ dim(squad)
 ```
 
 ``` output
-[1] 103   7
+[1] 94  5
 ```
 
-103 players and 7 columns.
+94 players and 5 columns.
 
-**Question 2:** Data type of `league_tier`?
+**Question 2:** Data type of `club_country`?
 
 
 ``` r
-str(squad$league_tier)
+str(squad$club_country)
 ```
 
 ``` output
- chr [1:103] "3" "3" "R" "L" "L" "L" "L" "Y" "3" "2" "3" "L" "L" "L" "L" ...
+ chr [1:94] "NLD" "NLD" "ABW" "XKX" "NLD" "ABW" "NLD" "NLD" "NLD" "NLD" ...
 ```
 
-It is character (`chr`), not numeric, even though most of its values look like
-numbers. That is because the column also holds `L`, `R`, `Y`, and `X`. R will
-not guess a type that only fits some of the values. This is a good thing: it is
-telling you the truth about the column rather than silently discarding the
-codes it cannot parse.
+It is character (`chr`). Most values are three-letter country codes, but the
+column also holds `X` for the players whose club nobody could establish. R will
+not invent a type that fits only some of the values, and it will not quietly
+drop the ones that do not fit. That is the behaviour you want.
 
 **Question 3:** Players per squad?
 
@@ -707,23 +697,21 @@ table(squad$team_code)
 ``` output
 
 ARU-M ARU-W CUW-M CUW-W 
-   26    23    32    22 
+   23    23    26    22 
 ```
 
-**Question 4:** Unknown positions?
+**Question 4:** Players with no established club?
 
 
 ``` r
-table(squad$position)
+sum(squad$club_country == "X")
 ```
 
 ``` output
-
-DEF FWD  GK MID   X 
- 26  15  10  30  22 
+[1] 2
 ```
 
-Count the `X` category.
+Two, both in the Aruba women's squad. Remember them. They come back in Episode 3.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -735,7 +723,7 @@ Count the `X` category.
 1. Create an object called `my_island` that stores the text `"Curaçao"`.
 2. Create an object called `area_km2` that stores the value `444`.
 3. Use the `nchar()` function to count the number of characters in `my_island`.
-4. Use `nrow()` inside `round()` to work out what percentage of all 103 players
+4. Use `nrow()` inside `round()` to work out what percentage of all 94 players
    are in the Curaçao men's squad. Hint: you can put one function inside
    another.
 
@@ -764,7 +752,7 @@ round(100 * cuw_m / nrow(squad), digits = 1)
 ```
 
 ``` output
-[1] 31.1
+[1] 27.7
 ```
 
 Nesting functions, putting one inside another, is common in R. R evaluates from

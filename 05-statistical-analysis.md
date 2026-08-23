@@ -278,6 +278,7 @@ called them up?
 sq <- squad |>
   mutate(
     island = if_else(str_starts(team_code, "CUW"), "Curaçao", "Aruba"),
+    gender = if_else(str_ends(team_code, "M"), "Men", "Women"),
     where_playing = if_else(club_country %in% c("CUW", "ABW"),
                             "Island league", "Abroad")
   ) |>
@@ -290,8 +291,8 @@ crosstab
 ``` output
          
           Abroad Island league
-  Aruba       27            21
-  Curaçao     36             9
+  Aruba       35             9
+  Curaçao     41             7
 ```
 
 ``` r
@@ -303,24 +304,75 @@ chisq.test(crosstab)
 	Pearson's Chi-squared test with Yates' continuity correction
 
 data:  crosstab
-X-squared = 4.9576, df = 1, p-value = 0.02598
+X-squared = 0.21795, df = 1, p-value = 0.6406
 ```
 
-The two islands really do build their squads differently, and the test says the
-difference is larger than sampling noise would comfortably produce.
+Read that p-value before you read anything into the table. It is nowhere near
+conventional significance. Both islands send most of their players abroad, and
+the small difference between them is the kind of thing 92 rows produce by
+chance. The honest conclusion is that this table does not show what it looked
+like it might show.
+
+That is a result, and it is the point at which most people quietly try a
+different variable and report whichever one works. Do it openly instead. Here is
+the same question asked of gender rather than island:
+
+
+``` r
+crosstab_gender <- table(sq$gender, sq$where_playing)
+crosstab_gender
+```
+
+``` output
+       
+        Abroad Island league
+  Men       46             3
+  Women     30            13
+```
+
+``` r
+chisq.test(crosstab_gender)
+```
+
+``` output
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  crosstab_gender
+X-squared = 7.6643, df = 1, p-value = 0.005632
+```
+
+That one is real. The men's squads are almost entirely based overseas; the
+women's squads keep a substantial share playing at home.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+## Two tests, and you have to say so
+
+You have now run two chi-square tests on the same data and reported one null and
+one significant result. If you write up only the second, your p-value is not
+what it claims to be: you searched for it, and searching changes the odds of
+finding something.
+
+The fix is not to avoid looking. It is to say how much you looked. "We tested
+island and gender; the island comparison was null" costs you one sentence and it
+is the difference between an analysis a reader can weigh and one they have to
+take on faith.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: callout
 
 ## What that `filter()` line cost you
 
 We dropped every player whose club country was unknown before building the
-table. That was necessary, because `X` is not a place, and it also removed ten
-players, nine of them from one squad. A reader who never sees that line has no
-way to know it happened.
+table. That was necessary, because `X` is not a place, and it also removed two
+players. A reader who never sees that line has no way to know it happened.
 
-Report it. One sentence in your methods section: "Ten of 103 players were
-excluded because their club could not be established." That sentence is the
-difference between an analysis someone can check and one they have to trust.
+Report it. One sentence in your methods section: "Two of 94 players were excluded
+because their club could not be established." Here the exclusion is small enough
+not to change anything. You will not always be that lucky, and the habit is
+worth more than the two rows.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -505,16 +557,23 @@ Emphasise that `broom::tidy()` produces a data frame, so learners can use every
 dplyr verb from Episode 3 on their statistical results: filter to significant
 terms, arrange by p-value, join to labels.
 
-Two moments are worth slowing down for, and neither is about syntax.
+Three moments are worth slowing down for, and none of them is about syntax.
 
-The non-significant diaspora coefficient is the more important of the two. Most
-of the room has been taught, implicitly, that a good table has stars in it. Say
-plainly that you are leaving a dead predictor in the model on purpose, and why.
-If anyone asks whether they should drop it, that is the discussion you want.
+The non-significant diaspora coefficient is the most important. Most of the room
+has been taught, implicitly, that a good table has stars in it. Say plainly that
+you are leaving a dead predictor in the model on purpose, and why. If anyone asks
+whether they should drop it, that is the discussion you want.
 
-The second is the `filter(club_country != "X")` line in the chi-square section.
-Ask the room what that line did before you tell them. Someone will spot that it
-removed ten players. Then ask where that fact would appear in a paper.
+The pair of chi-square tests is the second. Run the island one, let the room see
+the p-value, and let the disappointment sit for a moment before you run the
+gender one. The sequence is the lesson: the first thing you tried did not work,
+you tried a second thing, and the write-up has to admit both. Almost everyone in
+the room has at some point reported only the second.
+
+The third is the `filter(club_country != "X")` line. Ask what it did before you
+tell them. Someone will spot that it removed two players. Two is small enough
+that nobody would object, which is exactly why it is a good example: the habit
+has to be built when the stakes are low.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 

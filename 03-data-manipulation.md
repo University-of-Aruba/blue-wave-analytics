@@ -57,10 +57,10 @@ squad <- read_csv("data/blue_wave_squad.csv")
 ```
 
 ``` output
-Rows: 103 Columns: 7
+Rows: 94 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (7): team_code, player_name, position, club, club_country, league_tier, ...
+chr (5): team_code, player_name, position, club, club_country
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -119,20 +119,20 @@ curacao_men
 ```
 
 ``` output
-# A tibble: 32 × 7
-   team_code player_name      position club  club_country league_tier confidence
-   <chr>     <chr>            <chr>    <chr> <chr>        <chr>       <chr>     
- 1 CUW-M     ArJany Martha    DEF      unkn… X            X           L         
- 2 CUW-M     Armando Obispo   DEF      PSV … NLD          1           H         
- 3 CUW-M     Cuco Martina     DEF      unkn… X            X           L         
- 4 CUW-M     Deveron Fonville DEF      NEC … NLD          1           H         
- 5 CUW-M     Joshua Brenet    DEF      Kays… TUR          1           H         
- 6 CUW-M     Juriën Gaari     DEF      Abha  SAU          1           H         
- 7 CUW-M     Riechedly Bazoer DEF      Kony… TUR          1           H         
- 8 CUW-M     Roshon van Eijma DEF      RKC … NLD          1           H         
- 9 CUW-M     Sherel Floranus  DEF      PEC … NLD          1           H         
-10 CUW-M     Shurandy Sambo   DEF      Spar… NLD          1           H         
-# ℹ 22 more rows
+# A tibble: 26 × 5
+   team_code player_name       position club             club_country
+   <chr>     <chr>             <chr>    <chr>            <chr>       
+ 1 CUW-M     Armando Obispo    DEF      PSV              NLD         
+ 2 CUW-M     Deveron Fonville  DEF      NEC              NLD         
+ 3 CUW-M     Joshua Brenet     DEF      Kayserispor      TUR         
+ 4 CUW-M     Juriën Gaari      DEF      Abha             SAU         
+ 5 CUW-M     Riechedly Bazoer  DEF      Konyaspor        TUR         
+ 6 CUW-M     Roshon van Eijma  DEF      A.E. Kifisia     GRC         
+ 7 CUW-M     Sherel Floranus   DEF      PEC Zwolle       NLD         
+ 8 CUW-M     Shurandy Sambo    DEF      Sparta Rotterdam NLD         
+ 9 CUW-M     Brandley Kuwas    FWD      Volendam         NLD         
+10 CUW-M     Gervane Kastaneer FWD      Terengganu       MYS         
+# ℹ 16 more rows
 ```
 
 Notice the **double equals sign** `==`. This is how R tests equality. A single
@@ -149,20 +149,19 @@ cuw_nld
 ```
 
 ``` output
-# A tibble: 11 × 7
-   team_code player_name      position club  club_country league_tier confidence
-   <chr>     <chr>            <chr>    <chr> <chr>        <chr>       <chr>     
- 1 CUW-M     Armando Obispo   DEF      PSV … NLD          1           H         
- 2 CUW-M     Deveron Fonville DEF      NEC … NLD          1           H         
- 3 CUW-M     Roshon van Eijma DEF      RKC … NLD          1           H         
- 4 CUW-M     Sherel Floranus  DEF      PEC … NLD          1           H         
- 5 CUW-M     Shurandy Sambo   DEF      Spar… NLD          1           H         
- 6 CUW-M     Trevor Doornbus… GK       VVV-… NLD          2           H         
- 7 CUW-M     Tyrick Bodak     GK       Tels… NLD          2           H         
- 8 CUW-M     Godfried Roemer… MID      RKC … NLD          1           H         
- 9 CUW-M     Juninho Bacuna   MID      FC V… NLD          2           H         
-10 CUW-M     Kevin Felida     MID      FC D… NLD          2           H         
-11 CUW-M     Tyrese Noslin    MID      Tels… NLD          2           H         
+# A tibble: 10 × 5
+   team_code player_name         position club             club_country
+   <chr>     <chr>               <chr>    <chr>            <chr>       
+ 1 CUW-M     Armando Obispo      DEF      PSV              NLD         
+ 2 CUW-M     Deveron Fonville    DEF      NEC              NLD         
+ 3 CUW-M     Sherel Floranus     DEF      PEC Zwolle       NLD         
+ 4 CUW-M     Shurandy Sambo      DEF      Sparta Rotterdam NLD         
+ 5 CUW-M     Brandley Kuwas      FWD      Volendam         NLD         
+ 6 CUW-M     Trevor Doornbusch   GK       VVV-Venlo        NLD         
+ 7 CUW-M     Tyrick Bodak        GK       Vitesse          NLD         
+ 8 CUW-M     Godfried Roemeratoe MID      RKC Waalwijk     NLD         
+ 9 CUW-M     Juninho Bacuna      MID      Volendam         NLD         
+10 CUW-M     Kevin Felida        MID      Den Bosch        NLD         
 ```
 
 
@@ -173,20 +172,25 @@ home_based
 ```
 
 ``` output
-# A tibble: 30 × 7
-   team_code player_name      position club  club_country league_tier confidence
-   <chr>     <chr>            <chr>    <chr> <chr>        <chr>       <chr>     
- 1 ARU-M     Gladwin Curiel   DEF      Arub… ABW          L           H         
- 2 ARU-M     Jeremy Trimon    DEF      Arub… ABW          L           H         
- 3 ARU-M     Kymani Nedd      DEF      Arub… ABW          L           H         
- 4 ARU-M     Nickenson Paul   DEF      Arub… ABW          L           H         
- 5 ARU-M     Javier Jiménez   FWD      Arub… ABW          L           H         
- 6 ARU-M     Jayden Kruydenh… FWD      Arub… ABW          L           H         
- 7 ARU-M     Jahmani Eisden   GK       Arub… ABW          L           H         
- 8 ARU-M     Josthan Maduro   GK       Arub… ABW          L           H         
- 9 ARU-M     Dimaggio Senchi  MID      Arub… ABW          L           H         
-10 ARU-M     Gianni Vandepit… MID      Arub… ABW          L           H         
-# ℹ 20 more rows
+# A tibble: 16 × 5
+   team_code player_name           position club           club_country
+   <chr>     <chr>                 <chr>    <chr>          <chr>       
+ 1 ARU-M     Diederick Luydens     DEF      Dakota         ABW         
+ 2 ARU-M     Nickenson Paul        DEF      Dakota         ABW         
+ 3 ARU-M     Josthan Maduro        GK       SV Britannia   ABW         
+ 4 ARU-W     Joyce Chen            DEF      SV Racing Club ABW         
+ 5 ARU-W     Sofia Mora            DEF      SV Bubali      ABW         
+ 6 ARU-W     Zyana Rogers          FWD      SV Britannia   ABW         
+ 7 ARU-W     Dylana Veenstra       GK       SV Britannia   ABW         
+ 8 ARU-W     Jennifer Henao        MID      SV Britannia   ABW         
+ 9 ARU-W     Kim Schoppema         MID      SV Britannia   ABW         
+10 CUW-W     Charnainelys Andrea   DEF      Excellence     CUW         
+11 CUW-W     Ignarda Pieternella   DEF      Victory Boys   CUW         
+12 CUW-W     Ruwenna Cristina      DEF      UNDEBA         CUW         
+13 CUW-W     Gervionna Martina     FWD      Victory Boys   CUW         
+14 CUW-W     Kingnaichely Provence GK       Jong Holland   CUW         
+15 CUW-W     Thiheyna Susana       GK       Undeba         CUW         
+16 CUW-W     Riesmarly Tokaay      MID      Victory Boys   CUW         
 ```
 
 That last result is worth a pause. Run it and look at which team codes appear.
@@ -226,30 +230,30 @@ head(slim)
   <chr>     <chr>             <chr>    <chr>       
 1 ARU-M     Bradley Martis    DEF      NLD         
 2 ARU-M     Darryl Bäly       DEF      NLD         
-3 ARU-M     Diederick Luydens DEF      NLD         
-4 ARU-M     Gladwin Curiel    DEF      ABW         
-5 ARU-M     Jeremy Trimon     DEF      ABW         
-6 ARU-M     Kymani Nedd       DEF      ABW         
+3 ARU-M     Diederick Luydens DEF      ABW         
+4 ARU-M     Gladwin Curiel    DEF      XKX         
+5 ARU-M     Kymani Nedd       DEF      NLD         
+6 ARU-M     Nickenson Paul    DEF      ABW         
 ```
 
 You can also drop columns by putting a minus sign in front:
 
 
 ``` r
-no_confidence <- select(squad, -confidence)
-head(no_confidence)
+no_club <- select(squad, -club)
+head(no_club)
 ```
 
 ``` output
-# A tibble: 6 × 6
-  team_code player_name       position club             club_country league_tier
-  <chr>     <chr>             <chr>    <chr>            <chr>        <chr>      
-1 ARU-M     Bradley Martis    DEF      IJsselmeervogels NLD          3          
-2 ARU-M     Darryl Bäly       DEF      OFC Oostzaan     NLD          3          
-3 ARU-M     Diederick Luydens DEF      Jong Sparta Rot… NLD          R          
-4 ARU-M     Gladwin Curiel    DEF      Aruba (local cl… ABW          L          
-5 ARU-M     Jeremy Trimon     DEF      Aruba (local cl… ABW          L          
-6 ARU-M     Kymani Nedd       DEF      Aruba (local cl… ABW          L          
+# A tibble: 6 × 4
+  team_code player_name       position club_country
+  <chr>     <chr>             <chr>    <chr>       
+1 ARU-M     Bradley Martis    DEF      NLD         
+2 ARU-M     Darryl Bäly       DEF      NLD         
+3 ARU-M     Diederick Luydens DEF      ABW         
+4 ARU-M     Gladwin Curiel    DEF      XKX         
+5 ARU-M     Kymani Nedd       DEF      NLD         
+6 ARU-M     Nickenson Paul    DEF      ABW         
 ```
 
 ## `mutate()`, Compute Variable
@@ -279,8 +283,8 @@ head(select(squad, team_code, island, gender, player_name))
 2 ARU-M     Aruba  Men    Darryl Bäly      
 3 ARU-M     Aruba  Men    Diederick Luydens
 4 ARU-M     Aruba  Men    Gladwin Curiel   
-5 ARU-M     Aruba  Men    Jeremy Trimon    
-6 ARU-M     Aruba  Men    Kymani Nedd      
+5 ARU-M     Aruba  Men    Kymani Nedd      
+6 ARU-M     Aruba  Men    Nickenson Paul   
 ```
 
 `if_else()` takes a condition, a value to use when it is true, and a value to
@@ -304,10 +308,10 @@ head(select(squad, player_name, club_country, based_abroad, club_known))
   <chr>             <chr>        <lgl>        <lgl>     
 1 Bradley Martis    NLD          TRUE         TRUE      
 2 Darryl Bäly       NLD          TRUE         TRUE      
-3 Diederick Luydens NLD          TRUE         TRUE      
-4 Gladwin Curiel    ABW          FALSE        TRUE      
-5 Jeremy Trimon     ABW          FALSE        TRUE      
-6 Kymani Nedd       ABW          FALSE        TRUE      
+3 Diederick Luydens ABW          FALSE        TRUE      
+4 Gladwin Curiel    XKX          TRUE         TRUE      
+5 Kymani Nedd       NLD          TRUE         TRUE      
+6 Nickenson Paul    ABW          FALSE        TRUE      
 ```
 
 ::::::::::::::::::::::::::::::::::::: callout
@@ -328,9 +332,9 @@ episode.
 
 Look again at how `based_abroad` was defined. A player whose `club_country` is
 `X`, meaning nobody could establish where they play, is being recorded as
-`FALSE`, not abroad. Nine players in the Curaçao men's pool are in that
-position. Every share we calculate from this column is therefore a little lower
-than the truth, and nothing in the output says so.
+`FALSE`, not abroad. Two players in the Aruba women's squad are in that position.
+Every share we calculate from this column is therefore a little lower than the
+truth, and nothing in the output says so.
 
 That is not a bug in R. It is an analytical choice, made in passing, that a
 reader of your results would never see. The alternative is to say so explicitly:
@@ -355,7 +359,7 @@ mean(squad$abroad_strict, na.rm = TRUE)
 ```
 
 ``` output
-[1] 0.6774194
+[1] 0.826087
 ```
 
 ``` r
@@ -363,7 +367,7 @@ sum(is.na(squad$abroad_strict))
 ```
 
 ``` output
-[1] 10
+[1] 2
 ```
 
 `NA` is R's marker for "missing". Most calculations return `NA` if any input is
@@ -381,30 +385,33 @@ the code readable. Now you know what it costs.
 In SPSS: **Transform > Recode into Different Variables**, where you map old
 values to new values. In R you use `case_when()` inside `mutate()`.
 
-The `league_tier` column holds seven different codes. For most questions that is
-too fine-grained. Let us collapse it:
+The `club_country` column holds fourteen different codes plus `X`. For most
+questions that is too fine-grained: you do not want a bar chart with fourteen
+bars, most of them height one. Let us collapse it into regions:
 
 
 ``` r
 squad <- mutate(squad,
-  tier_group = case_when(
-    league_tier %in% c("1", "2") ~ "European professional",
-    league_tier == "3"           ~ "European amateur or lower",
-    league_tier %in% c("R", "Y") ~ "Reserve or youth",
-    league_tier == "L"           ~ "Island league",
-    .default                     = "Unknown"
+  home_code = if_else(island == "Curaçao", "CUW", "ABW"),
+  region = case_when(
+    club_country == "X"       ~ "Unknown",
+    club_country == home_code ~ "Home island",
+    club_country == "NLD"     ~ "Netherlands",
+    club_country == "USA"     ~ "North America",
+    club_country %in% c("GBR", "GRC", "TUR", "DEU", "BEL", "CHE", "XKX") ~ "Rest of Europe",
+    .default                  = "Rest of world"
   )
 )
 
-table(squad$tier_group)
+table(squad$region)
 ```
 
 ``` output
 
-European amateur or lower     European professional             Island league 
-                       22                        34                        30 
-         Reserve or youth                   Unknown 
-                        7                        10 
+   Home island    Netherlands  North America Rest of Europe  Rest of world 
+            16             54              3             16              3 
+       Unknown 
+             2 
 ```
 
 The syntax is `condition ~ value_to_assign`. The `.default` line catches
@@ -415,14 +422,18 @@ Recode.
 
 ## Order matters, and Unknown is a category
 
-`case_when()` works top to bottom and stops at the first match. If you put a
-broad condition first, the narrower ones below it never fire.
+`case_when()` works top to bottom and stops at the first match. That is why the
+`club_country == home_code` line sits above the `"NLD"` line: reverse them and
+every Dutch-based player would be caught by the Netherlands branch before the
+home-island test ever ran. Which happens to be harmless here and would not be if
+the home island were the Netherlands.
 
-Notice also that we sent `X` to "Unknown" rather than quietly dropping those
-players. Ten of the men's squad entries have an unknown tier. Deleting them
-would make every percentage you report afterwards slightly wrong and completely
-untraceable. Keeping the category visible means the reader can see the size of
-the gap and judge for themselves. Do this in your own work.
+We also sent `X` to "Unknown" rather than quietly dropping those two players.
+Two out of 94 will not move a percentage much, and that is not the point. The
+point is that dropping them silently makes every figure you report afterwards
+slightly wrong in a way no reader can detect. Keeping the category visible lets
+them see the size of the gap and judge for themselves. Do this in your own work,
+where the gap will rarely be two rows.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -437,17 +448,17 @@ head(arrange(squad, club))
 ```
 
 ``` output
-# A tibble: 6 × 13
-  team_code player_name     position club    club_country league_tier confidence
-  <chr>     <chr>           <chr>    <chr>   <chr>        <chr>       <chr>     
-1 ARU-W     Aisse Gumbs     MID      AA Gent BEL          1           H         
-2 ARU-W     Vanessa Susanna FWD      ADO De… NLD          1           H         
-3 CUW-M     Juriën Gaari    DEF      Abha    SAU          1           H         
-4 CUW-W     Jeleaugh Rosa   X        Acharn… GRC          1           H         
-5 ARU-M     Gladwin Curiel  DEF      Aruba … ABW          L           H         
-6 ARU-M     Jeremy Trimon   DEF      Aruba … ABW          L           H         
-# ℹ 6 more variables: island <chr>, gender <chr>, based_abroad <lgl>,
-#   club_known <lgl>, abroad_strict <lgl>, tier_group <chr>
+# A tibble: 6 × 12
+  team_code player_name   position club  club_country island gender based_abroad
+  <chr>     <chr>         <chr>    <chr> <chr>        <chr>  <chr>  <lgl>       
+1 CUW-M     Roshon van E… DEF      A.E.… GRC          Curaç… Men    TRUE        
+2 CUW-M     Jeremy Anton… FWD      A.E.… GRC          Curaç… Men    TRUE        
+3 ARU-W     Vanessa Susa… FWD      ADO … NLD          Aruba  Women  TRUE        
+4 ARU-M     Dimaggio Sen… MID      AFC … NLD          Aruba  Men    TRUE        
+5 CUW-M     Juriën Gaari  DEF      Abha  SAU          Curaç… Men    TRUE        
+6 CUW-W     Jeleaugh Rosa MID      Acha… GRC          Curaç… Women  TRUE        
+# ℹ 4 more variables: club_known <lgl>, abroad_strict <lgl>, home_code <chr>,
+#   region <chr>
 ```
 
 
@@ -457,17 +468,17 @@ head(arrange(squad, desc(player_name)))
 ```
 
 ``` output
-# A tibble: 6 × 13
-  team_code player_name     position club    club_country league_tier confidence
-  <chr>     <chr>           <chr>    <chr>   <chr>        <chr>       <chr>     
-1 ARU-W     Zyana Rogers    FWD      SV Bri… ABW          L           M         
-2 ARU-M     Walter Bennett  MID      Aruba … ABW          L           H         
-3 ARU-W     Vanessa Susanna FWD      ADO De… NLD          1           H         
-4 CUW-M     Tyrique Mercera DEF      unknown X            X           L         
-5 CUW-M     Tyrick Bodak    GK       Telstar NLD          2           H         
-6 CUW-M     Tyrese Noslin   MID      Telstar NLD          2           H         
-# ℹ 6 more variables: island <chr>, gender <chr>, based_abroad <lgl>,
-#   club_known <lgl>, abroad_strict <lgl>, tier_group <chr>
+# A tibble: 6 × 12
+  team_code player_name   position club  club_country island gender based_abroad
+  <chr>     <chr>         <chr>    <chr> <chr>        <chr>  <chr>  <lgl>       
+1 ARU-W     Zyana Rogers  FWD      SV B… ABW          Aruba  Women  FALSE       
+2 ARU-M     Walter Benne… MID      SC F… NLD          Aruba  Men    TRUE        
+3 ARU-W     Vanessa Susa… FWD      ADO … NLD          Aruba  Women  TRUE        
+4 CUW-M     Tyrick Bodak  GK       Vite… NLD          Curaç… Men    TRUE        
+5 CUW-M     Tyrese Noslin MID      Barn… GBR          Curaç… Men    TRUE        
+6 CUW-M     Trevor Doorn… GK       VVV-… NLD          Curaç… Men    TRUE        
+# ℹ 4 more variables: club_known <lgl>, abroad_strict <lgl>, home_code <chr>,
+#   region <chr>
 ```
 
 
@@ -477,21 +488,21 @@ head(arrange(squad, team_code, position), n = 10)
 ```
 
 ``` output
-# A tibble: 10 × 13
-   team_code player_name      position club  club_country league_tier confidence
-   <chr>     <chr>            <chr>    <chr> <chr>        <chr>       <chr>     
- 1 ARU-M     Bradley Martis   DEF      IJss… NLD          3           H         
- 2 ARU-M     Darryl Bäly      DEF      OFC … NLD          3           H         
- 3 ARU-M     Diederick Luyde… DEF      Jong… NLD          R           H         
- 4 ARU-M     Gladwin Curiel   DEF      Arub… ABW          L           H         
- 5 ARU-M     Jeremy Trimon    DEF      Arub… ABW          L           H         
- 6 ARU-M     Kymani Nedd      DEF      Arub… ABW          L           H         
- 7 ARU-M     Nickenson Paul   DEF      Arub… ABW          L           H         
- 8 ARU-M     Rainey Breinburg DEF      Feye… NLD          Y           H         
- 9 ARU-M     Carlito Fermina  FWD      Koza… NLD          3           H         
-10 ARU-M     Conner van Kils… FWD      TOP … NLD          2           H         
-# ℹ 6 more variables: island <chr>, gender <chr>, based_abroad <lgl>,
-#   club_known <lgl>, abroad_strict <lgl>, tier_group <chr>
+# A tibble: 10 × 12
+   team_code player_name  position club  club_country island gender based_abroad
+   <chr>     <chr>        <chr>    <chr> <chr>        <chr>  <chr>  <lgl>       
+ 1 ARU-M     Bradley Mar… DEF      IJss… NLD          Aruba  Men    TRUE        
+ 2 ARU-M     Darryl Bäly  DEF      Lisse NLD          Aruba  Men    TRUE        
+ 3 ARU-M     Diederick L… DEF      Dako… ABW          Aruba  Men    FALSE       
+ 4 ARU-M     Gladwin Cur… DEF      FC P… XKX          Aruba  Men    TRUE        
+ 5 ARU-M     Kymani Nedd  DEF      VV Z… NLD          Aruba  Men    TRUE        
+ 6 ARU-M     Nickenson P… DEF      Dako… ABW          Aruba  Men    FALSE       
+ 7 ARU-M     Rainey Brei… DEF      Exce… NLD          Aruba  Men    TRUE        
+ 8 ARU-M     Rovien Osti… DEF      TOGB  NLD          Aruba  Men    TRUE        
+ 9 ARU-M     Arenchelo L… FWD      RKAV… NLD          Aruba  Men    TRUE        
+10 ARU-M     Carlito Fer… FWD      Koza… NLD          Aruba  Men    TRUE        
+# ℹ 4 more variables: club_known <lgl>, abroad_strict <lgl>, home_code <chr>,
+#   region <chr>
 ```
 
 ## `group_by()` and `summarise()`, Split File and Aggregate
@@ -519,10 +530,10 @@ abroad_by_team
 # A tibble: 4 × 3
   team_code players share_abroad
   <chr>       <int>        <dbl>
-1 ARU-M          26        0.462
+1 ARU-M          23        0.870
 2 ARU-W          23        0.652
-3 CUW-M          32        0.719
-4 CUW-W          22        0.591
+3 CUW-M          26        1    
+4 CUW-W          22        0.682
 ```
 
 There is the answer to the question Episode 1 opened with, in five lines.
@@ -559,8 +570,8 @@ squad |>
 # A tibble: 2 × 2
   island  share
   <chr>   <dbl>
-1 Aruba   0.462
-2 Curaçao 0.719
+1 Aruba   0.870
+2 Curaçao 1    
 ```
 
 Read this as: "Take `squad`, **and then** keep the men's squads, **and then**
@@ -594,22 +605,22 @@ squad |>
 ```
 
 ``` output
-# A tibble: 54 × 13
-   team_code player_name      position club  club_country league_tier confidence
-   <chr>     <chr>            <chr>    <chr> <chr>        <chr>       <chr>     
- 1 CUW-M     ArJany Martha    DEF      unkn… X            X           L         
- 2 CUW-M     Armando Obispo   DEF      PSV … NLD          1           H         
- 3 CUW-M     Cuco Martina     DEF      unkn… X            X           L         
- 4 CUW-M     Deveron Fonville DEF      NEC … NLD          1           H         
- 5 CUW-M     Joshua Brenet    DEF      Kays… TUR          1           H         
- 6 CUW-M     Juriën Gaari     DEF      Abha  SAU          1           H         
- 7 CUW-M     Riechedly Bazoer DEF      Kony… TUR          1           H         
- 8 CUW-M     Roshon van Eijma DEF      RKC … NLD          1           H         
- 9 CUW-M     Sherel Floranus  DEF      PEC … NLD          1           H         
-10 CUW-M     Shurandy Sambo   DEF      Spar… NLD          1           H         
-# ℹ 44 more rows
-# ℹ 6 more variables: island <chr>, gender <chr>, based_abroad <lgl>,
-#   club_known <lgl>, abroad_strict <lgl>, tier_group <chr>
+# A tibble: 48 × 12
+   team_code player_name  position club  club_country island gender based_abroad
+   <chr>     <chr>        <chr>    <chr> <chr>        <chr>  <chr>  <lgl>       
+ 1 CUW-M     Armando Obi… DEF      PSV   NLD          Curaç… Men    TRUE        
+ 2 CUW-M     Deveron Fon… DEF      NEC   NLD          Curaç… Men    TRUE        
+ 3 CUW-M     Joshua Bren… DEF      Kays… TUR          Curaç… Men    TRUE        
+ 4 CUW-M     Juriën Gaari DEF      Abha  SAU          Curaç… Men    TRUE        
+ 5 CUW-M     Riechedly B… DEF      Kony… TUR          Curaç… Men    TRUE        
+ 6 CUW-M     Roshon van … DEF      A.E.… GRC          Curaç… Men    TRUE        
+ 7 CUW-M     Sherel Flor… DEF      PEC … NLD          Curaç… Men    TRUE        
+ 8 CUW-M     Shurandy Sa… DEF      Spar… NLD          Curaç… Men    TRUE        
+ 9 CUW-M     Brandley Ku… FWD      Vole… NLD          Curaç… Men    TRUE        
+10 CUW-M     Gervane Kas… FWD      Tere… MYS          Curaç… Men    TRUE        
+# ℹ 38 more rows
+# ℹ 4 more variables: club_known <lgl>, abroad_strict <lgl>, home_code <chr>,
+#   region <chr>
 ```
 
 
@@ -617,24 +628,24 @@ squad |>
 # Step 2: Add a column selection
 squad |>
   filter(island == "Curaçao") |>
-  select(gender, player_name, position, club, tier_group)
+  select(gender, player_name, position, club, region)
 ```
 
 ``` output
-# A tibble: 54 × 5
-   gender player_name      position club             tier_group           
-   <chr>  <chr>            <chr>    <chr>            <chr>                
- 1 Men    ArJany Martha    DEF      unknown          Unknown              
- 2 Men    Armando Obispo   DEF      PSV Eindhoven    European professional
- 3 Men    Cuco Martina     DEF      unknown          Unknown              
- 4 Men    Deveron Fonville DEF      NEC Nijmegen     European professional
- 5 Men    Joshua Brenet    DEF      Kayserispor      European professional
- 6 Men    Juriën Gaari     DEF      Abha             European professional
- 7 Men    Riechedly Bazoer DEF      Konyaspor        European professional
- 8 Men    Roshon van Eijma DEF      RKC Waalwijk     European professional
- 9 Men    Sherel Floranus  DEF      PEC Zwolle       European professional
-10 Men    Shurandy Sambo   DEF      Sparta Rotterdam European professional
-# ℹ 44 more rows
+# A tibble: 48 × 5
+   gender player_name       position club             region        
+   <chr>  <chr>             <chr>    <chr>            <chr>         
+ 1 Men    Armando Obispo    DEF      PSV              Netherlands   
+ 2 Men    Deveron Fonville  DEF      NEC              Netherlands   
+ 3 Men    Joshua Brenet     DEF      Kayserispor      Rest of Europe
+ 4 Men    Juriën Gaari      DEF      Abha             Rest of world 
+ 5 Men    Riechedly Bazoer  DEF      Konyaspor        Rest of Europe
+ 6 Men    Roshon van Eijma  DEF      A.E. Kifisia     Rest of Europe
+ 7 Men    Sherel Floranus   DEF      PEC Zwolle       Netherlands   
+ 8 Men    Shurandy Sambo    DEF      Sparta Rotterdam Netherlands   
+ 9 Men    Brandley Kuwas    FWD      Volendam         Netherlands   
+10 Men    Gervane Kastaneer FWD      Terengganu       Rest of world 
+# ℹ 38 more rows
 ```
 
 
@@ -642,19 +653,22 @@ squad |>
 # Step 3: Group and summarise
 squad |>
   filter(island == "Curaçao") |>
-  count(gender, tier_group) |>
+  count(gender, region) |>
   arrange(gender, desc(n))
 ```
 
 ``` output
-# A tibble: 5 × 3
-  gender tier_group                    n
-  <chr>  <chr>                     <int>
-1 Men    European professional        23
-2 Men    Unknown                       9
-3 Women  European amateur or lower     9
-4 Women  Island league                 9
-5 Women  European professional         4
+# A tibble: 8 × 3
+  gender region             n
+  <chr>  <chr>          <int>
+1 Men    Rest of Europe    11
+2 Men    Netherlands       10
+3 Men    Rest of world      3
+4 Men    North America      2
+5 Women  Netherlands       12
+6 Women  Home island        7
+7 Women  Rest of Europe     2
+8 Women  North America      1
 ```
 
 This pipeline reads: "Take the squad data, keep the Curaçao players, count how
@@ -683,11 +697,15 @@ will reach for it constantly.
 - The `filter(club_country %in% c("CUW", "ABW"))` result usually produces an
   audible reaction in a Curaçao room. Let it. Then say "we are not explaining
   that today, we are learning how to ask it."
-- If someone asks why 22 players have position `X` and 10 have tier `X`, the
-  honest answer is that the underlying sources are federation Facebook posts and
-  Wikipedia squad tables, and the compiler recorded uncertainty rather than
-  guessing. Point them to the codebook in the data folder. This is a good moment
-  for a word about documenting your own uncertainty.
+- If someone asks why two players have `club_country == "X"`, the honest answer
+  is that the source is a Wikipedia squad table, those two rows list no club, and
+  the build script recorded that rather than guessing. Point them to
+  `blue_wave_squad_codebook.md` in the data folder. This is a good moment for a
+  word about documenting your own uncertainty.
+- Someone may well ask how current the squads are. They are as current as
+  Wikipedia, which is to say: maintained by volunteers, lagging real call-ups by
+  weeks or months, and not necessarily consistent across the four pages. Say so.
+  It is a better answer than pretending, and it sets up Episode 5.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -721,21 +739,22 @@ cuw_countries
 # A tibble: 10 × 2
    club_country     n
    <chr>        <int>
- 1 NLD             11
- 2 X                9
+ 1 NLD             10
+ 2 GBR              4
  3 TUR              3
- 4 GBR              2
+ 4 GRC              2
  5 USA              2
- 6 CHE              1
- 7 DEU              1
- 8 GRC              1
+ 6 BEL              1
+ 7 CHE              1
+ 8 ISR              1
  9 MYS              1
 10 SAU              1
 ```
 
-None. Not one player in the Curaçao men's pool plays club football on the
-island. The Netherlands dominates, with a scatter of other European and North
-American leagues, and a block of unknowns coded `X`.
+None. Not one of the 26 players plays club football on Curaçao. The Netherlands
+is the largest single destination with 10, but it is not a majority: the other
+16 are scattered across nine more countries, from England and Turkey to Malaysia
+and Saudi Arabia.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -769,16 +788,20 @@ squad |>
 # A tibble: 4 × 4
   island  gender players pct_abroad
   <chr>   <chr>    <int>      <dbl>
-1 Curaçao Men         32         72
-2 Aruba   Women       23         65
-3 Curaçao Women       22         59
-4 Aruba   Men         26         46
+1 Curaçao Men         26        100
+2 Aruba   Men         23         87
+3 Curaçao Women       22         68
+4 Aruba   Women       23         65
 ```
 
-The ordering is the finding. The two islands are 80 kilometres apart with
-comparable populations, and their squads are built in almost opposite ways. Note
-also the gap between the men's and women's squads within each island, which is a
-second story sitting inside the same table.
+Both men's squads sit high and both women's squads sit lower, so the sharper
+split here is by gender rather than by island. That is worth noticing precisely
+because it is not the split you were probably looking for. Episode 5 puts a test
+on it.
+
+The island difference is real but it does not live in this column. Both islands
+send most of their players abroad; where they send them is the interesting part,
+which is what `region` is for.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -787,9 +810,9 @@ second story sitting inside the same table.
 
 ## Challenge 3: Composition by position
 
-Using the `tier_group` column we created with `case_when()`, write a pipeline
+Using the `region` column we created with `case_when()`, write a pipeline
 that shows, for the Curaçao men's squad only, how many players fall in each
-combination of `position` and `tier_group`. Sort by position and then by count
+combination of `position` and `region`. Sort by position and then by count
 descending.
 
 Hint: you will need to group by two columns, and `count()` accepts more than one.
@@ -802,21 +825,25 @@ Hint: you will need to group by two columns, and `count()` accepts more than one
 ``` r
 squad |>
   filter(team_code == "CUW-M") |>
-  count(position, tier_group) |>
+  count(position, region) |>
   arrange(position, desc(n))
 ```
 
 ``` output
-# A tibble: 7 × 3
-  position tier_group                n
-  <chr>    <chr>                 <int>
-1 DEF      European professional     8
-2 DEF      Unknown                   3
-3 FWD      European professional     4
-4 FWD      Unknown                   2
-5 GK       European professional     3
-6 MID      European professional     8
-7 MID      Unknown                   4
+# A tibble: 11 × 3
+   position region             n
+   <chr>    <chr>          <int>
+ 1 DEF      Netherlands        4
+ 2 DEF      Rest of Europe     3
+ 3 DEF      Rest of world      1
+ 4 FWD      Rest of Europe     4
+ 5 FWD      Rest of world      2
+ 6 FWD      Netherlands        1
+ 7 FWD      North America      1
+ 8 GK       Netherlands        2
+ 9 GK       North America      1
+10 MID      Rest of Europe     4
+11 MID      Netherlands        3
 ```
 
 If you used `group_by()` and `summarise()` instead, add `.groups = "drop"`:
@@ -825,22 +852,26 @@ If you used `group_by()` and `summarise()` instead, add `.groups = "drop"`:
 ``` r
 squad |>
   filter(team_code == "CUW-M") |>
-  group_by(position, tier_group) |>
+  group_by(position, region) |>
   summarise(n = n(), .groups = "drop") |>
   arrange(position, desc(n))
 ```
 
 ``` output
-# A tibble: 7 × 3
-  position tier_group                n
-  <chr>    <chr>                 <int>
-1 DEF      European professional     8
-2 DEF      Unknown                   3
-3 FWD      European professional     4
-4 FWD      Unknown                   2
-5 GK       European professional     3
-6 MID      European professional     8
-7 MID      Unknown                   4
+# A tibble: 11 × 3
+   position region             n
+   <chr>    <chr>          <int>
+ 1 DEF      Netherlands        4
+ 2 DEF      Rest of Europe     3
+ 3 DEF      Rest of world      1
+ 4 FWD      Rest of Europe     4
+ 5 FWD      Rest of world      2
+ 6 FWD      Netherlands        1
+ 7 FWD      North America      1
+ 8 GK       Netherlands        2
+ 9 GK       North America      1
+10 MID      Rest of Europe     4
+11 MID      Netherlands        3
 ```
 
 The `.groups = "drop"` argument tells `summarise()` to remove the grouping after

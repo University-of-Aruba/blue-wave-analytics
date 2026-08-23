@@ -1,0 +1,306 @@
+---
+title: ""
+pagetitle: "Blue Wave squad report"
+output:
+  html_document:
+    self_contained: true
+    theme: null
+    highlight: null
+    mathjax: null
+    css: blue-wave-report.css
+params:
+  team: "CUW-M"
+  data_dir: "data"
+---
+
+```{r setup, include=FALSE}
+# Iteration: 1
+knitr::opts_chunk$set(
+  echo = FALSE, warning = FALSE, message = FALSE,
+  fig.width = 9, fig.height = 4.8, dpi = 140, dev = "png"
+)
+suppressPackageStartupMessages({
+  library(tidyverse); library(knitr); library(broom)
+})
+
+ld <- list(blue = "#44759e", orange = "#f38439", beige = "#dee3c8",
+           green = "#749c4c", gray = "#605b54", ink = "#1d2433")
+
+theme_report <- function(base_size = 13) {
+  theme_minimal(base_size = base_size, base_family = "Georgia") +
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title    = element_text(face = "bold", size = base_size + 1),
+      plot.subtitle = element_text(color = "#555555", margin = margin(b = 8)),
+      plot.caption  = element_text(color = "#777777", size = base_size - 4, hjust = 0),
+      axis.title    = element_text(color = "#444444"),
+      strip.text    = element_text(face = "bold")
+    )
+}
+
+tier_colours <- c(
+  "European professional"     = ld$blue,
+  "European amateur or lower" = ld$green,
+  "Reserve or youth"          = ld$beige,
+  "Island league"             = ld$orange,
+  "Unknown"                   = ld$gray
+)
+
+pct <- function(x, d = 0) sprintf(paste0("%.", d, "f%%"), 100 * x)
+```
+
+```{r load}
+squad <- read_csv(file.path(params$data_dir, "blue_wave_squad.csv"),
+                  show_col_types = FALSE) |>
+  mutate(
+    island = if_else(str_starts(team_code, "CUW"), "Curaçao", "Aruba"),
+    gender = if_else(str_ends(team_code, "M"), "Men", "Women"),
+    home_code = if_else(str_starts(team_code, "CUW"), "CUW", "ABW"),
+    based_abroad = !(club_country %in% c("CUW", "ABW", "X")),
+    tier_group = case_when(
+      league_tier %in% c("1", "2") ~ "European professional",
+      league_tier == "3"           ~ "European amateur or lower",
+      league_tier %in% c("R", "Y") ~ "Reserve or youth",
+      league_tier == "L"           ~ "Island league",
+      .default                     = "Unknown"
+    )
+  )
+
+fifa <- read_csv(file.path(params$data_dir, "fifa_rankings.csv"),
+                 show_col_types = FALSE)
+
+this <- filter(squad, team_code == params$team)
+this_island <- unique(this$island)
+this_gender <- unique(this$gender)
+this_iso    <- unique(this$home_code)
+
+fifa_row <- filter(fifa, iso3 == this_iso)
+
+n_players    <- nrow(this)
+n_abroad     <- sum(this$based_abroad)
+share_abroad <- n_abroad / n_players
+n_topflight  <- sum(this$league_tier %in% c("1", "2"))
+n_countries  <- n_distinct(this$club_country[this$club_country != "X"])
+n_unknown    <- sum(this$club_country == "X")
+n_home       <- sum(this$club_country == this_iso)
+```
+
+<div class="cover">
+<div>
+
+<div class="cover-tag">DCDC Network &middot; Blue Wave Analytics</div>
+
+<div class="cover-title">`r this_island`</div>
+
+<div class="cover-sub">`r this_gender`'s national squad, 2026: where `r n_players` players actually play their club football</div>
+
+<div class="cover-accent"></div>
+
+</div>
+
+<div class="cover-stats">
+  <div class="cs-item"><div class="cs-num">`r n_players`</div><div class="cs-lbl">Players</div></div>
+  <div class="cs-item"><div class="cs-num">`r pct(share_abroad)`</div><div class="cs-lbl">Abroad</div></div>
+  <div class="cs-item"><div class="cs-num">`r n_topflight`</div><div class="cs-lbl">Top two tiers</div></div>
+  <div class="cs-item"><div class="cs-num">`r n_home`</div><div class="cs-lbl">Island league</div></div>
+  <div class="cs-item"><div class="cs-num">`r n_countries`</div><div class="cs-lbl">Countries</div></div>
+  <div class="cs-item"><div class="cs-num">`r if (nrow(fifa_row)) fifa_row$rank else NA`</div><div class="cs-lbl">FIFA rank</div></div>
+</div>
+
+<div class="cover-footer">
+Produced from a single R Markdown file. Every number on this page is computed
+from <strong>blue_wave_squad.csv</strong> at knit time. Change the data, press
+Knit, and the report rewrites itself. <br>
+<strong>Generated:</strong> `r format(Sys.Date(), "%d %B %Y")`
+</div>
+</div>
+
+## The question
+
+`r this_island` has a population of about
+`r if (nrow(fifa_row) && !is.na(fifa_row$population)) format(round(fifa_row$population), big.mark = ",") else "unknown"`
+people. Its `r tolower(this_gender)`'s national squad has `r n_players` players
+in it. Of those, `r n_abroad` play their club football somewhere other than the
+island, which is `r pct(share_abroad)` of the squad, spread across
+`r n_countries` countries.
+
+`r if (n_home == 0) sprintf("Not one player in this squad plays club football on %s.", this_island) else sprintf("%d of them play in the island league.", n_home)`
+
+## Where they play
+
+```{r map-countries, fig.height=4.2}
+this |>
+  filter(club_country != "X") |>
+  count(club_country, sort = TRUE) |>
+  mutate(club_country = fct_reorder(club_country, n)) |>
+  ggplot(aes(x = club_country, y = n)) +
+  geom_col(fill = ld$blue, width = 0.7) +
+  coord_flip() +
+  labs(
+    title = sprintf("Club country, %s %s squad", this_island, tolower(this_gender)),
+    subtitle = if (n_unknown > 0)
+      sprintf("%d further players could not be placed and are excluded", n_unknown)
+      else NULL,
+    x = NULL, y = "Players",
+    caption = "Source: Cornerstone Economics squad dataset, 2026"
+  ) +
+  theme_report()
+```
+
+## At what level
+
+Country of club is only half the story. A player at a Dutch third-tier amateur
+side and a player in the Eredivisie are both "abroad", and they are not the same
+thing. Grouping by the level of the league they play in separates them.
+
+```{r level, fig.height=3.6}
+this |>
+  count(tier_group) |>
+  mutate(tier_group = fct_reorder(tier_group, n)) |>
+  ggplot(aes(x = tier_group, y = n, fill = tier_group)) +
+  geom_col(width = 0.7) +
+  scale_fill_manual(values = tier_colours) +
+  coord_flip() +
+  labs(title = "Level of club football", x = NULL, y = "Players") +
+  theme_report() +
+  theme(legend.position = "none")
+```
+
+## Against the neighbours
+
+The same table for all four ABC island squads puts this one in context.
+
+```{r compare}
+comparison <- squad |>
+  group_by(island, gender) |>
+  summarise(
+    players     = n(),
+    abroad      = sum(based_abroad),
+    pct_abroad  = round(100 * mean(based_abroad)),
+    top_two     = sum(league_tier %in% c("1", "2")),
+    island_league = sum(league_tier == "L"),
+    .groups = "drop"
+  ) |>
+  arrange(desc(pct_abroad))
+
+kable(comparison, col.names = c("Island", "Squad", "Players", "Abroad",
+                                "% abroad", "Top two tiers", "Island league"))
+```
+
+```{r compare-chart, fig.height=3.4}
+squad |>
+  count(team_code, tier_group) |>
+  ggplot(aes(x = team_code, y = n, fill = tier_group)) +
+  geom_col(position = "fill", width = 0.7) +
+  scale_fill_manual(values = tier_colours) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Squad composition, all four ABC island teams",
+    x = NULL, y = NULL, fill = NULL
+  ) +
+  theme_report(12) +
+  theme(legend.position = "bottom")
+```
+
+```{r chisq-calc}
+sq <- squad |>
+  filter(club_country != "X") |>
+  mutate(where_playing = if_else(club_country %in% c("CUW", "ABW"),
+                                 "Island league", "Abroad"))
+ct <- table(sq$island, sq$where_playing)
+cs <- suppressWarnings(chisq.test(ct))
+```
+
+<div class="callout">
+<div class="callout-h">Is the difference real?</div>
+<p>A chi-square test of independence on the two islands' squads gives
+X-squared = `r round(cs$statistic, 2)` on `r cs$parameter` degree of freedom,
+p = `r format.pval(cs$p.value, digits = 2)`. The two islands build their squads
+differently, and the gap is larger than sampling noise would comfortably
+produce. `r n_unknown_all <- sum(squad$club_country == "X"); sprintf("%d of %d players were excluded from this test because their club could not be established.", n_unknown_all, nrow(squad))`</p>
+</div>
+
+## Punching above the population
+
+```{r model}
+reg <- lm(points ~ log_population + diaspora_per_capita, data = fifa)
+
+fifa_resid <- fifa |>
+  filter(!is.na(log_population), !is.na(diaspora_per_capita)) |>
+  mutate(
+    predicted = predict(reg, newdata = pick(everything())),
+    residual  = points - predicted
+  )
+
+this_resid <- filter(fifa_resid, iso3 == this_iso)
+```
+
+A country's FIFA points are, unsurprisingly, related to how many people it has.
+Regressing points on log population and diaspora size across
+`r nrow(fifa_resid)` national associations explains about
+`r pct(summary(reg)$r.squared)` of the variance. Population carries the model;
+the diaspora term is not statistically distinguishable from zero.
+
+What that model gives us is a benchmark. The residual, actual points minus
+predicted points, says who over-performs for their size.
+
+```{r resid-chart, fig.height=4.6}
+focus <- c("CUW", "ABW", "JAM", "ISL", "MLT", "TTO", "SUR", "CPV")
+
+fifa_resid |>
+  mutate(highlight = iso3 %in% focus) |>
+  ggplot(aes(x = log_population, y = points)) +
+  geom_point(color = "grey80", size = 2) +
+  geom_smooth(method = "lm", se = FALSE, color = ld$gray, linewidth = 0.6) +
+  geom_point(data = ~ filter(.x, highlight), color = ld$orange, size = 3.4) +
+  geom_text(
+    data = ~ filter(.x, highlight),
+    aes(label = country), nudge_y = 70, size = 3.3, family = "Georgia"
+  ) +
+  labs(
+    title = "FIFA points against population",
+    subtitle = "Countries above the line score more than their size predicts",
+    x = "Population (log scale)", y = "FIFA points",
+    caption = "Source: FIFA rankings; UN population estimates"
+  ) +
+  theme_report()
+```
+
+```{r resid-table}
+fifa_resid |>
+  filter(iso3 %in% focus) |>
+  select(country, rank, points, predicted, residual) |>
+  mutate(across(where(is.numeric), \(x) round(x, 0))) |>
+  arrange(desc(residual)) |>
+  kable(col.names = c("Country", "FIFA rank", "Points", "Predicted", "Residual"))
+```
+
+`r if (nrow(this_resid)) sprintf("%s scores %s points, against %s predicted for a country its size: a residual of %s.", this_island, round(this_resid$points), round(this_resid$predicted), round(this_resid$residual)) else ""`
+
+## The squad
+
+```{r squad-table}
+this |>
+  arrange(position, player_name) |>
+  select(player_name, position, club, club_country, league_tier, confidence) |>
+  kable(col.names = c("Player", "Position", "Club", "Country", "Tier", "Confidence"))
+```
+
+<div class="callout">
+<div class="callout-h">What this dataset cannot tell you</div>
+<p>The squad list was compiled from federation announcements, Wikipedia squad
+tables, and commercial football databases, and each record carries a confidence
+code. `r sum(this$confidence == "H")` of `r n_players` entries in this squad are
+verified against a named recent source; the rest rest on a single source or an
+inference. `r n_unknown` players could not be placed at a club at all.</p>
+<p>Squad composition is also a snapshot of one call-up, not a measure of a
+football system. It says nothing about youth development, coaching, or the
+domestic game, and a report that reads it as such is reading too much into
+`r n_players` rows.</p>
+</div>
+
+<div class="cover-footer">
+Blue Wave Analytics, a DCDC Network training deliverable. Data and course
+materials CC-BY 4.0. Squad dataset compiled for Cornerstone Economics working
+paper WP-2026-01.
+</div>

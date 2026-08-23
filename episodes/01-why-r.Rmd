@@ -32,16 +32,16 @@ time.
 ### The question the course is built around
 
 Curaçao has about 149,000 residents. In 2026 it put a national team into the
-World Cup, unbeaten through CONCACAF qualifying, and the squad that did it is
-almost entirely based in European professional football. Very few of those
-players play their club football on the island.
+World Cup, unbeaten through CONCACAF qualifying. Of the 26 players in that
+squad, not one plays club football on the island. They are spread across ten
+countries.
 
 That is a striking fact, and it is a data fact before it is a football fact.
-Where do the players actually play? At what level? How does the men's squad
-compare with the women's, and how does Curaçao compare with Aruba, which has a
-similar history and a very different result? Every one of those questions is a
-table, a filter, a group summary, and a chart. By Wednesday afternoon you will
-be answering them yourself, from a script you wrote.
+Where do the players actually play? How does the men's squad compare with the
+women's, and how does Curaçao compare with Aruba, which has a similar history
+and builds its squad differently? Every one of those questions is a table, a
+filter, a group summary, and a chart. By Wednesday afternoon you will be
+answering them yourself, from a script you wrote.
 
 ### What you will be able to produce
 
@@ -233,16 +233,18 @@ Read the result out loud. Then draw it:
 squad |>
   mutate(
     island = if_else(str_starts(team_code, "CUW"), "Curaçao", "Aruba"),
-    tier_group = case_when(
-      league_tier %in% c("1", "2") ~ "European professional",
-      league_tier == "3"           ~ "European amateur or lower",
-      league_tier %in% c("R", "Y") ~ "Reserve or youth",
-      league_tier == "L"           ~ "Island league",
-      TRUE                         ~ "Unknown"
+    home_code = if_else(str_starts(team_code, "CUW"), "CUW", "ABW"),
+    region = case_when(
+      club_country == "X"       ~ "Unknown",
+      club_country == home_code ~ "Home island",
+      club_country == "NLD"     ~ "Netherlands",
+      club_country == "USA"     ~ "North America",
+      club_country %in% c("GBR", "GRC", "TUR", "DEU", "BEL", "CHE", "XKX") ~ "Rest of Europe",
+      .default                  = "Rest of world"
     )
   ) |>
-  count(island, tier_group) |>
-  ggplot(aes(x = island, y = n, fill = tier_group)) +
+  count(island, region) |>
+  ggplot(aes(x = island, y = n, fill = region)) +
   geom_col(position = "fill") +
   scale_y_continuous(labels = scales::percent) +
   labs(
@@ -254,8 +256,11 @@ squad |>
 ```
 
 Talking point: "Two islands, 80 kilometres apart, with populations and colonial
-histories that track each other closely. Completely different answers. Nobody in this room needed a statistician to care about that question.
-What you needed was a way to ask it, and you just watched it take twelve lines."
+histories that track each other closely. Both send most of their players abroad.
+But look where. Curaçao's are scattered across ten countries. Aruba's are
+overwhelmingly in one. Nobody in this room needed a statistician to care about
+that question. What you needed was a way to ask it, and you just watched it take
+twelve lines."
 
 Do not resolve the question. Let the room argue. Say: "By Wednesday you will be
 able to run this yourself, and change it to ask what you actually want to know."
@@ -269,12 +274,12 @@ the current workflow lands.
 
 1. Go looking for the squad lists. Wikipedia? FotMob? The federation's Facebook
    page? Pick one and hope it is current.
-2. Copy 103 player names, clubs, and positions into Excel by hand. An hour if
+2. Copy 94 player names, clubs, and positions into Excel by hand. An hour if
    you are quick and do not lose concentration.
-3. Discover that club names are spelled three different ways, that some players
-   have no club listed, and that Jong Holland is a Curaçao club despite the
-   name. Clean by hand.
-4. Import into SPSS. Recode league level into a grouping variable, because the
+3. Discover that the club's country is only shown as a little flag you cannot
+   copy, that two players have no club listed at all, and that Jong Holland is a
+   Curaçao club despite the name. Clean by hand.
+4. Import into SPSS. Recode club country into a grouping variable, because the
    raw text is unusable as it stands.
 5. **Analyze > Descriptive Statistics > Frequencies**. Copy the output table.
 6. **Graphs > Chart Builder**, drag variables, format the chart, copy, paste

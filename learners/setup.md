@@ -136,7 +136,7 @@ From Episode 2 onwards you will load the same small dataset in three different
 formats: a CSV file, an Excel workbook with two sheets, and an SPSS `.sav` file.
 Download **all three** now and keep them together.
 
-- [blue_wave_squad.csv](https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/blue_wave_squad.csv) plain-text version, one flat table of 103 rows
+- [blue_wave_squad.csv](https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/blue_wave_squad.csv) plain-text version, one flat table of 94 rows
 - [blue_wave_squad.xlsx](https://github.com/University-of-Aruba/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.xlsx) Excel version, two sheets: `curacao` and `aruba`
 - [blue_wave_squad.sav](https://github.com/University-of-Aruba/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.sav) SPSS version, so you can see R open your existing files
 
@@ -176,12 +176,12 @@ together at the start of Episode 2. Bring the links.
 
 ## What the data is
 
-The squad file lists the players called up to four Dutch Caribbean national
-football teams in 2026: Curacao men and women, Aruba men and women. One row is
-one player, with their club, the country that club plays in, and the level of
-that league.
+The squad file lists the players in the current squads of four Dutch Caribbean
+national football teams: Curacao men and women, Aruba men and women. One row is
+one player, with their position, their club, and the country that club plays in.
+94 rows in total.
 
-It was compiled for a Cornerstone Economics working paper, and it is a real
-research dataset rather than a teaching toy. Some players could not be placed at
-a club at all, and every row carries a confidence code recording how well the
-entry is sourced. Those gaps are part of what you will learn to handle.
+It is scraped from Wikipedia, which makes it real data rather than a teaching
+toy. Two players have no club listed at all, and the squads are only as current
+as the volunteers who maintain those pages. Those gaps are part of what you will
+learn to handle.

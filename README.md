@@ -12,11 +12,11 @@ Built with [The Carpentries Workbench][workbench] and developed by the
 [University of Aruba](https://www.ua.aw/), delivered in Curaçao with the
 University of Curaçao.
 
-> **Two owners, one repository.** The lesson is a DCDC training deliverable and
-> lives in the University of Aruba org alongside the master course. The squad
-> dataset it teaches on is **Cornerstone Economics** research data from working
-> paper WP-2026-01, licensed for teaching use and not a network output. Cite them
-> separately: [DATA-PROVENANCE.md](DATA-PROVENANCE.md) sets out which is which.
+> **All data here is public.** The squad dataset is rebuilt from Wikipedia
+> national-team squad tables by a committed script, so anyone can regenerate and
+> reuse it. An earlier iteration used Cornerstone Economics research data; that
+> was removed on 23 August 2026, and the reasoning is in
+> [DATA-PROVENANCE.md](DATA-PROVENANCE.md).
 
 ## How this edition relates to the master course
 
@@ -38,20 +38,25 @@ committed to `episodes/data/`. Nothing is scraped live in the room.
 
 | File | What it is | Used in |
 |---|---|---|
-| `blue_wave_squad.csv` | 103 players across four ABC island national squads, 2026 | Episodes 2, 3, 4, 6 |
+| `blue_wave_squad.csv` | 94 players across four ABC island national squads | Episodes 2, 3, 4, 6 |
 | `blue_wave_squad.xlsx` | Same data, sheets `curacao` and `aruba` | Episode 2 |
 | `blue_wave_squad.sav` | Same data as SPSS, for the `haven` demonstration | Episode 2 |
 | `fifa_rankings.csv` | FIFA rank, points, population, diaspora for 211 associations | Episodes 4, 5 |
 | `diaspora_change.csv` | Diaspora stock in 1990, 2010, 2024 | Episode 5 |
 | `countries_backup.csv` | Offline fallback for the Episode 1 live pull | Episode 1 |
 
-The squad dataset was compiled for Cornerstone Economics working paper
-WP-2026-01. Its coding decisions and sources are documented in
-[`episodes/data/curacao_squad_codebook.md`](episodes/data/curacao_squad_codebook.md).
+The squad dataset is scraped from the current-squad tables of four English
+Wikipedia articles. Coding decisions, variable definitions, and limitations are
+documented in
+[`episodes/data/blue_wave_squad_codebook.md`](episodes/data/blue_wave_squad_codebook.md).
 
-It is a real research dataset, which means it has real gaps: ten players cannot
-be placed at a club, and every row carries a confidence code. That is deliberate.
-Episodes 3, 5, and 6 each stop to name what is being excluded and what it costs.
+It has the gaps real data has: two players cannot be placed at a club at all, and
+the squads are only as current as Wikipedia. That is deliberate. Episodes 3, 5,
+and 6 each stop to name what is being excluded and what it costs.
+
+Re-running `scripts/00_build_teaching_data.R` will produce different numbers as
+squads change, and the episode prose quotes specific figures, so re-read the
+episodes after you re-run it.
 
 **Before delivery**, read
 [`episodes/data/VERIFY-BEFORE-DELIVERY.md`](episodes/data/VERIFY-BEFORE-DELIVERY.md).

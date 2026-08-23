@@ -33,21 +33,24 @@ because several later items depend on the answers.
       mixed responses. Decide before promotion goes out.
 - [ ] **Tell Esther the repository exists.** It sits in the University of Aruba
       org alongside `r-for-spss-users`, which is the right home for a DCDC
-      training deliverable. The wrinkle is the data: the squad file belongs to
-      Cornerstone Economics, not to the university or the network, and it is now
-      published under UA's name without the project lead having been asked first.
-      `DATA-PROVENANCE.md` states the split, gives separate citations for the
-      lesson and the dataset, and is the document to put in front of her. Do this
-      before the course is promoted, not after somebody notices.
+      training deliverable, and it appeared there without her being asked first.
+      The Cornerstone Economics data that originally raised a conflict-of-interest
+      question has been removed and replaced with a public Wikipedia-derived
+      dataset, so the substantive issue is closed; `DATA-PROVENANCE.md` records
+      what was removed and why. What remains is the courtesy. Do it before the
+      course is promoted, not after somebody notices.
 
 ## Content verification
 
 - [ ] **Build the whole site locally.** From the repository root, run
       `sandpaper::build_lesson()` and watch for errors. Every episode must knit
       cleanly before anything is pushed.
-- [ ] **Regenerate the data.** Run `Rscript scripts/00_build_teaching_data.R` and
-      confirm it reports 103 players and 211 countries. If the numbers move, an
-      upstream file changed and the episode prose that quotes them needs a pass.
+- [ ] **Regenerate the data.** Run `Rscript scripts/00_build_teaching_data.R`.
+      It scrapes four Wikipedia squad pages, so it needs a network connection and
+      it will produce different numbers whenever a squad has been re-called. The
+      episode prose quotes specific figures (94 players, 26 in the Curaçao men's
+      squad, 10 club countries, two players with no club), so **re-read Episodes
+      1 to 6 against the new output** rather than assuming it still matches.
 - [ ] **Knit the capstone.** Open `episodes/files/blue-wave-squad-report-template.Rmd`
       and knit it with `params$team` set to `CUW-M`. Then knit it again with
       `ARU-W`. Both must produce a complete report. This is the Episode 6 finish

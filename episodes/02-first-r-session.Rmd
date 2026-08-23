@@ -220,21 +220,23 @@ hand to a colleague or archive at the end of a study.
 ### What is in the data
 
 The dataset is the player-level squad list for four Dutch Caribbean national
-teams as called up in 2026: Curaçao men and women, Aruba men and women. One row
-is one player. It was compiled for a Cornerstone Economics working paper on
-diaspora football, and it is a real research dataset, which means it has real
-gaps in it. That is deliberate. Clean textbook data teaches you nothing about
-the afternoon you will actually spend with your own file.
+teams: Curaçao men and women, Aruba men and women. One row is one player, 94 in
+total. It was scraped from the current-squad tables on Wikipedia, which means it
+has the gaps and inconsistencies real data has. That is deliberate. Clean
+textbook data teaches you nothing about the afternoon you will actually spend
+with your own file.
 
 | Variable | What it holds |
 |---|---|
 | `team_code` | `CUW-M`, `CUW-W`, `ARU-M`, `ARU-W` |
 | `player_name` | Player name |
-| `position` | `GK`, `DEF`, `MID`, `FWD`, `X` for unknown |
+| `position` | `GK`, `DEF`, `MID`, `FWD` |
 | `club` | Club name, or `unknown` |
-| `club_country` | ISO 3-letter country code of the club, `X` for unknown |
-| `league_tier` | `1` top flight, `2` second tier, `3` third or amateur, `R` reserve, `Y` youth, `L` local island league, `X` unknown |
-| `confidence` | `H` verified, `M` single source, `L` inferred, `U` unknown |
+| `club_country` | ISO 3-letter country code of the club, `X` where it could not be established |
+
+Five columns is all you get. Everything else this course does with the data,
+which island, which gender, whether a player is based abroad, which part of the
+world they play in, you will build yourself out of these five. That is the job.
 
 ### CSV files with `read_csv()`
 
@@ -427,12 +429,13 @@ You can also make two-way frequency tables, which is where this dataset starts
 to become interesting:
 
 ```{r}
-table(squad$team_code, squad$league_tier)
+table(squad$team_code, squad$club_country)
 ```
 
 Read that table across the rows. `CUW-M` and `ARU-M` are two men's squads from
-neighbouring islands, and their distributions across league tiers are not remotely
-alike. Hold onto that. Episode 3 is where you learn to interrogate it properly.
+neighbouring islands. One is spread thinly across a lot of columns; the other
+piles up in one. Hold onto that. Episode 3 is where you learn to interrogate it
+properly.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
@@ -471,9 +474,9 @@ Import the squad dataset and answer the following using R functions. Write your
 code in the Source Editor and run each line.
 
 1. How many rows and how many columns does the dataset have?
-2. What data type is the `league_tier` column? Does that surprise you?
+2. What data type is the `club_country` column? Does that surprise you?
 3. How many players are in each of the four squads?
-4. How many players have an unknown position?
+4. How many players have a club that could not be established?
 
 :::::::::::::::::::::::: solution
 
@@ -491,19 +494,18 @@ squad <- read_csv("data/blue_wave_squad.csv")
 dim(squad)
 ```
 
-103 players and 7 columns.
+94 players and 5 columns.
 
-**Question 2:** Data type of `league_tier`?
+**Question 2:** Data type of `club_country`?
 
 ```{r}
-str(squad$league_tier)
+str(squad$club_country)
 ```
 
-It is character (`chr`), not numeric, even though most of its values look like
-numbers. That is because the column also holds `L`, `R`, `Y`, and `X`. R will
-not guess a type that only fits some of the values. This is a good thing: it is
-telling you the truth about the column rather than silently discarding the
-codes it cannot parse.
+It is character (`chr`). Most values are three-letter country codes, but the
+column also holds `X` for the players whose club nobody could establish. R will
+not invent a type that fits only some of the values, and it will not quietly
+drop the ones that do not fit. That is the behaviour you want.
 
 **Question 3:** Players per squad?
 
@@ -511,13 +513,13 @@ codes it cannot parse.
 table(squad$team_code)
 ```
 
-**Question 4:** Unknown positions?
+**Question 4:** Players with no established club?
 
 ```{r}
-table(squad$position)
+sum(squad$club_country == "X")
 ```
 
-Count the `X` category.
+Two, both in the Aruba women's squad. Remember them. They come back in Episode 3.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -529,7 +531,7 @@ Count the `X` category.
 1. Create an object called `my_island` that stores the text `"Curaçao"`.
 2. Create an object called `area_km2` that stores the value `444`.
 3. Use the `nchar()` function to count the number of characters in `my_island`.
-4. Use `nrow()` inside `round()` to work out what percentage of all 103 players
+4. Use `nrow()` inside `round()` to work out what percentage of all 94 players
    are in the Curaçao men's squad. Hint: you can put one function inside
    another.
 

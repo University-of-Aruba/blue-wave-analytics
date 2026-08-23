@@ -142,8 +142,8 @@ head(slim)
 You can also drop columns by putting a minus sign in front:
 
 ```{r}
-no_confidence <- select(squad, -confidence)
-head(no_confidence)
+no_club <- select(squad, -club)
+head(no_club)
 ```
 
 ## `mutate()`, Compute Variable
@@ -196,9 +196,9 @@ episode.
 
 Look again at how `based_abroad` was defined. A player whose `club_country` is
 `X`, meaning nobody could establish where they play, is being recorded as
-`FALSE`, not abroad. Nine players in the Curaçao men's pool are in that
-position. Every share we calculate from this column is therefore a little lower
-than the truth, and nothing in the output says so.
+`FALSE`, not abroad. Two players in the Aruba women's squad are in that position.
+Every share we calculate from this column is therefore a little lower than the
+truth, and nothing in the output says so.
 
 That is not a bug in R. It is an analytical choice, made in passing, that a
 reader of your results would never see. The alternative is to say so explicitly:
@@ -231,21 +231,24 @@ the code readable. Now you know what it costs.
 In SPSS: **Transform > Recode into Different Variables**, where you map old
 values to new values. In R you use `case_when()` inside `mutate()`.
 
-The `league_tier` column holds seven different codes. For most questions that is
-too fine-grained. Let us collapse it:
+The `club_country` column holds fourteen different codes plus `X`. For most
+questions that is too fine-grained: you do not want a bar chart with fourteen
+bars, most of them height one. Let us collapse it into regions:
 
 ```{r}
 squad <- mutate(squad,
-  tier_group = case_when(
-    league_tier %in% c("1", "2") ~ "European professional",
-    league_tier == "3"           ~ "European amateur or lower",
-    league_tier %in% c("R", "Y") ~ "Reserve or youth",
-    league_tier == "L"           ~ "Island league",
-    .default                     = "Unknown"
+  home_code = if_else(island == "Curaçao", "CUW", "ABW"),
+  region = case_when(
+    club_country == "X"       ~ "Unknown",
+    club_country == home_code ~ "Home island",
+    club_country == "NLD"     ~ "Netherlands",
+    club_country == "USA"     ~ "North America",
+    club_country %in% c("GBR", "GRC", "TUR", "DEU", "BEL", "CHE", "XKX") ~ "Rest of Europe",
+    .default                  = "Rest of world"
   )
 )
 
-table(squad$tier_group)
+table(squad$region)
 ```
 
 The syntax is `condition ~ value_to_assign`. The `.default` line catches
@@ -256,14 +259,18 @@ Recode.
 
 ## Order matters, and Unknown is a category
 
-`case_when()` works top to bottom and stops at the first match. If you put a
-broad condition first, the narrower ones below it never fire.
+`case_when()` works top to bottom and stops at the first match. That is why the
+`club_country == home_code` line sits above the `"NLD"` line: reverse them and
+every Dutch-based player would be caught by the Netherlands branch before the
+home-island test ever ran. Which happens to be harmless here and would not be if
+the home island were the Netherlands.
 
-Notice also that we sent `X` to "Unknown" rather than quietly dropping those
-players. Ten of the men's squad entries have an unknown tier. Deleting them
-would make every percentage you report afterwards slightly wrong and completely
-untraceable. Keeping the category visible means the reader can see the size of
-the gap and judge for themselves. Do this in your own work.
+We also sent `X` to "Unknown" rather than quietly dropping those two players.
+Two out of 94 will not move a percentage much, and that is not the point. The
+point is that dropping them silently makes every figure you report afterwards
+slightly wrong in a way no reader can detect. Keeping the category visible lets
+them see the size of the gap and judge for themselves. Do this in your own work,
+where the gap will rarely be two rows.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -367,14 +374,14 @@ squad |>
 # Step 2: Add a column selection
 squad |>
   filter(island == "Curaçao") |>
-  select(gender, player_name, position, club, tier_group)
+  select(gender, player_name, position, club, region)
 ```
 
 ```{r}
 # Step 3: Group and summarise
 squad |>
   filter(island == "Curaçao") |>
-  count(gender, tier_group) |>
+  count(gender, region) |>
   arrange(gender, desc(n))
 ```
 
@@ -404,11 +411,15 @@ will reach for it constantly.
 - The `filter(club_country %in% c("CUW", "ABW"))` result usually produces an
   audible reaction in a Curaçao room. Let it. Then say "we are not explaining
   that today, we are learning how to ask it."
-- If someone asks why 22 players have position `X` and 10 have tier `X`, the
-  honest answer is that the underlying sources are federation Facebook posts and
-  Wikipedia squad tables, and the compiler recorded uncertainty rather than
-  guessing. Point them to the codebook in the data folder. This is a good moment
-  for a word about documenting your own uncertainty.
+- If someone asks why two players have `club_country == "X"`, the honest answer
+  is that the source is a Wikipedia squad table, those two rows list no club, and
+  the build script recorded that rather than guessing. Point them to
+  `blue_wave_squad_codebook.md` in the data folder. This is a good moment for a
+  word about documenting your own uncertainty.
+- Someone may well ask how current the squads are. They are as current as
+  Wikipedia, which is to say: maintained by volunteers, lagging real call-ups by
+  weeks or months, and not necessarily consistent across the four pages. Say so.
+  It is a better answer than pretending, and it sets up Episode 5.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -437,9 +448,10 @@ cuw_countries <- squad |>
 cuw_countries
 ```
 
-None. Not one player in the Curaçao men's pool plays club football on the
-island. The Netherlands dominates, with a scatter of other European and North
-American leagues, and a block of unknowns coded `X`.
+None. Not one of the 26 players plays club football on Curaçao. The Netherlands
+is the largest single destination with 10, but it is not a majority: the other
+16 are scattered across nine more countries, from England and Turkey to Malaysia
+and Saudi Arabia.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -468,10 +480,14 @@ squad |>
   arrange(desc(pct_abroad))
 ```
 
-The ordering is the finding. The two islands are 80 kilometres apart with
-comparable populations, and their squads are built in almost opposite ways. Note
-also the gap between the men's and women's squads within each island, which is a
-second story sitting inside the same table.
+Both men's squads sit high and both women's squads sit lower, so the sharper
+split here is by gender rather than by island. That is worth noticing precisely
+because it is not the split you were probably looking for. Episode 5 puts a test
+on it.
+
+The island difference is real but it does not live in this column. Both islands
+send most of their players abroad; where they send them is the interesting part,
+which is what `region` is for.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -480,9 +496,9 @@ second story sitting inside the same table.
 
 ## Challenge 3: Composition by position
 
-Using the `tier_group` column we created with `case_when()`, write a pipeline
+Using the `region` column we created with `case_when()`, write a pipeline
 that shows, for the Curaçao men's squad only, how many players fall in each
-combination of `position` and `tier_group`. Sort by position and then by count
+combination of `position` and `region`. Sort by position and then by count
 descending.
 
 Hint: you will need to group by two columns, and `count()` accepts more than one.
@@ -494,7 +510,7 @@ Hint: you will need to group by two columns, and `count()` accepts more than one
 ```{r}
 squad |>
   filter(team_code == "CUW-M") |>
-  count(position, tier_group) |>
+  count(position, region) |>
   arrange(position, desc(n))
 ```
 
@@ -503,7 +519,7 @@ If you used `group_by()` and `summarise()` instead, add `.groups = "drop"`:
 ```{r}
 squad |>
   filter(team_code == "CUW-M") |>
-  group_by(position, tier_group) |>
+  group_by(position, region) |>
   summarise(n = n(), .groups = "drop") |>
   arrange(position, desc(n))
 ```

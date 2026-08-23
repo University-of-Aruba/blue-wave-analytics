@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FAQ card — R for SPSS users</title>
+<style>
+  @page { size: A5; margin: 12mm; }
+  html, body { margin: 0; padding: 0; background: #f4f4f2; font-family: Georgia, "Times New Roman", serif; color: #1d2433; }
+  body { display: flex; flex-direction: column; gap: 10mm; padding: 10mm; }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid #d8d8d2;
+    border-radius: 4px;
+    padding: 10mm 11mm;
+    page-break-after: always;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  }
+  .card:last-child { page-break-after: auto; }
+
+  .label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #605b54;
+    padding-bottom: 3mm;
+    margin-bottom: 5mm;
+  }
+  .tag {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #605b54;
+  }
+  .tag.number { color: #44759e; font-weight: 600; }
+
+  h1 {
+    font-size: 18pt;
+    margin: 0 0 4mm 0;
+    color: #44759e;
+    font-weight: normal;
+    line-height: 1.25;
+  }
+
+  .short {
+    font-size: 13pt;
+    line-height: 1.45;
+    margin: 0 0 5mm 0;
+    padding: 4mm 5mm;
+    background: #dee3c8;
+    border-left: 3px solid #749c4c;
+    color: #1d2433;
+  }
+
+  .body {
+    font-size: 10.5pt;
+    line-height: 1.5;
+    margin: 0 0 3mm 0;
+  }
+
+  .body + .body { margin-top: 2mm; }
+
+  .footnote {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    color: #605b54;
+    border-top: 1px dotted #c9c9c2;
+    padding-top: 3mm;
+    margin-top: 5mm;
+    line-height: 1.4;
+  }
+
+  .cover {
+    background: #44759e;
+    color: #ffffff;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180mm;
+  }
+  .cover h1 { color: #ffffff; font-size: 26pt; margin-bottom: 6mm; }
+  .cover .sub { font-size: 12pt; color: #dee3c8; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .cover .note {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    color: #dee3c8;
+    line-height: 1.5;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-top: 4mm;
+  }
+  .cover ol { padding-left: 5mm; margin: 3mm 0 0 0; }
+  .cover ol li { margin-bottom: 2mm; }
+</style>
+</head>
+<body>
+
+<div class="card cover">
+  <div>
+    <div class="tag" style="color:#dee3c8;">R for SPSS users · DCDC Network</div>
+    <h1>Questions you will get asked</h1>
+    <div class="sub">Six answers, pre-written. Pick up the card, deliver the answer, move on.</div>
+  </div>
+  <div class="note">
+    Having this printed and face-down next to your laptop is a tell that you expected the question. That earns credibility. Do not improvise on AI or data privacy — the short answers on this card are sharper than anything you will produce under time pressure.
+    <ol>
+      <li>AI and student learning</li>
+      <li>AI with sensitive government data</li>
+      <li>Why R if AI writes the code anyway</li>
+      <li>Why R instead of staying with SPSS</li>
+      <li>What to do with your existing .sav files</li>
+      <li>Classification coding (ISIC, ISCO) on sensitive labour data</li>
+    </ol>
+  </div>
+</div>
+
+<div class="card">
+  <div class="label-row">
+    <span class="tag number">01</span>
+    <span class="tag">pedagogy · expect from educators</span>
+  </div>
+  <h1>How do I stop students from just using AI?</h1>
+  <p class="short">Fundamentals are not an alternative to using AI — they are what makes AI use effective. A student who cannot read R cannot tell you whether Claude's output is right or wrong.</p>
+  <p class="body">The question to examine is not how to prevent AI use. It is whether your assessment tests understanding or tests procedure. If a student can fully outsource an assignment to an LLM and pass, the assignment was probably testing the wrong thing regardless of AI.</p>
+  <p class="body">What works better than surveillance: short oral defences of submitted code (five minutes is enough), process documentation where students describe what they tried and why, and locally specific datasets — Curacao census, island election results, local government data — that the model was not trained on and cannot bluff through.</p>
+  <p class="footnote">If it keeps coming up, point to DCDC's Island Research Reference Data repo as a source of locally specific datasets.</p>
+</div>
+
+<div class="card">
+  <div class="label-row">
+    <span class="tag number">02</span>
+    <span class="tag">privacy · expect from civil servants</span>
+  </div>
+  <h1>Is it safe to use AI with government data?</h1>
+  <p class="short">The risk lives in what you put in the prompt, not where the code runs. R on your laptop never sends your data anywhere. Claude seeing your prompt is a separate question.</p>
+  <p class="body">Practical rule of thumb. Code-generation prompts with no real data in them are low risk. Prompts that contain actual rows, names, IDs, or identifying fields are a privacy exposure regardless of where the script then runs.</p>
+  <p class="body">If the data is genuinely sensitive, three safe options. Work with synthetic or anonymised data when asking the AI for help. Use a local LLM (Ollama running Llama or Mistral) so nothing leaves your machine. Or get an enterprise agreement with explicit no-training-on-inputs terms through your IT department.</p>
+  <p class="footnote">The tool is not unsafe. The workflow is what matters. Keep real data out of the chat window.</p>
+</div>
+
+<div class="card">
+  <div class="label-row">
+    <span class="tag number">03</span>
+    <span class="tag">the scariest question</span>
+  </div>
+  <h1>If AI writes the code, why am I learning R?</h1>
+  <p class="short">Because you are the one standing in the meeting when someone asks what drove the number. The model can produce output. Only you can defend it.</p>
+  <p class="body">This is the refinery question from this morning, in a new form. AI makes code faster to write. It does not make analysis easier to defend. If you cannot read the code the model produced, you cannot tell whether it answered the question you actually asked.</p>
+  <p class="body">The analysts who get the most out of AI tools are the ones who know enough to double-check them. R literacy is what makes Claude or Copilot safe to use. It is also what lets you catch a subtle error before it ends up in a policy brief with your name on it.</p>
+  <p class="footnote">Honest position: my own R code is AI-assisted. I could not do that if I could not read R.</p>
+</div>
+
+<div class="card">
+  <div class="label-row">
+    <span class="tag number">04</span>
+    <span class="tag">the defensive question</span>
+  </div>
+  <h1>Why R? SPSS works fine for me.</h1>
+  <p class="short">SPSS works fine until someone asks you to redo last quarter's analysis and you cannot remember which menu clicks you did. R remembers, because the script is the record.</p>
+  <p class="body">This is not about SPSS being wrong. It is about what is written down. Menu clicks leave no trace. A script is a permanent, auditable record of what you did, readable by you next year and by a colleague who was never in the room. That is the core of reproducibility, and it is a DCDC priority for a reason — institutional memory survives staff turnover only if the work is written, not clicked.</p>
+  <p class="body">R is also free, which matters for small institutions, and it has a much larger library of methods than SPSS. You do not have to choose one forever. Most people in this room will end up using both.</p>
+</div>
+
+<div class="card">
+  <div class="label-row">
+    <span class="tag number">05</span>
+    <span class="tag">the practical question</span>
+  </div>
+  <h1>What happens to all my .sav files?</h1>
+  <p class="short">They still open. R reads SPSS files directly through the haven package. You do not have to migrate anything to start.</p>
+  <p class="body">One line: <code style="font-family: Consolas, Menlo, monospace; background: #f4f2ec; padding: 1px 4px; border-radius: 2px;">data &lt;- haven::read_sav("myfile.sav")</code>. Your variable labels, value labels, and missing value codes come along. Nothing is lost in translation, and you can keep SPSS open next to RStudio for as long as you need the comfort of the familiar interface.</p>
+  <p class="body">The longer-term move is toward CSV as the storage format, because it is open, universal, and version-control friendly. But that is a choice for later, not a prerequisite for today.</p>
+  <p class="footnote">Show the haven one-liner in Episode 2 or Episode 3 when the question actually comes up.</p>
+</div>
+
+<div class="card">
+  <div class="label-row">
+    <span class="tag number">06</span>
+    <span class="tag">classification · expect from civil servants</span>
+  </div>
+  <h1>We code ISIC and ISCO in SPSS syntax. How do we do that in R?</h1>
+  <p class="short">An R script is the direct equivalent of an SPSS syntax file — only auditable in git. And for ISIC/ISCO specifically, the R pattern is not a long chain of recodes: it is a join to a lookup table, which is simpler and less error-prone.</p>
+  <p class="body">In SPSS, classification coding usually means a long <code style="font-family: Consolas, Menlo, monospace; background: #f4f2ec; padding: 1px 4px; border-radius: 2px;">RECODE</code> or <code style="font-family: Consolas, Menlo, monospace; background: #f4f2ec; padding: 1px 4px; border-radius: 2px;">DO IF</code> block in a .sps file, maintained by hand. The equivalent R script does the same work more explicitly: you hold your labour dataset in one tibble and the ISIC or ISCO code list in another, and you join them with <code style="font-family: Consolas, Menlo, monospace; background: #f4f2ec; padding: 1px 4px; border-radius: 2px;">dplyr::left_join()</code>. One line. Every code gets its description attached, and any code that doesn't match shows up as NA — which is exactly the error you want to catch early.</p>
+  <p class="body">The canonical ISIC or ISCO list itself is just a CSV file. Keep one copy on your network drive, SharePoint, or wherever your team already shares documents. Every analyst reads from the same file, so the codes stay consistent across the department. When UN Statistics moves from ISIC Rev. 4 to Rev. 5, one person updates the file and every script picks up the new codes on the next run — no copy-pasting revised recodes into five people's .sps files. Teams that want full version history and an audit trail later graduate to hosting the file on a platform like GitHub, but that is a next step, not a prerequisite.</p>
+  <p class="footnote">Privacy: the actual labour microdata stays on your laptop. R does not send rows anywhere. Read your existing .sav files with <code style="font-family: Consolas, Menlo, monospace; background: #f4f2ec; padding: 1px 4px; border-radius: 2px;">haven::read_sav()</code> — the variable labels and missing-value codes come along intact.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Day 1 in one breath — DCDC R for SPSS Users</title>
+<style>
+  :root {
+    --blue: #44759e;
+    --orange: #f38439;
+    --beige: #dee3c8;
+    --green: #749c4c;
+    --brown: #605b54;
+    --bg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--brown);
+    background: var(--bg);
+    scroll-behavior: smooth;
+  }
+  body {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+  }
+  section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    padding: 6vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--beige);
+  }
+  .episode-tag {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-size: 4.5rem;
+    line-height: 1.05;
+    margin: 0 0 1.5rem 0;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 3.2rem;
+    line-height: 1.1;
+    margin: 0 0 1rem 0;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .verb {
+    color: var(--orange);
+  }
+  .lead {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    max-width: 60ch;
+    color: var(--brown);
+    margin: 0 0 2rem 0;
+  }
+  .visual {
+    background: var(--beige);
+    border-left: 6px solid var(--green);
+    padding: 1.5rem 2rem;
+    max-width: 70ch;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--brown);
+    white-space: pre-wrap;
+  }
+  .arrow {
+    color: var(--orange);
+    font-weight: bold;
+  }
+  .footer {
+    margin-top: auto;
+    font-size: 0.95rem;
+    color: var(--brown);
+    opacity: 0.6;
+    padding-top: 3rem;
+  }
+  .hint {
+    font-size: 0.95rem;
+    color: var(--brown);
+    opacity: 0.55;
+    margin-top: 2rem;
+  }
+  .big-check {
+    font-size: 1.8rem;
+    color: var(--green);
+    margin: 1rem 0;
+  }
+  .capstone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 80ch;
+    margin-top: 1rem;
+  }
+  .capstone-item {
+    background: var(--beige);
+    padding: 1.25rem 1.5rem;
+    border-left: 6px solid var(--orange);
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  .capstone-item strong {
+    color: var(--blue);
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  @media (max-width: 900px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.2rem; }
+    .lead { font-size: 1.2rem; }
+    .visual { font-size: 1rem; }
+    .capstone-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<section>
+  <div class="episode-tag">Day 2 · Friday 24 April 2026</div>
+  <h1>Day 1 in one breath.</h1>
+  <p class="lead">Four episodes, one through four. Here is the through-line before we pick up where we left off.</p>
+  <div class="hint">Spacebar or arrow keys to advance.</div>
+</section>
+
+<section>
+  <div class="episode-tag">Episode 1</div>
+  <h2><span class="verb">Switch</span> from clicks to code.</h2>
+  <p class="lead">The case for R is not that it is prettier. It is that the next person who opens your analysis can see exactly what you did, including the future version of you.</p>
+  <div class="visual">SPSS      Analyze <span class="arrow">&gt;</span> Compare Means <span class="arrow">&gt;</span> Independent-Samples T Test <span class="arrow">&gt;</span> ...
+
+R         t.test(points ~ small_state, data = fifa)</div>
+</section>
+
+<section>
+  <div class="episode-tag">Episode 2</div>
+  <h2><span class="verb">Set up</span> a real working environment.</h2>
+  <p class="lead">Project, script, console, data. Four panes, one folder, one file you can re-run from scratch.</p>
+  <div class="visual">workshop/
+  ├── workshop.Rproj
+  ├── script.R
+  └── data/
+        └── blue_wave_squad.csv</div>
+</section>
+
+<section>
+  <div class="episode-tag">Episode 3</div>
+  <h2><span class="verb">Transform</span> data without leaving the keyboard.</h2>
+  <p class="lead">Six verbs do most of the work. You learned all six yesterday. They chain through the pipe.</p>
+  <div class="visual">squad |>
+  filter(year >= 2019) |>
+  select(origin, quarter, avg_spending_usd) |>
+  mutate(spending_eur = avg_spending_usd * 0.92) |>
+  group_by(origin) |>
+  summarise(mean_spend = mean(spending_eur)) |>
+  arrange(desc(mean_spend))</div>
+</section>
+
+<section>
+  <div class="episode-tag">Episode 4</div>
+  <h2><span class="verb">Visualize</span> with a grammar, not a gallery.</h2>
+  <p class="lead">Every chart is three things: data, mappings, and a geometry. Change the geom and you change the chart. The rest stays.</p>
+  <div class="visual">ggplot(squad, aes(x = team_code, fill = league_tier)) +
+  geom_boxplot(fill = "#44759e") +
+  labs(title = "Average spending by origin",
+       x = NULL,
+       y = "USD per visitor") +
+  theme_minimal()</div>
+</section>
+
+<section>
+  <div class="episode-tag">Where we are heading today</div>
+  <h2>From script to <span class="verb">reproducible report.</span></h2>
+  <p class="lead">Everything you did yesterday becomes one document that rebuilds itself when the data changes. By the end of the day, you will have a report you could publish.</p>
+  <div class="capstone-grid">
+    <div class="capstone-item"><strong>Statistics</strong>Same tests you ran in SPSS, one function call each.</div>
+    <div class="capstone-item"><strong>Reporting</strong>R Markdown: prose, code, and output in one file.</div>
+    <div class="capstone-item"><strong>Open lab</strong>Your own data, your own question, with help at your elbow.</div>
+    <div class="capstone-item"><strong>The capstone</strong>A live-API report: data pulled from the internet, rendered as an interactive HTML page.</div>
+  </div>
+</section>
+
+<section>
+  <div class="episode-tag">Ground rules for today</div>
+  <h2>If you fall behind, <span class="verb">say so.</span></h2>
+  <p class="lead">Yesterday a few of you told us that when you got stuck, you stayed stuck. We fixed that today. Raise a hand. Flag Esther. Flag me. We will catch you before the next exercise, not after.</p>
+  <p class="lead">The cheat sheet in front of you is yours. Write on it. It was made for today.</p>
+  <div class="footer">DCDC Network · Introduction to R for SPSS Users · Cohort 1 · Day 2</div>
+</section>
+
+</body>
+</html>

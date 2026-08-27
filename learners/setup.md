@@ -2,7 +2,7 @@
 title: Setup
 ---
 
-You need to install R and RStudio **before the first session on Monday 15 September**.
+You need to install R and RStudio **before the first session on Wednesday 23 September**.
 Both are free. Follow the instructions below for your operating system.
 
 ::::::::::::::::::::::::::::::::::::::: callout
@@ -20,7 +20,8 @@ Asking for only one of them is a common cause of a half-working setup that
 wastes course time.
 
 Give IT at least a week to process the request so your laptop is ready before
-the first session.
+the first session. The course runs on **Wednesday 23 and Friday 25 September**,
+so a ticket raised after 16 September is unlikely to be resolved in time.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -33,7 +34,7 @@ course:
 Two optional online clinics run in the week before the course. Both are the
 same session, so come to whichever suits you.
 
-**When:** Tuesday 8 September and Friday 11 September 2026, 16:00 -- 17:00
+**When:** Tuesday 15 September and Friday 18 September 2026, 16:00 -- 17:00
 **Where:** Online, link circulated with your registration confirmation
 **What:** Bring your laptop. We help you install R and RStudio, verify
 everything works, and install the required packages. Drop in, drop out.
@@ -108,7 +109,7 @@ During the course, we will install packages together. If you want to get ahead,
 open RStudio and run this command in the console:
 
 ```r
-install.packages(c("tidyverse", "haven", "rmarkdown"))
+install.packages(c("tidyverse", "haven", "readxl", "rmarkdown", "broom", "islandcodes"))
 ```
 
 - **tidyverse** includes dplyr (data manipulation), ggplot2 (visualization),
@@ -116,13 +117,19 @@ install.packages(c("tidyverse", "haven", "rmarkdown"))
 - **haven** reads SPSS `.sav` files directly into R
 - **readxl** reads Excel workbooks, including individual sheets
 - **rmarkdown** creates reproducible reports
+- **broom** turns model output into a tidy table (Episode 5)
+- **islandcodes** keeps the Dutch Caribbean islands separable in
+  country-classification joins (Episode 7)
+
+This matters most if you are on a managed or lab machine. Installing packages
+mid-course is where locked-down laptops fail, and it fails quietly. Getting
+these in beforehand removes the most common way a session goes wrong.
 
 ## Verify your setup
 
 Open RStudio and paste this into the console:
 
 ```r
-install.packages(c("tidyverse", "haven", "readxl", "rmarkdown"))
 library(tidyverse)
 ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
 ```

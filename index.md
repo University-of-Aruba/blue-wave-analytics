@@ -39,13 +39,13 @@ or your own thesis data.
 ## Schedule
 
 Two teaching days with a gap day between them, at the University of Curaçao.
-**Monday 15 and Wednesday 17 September 2026, 9:00 to 16:00** on both days.
+**Wednesday 23 and Friday 25 September 2026, 9:00 to 16:00** on both days.
 Lunch and coffee breaks are built in. Each topic links to its episode so you
 can jump straight to the material.
 
-*Dates and room are provisional until confirmed with the local coordinator.*
+*Room to be confirmed with the local coordinator. Registration: https://forms.gle/QbH1iyszxQDqKhvb7*
 
-### Day 1 · Monday 15 September
+### Day 1 - Wednesday 23 September
 
 | Time          | Topic                                                              |
 |---------------|--------------------------------------------------------------------|
@@ -76,7 +76,7 @@ plenty. Bring the script to the Day 2 open lab.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Day 2 · Wednesday 17 September
+### Day 2 - Friday 25 September
 
 | Time          | Topic                                                                       |
 |---------------|-----------------------------------------------------------------------------|

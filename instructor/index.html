@@ -306,7 +306,7 @@
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/01-why-r.html" rel="next">Next: The Case for... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-why-r.html" rel="next">Next: The Case for Switching... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Schedule</h1>
       
@@ -351,13 +351,12 @@ your own survey, your own budget file, or your own thesis data.</p>
 <div class="section level2">
 <h2 id="schedule">Schedule<a class="anchor" aria-label="anchor" href="#schedule"></a></h2>
 <p>Two teaching days with a gap day between them, at the University of
-Curaçao. <strong>Monday 15 and Wednesday 17 September 2026, 9:00 to
+Curaçao. <strong>Wednesday 23 and Friday 25 September 2026, 9:00 to
 16:00</strong> on both days. Lunch and coffee breaks are built in. Each
 topic links to its episode so you can jump straight to the material.</p>
-<p><em>Dates and room are provisional until confirmed with the local
-coordinator.</em></p>
+<p><em>Room to be confirmed with the local coordinator. Registration: <a href="https://forms.gle/QbH1iyszxQDqKhvb7" class="external-link uri">https://forms.gle/QbH1iyszxQDqKhvb7</a></em></p>
 <div class="section level3">
-<h3 id="day-1-monday-15-september">Day 1 · Monday 15 September<a class="anchor" aria-label="anchor" href="#day-1-monday-15-september"></a></h3>
+<h3 id="day-1---wednesday-23-september">Day 1 - Wednesday 23 September<a class="anchor" aria-label="anchor" href="#day-1---wednesday-23-september"></a></h3>
 <table class="table"><colgroup><col width="18%"><col width="81%"></colgroup><thead><tr><th>Time</th>
 <th>Topic</th>
 </tr></thead><tbody><tr><td>09:00 – 09:10</td>
@@ -407,7 +406,7 @@ is plenty. Bring the script to the Day 2 open lab.</p>
 </div>
 </div>
 <div class="section level3">
-<h3 id="day-2-wednesday-17-september">Day 2 · Wednesday 17 September<a class="anchor" aria-label="anchor" href="#day-2-wednesday-17-september"></a></h3>
+<h3 id="day-2---friday-25-september">Day 2 - Friday 25 September<a class="anchor" aria-label="anchor" href="#day-2---friday-25-september"></a></h3>
 <table class="table"><colgroup><col width="16%"><col width="83%"></colgroup><thead><tr><th>Time</th>
 <th>Topic</th>
 </tr></thead><tbody><tr><td>09:00 – 09:30</td>
@@ -576,7 +575,7 @@ any links that you are not going to use.
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
       </section><section id="setup"><p>You need to install R and RStudio <strong>before the first session on
-Monday 15 September</strong>. Both are free. Follow the instructions
+Wednesday 23 September</strong>. Both are free. Follow the instructions
 below for your operating system.</p>
 <div id="using-a-work-issued-laptop-check-with-it-first" class="callout">
 <div class="callout-square">
@@ -597,7 +596,9 @@ to install <strong>both R and RStudio</strong>. Asking for only one of
 them is a common cause of a half-working setup that wastes course
 time.</p>
 <p>Give IT at least a week to process the request so your laptop is
-ready before the first session.</p>
+ready before the first session. The course runs on <strong>Wednesday 23
+and Friday 25 September</strong>, so a ticket raised after 16 September
+is unlikely to be resolved in time.</p>
 </div>
 </div>
 </div>
@@ -607,7 +608,7 @@ make sure everyone starts ready to go, there is an optional drop-in
 session before the course:</p>
 <p>Two optional online clinics run in the week before the course. Both
 are the same session, so come to whichever suits you.</p>
-<p><strong>When:</strong> Tuesday 8 September and Friday 11 September
+<p><strong>When:</strong> Tuesday 15 September and Friday 18 September
 2026, 16:00 – 17:00 <strong>Where:</strong> Online, link circulated with
 your registration confirmation <strong>What:</strong> Bring your laptop.
 We help you install R and RStudio, verify everything works, and install
@@ -702,7 +703,7 @@ get ahead, open RStudio and run this command in the console:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"tidyverse"</span>, <span class="st">"haven"</span>, <span class="st">"rmarkdown"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"tidyverse"</span>, <span class="st">"haven"</span>, <span class="st">"readxl"</span>, <span class="st">"rmarkdown"</span>, <span class="st">"broom"</span>, <span class="st">"islandcodes"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <ul><li>
 <strong>tidyverse</strong> includes dplyr (data manipulation),
@@ -715,14 +716,23 @@ into R</li>
 sheets</li>
 <li>
 <strong>rmarkdown</strong> creates reproducible reports</li>
-</ul></section><section><h2 class="section-heading" id="verify-your-setup">Verify your setup<a class="anchor" aria-label="anchor" href="#verify-your-setup"></a></h2>
+<li>
+<strong>broom</strong> turns model output into a tidy table (Episode
+5)</li>
+<li>
+<strong>islandcodes</strong> keeps the Dutch Caribbean islands
+separable in country-classification joins (Episode 7)</li>
+</ul><p>This matters most if you are on a managed or lab machine. Installing
+packages mid-course is where locked-down laptops fail, and it fails
+quietly. Getting these in beforehand removes the most common way a
+session goes wrong.</p>
+</section><section><h2 class="section-heading" id="verify-your-setup">Verify your setup<a class="anchor" aria-label="anchor" href="#verify-your-setup"></a></h2>
 <hr class="half-width"><p>Open RStudio and paste this into the console:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"tidyverse"</span>, <span class="st">"haven"</span>, <span class="st">"readxl"</span>, <span class="st">"rmarkdown"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">displ</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>If a scatter plot appears in the Plots pane, everything is working.
@@ -796,7 +806,7 @@ any links that you are not going to use.
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/01-why-r.html" rel="next">Next: The Case for... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/01-why-r.html" rel="next">Next: The Case for Switching... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div>
 <!-- END  : inst/pkgdown/templates/content-syllabus.html -->
@@ -820,7 +830,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.2)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -842,8 +852,8 @@ any links that you are not going to use.
   "url": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor/index.html",
   "identifier": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor/index.html",
   "dateCreated": "2026-08-22",
-  "dateModified": "2026-08-25",
-  "datePublished": "2026-08-25"
+  "dateModified": "2026-08-28",
+  "datePublished": "2026-08-28"
 }
 
   </script><script>

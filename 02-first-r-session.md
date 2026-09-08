@@ -495,7 +495,7 @@ spc_tbl_ [94 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
   ..   club = col_character(),
   ..   club_country = col_character()
   .. )
- - attr(*, "problems")=<pointer: 0x55e9f01d4480> 
+ - attr(*, "problems")=<pointer: 0x55b402c82390> 
 ```
 
 This tells you how many observations (rows), how many variables (columns), and

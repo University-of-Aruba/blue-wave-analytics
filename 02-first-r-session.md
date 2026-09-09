@@ -1,7 +1,7 @@
 ---
 title: "Your First R Session"
-teaching: 60
-exercises: 30
+teaching: 45
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
@@ -495,7 +495,7 @@ spc_tbl_ [94 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
   ..   club = col_character(),
   ..   club_country = col_character()
   .. )
- - attr(*, "problems")=<pointer: 0x55b402c82390> 
+ - attr(*, "problems")=<pointer: 0x5595ccadafc0> 
 ```
 
 This tells you how many observations (rows), how many variables (columns), and

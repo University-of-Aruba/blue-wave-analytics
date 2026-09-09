@@ -1,7 +1,7 @@
 ---
 title: "Visualization with ggplot2"
-teaching: 40
-exercises: 20
+teaching: 25
+exercises: 10
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions

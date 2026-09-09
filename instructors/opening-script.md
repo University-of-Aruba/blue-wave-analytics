@@ -62,7 +62,7 @@ End the personal arc with three workshop rules. The exact wording is yours; the 
 
 > Let's get started. Episode 1 is on the screen. The big questions for the next forty-five minutes are right there at the top: why switch, what does R give you that SPSS does not, and what does the cost actually look like. We will work through those together.
 
-Scroll first to **What you will be able to produce**. This is the Wednesday-afternoon payoff: the squad report that Episode 6 ends on. Hold up the finished report, printed or on a second screen, for five seconds. Do not open it, do not explain it. Name it: "By Wednesday afternoon you will produce something like this from one R Markdown file and one click." Move on. The rendered version is at `episodes/files/blue-wave-squad-report.html` and the source at `episodes/files/blue-wave-squad-report-template.Rmd`.
+Scroll first to **What you will be able to produce**. This is the Friday payoff: the squad report that Episode 6 ends on. Hold up the finished report, printed or on a second screen, for five seconds. Do not open it, do not explain it. Name it: "By Friday midday you will produce something like this from one R Markdown file and one click." Move on. The rendered version is at `episodes/files/blue-wave-squad-report.html` and the source at `episodes/files/blue-wave-squad-report-template.Rmd`.
 
 Then scroll to the cost-argument table. Walk through it briefly. Then through "What R gives you that SPSS does not." Brief is fine. Their eyes are on the page; you are providing colour, not narration.
 
@@ -92,7 +92,18 @@ Do not resolve the question the chart raises. The room will start arguing about 
 
 ## On the scene images
 
-Each episode's lesson page already opens with one atmospheric scene image (`fig/scene_1.jpg` through `scene_7.jpg`) and a short quip caption. They are decoration that sets tone for the page. They are not characters or a recurring narrative across the workshop. Do not point at them, do not flip back to them, do not use them as story beats. They do their work passively. Optional one-line transition acknowledgments for each scene image are in `instructor-notes.md` under "Per-episode scene transitions."
+Each page opens with one scene image and a short quip caption, and this edition
+runs them as a **series**: the same Curacaoan analyst appears in all eight, and
+she changes from a fan pinning photos to a wall map into someone leaving the
+harbour with a chart. That is a deliberate departure from the Aruba course,
+where the images were decoration and you were told to ignore them.
+
+You may point at these. Do not narrate them and do not open with them, but two
+callbacks are worth taking: at Episode 6, when the machine rebuilds her report,
+and at Episode 7, where the arc closes. One sentence each. The transition lines
+are in `instructor-notes.md` under "Per-episode scene transitions."
+
+Everywhere else, let them work passively.
 
 ## What to have ready before you walk in
 

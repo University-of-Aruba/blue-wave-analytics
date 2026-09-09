@@ -1,7 +1,7 @@
 ---
 title: "Reproducible Reporting"
-teaching: 40
-exercises: 20
+teaching: 35
+exercises: 15
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions

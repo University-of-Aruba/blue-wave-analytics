@@ -1,6 +1,6 @@
 ---
 title: "The Case for Switching"
-teaching: 45
+teaching: 35
 exercises: 0
 ---
 
@@ -40,7 +40,7 @@ That is a striking fact, and it is a data fact before it is a football fact.
 Where do the players actually play? How does the men's squad compare with the
 women's, and how does Curaçao compare with Aruba, which has a similar history
 and builds its squad differently? Every one of those questions is a table, a
-filter, a group summary, and a chart. By Wednesday afternoon you will be
+filter, a group summary, and a chart. By the end of Wednesday morning you will be
 answering them yourself, from a script you wrote.
 
 ### What you will be able to produce

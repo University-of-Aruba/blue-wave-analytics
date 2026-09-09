@@ -1,7 +1,7 @@
 ---
 title: "Data Manipulation"
-teaching: 60
-exercises: 30
+teaching: 40
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions

@@ -1,7 +1,7 @@
 ---
 title: "Where to Go from Here"
 teaching: 30
-exercises: 15
+exercises: 10
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
@@ -582,14 +582,16 @@ challenge, which is a better position to argue from.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Open lab: your homework in action
+## Taking your homework further
 
-The last slot of Day 2 is an open lab built around the
-[homework brief](homework.html) you worked through between sessions.
+The four-hour format has no open lab slot, so this section is yours to work
+through after the course, on the [homework brief](homework.html) script you
+built between the two sessions. If the room is ahead of schedule the instructor
+may take one or two of these live instead.
 
-Open your homework script. We will go around the room: a quick look at what each
-of you built, any errors you kept in a comment at the top, and one thing you
-would still like your script to do. The instructor works through extensions live.
+Open your homework script and look at three things: what you built, any errors
+you kept in a comment at the top, and one thing you would still like the script
+to do. Then pick a target below.
 
 Good extension targets, from lightest to heaviest:
 

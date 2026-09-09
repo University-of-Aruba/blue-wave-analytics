@@ -6,18 +6,40 @@ site: sandpaper::sandpaper_site
 
 # Blue Wave Analytics: Introduction to R
 
-A hands-on workshop that builds on what you already know from SPSS to get you
-productive in R. No programming experience required. By the end you will be
-importing data, reshaping it, making publication-quality charts, fitting a
-simple model, and working in a script you can rerun.
+<!-- CARTOON SLOT: uncomment when fig/scene_0.jpg exists. Scene spec in instructors/scene-briefs.md
+![Twenty-six players. Ten countries. One spreadsheet.](fig/scene_0.jpg){alt="Cartoon of a Curacao football fan at a beach bar tracking her squad across a wall map strung with pins and yarn to ten different countries"}
+-->
 
-We learn on the squad that took Curaçao to the World Cup. An island of 149,000
-people put 26 professional footballers on a pitch, almost none of whom play
-their club football on the island. That is a data question before it is a
-football question, and it is the kind of question you will be able to answer
-yourself by the end of the second day.
+Curacao has about 149,000 people and twenty-six men in its current national
+squad. Not one of them plays his club football on the island. Ten countries pay
+their wages: ten players in the Netherlands, four in Britain, three in Turkey,
+two in the United States, two in Greece, then Belgium, Switzerland, Israel,
+Saudi Arabia and Malaysia one at a time.
 
-This course is the Curaçao edition of
+Aruba exports players too. Twenty of its twenty-three play abroad. But eighteen
+of those are in the Netherlands, and the entire squad fits inside four
+countries.
+
+Two islands, half an hour apart by plane, with the same order of population and
+the same passport routes into Europe. One scatters across ten countries. The
+other funnels into one. Nobody sat down and designed either shape.
+
+That is a data question before it is a football question, and you can answer it
+in about fifteen lines of R. Learning to write those fifteen lines is what these
+two days are for.
+
+You will start from what you already know in SPSS and finish with a script that
+imports the squad list, reshapes it, charts it, tests it, and renders a document
+you can run again when the next international window scrambles half the names.
+No programming experience required. If you are comfortable with means, standard
+deviations and hypothesis testing, you have enough to start.
+
+One of the two tests you will run in Episode 5 comes back null. That is
+deliberate. Reporting a result that refuses to be interesting is the thing you
+will do most often in your own work, and it is the thing courses like this one
+usually skip.
+
+This course is the Curacao edition of
 [Introduction to R for SPSS Users](https://university-of-aruba.github.io/r-for-spss-users/),
 developed by **Rendell de Kort** ([University of Aruba](https://www.ua.aw/) /
 [DCDC Network](https://dcdc.network)) and delivered with **Marjorie Alfonso**.
@@ -28,37 +50,35 @@ It is open and freely reusable under a CC-BY 4.0 license.
 ## The football is the vehicle, not the payload
 
 You will not learn expected goals, expected threat, or anything else from the
-analytics literature here. This is an introduction to R. The squad data is
-what we compute on because a local stake helps people learn, and because the
-dataset happens to be an honest one with real gaps in it. What you take away
-is R, and it will work just as well on your own survey, your own budget file,
-or your own thesis data.
+analytics literature here. This is an introduction to R. The squad data is what
+we compute on because a local stake helps people learn, and because the dataset
+is an honest one with real gaps in it. What you take away is R, and it will work
+just as well on your own survey, your own budget file, or your own thesis data.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Schedule
 
-Two teaching days with a gap day between them, at the University of Curaçao.
-**Wednesday 23 and Friday 25 September 2026, 9:00 to 16:00** on both days.
-Lunch and coffee breaks are built in. Each topic links to its episode so you
-can jump straight to the material.
+Two teaching mornings with a gap day between them, at the University of
+Curacao. **Wednesday 23 and Friday 25 September 2026, 09:00 to 13:00** on both
+days. Coffee breaks are built in and the course finishes before lunch. Each
+topic links to its episode so you can jump straight to the material.
 
-*Room to be confirmed with the local coordinator. Registration: https://forms.gle/QbH1iyszxQDqKhvb7*
+*Itanium Computer Room, University of Curacao, Willemstad.
+Registration: https://forms.gle/QbH1iyszxQDqKhvb7*
 
 ### Day 1 - Wednesday 23 September
 
 | Time          | Topic                                                              |
 |---------------|--------------------------------------------------------------------|
-| 09:00 – 09:10 | Welcome and introductions                                          |
-| 09:10 – 09:55 | [Episode 1 — The case for switching](01-why-r.html)                |
-| 09:55 – 10:10 | *Coffee break*                                                     |
-| 10:10 – 11:40 | [Episode 2 — Your first R session](02-first-r-session.html)        |
-| 11:40 – 12:00 | Questions and consolidation                                        |
-| 12:00 – 13:00 | *Lunch*                                                            |
-| 13:00 – 14:30 | [Episode 3 — Data manipulation](03-data-manipulation.html)         |
-| 14:30 – 14:45 | *Afternoon break*                                                  |
-| 14:45 – 15:45 | [Episode 4 — Your first visualization](04-visualization.html)      |
-| 15:45 – 16:00 | Wrap-up and [homework brief](homework.html)                        |
+| 09:00 - 09:10 | Welcome and introductions                                          |
+| 09:10 - 09:45 | [Episode 1 - The case for switching](01-why-r.html)                |
+| 09:45 - 10:50 | [Episode 2 - Your first R session](02-first-r-session.html)        |
+| 10:50 - 11:05 | *Coffee break*                                                     |
+| 11:05 - 12:05 | [Episode 3 - Data manipulation](03-data-manipulation.html)         |
+| 12:05 - 12:15 | *Short break*                                                      |
+| 12:15 - 12:50 | [Episode 4 - Your first visualization](04-visualization.html)      |
+| 12:50 - 13:00 | Wrap-up and [homework brief](homework.html)                        |
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -68,11 +88,12 @@ The 48 hours between the two days is when the course content becomes a skill.
 A short practice assignment is waiting for you on a dedicated page, so you can
 reopen it from any device overnight:
 
-### **→ [Day 1 homework brief](homework.html)**
+### **-> [Day 1 homework brief](homework.html)**
 
 Pick a dataset you already use, write a short R script that imports it,
 transforms it, summarises it, and charts it. Thirty to sixty minutes is
-plenty. Bring the script to the Day 2 open lab.
+plenty. Bring the script to the Day 2 recap; the first twenty minutes of
+Friday are set aside for working through what you hit.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -80,19 +101,14 @@ plenty. Bring the script to the Day 2 open lab.
 
 | Time          | Topic                                                                       |
 |---------------|-----------------------------------------------------------------------------|
-| 09:00 – 09:30 | [Day 1 recap](files/day1-recap.html) and troubleshooting                    |
-| 09:30 – 09:45 | *Short break*                                                               |
-| 09:45 – 10:45 | [Episode 5 — Statistical analysis, part 1](05-statistical-analysis.html)    |
-| 10:45 – 11:00 | *Coffee break*                                                              |
-| 11:00 – 11:35 | [Episode 5 — Statistical analysis, part 2](05-statistical-analysis.html)    |
-| 11:35 – 11:45 | *Stretch break*                                                             |
-| 11:45 – 12:00 | Episode 5 consolidation and questions                                       |
-| 12:00 – 13:00 | *Lunch*                                                                     |
-| 13:00 – 14:00 | [Episode 6 — Reproducible reporting](06-reproducible-reporting.html)        |
-| 14:00 – 14:15 | *Afternoon break*                                                           |
-| 14:15 – 15:00 | [Episode 7 — Where to go from here](07-next-steps.html)                     |
-| 15:00 – 15:45 | Open lab                                                                    |
-| 15:45 – 16:00 | Wrap-up and next steps                                                      |
+| 09:00 - 09:20 | [Day 1 recap](files/day1-recap.html), homework and troubleshooting          |
+| 09:20 - 10:20 | [Episode 5 - Statistical analysis, part 1](05-statistical-analysis.html)    |
+| 10:20 - 10:35 | *Coffee break*                                                              |
+| 10:35 - 11:10 | [Episode 5 - Statistical analysis, part 2](05-statistical-analysis.html)    |
+| 11:10 - 11:20 | *Short break*                                                               |
+| 11:20 - 12:10 | [Episode 6 - Reproducible reporting](06-reproducible-reporting.html)        |
+| 12:10 - 12:50 | [Episode 7 - Where to go from here](07-next-steps.html)                     |
+| 12:50 - 13:00 | Wrap-up and next steps                                                      |
 
 ## Who is this for?
 

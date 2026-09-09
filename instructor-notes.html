@@ -379,7 +379,7 @@
 <hr class="half-width">
 <p>This course follows the Carpentries live-coding pedagogy: the
 instructor types code live while participants follow along. Avoid slides
-for code — always demonstrate in RStudio.</p>
+for code; always demonstrate in RStudio.</p>
 <p>Key principles: - <strong>Start from what they know</strong>: Every R
 operation is introduced alongside its SPSS equivalent. Use SPSS
 terminology first, then introduce the R term. - <strong>Wow first,
@@ -409,13 +409,13 @@ assist with individual issues without stopping the class.</p>
 <tbody>
 <tr>
 <td>01 - The Case for Switching</td>
-<td>45 min</td>
+<td>35 min</td>
 <td>Instructor demo only, no participant coding. Demo is the UA SIDS
 reference-list pull from <code>island-research-reference-data</code>
 (see Episode 1 instructor block). Second half of the demo loads the
 squad data and counts where the Curacao men’s squad plays; that half
 needs no network and is the one to protect. Also shows the squad-report
-capstone HTML as the Wednesday-afternoon target, rendered at
+capstone HTML as the Friday target, rendered at
 <code>episodes/files/blue-wave-squad-report.html</code> and sourced at
 <code>episodes/files/blue-wave-squad-report-template.Rmd</code>.</td>
 </tr>
@@ -426,7 +426,7 @@ capstone HTML as the Wednesday-afternoon target, rendered at
 </tr>
 <tr>
 <td>02 - Your First R Session</td>
-<td>90 min</td>
+<td>65 min</td>
 <td>First hands-on. Go slow. Many will struggle with typos. The “Before
 you import” subsection is a deliberate whole-room synchronized moment:
 project the download links on the screen, wait for green stickies in the
@@ -439,7 +439,7 @@ Files pane before typing <code>read_csv()</code>.</td>
 </tr>
 <tr>
 <td>03 - Data Manipulation</td>
-<td>90 min</td>
+<td>60 min</td>
 <td>The pipe operator is the key “aha” moment</td>
 </tr>
 <tr>
@@ -449,21 +449,22 @@ Files pane before typing <code>read_csv()</code>.</td>
 </tr>
 <tr>
 <td>04 - Visualization</td>
-<td>60 min</td>
-<td>End on a high — everyone leaves with a beautiful chart. Two datasets
+<td>35 min</td>
+<td>End on a high, everyone leaves with a beautiful chart. Two datasets
 in this episode: squad data for the categorical charts, FIFA rankings
 for the continuous ones. Do not suppress the missing-data warning on the
 first scatterplot; it is taught.</td>
 </tr>
 <tr>
 <td>Wrap-up + homework brief</td>
-<td>15 min</td>
+<td>10 min</td>
 <td>Project the <a href="homework.html">homework page</a> on the screen.
 Walk through the four-step assignment out loud. Tell participants the
 page URL is bookmarked under “For Learners → Homework brief” on the
 course site so they can open it on any device overnight. Emphasise:
 30–60 minutes is enough, do not attempt R Markdown yet (that is Day 2).
-Bring the script to Day 2 open lab.</td>
+Bring the script to the Day 2 recap; there is no open lab in the
+four-hour format.</td>
 </tr>
 </tbody>
 </table>
@@ -484,13 +485,13 @@ Bring the script to Day 2 open lab.</td>
 </tr></thead>
 <tbody>
 <tr>
-<td>Review and troubleshooting</td>
-<td>30 min</td>
+<td>Review, homework and troubleshooting</td>
+<td>20 min</td>
 <td>Address questions from between-session practice</td>
 </tr>
 <tr>
 <td>05 - Statistical Analysis</td>
-<td>120 min</td>
+<td>95 min, split either side of the coffee break</td>
 <td>Core for survey researchers. The normality-testing section
 (histogram, Q-Q plot, Shapiro-Wilk, robustness note) maps directly onto
 the SPSS Explore output most participants will recognise. Take your
@@ -503,7 +504,7 @@ time.</td>
 </tr>
 <tr>
 <td>06 - Reproducible Reporting</td>
-<td>60 min</td>
+<td>50 min</td>
 <td>R Markdown is often the biggest “wow” for SPSS users. Ends with the
 squad-report capstone that Episode 1’s opening teased. Participants pull
 <code>blue-wave-squad-report-template.Rmd</code> and
@@ -521,11 +522,11 @@ one file produce a different report.</td>
 </tr>
 <tr>
 <td>07 - Where to Go from Here</td>
-<td>55 min</td>
+<td>40 min</td>
 <td>End with practical next steps. The new UA datasets subsection
 (CAS_election_data and island-research-reference-data) is a chance to
-live-demo <code>read.csv()</code> straight from a raw GitHub URL — most
-SPSS users have never seen data load over HTTPS without a manual
+live-demo <code>read.csv()</code> straight from a raw GitHub URL, and
+most SPSS users have never seen data load over HTTPS without a manual
 download.</td>
 </tr>
 </tbody>
@@ -534,13 +535,19 @@ download.</td>
 </section><section><h2 class="section-heading" id="per-episode-scene-transitions">Per-episode scene transitions<a class="anchor" aria-label="anchor" href="#per-episode-scene-transitions"></a>
 </h2>
 <hr class="half-width">
-<p>Each episode opens with one atmospheric scene image at the top of the
-page (<code>fig/scene_1.jpg</code> through <code>scene_7.jpg</code>) and
-a one-line quip caption. The captions do most of the work; instructors
-who prefer to start straight from the first heading should feel free to.
-For instructors who want a single-beat acknowledgment when arriving at
-each new episode, the lines below match the captions in tone and feed
-naturally into the episode’s opening content. They are optional.</p>
+<p>The course carries a <strong>series</strong> of cartoons, not eight
+unrelated images. One Curacaoan analyst runs through all of them,
+starting as a fan with a wall map on the index page and finishing at the
+tiller of a boat heading out of the harbour. The renders and full scene
+briefs are in <code>scene-briefs.md</code>.</p>
+<p>This is a deliberate change from the Aruba course, where the images
+were decoration and instructors were told to ignore them. Here you may
+point at them. Use the callback in Episode 6 and again in Episode 7,
+where the payoff sits.</p>
+<p>Each episode opens with its scene image and a one-line quip caption.
+The captions carry most of it. The transition lines below are optional
+single beats for instructors who want one on arriving at a new
+episode.</p>
 <table class="table">
 <colgroup>
 <col width="33%">
@@ -554,55 +561,79 @@ naturally into the episode’s opening content. They are optional.</p>
 </tr></thead>
 <tbody>
 <tr>
+<td>Index</td>
+<td>Twenty-six players. Ten countries. One spreadsheet.</td>
+<td>(Shown on the landing page and on the opening slide. No spoken line;
+let people read it while the room settles.)</td>
+</tr>
+<tr>
 <td>1</td>
-<td>One road costs you a license fee. The other one costs you a learning
-curve.</td>
+<td>One gate charges you every season. The other one only asks you to
+learn the way in.</td>
 <td>(Episode 1 opens with the workshop’s full opening sequence; no
 separate transition needed.)</td>
 </tr>
 <tr>
 <td>2</td>
-<td>The iguana is optional. The coconut water is not.</td>
-<td>“We’re at the bar, R is open, the iguana is doing iguana things.
-Time to type something.”</td>
+<td>The dominoes can wait. The console is blinking.</td>
+<td>“Laptop open, console blinking, iguana unimpressed. Time to type
+something.”</td>
 </tr>
 <tr>
 <td>3</td>
-<td>You can’t cook without ingredients. You can’t wrangle without
-verbs.</td>
+<td>Nobody makes stoba without cleaning the karko first.</td>
 <td>“Three jars on the counter today: filter, select, mutate. Everything
 else in dplyr is a variation on those three.”</td>
 </tr>
 <tr>
 <td>4</td>
-<td>SPSS gives you a chart. ggplot2 gives you a language.</td>
-<td>“ggplot is grammar, not buttons. By the end of this episode you’ll
-be writing sentences.”</td>
+<td>SPSS hands you a chart. ggplot2 hands you a grammar.</td>
+<td>“Those are the Handelskade houses and they are also a bar chart. By
+the end of this episode you will be writing the sentence that draws
+them.”</td>
 </tr>
 <tr>
 <td>5</td>
-<td>Same tests, fewer menus, more crabs.</td>
-<td>“The tests you know from SPSS — t-test, ANOVA, chi-square,
-regression — are all here. The crabs are the new part. Trust the
-crabs.”</td>
+<td>Sometimes the review says nothing happened. You report that
+too.</td>
+<td>“The tests you know from SPSS are all here. What is new is that one
+of today’s two comes back null, and we are going to report it
+anyway.”</td>
 </tr>
 <tr>
 <td>6</td>
-<td>Your supervisor changed the sample. Again. Good thing you only need
-one button.</td>
-<td>“This is the moment R Markdown earns the price of admission. One
-button, new data in, finished document out.”</td>
+<td>The squad changed overnight. Again. Good thing the report rebuilds
+itself.</td>
+<td>“This is where R Markdown earns the price of admission. New squad
+in, finished document out, one button.”</td>
 </tr>
 <tr>
 <td>7</td>
-<td>You learned the basics. The map has a lot more islands.</td>
-<td>“The basics are behind you. The next forty-five minutes are about
-where to go from here, with islands marked for you to chart.”</td>
+<td>You have the basics. The map runs well past the harbour mouth.</td>
+<td>“She started this course pinning photos to a wall map. She is
+leaving the harbour with a chart. That is roughly where you are
+too.”</td>
 </tr>
 </tbody>
 </table>
 <p>Pick one beat, deliver it, move into the page’s first heading. Do not
 stack a second sentence on top.</p>
+</section><section><h2 class="section-heading" id="what-the-four-hour-format-costs">What the four-hour format costs<a class="anchor" aria-label="anchor" href="#what-the-four-hour-format-costs"></a>
+</h2>
+<hr class="half-width">
+<p>The course runs 09:00 to 13:00, which is 480 minutes of room time for
+380 minutes of episodes. The overhead is welcome, recap, two breaks a
+day and the two wrap-ups. Three things were cut to make it fit, and
+instructors should know which:</p>
+<p>The <strong>open lab</strong> on Day 2 is gone. Homework review moved
+into the 20-minute Day 2 recap, so protect that slot; it is now the only
+place a stuck participant gets unstuck.</p>
+<p><strong>Exercise time in Episodes 2, 3 and 4</strong> took most of
+the reduction, roughly 25 minutes each. Episode 5 was left slightly long
+on purpose because it is the hardest and it carries the null result.</p>
+<p>The <strong>Day 1 questions-and-consolidation block</strong> is gone.
+Fold consolidation into the end of each episode rather than saving it
+up.</p>
 </section><section><h2 class="section-heading" id="common-issues">Common Issues<a class="anchor" aria-label="anchor" href="#common-issues"></a>
 </h2>
 <hr class="half-width">
@@ -613,7 +644,7 @@ clinic should catch most of these. Have a USB drive with R and RStudio
 installers as backup.</li>
 <li>
 <strong>Typos</strong>: SPSS users are not used to typing commands.
-Expect many syntax errors. Normalize this — “error messages are how R
+Expect many syntax errors. Normalize this: “error messages are how R
 talks to you.”</li>
 <li>
 <strong>Parentheses and quotes</strong>: The most common beginner
@@ -631,7 +662,7 @@ committed to <code>episodes/data/</code>. Nothing is scraped live in the
 room.</p>
 <ul>
 <li>
-<strong>blue_wave_squad.csv</strong> — player-level squad lists for
+<strong>blue_wave_squad.csv</strong>, player-level squad lists for
 the four ABC island national teams, 94 players. Primary teaching
 dataset, Episodes 2 to 4 and 6. Also shipped as <code>.xlsx</code> (two
 sheets) and <code>.sav</code> for the import demonstrations. Scraped
@@ -640,19 +671,19 @@ from Wikipedia current-squad tables by
 limitations are in
 <code>episodes/data/blue_wave_squad_codebook.md</code>.</li>
 <li>
-<strong>fifa_rankings.csv</strong> — FIFA rank and points against
+<strong>fifa_rankings.csv</strong>, FIFA rank and points against
 population and diaspora for 211 national associations. Continuous
 variables for Episodes 4 and 5.</li>
 <li>
-<strong>diaspora_change.csv</strong> — diaspora stock in 1990, 2010,
+<strong>diaspora_change.csv</strong>, diaspora stock in 1990, 2010,
 and 2024. Supplies the paired t-test in Episode 5.</li>
 <li>
-<strong>island-research-reference-data</strong> — country reference
+<strong>island-research-reference-data</strong>, a country reference
 list with SIDS, SNIJ, and World Bank classifications, pulled live from
 GitHub in Episode 1 and Episode 7. Offline fallback committed at
 <code>episodes/data/countries_backup.csv</code>.</li>
 <li>
-<strong>CAS_election_data</strong> — Aruba, Curacao, Sint Maarten
+<strong>CAS_election_data</strong>, Aruba, Curacao, Sint Maarten
 election results 1985-2025. Used in Episode 7.</li>
 <li>World Bank indicators via <code>WDI</code> (Episode 7) and CBS
 Netherlands via <code>cbsodataR</code> (Episode 7).</li>
@@ -711,7 +742,7 @@ orthography question, that is a good outcome, not a derailment.</p>
 another island or institution: 1. Replace datasets with locally relevant
 equivalents 2. Adjust the SPSS operations covered based on your
 pre-course survey results 3. Keep the “wow first, skills second”
-structure 4. All materials are CC-BY 4.0 — please attribute the DCDC
+structure 4. All materials are CC-BY 4.0, so please attribute the DCDC
 Network</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
@@ -767,8 +798,8 @@ any links that you are not going to use.
   "url": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor-notes.html",
   "identifier": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor-notes.html",
   "dateCreated": "2026-08-22",
-  "dateModified": "2026-09-08",
-  "datePublished": "2026-09-08"
+  "dateModified": "2026-09-09",
+  "datePublished": "2026-09-09"
 }
 
   </script><script>

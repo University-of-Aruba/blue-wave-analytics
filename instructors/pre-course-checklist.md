@@ -78,12 +78,11 @@ because several later items depend on the answers.
 - [ ] **Practise the two-way table beat in Episode 2.** It is a deliberate
       cliffhanger. Do not explain it; wait for someone in the room to say it.
 
-## Installation clinics
+## Installation support
 
-- [ ] Written installation guide sent with registration confirmations, in two
-      versions: participant laptops and IT-managed machines. **[Marjorie]**
-- [ ] Two online clinic slots scheduled and circulated, both clear of 7
-      September. **[Marjorie]**
+- [x] Registration confirmation sent automatically on submit, linking to the
+      setup page (Apps Script trigger on the registration form, 10 Sep).
+- [ ] Watch the reply inbox for install errors in the week before the course.
 - [ ] IT asked whether lab machines can be pre-loaded with R and RStudio, with at
       least a week's notice. **[Marjorie]**
 

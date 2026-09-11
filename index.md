@@ -132,6 +132,6 @@ start.
 ## Before you arrive
 
 Install R and RStudio ahead of the first day, following the
-[setup instructions](setup.html). Two optional online install clinics run in
-the week before the course. Bring your own laptop if you have one; the
-research lab is the fallback.
+[setup instructions](setup.html). If something fails, reply to your
+registration email with the error message and we will sort it before the day.
+Bring your own laptop if you have one; the research lab is the fallback.

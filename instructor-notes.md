@@ -93,8 +93,9 @@ the end of each episode rather than saving it up.
 
 ## Common Issues
 
-- **Installation problems**: The pre-course installation clinic should catch
-  most of these. Have a USB drive with R and RStudio installers as backup.
+- **Installation problems**: The registration email asks participants to reply
+  with any install error before the day, so most should arrive fixed. Have a USB
+  drive with R and RStudio installers as backup.
 - **Typos**: SPSS users are not used to typing commands. Expect many syntax
   errors. Normalize this: "error messages are how R talks to you."
 - **Parentheses and quotes**: The most common beginner errors. Show how RStudio

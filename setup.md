@@ -25,27 +25,16 @@ so a ticket raised after 16 September is unlikely to be resolved in time.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Pre-workshop installation clinic
+## If installation fails
 
-We will not spend course time on installation troubleshooting. To make sure
-everyone starts ready to go, there is an optional drop-in session before the
-course:
-
-Two optional online clinics run in the week before the course. Both are the
-same session, so come to whichever suits you.
-
-**When:** Tuesday 15 September and Friday 18 September 2026, 16:00 -- 17:00
-**Where:** Online, link circulated with your registration confirmation
-**What:** Bring your laptop. We help you install R and RStudio, verify
-everything works, and install the required packages. Drop in, drop out.
-
-A written installation guide goes out with your registration confirmation as
-well, in two versions: one for your own laptop and one to forward to IT if
-your machine is managed.
-
-If you cannot attend the clinic, follow the instructions below and test your
+We will not spend course time on installation troubleshooting, so please
+arrive with everything working. Follow the instructions below and test your
 setup by opening RStudio and typing `1 + 1` in the console. If it returns `2`,
 you are ready.
+
+If something fails, do not spend your evening fighting it. Reply to your
+registration confirmation email with the error message and we will sort it
+before the day.
 
 ## Software Setup
 
@@ -134,8 +123,8 @@ library(tidyverse)
 ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
 ```
 
-If a scatter plot appears in the Plots pane, everything is working. Bring any
-errors you see to the installation clinic or email the instructor.
+If a scatter plot appears in the Plots pane, everything is working. If you see
+an error instead, reply to your registration email with the message.
 
 ## Download the workshop data
 

@@ -479,9 +479,10 @@ software licenses
 </dl></div>
 <div class="section level2">
 <h2 id="before-you-arrive">Before you arrive<a class="anchor" aria-label="anchor" href="#before-you-arrive"></a></h2>
-<p>Install R and RStudio ahead of the first day, following the <a href="index.html#setup">setup instructions</a>. Two optional online install
-clinics run in the week before the course. Bring your own laptop if you
-have one; the research lab is the fallback.</p>
+<p>Install R and RStudio ahead of the first day, following the <a href="index.html#setup">setup instructions</a>. If something fails, reply to
+your registration email with the error message and we will sort it
+before the day. Bring your own laptop if you have one; the research lab
+is the fallback.</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -609,23 +610,14 @@ is unlikely to be resolved in time.</p>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="pre-workshop-installation-clinic">Pre-workshop installation clinic<a class="anchor" aria-label="anchor" href="#pre-workshop-installation-clinic"></a></h2>
-<hr class="half-width"><p>We will not spend course time on installation troubleshooting. To
-make sure everyone starts ready to go, there is an optional drop-in
-session before the course:</p>
-<p>Two optional online clinics run in the week before the course. Both
-are the same session, so come to whichever suits you.</p>
-<p><strong>When:</strong> Tuesday 15 September and Friday 18 September
-2026, 16:00 – 17:00 <strong>Where:</strong> Online, link circulated with
-your registration confirmation <strong>What:</strong> Bring your laptop.
-We help you install R and RStudio, verify everything works, and install
-the required packages. Drop in, drop out.</p>
-<p>A written installation guide goes out with your registration
-confirmation as well, in two versions: one for your own laptop and one
-to forward to IT if your machine is managed.</p>
-<p>If you cannot attend the clinic, follow the instructions below and
+<section><h2 class="section-heading" id="if-installation-fails">If installation fails<a class="anchor" aria-label="anchor" href="#if-installation-fails"></a></h2>
+<hr class="half-width"><p>We will not spend course time on installation troubleshooting, so
+please arrive with everything working. Follow the instructions below and
 test your setup by opening RStudio and typing <code>1 + 1</code> in the
 console. If it returns <code>2</code>, you are ready.</p>
+<p>If something fails, do not spend your evening fighting it. Reply to
+your registration confirmation email with the error message and we will
+sort it before the day.</p>
 </section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
 <hr class="half-width"><div id="install-r-and-rstudio" class="callout discussion">
 <div class="callout-square">
@@ -649,7 +641,7 @@ but it needs R installed to run.</p>
   Windows
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">CRAN</a> — click
 “Download R for Windows”, then “base”, then the download link.</li>
@@ -671,7 +663,7 @@ you are ready.</li>
   macOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/macosx/" class="external-link">CRAN</a> — choose the
 <code>.pkg</code> file that matches your Mac (Apple Silicon or
@@ -693,7 +685,7 @@ you are ready.</li>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Follow the instructions for your distribution at <a href="https://cran.r-project.org/bin/linux/" class="external-link">CRAN</a>.</li>
 <li>Download RStudio from <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Posit</a> — choose the
@@ -743,8 +735,8 @@ session goes wrong.</p>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">displ</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>If a scatter plot appears in the Plots pane, everything is working.
-Bring any errors you see to the installation clinic or email the
-instructor.</p>
+If you see an error instead, reply to your registration email with the
+message.</p>
 </section><section><h2 class="section-heading" id="download-the-workshop-data">Download the workshop data<a class="anchor" aria-label="anchor" href="#download-the-workshop-data"></a></h2>
 <hr class="half-width"><p>From Episode 2 onwards you will load the same small dataset in three
 different formats: a CSV file, an Excel workbook with two sheets, and an
@@ -859,8 +851,8 @@ any links that you are not going to use.
   "url": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor/index.html",
   "identifier": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor/index.html",
   "dateCreated": "2026-08-22",
-  "dateModified": "2026-09-09",
-  "datePublished": "2026-09-09"
+  "dateModified": "2026-09-11",
+  "datePublished": "2026-09-11"
 }
 
   </script><script>

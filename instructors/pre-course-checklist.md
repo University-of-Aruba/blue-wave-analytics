@@ -45,16 +45,22 @@ because several later items depend on the answers.
 - [ ] **Build the whole site locally.** From the repository root, run
       `sandpaper::build_lesson()` and watch for errors. Every episode must knit
       cleanly before anything is pushed.
-- [ ] **Regenerate the data.** Run `Rscript scripts/00_build_teaching_data.R`.
-      It scrapes four Wikipedia squad pages, so it needs a network connection and
-      it will produce different numbers whenever a squad has been re-called. The
-      episode prose quotes specific figures (94 players, 26 in the Curaçao men's
-      squad, 10 club countries, two players with no club), so **re-read Episodes
-      1 to 6 against the new output** rather than assuming it still matches.
+- [ ] **Rebuild the data and confirm nothing moved.** Run
+      `Rscript scripts/00_build_teaching_data.R` (needs a network connection),
+      then `git status`. Both squad snapshots are pinned to Wikipedia revision
+      IDs, so the CSVs should come back unchanged; the `.xlsx` and `.sav` may show
+      as modified from embedded timestamps alone. If a squad CSV changed, find out
+      why before trusting the episode figures (94 players, 26 in the Curaçao men's
+      squad, 10 club countries, two players with no club).
+- [ ] **Check for a newer call-up.** If the federation has named another squad
+      since 11 September, decide whether Episode 6 should use it. Adding one is a
+      new snapshot in the build script; never repoint the World Cup one.
 - [ ] **Knit the capstone.** Open `episodes/files/blue-wave-squad-report-template.Rmd`
       and knit it with `params$team` set to `CUW-M`. Then knit it again with
-      `ARU-W`. Both must produce a complete report. This is the Episode 6 finish
-      line and the Episode 1 tease, so it has to work on the day.
+      `ARU-W`, and once more with `squad_file` set to
+      `blue_wave_squad_2026-09.csv`. All three must produce a complete report.
+      This is the Episode 6 finish line and the Episode 1 tease, so it has to
+      work on the day.
 - [ ] **Verify both survey links** in an incognito window, so your own Google
       login does not mask a broken link. Confirm each form loads and accepts a
       test response.

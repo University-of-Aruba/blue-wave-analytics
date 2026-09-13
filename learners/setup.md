@@ -136,10 +136,11 @@ Download **all three** now and keep them together.
 - [blue_wave_squad.xlsx](https://github.com/University-of-Aruba/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.xlsx) Excel version, two sheets: `curacao` and `aruba`
 - [blue_wave_squad.sav](https://github.com/University-of-Aruba/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.sav) SPSS version, so you can see R open your existing files
 
-Two more files are used later in the course. Grab them at the same time:
+Three more files are used later in the course. Grab them at the same time:
 
 - [fifa_rankings.csv](https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/fifa_rankings.csv) FIFA rank, population, and diaspora for 211 national associations
 - [diaspora_change.csv](https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/diaspora_change.csv) diaspora size in 1990, 2010, and 2024
+- [blue_wave_squad_2026-09.csv](https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/blue_wave_squad_2026-09.csv) the September 2026 call-up, for the second day
 
 Open each link in your browser, then click the **Download raw file** button near
 the top right of the preview and save the file. Do not open the CSV in Excel and
@@ -149,7 +150,7 @@ in Curacao in a way that causes a confusing error two episodes later.
 ### Where to put the files
 
 Create a folder for the workshop, for example `Documents/blue-wave/`, and inside
-it create a subfolder called `data`. Drop all five files into `data`. Your
+it create a subfolder called `data`. Drop all six files into `data`. Your
 structure should look like this:
 
 ```
@@ -159,7 +160,8 @@ blue-wave/
     ├── blue_wave_squad.xlsx
     ├── blue_wave_squad.sav
     ├── fifa_rankings.csv
-    └── diaspora_change.csv
+    ├── diaspora_change.csv
+    └── blue_wave_squad_2026-09.csv
 ```
 
 When you open RStudio during the course, use **File > Open Project** to open
@@ -172,10 +174,12 @@ together at the start of Episode 2. Bring the links.
 
 ## What the data is
 
-The squad file lists the players in the current squads of four Dutch Caribbean
-national football teams: Curacao men and women, Aruba men and women. One row is
-one player, with their position, their club, and the country that club plays in.
-94 rows in total.
+The squad file lists the players in the squads of four Dutch Caribbean national
+football teams: Curacao men and women, Aruba men and women. One row is one
+player, with their position, their club, and the country that club plays in. 94
+rows in total. The Curacao men in it are the squad that went to the World Cup.
+The September file holds the call-up that came after, and on the second day you
+will see what changes when you point the same analysis at it.
 
 It is scraped from Wikipedia, which makes it real data rather than a teaching
 toy. Two players have no club listed at all, and the squads are only as current

@@ -544,6 +544,7 @@ Look at the top of the template:
 params:
   team: "CUW-M"
   data_dir: "data"
+  squad_file: "blue_wave_squad.csv"
 ```
 
 Every reference to a specific squad inside the document goes through
@@ -556,6 +557,117 @@ a report. You have written a thing that writes reports.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## New squad, same report
+
+Everything you have computed since Wednesday comes from the squad Curaçao took to
+the World Cup in June. On 11 September the national team named a new one for the
+Nations League window: eight of those twenty-six are out and five players are
+new. In the SPSS workflow at the top of this episode, that is step 7. Go back to
+step 1.
+
+Here it is one download and one changed line. The new call-up sits in the course
+repository as a second file, next to the one you already have:
+
+```{r new-squad-download, eval = FALSE}
+# Iteration: 1
+download.file(
+  "https://raw.githubusercontent.com/University-of-Aruba/blue-wave-analytics/main/episodes/data/blue_wave_squad_2026-09.csv",
+  "data/blue_wave_squad_2026-09.csv"
+)
+```
+
+Open the template, change `squad_file` in the header to
+`"blue_wave_squad_2026-09.csv"`, and knit. Or leave the file alone and pass the
+new value in from the console, which also keeps the first report instead of
+overwriting it:
+
+```{r new-squad-render, eval = FALSE}
+rmarkdown::render(
+  "blue-wave-squad-report-template.Rmd",
+  params = list(squad_file = "blue_wave_squad_2026-09.csv"),
+  output_file = "curacao-men-2026-09.html"
+)
+```
+
+Put the two reports side by side. The cover figures, every sentence with a
+number in it, the charts, the chi-square in the callout and the squad table at
+the bottom have all been recomputed. Nobody retyped anything.
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 2: What moved, and what held?
+
+Compare the two Curaçao men's reports. Which figures changed? Is it still true
+that no player in the squad plays club football on the island? Does the gender
+result from Episode 5 survive the new call-up?
+
+:::::::::::::::::::::::: solution
+
+## Solution
+
+The squad went from 26 players to 23 and now spans 11 countries instead of 10.
+The Netherlands share fell from 38 percent of the squad to 30. Not one player is
+at a club on Curaçao, in either call-up. The gender test holds (p = 0.008,
+against 0.006 before) and the island comparison is still null.
+
+The finding was about dispersion, and the new squad is more dispersed than the
+old one. One re-run will not tell you whether that is a trend. It does tell you
+that the claim did not depend on one particular squad list.
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: callout
+
+## The list that was right on Wednesday
+
+The region code you wrote in Episode 3 names the European countries one by one.
+Run it on the new file and look at what the `.default` line caught:
+
+```{r new-squad-region-trap, message = FALSE}
+squad_new <- read_csv("data/blue_wave_squad_2026-09.csv") |>
+  mutate(
+    island    = if_else(str_starts(team_code, "CUW"), "Curaçao", "Aruba"),
+    home_code = if_else(island == "Curaçao", "CUW", "ABW"),
+    region = case_when(
+      club_country == "X"       ~ "Unknown",
+      club_country == home_code ~ "Home island",
+      club_country == "NLD"     ~ "Netherlands",
+      club_country == "USA"     ~ "North America",
+      club_country %in% c("GBR", "GRC", "TUR", "DEU", "BEL", "CHE", "XKX") ~ "Rest of Europe",
+      .default                  = "Rest of world"
+    )
+  )
+
+squad_new |>
+  filter(region == "Rest of world") |>
+  select(team_code, player_name, club, club_country)
+```
+
+Bosnia and Herzegovina and Gibraltar are in Europe. Neither was in the old
+squad, so neither was on the list, and `case_when()` filed both players under
+"Rest of world" without an error or a warning. Nobody changed the code. The data
+moved under it.
+
+A hard-coded list is an assumption about data you have not seen yet. The
+template now prints, inside the report, every country it put in "Rest of world",
+so a reader can check the grouping instead of trusting it.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::: instructor
+
+## Timing the re-run
+
+This section costs about eight minutes, most of it the download and the knit.
+If the room is behind, run it from the front instead: pre-rendered copies of both
+reports are in `episodes/files/`, and the region callout needs nothing but the
+chunk above. Keep the match itself out of it. The finding holds whatever the
+score on Thursday night.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - R Markdown combines your analysis and write-up in a single document
@@ -564,5 +676,7 @@ a report. You have written a thing that writes reports.
 - Inline R code puts computed numbers inside your sentences, so text and results cannot drift apart
 - Write your caveats into the code that produces them, so they travel with the number
 - Parameterise a report and one file serves every subgroup in your data
+- Make the data file a parameter too, and a new release of the data is one changed line
+- Check what your `.default` branch caught every time the data changes
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

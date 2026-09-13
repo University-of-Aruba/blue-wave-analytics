@@ -31,9 +31,8 @@ time.
 
 ### The question the course is built around
 
-Curaçao has about 149,000 residents. In 2026 it put a national team into the
-World Cup, unbeaten through CONCACAF qualifying. Of the 26 players in that
-squad, not one plays club football on the island. They are spread across ten
+Curaçao has about 149,000 residents. In 2026 it became the smallest nation ever
+to reach a World Cup. Of the 26 players in that squad, not one plays club football on the island. They are spread across ten
 countries.
 
 That is a striking fact, and it is a data fact before it is a football fact.

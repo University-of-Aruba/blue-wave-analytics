@@ -41,12 +41,15 @@ committed to `episodes/data/`. Nothing is scraped live in the room.
 | `blue_wave_squad.csv` | 94 players across four ABC island national squads | Episodes 2, 3, 4, 6 |
 | `blue_wave_squad.xlsx` | Same data, sheets `curacao` and `aruba` | Episode 2 |
 | `blue_wave_squad.sav` | Same data as SPSS, for the `haven` demonstration | Episode 2 |
+| `blue_wave_squad_2026-09.csv` | The September 2026 call-up, same columns | Episode 6 |
 | `fifa_rankings.csv` | FIFA rank, points, population, diaspora for 211 associations | Episodes 4, 5 |
 | `diaspora_change.csv` | Diaspora stock in 1990, 2010, 2024 | Episode 5 |
 | `countries_backup.csv` | Offline fallback for the Episode 1 live pull | Episode 1 |
 
-The squad dataset is scraped from the current-squad tables of four English
-Wikipedia articles. Coding decisions, variable definitions, and limitations are
+The squad dataset is scraped from the squad tables of four English Wikipedia
+articles, each pinned to a page revision so the build reproduces the same file.
+The main file holds Curaçao's World Cup squad and is what the episodes quote; the
+September 2026 call-up sits beside it for the Episode 6 re-run. Coding decisions, variable definitions, and limitations are
 documented in
 [`episodes/data/blue_wave_squad_codebook.md`](episodes/data/blue_wave_squad_codebook.md).
 

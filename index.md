@@ -10,8 +10,8 @@ site: sandpaper::sandpaper_site
 ![Twenty-six players. Ten countries. One spreadsheet.](fig/scene_0.jpg){alt="Cartoon of a Curacao football fan at a beach bar tracking her squad across a wall map strung with pins and yarn to ten different countries"}
 -->
 
-Curacao has about 149,000 people and twenty-six men in its current national
-squad. Not one of them plays his club football on the island. Ten countries pay
+Curacao has about 149,000 people, and it took twenty-six men to the World Cup.
+Not one of them plays his club football on the island. Ten countries pay
 their wages: ten players in the Netherlands, four in Britain, three in Turkey,
 two in the United States, two in Greece, then Belgium, Switzerland, Israel,
 Saudi Arabia and Malaysia one at a time.

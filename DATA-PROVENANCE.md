@@ -17,11 +17,13 @@ This edition sits under the concept DOI
 
 ## The squad dataset
 
-`blue_wave_squad.csv` and the `.xlsx` and `.sav` versions of it are built by
-`scripts/00_build_teaching_data.R` from the "Current squad" tables of four
-English Wikipedia articles, covering the Curaçao and Aruba men's and women's
-national teams. Wikipedia text is **CC-BY-SA 4.0** and the derived dataset
-inherits that licence.
+`blue_wave_squad.csv` and the `.xlsx` and `.sav` versions of it, and
+`blue_wave_squad_2026-09.csv`, are built by `scripts/00_build_teaching_data.R`
+from the squad tables of four English Wikipedia articles, covering the Curaçao
+and Aruba men's and women's national teams. Each file is pinned to specific page
+revisions, recorded by ID in the script, and the few corrections applied on top
+carry their sources in the same script. Wikipedia text is **CC-BY-SA 4.0** and
+the derived datasets inherit that licence.
 
 Coding decisions, variable definitions, and known limitations are in
 `episodes/data/blue_wave_squad_codebook.md`.

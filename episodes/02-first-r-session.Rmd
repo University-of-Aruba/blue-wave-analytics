@@ -221,8 +221,9 @@ hand to a colleague or archive at the end of a study.
 
 The dataset is the player-level squad list for four Dutch Caribbean national
 teams: Curaçao men and women, Aruba men and women. One row is one player, 94 in
-total. It was scraped from the current-squad tables on Wikipedia, which means it
-has the gaps and inconsistencies real data has. That is deliberate. Clean
+total, with Curaçao's men as the squad they took to the World Cup. It was scraped
+from the squad tables on Wikipedia, which means it has the gaps and
+inconsistencies real data has. That is deliberate. Clean
 textbook data teaches you nothing about the afternoon you will actually spend
 with your own file.
 

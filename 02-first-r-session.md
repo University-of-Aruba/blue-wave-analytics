@@ -266,8 +266,9 @@ hand to a colleague or archive at the end of a study.
 
 The dataset is the player-level squad list for four Dutch Caribbean national
 teams: Curaçao men and women, Aruba men and women. One row is one player, 94 in
-total. It was scraped from the current-squad tables on Wikipedia, which means it
-has the gaps and inconsistencies real data has. That is deliberate. Clean
+total, with Curaçao's men as the squad they took to the World Cup. It was scraped
+from the squad tables on Wikipedia, which means it has the gaps and
+inconsistencies real data has. That is deliberate. Clean
 textbook data teaches you nothing about the afternoon you will actually spend
 with your own file.
 
@@ -495,7 +496,7 @@ spc_tbl_ [94 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
   ..   club = col_character(),
   ..   club_country = col_character()
   .. )
- - attr(*, "problems")=<pointer: 0x5645bbdc2360> 
+ - attr(*, "problems")=<pointer: 0x55e25c0d39a0> 
 ```
 
 This tells you how many observations (rows), how many variables (columns), and
@@ -536,7 +537,7 @@ summary(squad)
  N.unique : 4   N.unique :94   N.unique : 4   N.unique :71   N.unique :15   
  N.blank  : 0   N.blank  : 0   N.blank  : 0   N.blank  : 0   N.blank  : 0   
  Min.nchar: 5   Min.nchar: 9   Min.nchar: 2   Min.nchar: 3   Min.nchar: 1   
- Max.nchar: 5   Max.nchar:25   Max.nchar: 3   Max.nchar:31   Max.nchar: 3   
+ Max.nchar: 5   Max.nchar:23   Max.nchar: 3   Max.nchar:31   Max.nchar: 3   
 ```
 
 For numeric columns you get the minimum, maximum, mean, median, and quartiles.

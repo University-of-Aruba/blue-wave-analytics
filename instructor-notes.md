@@ -37,7 +37,7 @@ Key principles:
 
 | Episode | Time | Notes |
 |---|---|---|
-| Review, homework and troubleshooting | 20 min | Address questions from between-session practice |
+| Review, homework and troubleshooting | 20 min | Address questions from between-session practice. Close it with one question and do not answer it: "The national team named a new squad on 11 September. How long would it take you to redo Wednesday's analysis?" Episode 6 answers it with one changed line. |
 | 05 - Statistical Analysis | 95 min, split either side of the coffee break | Core for survey researchers. The normality-testing section (histogram, Q-Q plot, Shapiro-Wilk, robustness note) maps directly onto the SPSS Explore output most participants will recognise. Take your time. |
 | Break | 15 min | |
 | 06 - Reproducible Reporting | 50 min | R Markdown is often the biggest "wow" for SPSS users. Ends with the squad-report capstone that Episode 1's opening teased. Participants pull `blue-wave-squad-report-template.Rmd` and `blue-wave-report.css` from the GitHub raw URL via the `download.file()` block in the episode; walk through the template's structure live once both files are in their working directory. Finish by changing `params$team` from `CUW-M` to `ARU-W` and re-knitting, so they see one file produce a different report. |
@@ -113,9 +113,12 @@ the room.
 - **blue_wave_squad.csv**, player-level squad lists for the four ABC island
   national teams, 94 players. Primary teaching dataset, Episodes 2 to 4 and 6.
   Also shipped as `.xlsx` (two sheets) and `.sav` for the import demonstrations.
-  Scraped from Wikipedia current-squad tables by `scripts/00_build_teaching_data.R`;
-  variable definitions and limitations are in
-  `episodes/data/blue_wave_squad_codebook.md`.
+  Curaçao's men are the World Cup squad. Scraped from pinned Wikipedia revisions
+  by `scripts/00_build_teaching_data.R`; variable definitions and limitations
+  are in `episodes/data/blue_wave_squad_codebook.md`.
+- **blue_wave_squad_2026-09.csv**, the September 2026 call-up, same columns, 91
+  players. Episode 6 only, where the capstone report is re-knit on it and the
+  Episode 3 region code is shown misfiling Bosnia and Gibraltar.
 - **fifa_rankings.csv**, FIFA rank and points against population and diaspora
   for 211 national associations. Continuous variables for Episodes 4 and 5.
 - **diaspora_change.csv**, diaspora stock in 1990, 2010, and 2024. Supplies the

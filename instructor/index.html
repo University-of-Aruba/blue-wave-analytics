@@ -317,9 +317,9 @@
 <!-- CARTOON SLOT: uncomment when fig/scene_0.jpg exists. Scene spec in instructors/scene-briefs.md
 ![Twenty-six players. Ten countries. One spreadsheet.](fig/scene_0.jpg){alt="Cartoon of a Curacao football fan at a beach bar tracking her squad across a wall map strung with pins and yarn to ten different countries"}
 -->
-<p>Curacao has about 149,000 people and twenty-six men in its current
-national squad. Not one of them plays his club football on the island.
-Ten countries pay their wages: ten players in the Netherlands, four in
+<p>Curacao has about 149,000 people, and it took twenty-six men to the
+World Cup. Not one of them plays his club football on the island. Ten
+countries pay their wages: ten players in the Netherlands, four in
 Britain, three in Turkey, two in the United States, two in Greece, then
 Belgium, Switzerland, Israel, Saudi Arabia and Malaysia one at a
 time.</p>
@@ -641,7 +641,7 @@ but it needs R installed to run.</p>
   Windows
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">CRAN</a> — click
 “Download R for Windows”, then “base”, then the download link.</li>
@@ -663,7 +663,7 @@ you are ready.</li>
   macOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/macosx/" class="external-link">CRAN</a> — choose the
 <code>.pkg</code> file that matches your Mac (Apple Silicon or
@@ -685,7 +685,7 @@ you are ready.</li>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Follow the instructions for your distribution at <a href="https://cran.r-project.org/bin/linux/" class="external-link">CRAN</a>.</li>
 <li>Download RStudio from <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Posit</a> — choose the
@@ -753,7 +753,7 @@ Excel version, two sheets: <code>curacao</code> and
 <li>
 <a href="https://github.com/University-of-Aruba/blue-wave-analytics/raw/main/episodes/data/blue_wave_squad.sav" class="external-link">blue_wave_squad.sav</a>
 SPSS version, so you can see R open your existing files</li>
-</ul><p>Two more files are used later in the course. Grab them at the same
+</ul><p>Three more files are used later in the course. Grab them at the same
 time:</p>
 <ul><li>
 <a href="https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/fifa_rankings.csv" class="external-link">fifa_rankings.csv</a>
@@ -761,6 +761,9 @@ FIFA rank, population, and diaspora for 211 national associations</li>
 <li>
 <a href="https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/diaspora_change.csv" class="external-link">diaspora_change.csv</a>
 diaspora size in 1990, 2010, and 2024</li>
+<li>
+<a href="https://github.com/University-of-Aruba/blue-wave-analytics/blob/main/episodes/data/blue_wave_squad_2026-09.csv" class="external-link">blue_wave_squad_2026-09.csv</a>
+the September 2026 call-up, for the second day</li>
 </ul><p>Open each link in your browser, then click the <strong>Download raw
 file</strong> button near the top right of the preview and save the
 file. Do not open the CSV in Excel and re-save. That can silently change
@@ -770,7 +773,7 @@ causes a confusing error two episodes later.</p>
 <h3 id="where-to-put-the-files">Where to put the files<a class="anchor" aria-label="anchor" href="#where-to-put-the-files"></a></h3>
 <p>Create a folder for the workshop, for example
 <code>Documents/blue-wave/</code>, and inside it create a subfolder
-called <code>data</code>. Drop all five files into <code>data</code>.
+called <code>data</code>. Drop all six files into <code>data</code>.
 Your structure should look like this:</p>
 <pre><code>blue-wave/
 └── data/
@@ -778,7 +781,8 @@ Your structure should look like this:</p>
     ├── blue_wave_squad.xlsx
     ├── blue_wave_squad.sav
     ├── fifa_rankings.csv
-    └── diaspora_change.csv</code></pre>
+    ├── diaspora_change.csv
+    └── blue_wave_squad_2026-09.csv</code></pre>
 <p>When you open RStudio during the course, use <strong>File &gt; Open
 Project</strong> to open <code>blue-wave</code>, or set your working
 directory to the folder. The code in the lessons assumes this layout, so
@@ -788,10 +792,13 @@ any extra path work.</p>
 this step together at the start of Episode 2. Bring the links.</p>
 </div>
 </section><section><h2 class="section-heading" id="what-the-data-is">What the data is<a class="anchor" aria-label="anchor" href="#what-the-data-is"></a></h2>
-<hr class="half-width"><p>The squad file lists the players in the current squads of four Dutch
+<hr class="half-width"><p>The squad file lists the players in the squads of four Dutch
 Caribbean national football teams: Curacao men and women, Aruba men and
 women. One row is one player, with their position, their club, and the
-country that club plays in. 94 rows in total.</p>
+country that club plays in. 94 rows in total. The Curacao men in it are
+the squad that went to the World Cup. The September file holds the
+call-up that came after, and on the second day you will see what changes
+when you point the same analysis at it.</p>
 <p>It is scraped from Wikipedia, which makes it real data rather than a
 teaching toy. Two players have no club listed at all, and the squads are
 only as current as the volunteers who maintain those pages. Those gaps
@@ -851,8 +858,8 @@ any links that you are not going to use.
   "url": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor/index.html",
   "identifier": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor/index.html",
   "dateCreated": "2026-08-22",
-  "dateModified": "2026-09-11",
-  "datePublished": "2026-09-11"
+  "dateModified": "2026-09-13",
+  "datePublished": "2026-09-13"
 }
 
   </script><script>

@@ -11,10 +11,14 @@ output:
 params:
   team: "CUW-M"
   data_dir: "data"
+  squad_file: "blue_wave_squad.csv"
 ---
 
 ```{r setup, include=FALSE}
-# Iteration: 1
+# Iteration: 2
+# Iteration 2 (12 Sep 2026): the squad file is a parameter, so the same report
+# runs on a new call-up; BIH and GIB added to Europe, and the report now names
+# every country it filed under "Rest of world" instead of hiding the default.
 knitr::opts_chunk$set(
   echo = FALSE, warning = FALSE, message = FALSE,
   fig.width = 9, fig.height = 4.8, dpi = 140, dev = "png"
@@ -51,7 +55,7 @@ pct <- function(x, d = 0) sprintf(paste0("%.", d, "f%%"), 100 * x)
 ```
 
 ```{r load}
-squad <- read_csv(file.path(params$data_dir, "blue_wave_squad.csv"),
+squad <- read_csv(file.path(params$data_dir, params$squad_file),
                   show_col_types = FALSE) |>
   mutate(
     island = if_else(str_starts(team_code, "CUW"), "Curaçao", "Aruba"),
@@ -63,10 +67,15 @@ squad <- read_csv(file.path(params$data_dir, "blue_wave_squad.csv"),
       club_country == home_code ~ "Home island",
       club_country == "NLD"     ~ "Netherlands",
       club_country == "USA"     ~ "North America",
-      club_country %in% c("GBR", "GRC", "TUR", "DEU", "BEL", "CHE", "XKX") ~ "Rest of Europe",
+      club_country %in% c("GBR", "GRC", "TUR", "DEU", "BEL", "CHE", "XKX",
+                          "BIH", "GIB") ~ "Rest of Europe",
       .default                  = "Rest of world"
     )
   )
+
+# The default branch catches anything the list above does not name, including
+# countries that only arrive with a later call-up. Say what landed there.
+rest_of_world <- sort(unique(squad$club_country[squad$region == "Rest of world"]))
 
 fifa <- read_csv(file.path(params$data_dir, "fifa_rankings.csv"),
                  show_col_types = FALSE)
@@ -111,7 +120,7 @@ n_home       <- sum(this$club_country == this_iso)
 
 <div class="cover-footer">
 Produced from a single R Markdown file. Every number on this page is computed
-from <strong>blue_wave_squad.csv</strong> at knit time. Change the data, press
+from <strong>`r params$squad_file`</strong> at knit time. Change the data, press
 Knit, and the report rewrites itself. <br>
 <strong>Generated:</strong> `r format(Sys.Date(), "%d %B %Y")`
 </div>
@@ -167,6 +176,8 @@ this |>
   theme_report() +
   theme(legend.position = "none")
 ```
+
+`r if (length(rest_of_world)) sprintf("Across all four squads, \"Rest of world\" here means %s. If a European country turns up in that list, the region code above needs a new entry.", paste(rest_of_world, collapse = ", ")) else "No club country fell through to \"Rest of world\"."`
 
 ## Against the neighbours
 
@@ -292,11 +303,13 @@ this |>
 
 <div class="callout">
 <div class="callout-h">What this dataset cannot tell you</div>
-<p>The squad list is scraped from the current-squad table of an English Wikipedia
-article. Those tables are maintained by volunteers, they lag real call-ups by
-weeks or months, and the four island pages are not necessarily current as of the
-same date. `r n_unknown` players in this squad could not be placed at a club at
-all and are excluded from the country and region charts above.</p>
+<p>The squad list is scraped from a fixed revision of the squad table of an English
+Wikipedia article (file: `r params$squad_file`). Those tables are maintained by
+volunteers, they lag real call-ups and transfers, and the four island pages are
+not necessarily current as of the same date. Where a club move is documented
+after the revision was taken, the build script corrects it and records the
+source. `r n_unknown` players in this squad could not be placed at a club at all
+and are excluded from the country and region charts above.</p>
 <p>Squad composition is also a snapshot of one call-up, not a measure of a
 football system. It says nothing about youth development, coaching, or the
 domestic game, and a report that reads it as such is reading too much into

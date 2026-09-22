@@ -107,22 +107,27 @@ Friday are set aside for working through what you hit.
 
 ## Who is this for?
 
-Anyone who currently uses SPSS and wants to move to a free and more capable
-alternative. You do not need programming experience. If you are comfortable
-with means, standard deviations, and hypothesis testing, you have enough to
-start.
+Anyone who works with data and wants to do more with it: a survey you run every
+year, a spreadsheet that has outgrown Excel, a thesis dataset, or the monthly
+figures your department reports upward. You do not need to have written a line
+of code, and most people on this course have never opened R.
+
+If you already use SPSS, Excel or Stata, you will recognise most of what we do.
+SPSS comes up throughout the two days as the point of comparison, because it is
+the tool most people here learned statistics on, and watching the same analysis
+done both ways is the quickest route into a new one.
 
 **Students**
-: Using SPSS for coursework or thesis research and looking for a cost-free alternative
+: Working on coursework or a thesis and wanting skills that stay free after graduation
 
 **Lecturers**
-: Teaching research methods and interested in integrating open-source tools into courses
+: Teaching research methods and looking to bring open tools into the classroom
 
 **Researchers**
-: Seeking reproducible analysis workflows and better visualization capabilities
+: Wanting analysis that can be re-run, checked and shared, and charts good enough to publish
 
-**Institutional analysts**
-: Working with data in government, healthcare, or policy and paying for software licenses
+**Analysts in government, finance and business**
+: Producing the same reports on a cycle and wanting them to rebuild themselves when new data arrives
 
 ## Before you arrive
 

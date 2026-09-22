@@ -10,23 +10,20 @@ site: sandpaper::sandpaper_site
 ![Twenty-six players. Ten countries. One spreadsheet.](fig/scene_0.jpg){alt="Cartoon of a Curacao football fan at a beach bar tracking her squad across a wall map strung with pins and yarn to ten different countries"}
 -->
 
-Curacao has about 149,000 people, and it took twenty-six men to the World Cup.
-Not one of them plays his club football on the island. Ten countries pay
-their wages: ten players in the Netherlands, four in Britain, three in Turkey,
-two in the United States, two in Greece, then Belgium, Switzerland, Israel,
-Saudi Arabia and Malaysia one at a time.
+In 2025 Curacao, an island of about 149,000 people, qualified for the World
+Cup. No smaller nation has ever done it. The Blue Wave got there with limited
+infrastructure and a squad spread across club football in ten countries, and
+it showed the world that a small island can perform on the biggest stage.
 
-Aruba exports players too. Twenty of its twenty-three play abroad. But eighteen
-of those are in the Netherlands, and the entire squad fits inside four
-countries.
+Football needs a ball. After that it runs on passion, perseverance and, when
+things go your way, a little momentum. World-class data science has an
+equipment list that is just as short. The software that analysts at central
+banks and research universities use is free, and it runs on the laptop you
+brought today. What is left is the practice.
 
-Two islands, half an hour apart by plane, with the same order of population and
-the same passport routes into Europe. One scatters across ten countries. The
-other funnels into one. Nobody sat down and designed either shape.
-
-That is a data question before it is a football question, and you can answer it
-in about fifteen lines of R. Learning to write those fifteen lines is what these
-two days are for.
+That is what these two days are for: working towards world-class analysis and
+visualization, starting with the Blue Wave's own squad data and finishing with
+a script you can point at your own work.
 
 You will start from what you already know in SPSS and finish with a script that
 imports the squad list, reshapes it, charts it, tests it, and renders a document

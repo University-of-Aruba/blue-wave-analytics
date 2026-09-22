@@ -45,20 +45,25 @@ is the open decision below.
 
 ## Scene 0, the index hero
 
-**Where it goes:** top of `index.md`, currently commented out.
+**Rendered 22 September 2026** and live at the top of `index.md`. Rewritten the
+same day to match the new motivational opening; the first brief (a wall map
+strung with yarn to ten countries) belonged to the provenance-puzzle opening
+and is retired.
 
-**Caption:** Twenty-six players. Ten countries. One spreadsheet.
+**Caption:** It started with a ball. This starts with a laptop.
 
-**Alt:** Cartoon of a Curacao football fan at a beach bar tracking her squad
-across a wall map strung with pins and yarn to ten different countries
+**Alt:** Cartoon of children playing football with stone goals on a Curacao
+neighbourhood pitch, watched by a woman with a laptop, with stadium floodlights
+glowing on the horizon
 
-**Brief:** A small neighbourhood bar in Willemstad, late afternoon. On the back
-wall, a large world map with twenty-six small photo pins on it and taut yarn
-running from a single dot in the southern Caribbean out to ten separate
-countries, the thickest bundle going to the Netherlands. Our analyst stands in
-front of it with a laptop balanced on one forearm, adding one more pin. On the
-counter behind her, a domino set mid-game that nobody is playing any more
-because everyone is looking at the map. Warm low sun through the doorway.
+**Brief:** A dusty neighbourhood pitch on Curacao in late-afternoon light. The
+goals are two stones and a pair of flip-flops. A handful of kids chase a single
+worn football, one of them mid-kick with total commitment. Behind the pitch, a
+low painted wall with kunuku-style houses and a divi-divi tree. Our analyst sits
+on the wall with her laptop open on her knees, looking up from the screen to
+watch the kick with a small grin. On the horizon, far away but huge, the
+floodlights of a great stadium glow against the evening sky, as if the ball
+could roll all the way there. No readable text anywhere in the image.
 
 ## Scene 1, Episode 1, the case for switching
 

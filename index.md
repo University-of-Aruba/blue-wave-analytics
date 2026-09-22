@@ -6,9 +6,7 @@ site: sandpaper::sandpaper_site
 
 # Blue Wave Analytics: Introduction to R
 
-<!-- CARTOON SLOT: uncomment when fig/scene_0.jpg exists. Scene spec in instructors/scene-briefs.md
-![Twenty-six players. Ten countries. One spreadsheet.](fig/scene_0.jpg){alt="Cartoon of a Curacao football fan at a beach bar tracking her squad across a wall map strung with pins and yarn to ten different countries"}
--->
+![It started with a ball. This starts with a laptop.](fig/scene_0.jpg){alt="Cartoon of children playing football with stone goals on a Curacao neighbourhood pitch, watched by a woman with a laptop, with stadium floodlights glowing on the horizon"}
 
 In 2025 Curacao, an island of about 149,000 people, qualified for the World
 Cup. No smaller nation has ever done it. The Blue Wave got there with limited

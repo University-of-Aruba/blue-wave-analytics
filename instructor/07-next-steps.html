@@ -378,8 +378,8 @@ workflows</li>
 </div>
 </div>
 </div>
-<figure><img src="../fig/scene_7.jpg" alt="Cartoon of a researcher on a sailboat studying a treasure map of R learning destinations like Packages Cove and Tidyverse Peak" class="figure mx-auto d-block"><div class="figcaption">You learned the basics. The map has a lot more
-islands.</div>
+<figure><img src="../fig/scene_7.jpg" alt="Cartoon of a researcher on a small boat leaving Willemstad harbour with a chart of R learning destinations" class="figure mx-auto d-block"><div class="figcaption">You have the basics. The map runs well past the
+harbour mouth.</div>
 </figure><section><h2 class="section-heading" id="getting-help">Getting help<a class="anchor" aria-label="anchor" href="#getting-help"></a></h2>
 <hr class="half-width"><p>Everyone gets stuck. The difference between a beginner and an
 experienced R user is not that experienced users never see errors. It is
@@ -769,7 +769,7 @@ most frequent meaningful words.</p>
 <span>  <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">word_counts</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">n</span>, y <span class="op">=</span> <span class="fu">reorder</span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_col</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#44759e"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_col</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#2e8894"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Most frequent meaningful words"</span>,</span>
 <span>    x <span class="op">=</span> <span class="st">"Count"</span>,</span>
@@ -1006,8 +1006,8 @@ code <code>"CW"</code>
 <span><span class="va">curacao_tourism</span> <span class="op">&lt;-</span> <span class="va">curacao_tourism</span><span class="op">[</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">curacao_tourism</span><span class="op">$</span><span class="va">arrivals</span><span class="op">)</span>, <span class="op">]</span></span>
 <span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">curacao_tourism</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">arrivals</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"#44759e"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span>, colour <span class="op">=</span> <span class="st">"#44759e"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"#2e8894"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span>, colour <span class="op">=</span> <span class="st">"#2e8894"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va">comma</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"International tourism arrivals to Curaçao"</span>,</span>

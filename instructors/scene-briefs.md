@@ -110,6 +110,11 @@ beyond the cursor.
 
 ## Scene 3, Episode 3, data manipulation
 
+**Rendered 22 September 2026** and live in Episode 3, replacing the inherited
+Aruba kitchen cartoon. Downscaled to 1280px at quality 66. All three jar labels
+rendered correctly. The palette came back softer than the style block asks for,
+and the chopping board shows the messy pile without the sorted rows beside it.
+
 **Caption changed 22 September 2026.** The earlier caption, "Nobody makes stoba
 without cleaning the karko first", was written for this brief and presented as a
 saying. It is not one. Marjorie confirmed she has never heard it, and it does not

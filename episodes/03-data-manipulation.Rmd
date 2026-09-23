@@ -21,7 +21,7 @@ exercises: 20
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-![You can't cook without ingredients. You can't wrangle without verbs.](fig/scene_3.jpg){alt="Cartoon of a researcher as a Caribbean chef with jars labeled filter(), select(), and mutate(), cooking a pot of tidy data"}
+![The stew takes twenty minutes. The chopping takes an hour.](fig/scene_3.jpg){alt="Cartoon of a researcher cooking in a Caribbean kitchen with three labelled jars for the dplyr verbs"}
 
 ## The tidyverse approach
 

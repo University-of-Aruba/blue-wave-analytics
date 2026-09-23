@@ -64,7 +64,7 @@ for instructors who want one on arriving at a new episode.
 | Index | Twenty-six players. Ten countries. One spreadsheet. | (Shown on the landing page and on the opening slide. No spoken line; let people read it while the room settles.) |
 | 1 | One gate charges you every season. The other one only asks you to learn the way in. | (Episode 1 opens with the workshop's full opening sequence; no separate transition needed.) |
 | 2 | The dominoes can wait. The console is blinking. | "Laptop open, console blinking, iguana unimpressed. Time to type something." |
-| 3 | Nobody makes stoba without cleaning the karko first. | "Three jars on the counter today: filter, select, mutate. Everything else in dplyr is a variation on those three." |
+| 3 | The stew takes twenty minutes. The chopping takes an hour. | "Three jars on the counter today: filter, select, mutate. Everything else in dplyr is a variation on those three." |
 | 4 | SPSS hands you a chart. ggplot2 hands you a grammar. | "Those are the Handelskade houses and they are also a bar chart. By the end of this episode you will be writing the sentence that draws them." |
 | 5 | Sometimes the review says nothing happened. You report that too. | "The tests you know from SPSS are all here. What is new is that one of today's two comes back null, and we are going to report it anyway." |
 | 6 | The squad changed overnight. Again. Good thing the report rebuilds itself. | "This is where R Markdown earns the price of admission. New squad in, finished document out, one button." |

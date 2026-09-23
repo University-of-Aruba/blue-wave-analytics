@@ -110,6 +110,15 @@ beyond the cursor.
 
 ## Scene 3, Episode 3, data manipulation
 
+**Caption changed 22 September 2026.** The earlier caption, "Nobody makes stoba
+without cleaning the karko first", was written for this brief and presented as a
+saying. It is not one. Marjorie confirmed she has never heard it, and it does not
+appear in Dijkhoff's collection either. **Rule for the rest of the set: no invented
+proverbs.** A saying goes in a caption only when Marjorie names it, and then in
+Curacao Papiamentu spelling with her as the source, since Dijkhoff's 441 are Aruban
+and in Aruban spelling.
+
+
 **Caption:** The stew takes twenty minutes. The chopping takes an hour.
 
 **Alt:** Cartoon of a researcher cooking in a Caribbean kitchen with three

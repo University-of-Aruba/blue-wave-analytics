@@ -34,6 +34,13 @@ deliberate. Reporting a result that refuses to be interesting is the thing you
 will do most often in your own work, and it is the thing courses like this one
 usually skip.
 
+We talk about AI directly. Episode 2 covers where packages come from and why a
+curated archive like CRAN is a different proposition from an open upload hub,
+with the July 2026 Hugging Face intrusion as the contrast, along with what to do
+when your employer blocks installations. Episode 7 covers working with generated
+code: what it gets wrong, how to check it, and what should never be pasted into
+a public model.
+
 This course is the Curacao edition of
 [Introduction to R for SPSS Users](https://university-of-aruba.github.io/r-for-spss-users/),
 developed by **Rendell de Kort** ([University of Aruba](https://www.ua.aw/) /

@@ -21,7 +21,7 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-![SPSS gives you a chart. ggplot2 gives you a language.](fig/scene_4.jpg){alt="Cartoon of a researcher painting a tropical sunset onto a ggplot2 canvas with flamingos and plot axes"}
+![SPSS hands you a chart. ggplot2 hands you a grammar.](fig/scene_4.jpg){alt="Cartoon of the coloured waterfront houses of Willemstad drawn as the bars of a bar chart, with a researcher painting them into order"}
 
 ## The grammar of graphics
 

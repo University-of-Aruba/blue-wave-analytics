@@ -138,6 +138,11 @@ obvious. A cat asleep under the counter, uninterested.
 
 ## Scene 4, Episode 4, your first visualization
 
+**Rendered 22 September 2026** and live in Episode 4. Downscaled to 1280px at
+quality 85, 146KB. The houses resolve into flat colour bars from left to right,
+which reads better than the brief asked for. Gridlines, baseline and axis ticks
+all present, no lettering.
+
 **Caption:** SPSS hands you a chart. ggplot2 hands you a grammar.
 
 **Alt:** Cartoon of the coloured waterfront houses of Willemstad drawn as the

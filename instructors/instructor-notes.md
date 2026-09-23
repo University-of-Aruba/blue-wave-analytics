@@ -91,6 +91,31 @@ hardest and it carries the null result.
 The **Day 1 questions-and-consolidation block** is gone. Fold consolidation into
 the end of each episode rather than saving it up.
 
+## The AI and package-trust material, added 22 September 2026
+
+Two additions, both deliberate and both cuttable under time pressure.
+
+**Episode 2** gains a callout after the `install.packages()` versus `library()`
+box: what CRAN's review actually guarantees, the July 2026 Hugging Face
+intrusion as the contrast (a malicious dataset abusing code execution paths in
+the upload processing pipeline, so reading data is running code), and what to do
+where an employer blocks installations, which is an internal mirror plus `renv`
+pinning. Budget four minutes spoken. Two Central Bank staff are in the room and
+their institution treats package installation as a security exposure, so deliver
+this as a fair position with a professional answer rather than as an obstacle.
+If Episode 2 is running behind, say the last paragraph only and leave the rest
+to be read.
+
+**Episode 7** gains "Letting AI write the R" before the learning resources: that
+generating R is now the faster route for routine work, that the job becomes
+judging the output, the four failure modes that read well, and the rule about
+never pasting supervisory or personal data into a public model. Episode 7 is
+self-guided, so this costs nothing from the timetable. It is worth naming out
+loud in the wrap-up even if nobody reads the section.
+
+The index says both are covered, which matters for institutions deciding whether
+to send staff.
+
 ## Common Issues
 
 - **Installation problems**: The registration email asks participants to reply

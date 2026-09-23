@@ -27,8 +27,8 @@ suppressPackageStartupMessages({
   library(tidyverse); library(knitr); library(broom)
 })
 
-ld <- list(blue = "#44759e", orange = "#f38439", beige = "#dee3c8",
-           green = "#749c4c", gray = "#605b54", ink = "#1d2433")
+pal <- list(teal = "#2e8894", gold = "#d4a017", mist = "#b2dfe5",
+           flagblue = "#002b7f", slate = "#4a5568", ink = "#1a2332")
 
 theme_report <- function(base_size = 13) {
   theme_minimal(base_size = base_size, base_family = "Georgia") +
@@ -43,12 +43,12 @@ theme_report <- function(base_size = 13) {
 }
 
 region_colours <- c(
-  "Netherlands"    = ld$blue,
-  "Rest of Europe" = ld$green,
+  "Netherlands"    = pal$teal,
+  "Rest of Europe" = pal$flagblue,
   "North America"  = "#8fb3d0",
-  "Rest of world"  = ld$beige,
-  "Home island"    = ld$orange,
-  "Unknown"        = ld$gray
+  "Rest of world"  = pal$mist,
+  "Home island"    = pal$gold,
+  "Unknown"        = pal$slate
 )
 
 pct <- function(x, d = 0) sprintf(paste0("%.", d, "f%%"), 100 * x)
@@ -145,7 +145,7 @@ this |>
   count(club_country, sort = TRUE) |>
   mutate(club_country = fct_reorder(club_country, n)) |>
   ggplot(aes(x = club_country, y = n)) +
-  geom_col(fill = ld$blue, width = 0.7) +
+  geom_col(fill = pal$teal, width = 0.7) +
   coord_flip() +
   labs(
     title = sprintf("Club country, %s %s squad", this_island, tolower(this_gender)),
@@ -266,8 +266,8 @@ fifa_resid |>
   mutate(highlight = iso3 %in% focus) |>
   ggplot(aes(x = log_population, y = points)) +
   geom_point(color = "grey80", size = 2) +
-  geom_smooth(method = "lm", se = FALSE, color = ld$gray, linewidth = 0.6) +
-  geom_point(data = ~ filter(.x, highlight), color = ld$orange, size = 3.4) +
+  geom_smooth(method = "lm", se = FALSE, color = pal$slate, linewidth = 0.6) +
+  geom_point(data = ~ filter(.x, highlight), color = pal$gold, size = 3.4) +
   geom_text(
     data = ~ filter(.x, highlight),
     aes(label = country), nudge_y = 70, size = 3.3, family = "Georgia"

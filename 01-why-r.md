@@ -196,7 +196,7 @@ countries |>
   filter(is_sids == 1) |>
   count(wb_region) |>
   ggplot(aes(x = reorder(wb_region, n), y = n)) +
-  geom_col(fill = "#44759e") +
+  geom_col(fill = "#2e8894") +
   coord_flip() +
   labs(
     title = "Small island developing states by World Bank region",

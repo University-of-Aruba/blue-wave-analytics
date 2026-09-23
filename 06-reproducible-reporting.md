@@ -21,7 +21,7 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-![Your supervisor changed the sample. Again. Good thing you only need one button.](fig/scene_6.jpg){alt="Cartoon of a researcher pressing a big red button on a tropical machine that converts raw data into a finished report"}
+![The squad changed overnight. Again. Good thing the report rebuilds itself.](fig/scene_6.jpg){alt="Cartoon of a researcher pressing one button on a machine that turns a changed squad list into a finished report"}
 
 
 
@@ -334,7 +334,7 @@ Add another chunk with a ggplot2 chart:
 ``` r
 ggplot(squad_summary, aes(x = reorder(paste(island, gender), pct_abroad),
                           y = pct_abroad)) +
-  geom_col(fill = "#44759e", width = 0.7) +
+  geom_col(fill = "#2e8894", width = 0.7) +
   coord_flip() +
   labs(
     title = "Share of each squad playing club football off-island",
@@ -481,7 +481,7 @@ this |>
   filter(club_country != "X") |>
   count(club_country, sort = TRUE) |>
   ggplot(aes(x = reorder(club_country, n), y = n)) +
-  geom_col(fill = "#44759e") +
+  geom_col(fill = "#2e8894") +
   coord_flip() +
   labs(title = "Club country", x = NULL, y = "Players") +
   theme_minimal()

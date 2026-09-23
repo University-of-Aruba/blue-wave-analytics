@@ -200,6 +200,10 @@ a discarded pile of the same report done by hand.
 
 ## Scene 7, Episode 7, where to go from here
 
+**Rendered 22 September 2026** and live in Episode 7. 1280px, quality 85. All
+four chart names spelled correctly. **The set is complete: scenes 0 to 7 are all
+Curacao renders and no Aruba image remains in `episodes/fig/`.**
+
 **Caption:** You have the basics. The map runs well past the harbour mouth.
 
 **Alt:** Cartoon of a researcher on a small boat leaving Willemstad harbour with

@@ -21,7 +21,7 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-![You learned the basics. The map has a lot more islands.](fig/scene_7.jpg){alt="Cartoon of a researcher on a sailboat studying a treasure map of R learning destinations like Packages Cove and Tidyverse Peak"}
+![You have the basics. The map runs well past the harbour mouth.](fig/scene_7.jpg){alt="Cartoon of a researcher on a small boat leaving Willemstad harbour with a chart of R learning destinations"}
 
 ## Getting help
 

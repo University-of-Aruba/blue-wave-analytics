@@ -21,7 +21,7 @@ exercises: 20
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-![The iguana is optional. The coconut water is not.](fig/scene_2.jpg){alt="Cartoon of a researcher at a Caribbean beach bar opening his laptop to the R console, with an iguana watching from the counter"}
+![The dominoes can wait. The console is blinking.](fig/scene_2.jpg){alt="Cartoon of a researcher opening the R console on a laptop at a neighbourhood bar while an iguana watches from the next stool"}
 
 ## RStudio orientation
 
@@ -496,7 +496,7 @@ spc_tbl_ [94 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
   ..   club = col_character(),
   ..   club_country = col_character()
   .. )
- - attr(*, "problems")=<pointer: 0x55c8c4730880> 
+ - attr(*, "problems")=<pointer: 0x556f4aa4e340> 
 ```
 
 This tells you how many observations (rows), how many variables (columns), and

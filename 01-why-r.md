@@ -20,7 +20,7 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-![One road costs you a license fee. The other one costs you a learning curve.](fig/scene_1.jpg){alt="Cartoon of a researcher at a Caribbean crossroads choosing between a cracked SPSS path and a paved R path leading to the coast"}
+![One gate charges you every season. The other one only asks you to learn the way in.](fig/scene_1.jpg){alt="Cartoon of a researcher choosing between a coin-operated turnstile and an open stadium gate marked install.packages()"}
 
 ## Introduction
 

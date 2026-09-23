@@ -134,4 +134,8 @@ done both ways is the quickest route into a new one.
 Install R and RStudio ahead of the first day, following the
 [setup instructions](setup.html). If something fails, reply to your
 registration email with the error message and we will sort it before the day.
-Bring your own laptop if you have one; the research lab is the fallback.
+Bring your own laptop. The point of the two days is that R keeps working 
+after them, on the machine you actually use, so the install is part of what you 
+take away. The Itanium Computer Room has about twenty machines with R, RStudio 
+and the course packages already installed and tested, and anyone whose laptop 
+will not cooperate moves to one of those rather than losing the morning to it.

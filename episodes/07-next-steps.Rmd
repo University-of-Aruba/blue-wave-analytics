@@ -362,7 +362,7 @@ word_counts <- tibble(word = words) |>
   slice_head(n = 10)
 
 ggplot(word_counts, aes(x = n, y = reorder(word, n))) +
-  geom_col(fill = "#44759e") +
+  geom_col(fill = "#2e8894") +
   labs(
     title = "Most frequent meaningful words",
     x = "Count",
@@ -576,8 +576,8 @@ names(curacao_tourism)[names(curacao_tourism) == "ST.INT.ARVL"] <- "arrivals"
 curacao_tourism <- curacao_tourism[!is.na(curacao_tourism$arrivals), ]
 
 ggplot(curacao_tourism, aes(x = year, y = arrivals)) +
-  geom_line(linewidth = 1, colour = "#44759e") +
-  geom_point(size = 2, colour = "#44759e") +
+  geom_line(linewidth = 1, colour = "#2e8894") +
+  geom_point(size = 2, colour = "#2e8894") +
   scale_y_continuous(labels = scales::comma) +
   labs(
     title = "International tourism arrivals to Curaçao",

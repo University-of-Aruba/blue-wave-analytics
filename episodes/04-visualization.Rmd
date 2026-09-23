@@ -228,7 +228,7 @@ fifa_flag <- fifa |>
 
 ggplot(fifa_flag, aes(x = log_population, y = points)) +
   geom_point(color = "grey75", size = 2) +
-  geom_point(data = filter(fifa_flag, highlight), color = "#f38439", size = 3.5) +
+  geom_point(data = filter(fifa_flag, highlight), color = "#d4a017", size = 3.5) +
   geom_text(
     data = filter(fifa_flag, highlight),
     aes(label = country),
@@ -318,12 +318,12 @@ palette used for the figures in this lesson:
 
 ```{r polish-step4}
 region_colours <- c(
-  "Netherlands"    = "#44759e",
-  "Rest of Europe" = "#749c4c",
+  "Netherlands"    = "#2e8894",
+  "Rest of Europe" = "#002b7f",
   "North America"  = "#8fb3d0",
-  "Rest of world"  = "#dee3c8",
-  "Home island"    = "#f38439",
-  "Unknown"        = "#605b54"
+  "Rest of world"  = "#b2dfe5",
+  "Home island"    = "#d4a017",
+  "Unknown"        = "#4a5568"
 )
 
 p <- p + scale_fill_manual(values = region_colours)
@@ -434,8 +434,8 @@ fifa_c1 <- fifa |>
 
 ggplot(fifa_c1, aes(x = log_population, y = rank)) +
   geom_point(color = "grey78", size = 2) +
-  geom_smooth(method = "lm", se = FALSE, color = "#605b54", linewidth = 0.7) +
-  geom_point(data = filter(fifa_c1, highlight), color = "#f38439", size = 3.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "#4a5568", linewidth = 0.7) +
+  geom_point(data = filter(fifa_c1, highlight), color = "#d4a017", size = 3.5) +
   geom_text(
     data = filter(fifa_c1, highlight),
     aes(label = country), nudge_y = -9, size = 3.4
@@ -484,7 +484,7 @@ squad |>
   ) |>
   ggplot(aes(x = island, y = pct_abroad, fill = gender)) +
   geom_col(position = "dodge", width = 0.7) +
-  scale_fill_manual(values = c("Men" = "#44759e", "Women" = "#f38439")) +
+  scale_fill_manual(values = c("Men" = "#2e8894", "Women" = "#d4a017")) +
   labs(
     title = "Share of each squad playing club football off-island",
     x = NULL,

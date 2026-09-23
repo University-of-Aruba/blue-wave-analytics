@@ -325,7 +325,7 @@ Add another chunk with a ggplot2 chart:
 ```{r vis-demo, message = FALSE, warning = FALSE, fig.width = 8, fig.height = 4.5}
 ggplot(squad_summary, aes(x = reorder(paste(island, gender), pct_abroad),
                           y = pct_abroad)) +
-  geom_col(fill = "#44759e", width = 0.7) +
+  geom_col(fill = "#2e8894", width = 0.7) +
   coord_flip() +
   labs(
     title = "Share of each squad playing club football off-island",
@@ -473,7 +473,7 @@ this |>
   filter(club_country != "X") |>
   count(club_country, sort = TRUE) |>
   ggplot(aes(x = reorder(club_country, n), y = n)) +
-  geom_col(fill = "#44759e") +
+  geom_col(fill = "#2e8894") +
   coord_flip() +
   labs(title = "Club country", x = NULL, y = "Players") +
   theme_minimal()

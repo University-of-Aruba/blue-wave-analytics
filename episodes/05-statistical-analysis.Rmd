@@ -436,7 +436,7 @@ fifa_ss |>
 # Step 2: Visualise the distribution
 ggplot(fifa_ss, aes(x = small_state, y = points, fill = small_state)) +
   geom_boxplot(alpha = 0.7) +
-  scale_fill_manual(values = c("FALSE" = "#44759e", "TRUE" = "#f38439")) +
+  scale_fill_manual(values = c("FALSE" = "#2e8894", "TRUE" = "#d4a017")) +
   labs(
     title = "FIFA points by country size",
     x = "Population under 1 million",
@@ -501,7 +501,7 @@ joined |>
 # Boxplot
 ggplot(joined, aes(x = fast_growth, y = points, fill = fast_growth)) +
   geom_boxplot(alpha = 0.7) +
-  scale_fill_manual(values = c("FALSE" = "#605b54", "TRUE" = "#749c4c")) +
+  scale_fill_manual(values = c("FALSE" = "#4a5568", "TRUE" = "#002b7f")) +
   labs(
     title = "FIFA points by diaspora growth since 1990",
     x = "Diaspora grew faster than the median",
@@ -545,8 +545,8 @@ cor.test(fifa$log_population, fifa$rank)
 
 # Step 2: Scatterplot
 ggplot(fifa, aes(x = log_population, y = rank)) +
-  geom_point(alpha = 0.6, size = 2, color = "#44759e") +
-  geom_smooth(method = "lm", color = "#605b54", linewidth = 0.8) +
+  geom_point(alpha = 0.6, size = 2, color = "#2e8894") +
+  geom_smooth(method = "lm", color = "#4a5568", linewidth = 0.8) +
   scale_y_reverse() +
   labs(
     title = "Population and FIFA rank",

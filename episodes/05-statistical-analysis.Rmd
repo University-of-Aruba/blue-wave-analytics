@@ -22,7 +22,7 @@ exercises: 35
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-![Same tests, fewer menus, more crabs.](fig/scene_5.jpg){alt="Cartoon of a researcher as a beach detective following a regression line in the sand while crabs carry p-values on their shells"}
+![Sometimes the review says nothing happened. You report that too.](fig/scene_5.jpg){alt="Cartoon of a researcher at a pitchside video review monitor showing a flat regression line and a null result"}
 
 ## From SPSS dialogs to R functions
 

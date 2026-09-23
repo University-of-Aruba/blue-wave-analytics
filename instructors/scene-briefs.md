@@ -159,6 +159,11 @@ in the set; give it the most care.
 
 ## Scene 5, Episode 5, statistical analysis
 
+**Rendered 22 September 2026** and live in Episode 5. 1280px at quality 85,
+185KB. `p = 0.64` rendered correctly. Note the screen shows a scatter with a
+flat fitted line while the p = 0.64 in the episode comes from a chi-square on a
+crosstab, so do not point at the image as if it were the test output.
+
 **Caption:** Sometimes the review says nothing happened. You report that too.
 
 **Alt:** Cartoon of a researcher at a pitchside video review monitor showing a

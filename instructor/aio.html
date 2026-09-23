@@ -597,7 +597,7 @@ starting in the next episode.</p>
   Live demo script
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>This is the complete script to run live. <strong>Practice this before
 the workshop.</strong> Make sure <code>tidyverse</code> is installed.
@@ -1115,6 +1115,40 @@ shelf and opening it.</p>
 </div>
 </div>
 </div>
+<div id="where-packages-come-from-and-whether-you-can-trust-them" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="where-packages-come-from-and-whether-you-can-trust-them" class="callout-inner">
+<h3 class="callout-title">Where packages come from, and whether you can
+trust them</h3>
+<div class="callout-content">
+<p>Every package you install is code somebody else wrote, and installing
+it runs that code on your computer. That deserves an honest paragraph
+rather than silence.</p>
+<p>CRAN is a curated archive. A human reviews every submission, it has
+to pass automated checks on several operating systems before it is
+accepted, the source stays readable by anyone who cares to look, and old
+versions are kept rather than overwritten. That is not a security audit,
+and no archive can promise it has never hosted anything harmful. What it
+means is that a package on CRAN has been looked at, that you can read it
+yourself, and that it cannot be swapped out from under you tomorrow.</p>
+<p>The open model and dataset hubs that AI work runs on are built for
+speed instead: anyone uploads, nothing is reviewed on the way in. In
+July 2026 an intrusion into Hugging Face’s own infrastructure came in
+through a malicious dataset that abused two code execution paths in the
+pipeline that processes uploaded data. Reading data is running code, on
+their servers and on your laptop.</p>
+<p>Several institutions in the region block package installation on work
+machines, and some of you work in them. That is a fair answer to a real
+question. The professional version keeps the packages and adds control:
+install from an approved internal mirror, and record the exact versions
+each project uses with <code>renv</code>, so a colleague, an auditor or
+you in two years rebuilds the same environment.</p>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="importing-data">Importing data<a class="anchor" aria-label="anchor" href="#importing-data"></a>
 </h2>
 <hr class="half-width">
@@ -1400,7 +1434,7 @@ called <code>aruba_squad</code>.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1509,7 +1543,7 @@ same thing:</p>
   ..   club = col_character(),
   ..   club_country = col_character()
   .. )
- - attr(*, "problems")=&lt;pointer: 0x55cae55bf1f0&gt; </code></pre>
+ - attr(*, "problems")=&lt;pointer: 0x5638edbce520&gt; </code></pre>
 </div>
 <p>This tells you how many observations (rows), how many variables
 (columns), and the type of each variable: <code>num</code> for numbers,
@@ -1631,7 +1665,7 @@ properly.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Pacing notes </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <ul>
 <li>Spend time on the RStudio pane orientation. Have participants
@@ -1691,7 +1725,7 @@ surprise you?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1803,7 +1837,7 @@ can put one function inside another.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3111,8 +3145,8 @@ quality</li>
 </div>
 </div>
 </div>
-<figure><img src="../fig/scene_4.jpg" alt="Cartoon of a researcher painting a tropical sunset onto a ggplot2 canvas with flamingos and plot axes" class="figure mx-auto d-block"><div class="figcaption">SPSS gives you a chart. ggplot2 gives you a
-language.</div>
+<figure><img src="../fig/scene_4.jpg" alt="Cartoon of the coloured waterfront houses of Willemstad drawn as the bars of a bar chart, with a researcher painting them into order" class="figure mx-auto d-block"><div class="figcaption">SPSS hands you a chart. ggplot2 hands you a
+grammar.</div>
 </figure><section><h2 class="section-heading" id="the-grammar-of-graphics">The grammar of graphics<a class="anchor" aria-label="anchor" href="#the-grammar-of-graphics"></a>
 </h2>
 <hr class="half-width">
@@ -3612,7 +3646,7 @@ variable and just want the panels to flow.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>The faceting example is a good place to pause and let learners
 experiment. Encourage them to try:</p>
@@ -3668,7 +3702,7 @@ with the following requirements:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3729,7 +3763,7 @@ gender.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4549,7 +4583,7 @@ possible, which is Episode 6.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>This is a good time to reinforce the reproducibility advantage. In
 SPSS, if a reviewer asks you to re-run an analysis on a different
@@ -4710,7 +4744,7 @@ when <code>growth_1990_2024</code> is above the median</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4808,7 +4842,7 @@ would it have meant if it were positive?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6387,6 +6421,38 @@ that stays in the office.</p>
 </div>
 </div>
 </div>
+</section><section><h2 class="section-heading" id="letting-ai-write-the-r">Letting AI write the R<a class="anchor" aria-label="anchor" href="#letting-ai-write-the-r"></a>
+</h2>
+<hr class="half-width">
+<p>Most of you will generate more R than you type, and for routine work
+a model is faster than any of us. A course taught in 2026 that pretended
+otherwise would be wasting your morning.</p>
+<p>What changes is the job. You stop being the person who writes the
+code and become the person who decides whether it is right, and that
+decision runs on exactly what these two days gave you. Generated R fails
+in ways that read beautifully:</p>
+<ul>
+<li>It calls functions and arguments that do not exist, in the confident
+tone of code that does.</li>
+<li>It drops rows quietly. A missing value handled the wrong way changes
+an average without changing the output’s appearance.</li>
+<li>It hands you an interpretation along with the result. Episode 5 is
+the warning here: asked to describe a null, a model will often narrate a
+finding.</li>
+<li>It writes against a package version you do not have, or an idiom
+that was replaced three years ago.</li>
+</ul>
+<p>Working with it well looks like working with a fast junior colleague.
+Show it the shape of your data with <code>str()</code> or
+<code>head()</code> rather than describing it, ask for one step at a
+time, run every step, and check the row count before and after anything
+that filters or joins. Keep the script, because the script is what makes
+the result reproducible, and a chat window is not.</p>
+<p>One rule that is not about quality. Anything you paste into a public
+model leaves your institution, and supervisory data, personal data and
+unpublished figures should never go near one. Check what your
+organisation permits before you paste, and prefer sharing the structure
+of your data over the data itself.</p>
 </section><section><h2 class="section-heading" id="continued-learning">Continued learning<a class="anchor" aria-label="anchor" href="#continued-learning"></a>
 </h2>
 <hr class="half-width">

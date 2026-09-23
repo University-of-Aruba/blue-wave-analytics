@@ -596,6 +596,40 @@ shelf and opening it.</p>
 </div>
 </div>
 </div>
+<div id="where-packages-come-from-and-whether-you-can-trust-them" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="where-packages-come-from-and-whether-you-can-trust-them" class="callout-inner">
+<h3 class="callout-title">Where packages come from, and whether you can
+trust them</h3>
+<div class="callout-content">
+<p>Every package you install is code somebody else wrote, and installing
+it runs that code on your computer. That deserves an honest paragraph
+rather than silence.</p>
+<p>CRAN is a curated archive. A human reviews every submission, it has
+to pass automated checks on several operating systems before it is
+accepted, the source stays readable by anyone who cares to look, and old
+versions are kept rather than overwritten. That is not a security audit,
+and no archive can promise it has never hosted anything harmful. What it
+means is that a package on CRAN has been looked at, that you can read it
+yourself, and that it cannot be swapped out from under you tomorrow.</p>
+<p>The open model and dataset hubs that AI work runs on are built for
+speed instead: anyone uploads, nothing is reviewed on the way in. In
+July 2026 an intrusion into Hugging Face’s own infrastructure came in
+through a malicious dataset that abused two code execution paths in the
+pipeline that processes uploaded data. Reading data is running code, on
+their servers and on your laptop.</p>
+<p>Several institutions in the region block package installation on work
+machines, and some of you work in them. That is a fair answer to a real
+question. The professional version keeps the packages and adds control:
+install from an approved internal mirror, and record the exact versions
+each project uses with <code>renv</code>, so a colleague, an auditor or
+you in two years rebuilds the same environment.</p>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="importing-data">Importing data<a class="anchor" aria-label="anchor" href="#importing-data"></a></h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="before-you-import-set-up-your-workshop-folder">Before you import, set up your workshop folder<a class="anchor" aria-label="anchor" href="#before-you-import-set-up-your-workshop-folder"></a></h3>
@@ -850,7 +884,7 @@ called <code>aruba_squad</code>.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -954,7 +988,7 @@ same thing:</p>
   ..   club = col_character(),
   ..   club_country = col_character()
   .. )
- - attr(*, "problems")=&lt;pointer: 0x55cae55bf1f0&gt; </code></pre>
+ - attr(*, "problems")=&lt;pointer: 0x5638edbce520&gt; </code></pre>
 </div>
 <p>This tells you how many observations (rows), how many variables
 (columns), and the type of each variable: <code>num</code> for numbers,
@@ -1092,7 +1126,7 @@ surprise you?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1202,7 +1236,7 @@ can put one function inside another.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>

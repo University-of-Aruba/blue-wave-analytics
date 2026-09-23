@@ -500,6 +500,37 @@ comments explaining the judgement calls is capability that stays in the office.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Letting AI write the R
+
+Most of you will generate more R than you type, and for routine work a model is
+faster than any of us. A course taught in 2026 that pretended otherwise would be
+wasting your morning.
+
+What changes is the job. You stop being the person who writes the code and
+become the person who decides whether it is right, and that decision runs on
+exactly what these two days gave you. Generated R fails in ways that read
+beautifully:
+
+- It calls functions and arguments that do not exist, in the confident tone of
+  code that does.
+- It drops rows quietly. A missing value handled the wrong way changes an
+  average without changing the output's appearance.
+- It hands you an interpretation along with the result. Episode 5 is the warning
+  here: asked to describe a null, a model will often narrate a finding.
+- It writes against a package version you do not have, or an idiom that was
+  replaced three years ago.
+
+Working with it well looks like working with a fast junior colleague. Show it
+the shape of your data with `str()` or `head()` rather than describing it, ask
+for one step at a time, run every step, and check the row count before and
+after anything that filters or joins. Keep the script, because the script is
+what makes the result reproducible, and a chat window is not.
+
+One rule that is not about quality. Anything you paste into a public model
+leaves your institution, and supervisory data, personal data and unpublished
+figures should never go near one. Check what your organisation permits before
+you paste, and prefer sharing the structure of your data over the data itself.
+
 ## Continued learning
 
 ### Free books and courses

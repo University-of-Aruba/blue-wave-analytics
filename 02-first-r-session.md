@@ -201,6 +201,38 @@ Analogy: `install.packages()` is buying a book and putting it on your shelf.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::: callout
+
+## Where packages come from, and whether you can trust them
+
+Every package you install is code somebody else wrote, and installing it runs
+that code on your computer. That deserves an honest paragraph rather than
+silence.
+
+CRAN is a curated archive. A human reviews every submission, it has to pass
+automated checks on several operating systems before it is accepted, the source
+stays readable by anyone who cares to look, and old versions are kept rather
+than overwritten. That is not a security audit, and no archive can promise it
+has never hosted anything harmful. What it means is that a package on CRAN has
+been looked at, that you can read it yourself, and that it cannot be swapped
+out from under you tomorrow.
+
+The open model and dataset hubs that AI work runs on are built for speed
+instead: anyone uploads, nothing is reviewed on the way in. In July 2026 an
+intrusion into Hugging Face's own infrastructure came in through a malicious
+dataset that abused two code execution paths in the pipeline that processes
+uploaded data. Reading data is running code, on their servers and on your
+laptop.
+
+Several institutions in the region block package installation on work machines,
+and some of you work in them. That is a fair answer to a real question. The
+professional version keeps the packages and adds control: install from an
+approved internal mirror, and record the exact versions each project uses with
+`renv`, so a colleague, an auditor or you in two years rebuilds the same
+environment.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Importing data
 
 ### Before you import, set up your workshop folder
@@ -496,7 +528,7 @@ spc_tbl_ [94 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
   ..   club = col_character(),
   ..   club_country = col_character()
   .. )
- - attr(*, "problems")=<pointer: 0x55cae55bf1f0> 
+ - attr(*, "problems")=<pointer: 0x5638edbce520> 
 ```
 
 This tells you how many observations (rows), how many variables (columns), and

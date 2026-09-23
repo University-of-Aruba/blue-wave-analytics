@@ -21,7 +21,7 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-![Your supervisor changed the sample. Again. Good thing you only need one button.](fig/scene_6.jpg){alt="Cartoon of a researcher pressing a big red button on a tropical machine that converts raw data into a finished report"}
+![The squad changed overnight. Again. Good thing the report rebuilds itself.](fig/scene_6.jpg){alt="Cartoon of a researcher pressing one button on a machine that turns a changed squad list into a finished report"}
 
 ```{r episode6-data-load, echo = FALSE, message = FALSE, warning = FALSE}
 library(tidyverse)

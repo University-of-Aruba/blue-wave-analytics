@@ -179,6 +179,11 @@ she is fine with it.
 
 ## Scene 6, Episode 6, reproducible reporting
 
+**Rendered 22 September 2026** and live in Episode 6. 1280px, quality 85. The
+hopper carries the Curacao flag, which was not asked for and is a good addition.
+The discarded hand-made reports came back as a crumpled heap rather than the
+same bound report, which loses a little of the joke but not enough to re-render.
+
 **Caption:** The squad changed overnight. Again. Good thing the report rebuilds
 itself.
 

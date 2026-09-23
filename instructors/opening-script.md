@@ -1,7 +1,7 @@
 ---
 title: "Opening sequence template"
 duration: "7 to 8 minutes of personal narrative, then into the page"
-fits_within: "Episode 01 — The case for switching"
+fits_within: "Episode 01, the case for switching"
 delivery: "Live and voice-driven. The Episode 1 page already shows one atmospheric scene image at the top and contains the live SIDS reference-list demo as an embedded instructor block. The opening is a wrapper around that page, not a parallel performance."
 version: 6
 ---

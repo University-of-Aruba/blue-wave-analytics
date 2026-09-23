@@ -51,8 +51,8 @@ It is open and freely reusable under a CC-BY 4.0 license.
 
 ## The football is the vehicle, not the payload
 
-You will not learn expected goals, expected threat, or anything else from the
-analytics literature here. This is an introduction to R. The squad data is what
+This is an introduction to R. Expected goals, expected threat and the rest of
+the football analytics literature stay outside it. The squad data is what
 we compute on because a local stake helps people learn, and because the dataset
 is an honest one with real gaps in it. What you take away is R, and it will work
 just as well on your own survey, your own budget file, or your own thesis data.

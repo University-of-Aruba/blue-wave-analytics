@@ -1,4 +1,4 @@
-# Blue Wave squad dataset — codebook
+# Blue Wave squad dataset: codebook
 
 **Iteration:** 3
 **Compiled:** 23 August 2026 (World Cup snapshot), 12 September 2026 (September call-up)

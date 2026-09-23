@@ -8,7 +8,7 @@ title: 'SPSS to R Reference Card'
 |---|---|---|
 | Open SPSS file | File > Open > Data | `haven::read_sav("file.sav")` |
 | Open CSV file | File > Open > Data (CSV) | `readr::read_csv("file.csv")` |
-| Open Excel file | — | `readxl::read_excel("file.xlsx")` |
+| Open Excel file | n/a | `readxl::read_excel("file.xlsx")` |
 | Save as CSV | File > Save As > CSV | `readr::write_csv(df, "file.csv")` |
 
 ## Inspecting Data
@@ -17,8 +17,8 @@ title: 'SPSS to R Reference Card'
 |---|---|---|
 | View data | Data View tab | `View(df)` |
 | Variable info | Variable View tab | `str(df)` or `dplyr::glimpse(df)` |
-| First rows | — | `head(df)` |
-| Dimensions | — | `nrow(df)` / `ncol(df)` / `dim(df)` |
+| First rows | n/a | `head(df)` |
+| Dimensions | n/a | `nrow(df)` / `ncol(df)` / `dim(df)` |
 
 ## Descriptive Statistics
 
@@ -37,7 +37,7 @@ title: 'SPSS to R Reference Card'
 | Sort | Data > Sort Cases | `dplyr::arrange(df, var)` |
 | New variable | Transform > Compute Variable | `dplyr::mutate(df, new = ...)` |
 | Recode | Transform > Recode | `dplyr::case_when()` |
-| Select columns | — | `dplyr::select(df, var1, var2)` |
+| Select columns | n/a | `dplyr::select(df, var1, var2)` |
 | Split file | Data > Split File | `dplyr::group_by(df, var)` |
 | Aggregate | Data > Aggregate | `df |> group_by(var) |> summarise(...)` |
 | Merge (add cases) | Data > Merge Files > Add Cases | `dplyr::bind_rows(df1, df2)` |
@@ -65,8 +65,8 @@ title: 'SPSS to R Reference Card'
 | Scatterplot | Scatter/Dot element | `ggplot(df, aes(x, y)) + geom_point()` |
 | Line chart | Line element | `ggplot(df, aes(x, y)) + geom_line()` |
 | Boxplot | Boxplot element | `ggplot(df, aes(x, y)) + geom_boxplot()` |
-| Add labels | — | `+ labs(title = "...", x = "...", y = "...")` |
-| Change theme | — | `+ theme_minimal()` |
+| Add labels | n/a | `+ labs(title = "...", x = "...", y = "...")` |
+| Change theme | n/a | `+ theme_minimal()` |
 
 ## Useful Packages
 

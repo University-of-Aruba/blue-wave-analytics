@@ -160,10 +160,9 @@ forward.
 Before the first keystroke, name what the room is about to see. The CSV about to
 load is in a GitHub repository maintained at the University of Aruba,
 `island-research-reference-data`, part of the DCDC Network's shared
-infrastructure for island research. It is not a third-party service you hope
-stays up. It is research data the network owns and curates. That framing
-matters. The payoff is not just that R can read a URL. It is that the data layer
-underneath belongs to us.
+infrastructure for island research. The network owns and curates it, and keeps
+it up. That framing matters, because the point here goes past R being able to
+read a URL: the data layer underneath belongs to us.
 
 ### Part A, step 2: Pull the SIDS reference list
 

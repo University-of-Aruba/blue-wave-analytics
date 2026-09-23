@@ -256,7 +256,7 @@ one significant result. If you write up only the second, your p-value is not
 what it claims to be: you searched for it, and searching changes the odds of
 finding something.
 
-The fix is not to avoid looking. It is to say how much you looked. "We tested
+The fix is to say how much you looked. "We tested
 island and gender; the island comparison was null" costs you one sentence and it
 is the difference between an analysis a reader can weigh and one they have to
 take on faith.

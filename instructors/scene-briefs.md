@@ -67,19 +67,25 @@ could roll all the way there. No readable text anywhere in the image.
 
 ## Scene 1, Episode 1, the case for switching
 
+**Rendered 22 September 2026** and live in Episode 1, replacing the inherited
+Aruba crossroads cartoon. Downscaled to 1264px wide at quality 74 to come in
+under 200KB. `install.packages()` rendered correctly and is the only lettering.
+
 **Caption:** One gate charges you every season. The other one only asks you to
 learn the way in.
 
 **Alt:** Cartoon of a researcher choosing between a coin-operated turnstile and
-an open stadium gate
+an open stadium gate marked install.packages()
 
 **Brief:** The approach to a football stadium under a blue sky. Two entrances
 side by side. On the left, a heavy chrome turnstile with a coin slot and a
-running meter showing a licence fee climbing, a queue of tired people feeding it
-money. On the right, a wide open gate with a small hand-painted sign reading
-`install.packages()`, no queue, a short flight of steps that goes up rather
-steeply. Our analyst is at the foot of the steps, sleeves rolled, looking up at
-the climb with the expression of someone deciding it is worth it.
+spinning meter, a queue of tired people feeding it coins. On the right, a wide
+open gate with a small hand-painted sign reading `install.packages()`, no queue,
+and a short flight of steps beyond it that climbs rather steeply. Our analyst
+stands at the foot of the steps, sleeves rolled up, laptop under her arm,
+looking up at the climb with the expression of someone deciding it is worth it.
+The only readable text in the image is the sign on the right gate. The meter
+carries no figures, because generators garble numbers.
 
 ## Scene 2, Episode 2, your first R session
 

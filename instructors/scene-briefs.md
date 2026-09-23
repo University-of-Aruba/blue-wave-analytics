@@ -110,7 +110,7 @@ beyond the cursor.
 
 ## Scene 3, Episode 3, data manipulation
 
-**Caption:** Nobody makes stoba without cleaning the karko first.
+**Caption:** The stew takes twenty minutes. The chopping takes an hour.
 
 **Alt:** Cartoon of a researcher cooking in a Caribbean kitchen with three
 labelled jars for the dplyr verbs

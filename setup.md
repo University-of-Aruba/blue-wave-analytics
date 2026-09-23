@@ -43,7 +43,7 @@ before the day.
 ### Install R and RStudio
 
 You need both R (the language) and RStudio (the interface). Think of R as the
-engine and RStudio as the dashboard — you will work in RStudio, but it needs R
+engine and RStudio as the dashboard. You will work in RStudio, and it needs R
 installed to run.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -52,14 +52,14 @@ installed to run.
 
 ### Windows
 
-1. Download R from [CRAN](https://cran.r-project.org/bin/windows/base/) — click
+1. Download R from [CRAN](https://cran.r-project.org/bin/windows/base/). Click
    "Download R for Windows", then "base", then the download link.
 2. Run the installer with default settings.
 3. Download RStudio from
-   [Posit](https://posit.co/download/rstudio-desktop/) — click "Download
+   [Posit](https://posit.co/download/rstudio-desktop/) and click "Download
    RStudio Desktop".
 4. Run the RStudio installer with default settings.
-5. Open RStudio — if you see a console panel with the R version number, you are
+5. Open RStudio. If you see a console panel with the R version number, you are
    ready.
 
 ::::::::::::::::::::::::
@@ -68,13 +68,13 @@ installed to run.
 
 ### macOS
 
-1. Download R from [CRAN](https://cran.r-project.org/bin/macosx/) — choose the
+1. Download R from [CRAN](https://cran.r-project.org/bin/macosx/). Choose the
    `.pkg` file that matches your Mac (Apple Silicon or Intel).
 2. Open the `.pkg` file and follow the installer.
 3. Download RStudio from
    [Posit](https://posit.co/download/rstudio-desktop/).
 4. Drag RStudio to your Applications folder.
-5. Open RStudio — if you see a console panel with the R version number, you are
+5. Open RStudio. If you see a console panel with the R version number, you are
    ready.
 
 ::::::::::::::::::::::::
@@ -86,7 +86,7 @@ installed to run.
 1. Follow the instructions for your distribution at
    [CRAN](https://cran.r-project.org/bin/linux/).
 2. Download RStudio from
-   [Posit](https://posit.co/download/rstudio-desktop/) — choose the `.deb` or
+   [Posit](https://posit.co/download/rstudio-desktop/). Choose the `.deb` or
    `.rpm` file for your distribution.
 3. Install and open RStudio.
 
@@ -181,7 +181,6 @@ rows in total. The Curacao men in it are the squad that went to the World Cup.
 The September file holds the call-up that came after, and on the second day you
 will see what changes when you point the same analysis at it.
 
-It is scraped from Wikipedia, which makes it real data rather than a teaching
-toy. Two players have no club listed at all, and the squads are only as current
+It is scraped from Wikipedia. Two players have no club listed at all, and the squads are only as current
 as the volunteers who maintain those pages. Those gaps are part of what you will
 learn to handle.

@@ -21,7 +21,7 @@ Write an R script that does the following:
 2. **Transforms** it in at least one way. Filter to a subset of rows with
    `filter()`, create a new column with `mutate()`, or aggregate with
    `group_by()` and `summarise()`. Pick whichever is useful for your data.
-3. **Produces a summary table** of something meaningful — counts by category,
+3. **Produces a summary table** of something meaningful: counts by category,
    means by group, totals over time.
 4. **Creates one chart** with `ggplot2` that shows something you would
    actually want to look at.
@@ -35,10 +35,10 @@ to help you push your own projects further.
 ## Guidance
 
 - **Thirty to sixty minutes is plenty.** This is practice, not a deliverable.
-  Do not make it perfect. Do not pick a dataset that needs an hour of
-  cleaning before you can use it.
+  Rough is fine. Pick a dataset you can use straight away, rather than one
+  that needs an hour of cleaning first.
 - **Use what is in front of you.** Your Day 1 notes, the course website, the
-  code we ran together — all of it is fair game. Look things up.
+  code we ran together. All of it is fair game. Look things up.
 - **Googling is fine.** Asking R for help with `?function_name` is fine.
   Using Claude or ChatGPT for syntax hints is fine and encouraged. The rule
   is that you type the code yourself once it works, so your fingers remember
@@ -58,8 +58,8 @@ If you finish the four steps above and want more, try one of these:
 
 - Write a second version of the summary table grouped by a different
   variable, and see how the picture changes.
-- Rewrite your chart three different ways — change the `geom_*`, the colour
-  mapping, or the facet structure — and decide which version communicates
+- Rewrite your chart three different ways, changing the `geom_*`, the colour
+  mapping or the facet structure, then decide which version communicates
   best.
 - If your original dataset is in SPSS `.sav` format, export the same analysis
   to a CSV with `write_csv()` and re-import it. You have now made the move

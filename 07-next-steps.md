@@ -25,9 +25,8 @@ exercises: 10
 
 ## Getting help
 
-Everyone gets stuck. The difference between a beginner and an experienced R user
-is not that experienced users never see errors. It is that they know where to
-look when they do. Here are the most useful help resources, in order of how
+Everyone gets stuck. Experienced R users see as many errors as beginners do.
+What they have is a habit of knowing where to look. Here are the most useful help resources, in order of how
 quickly they give you an answer.
 
 ### Built-in documentation
@@ -638,8 +637,7 @@ noticing it is part of the work.
 ## You are ready
 
 You now know how to import data, transform it, visualize it, test hypotheses, and
-produce automated reports, all in R. That is not everything, but it is a solid
-foundation. The most important thing now is to **use it**. The next time you need
+produce automated reports, all in R. That is a solid foundation. The most important thing now is to **use it**. The next time you need
 to analyse data, try doing it in R instead of SPSS. You will be slower at first,
 and each time it gets easier. Everything you produce is reproducible and open to
 challenge, which is a better position to argue from.
@@ -677,8 +675,8 @@ you leave with a script you can run again next week on fresh data.
 Please take a few minutes to complete these short surveys. Your feedback helps us
 improve the course and strengthens the DCDC Network.
 
-**Course evaluation**, tell us what worked, what did not, and what you would
-change. This directly shapes future sessions.
+**Course evaluation**, tell us what worked and what you would change. It shapes
+the next session.
 
 [Complete the course evaluation survey](https://docs.google.com/forms/d/e/1FAIpQLSeq_hRNTbsBXCrvHRUYky8h4aHDAIzrjRjHEhGxdkzuTAwTyQ/viewform)
 

@@ -21,7 +21,7 @@ exercises: 20
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-![The iguana is optional. The coconut water is not.](fig/scene_2.jpg){alt="Cartoon of a researcher at a Caribbean beach bar opening his laptop to the R console, with an iguana watching from the counter"}
+![The dominoes can wait. The console is blinking.](fig/scene_2.jpg){alt="Cartoon of a researcher opening the R console on a laptop at a neighbourhood bar while an iguana watches from the next stool"}
 
 ## RStudio orientation
 

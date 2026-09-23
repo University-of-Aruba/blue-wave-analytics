@@ -89,17 +89,24 @@ carries no figures, because generators garble numbers.
 
 ## Scene 2, Episode 2, your first R session
 
+**Rendered 22 September 2026** and live in Episode 2, replacing the inherited
+Aruba beach-bar cartoon. Downscaled to 1280px at quality 66 for the 200KB
+budget. Drift to watch in later scenes: the laptop came back without its
+stickers, so restate them in every prompt.
+
 **Caption:** The dominoes can wait. The console is blinking.
 
 **Alt:** Cartoon of a researcher opening the R console on a laptop at a
 neighbourhood bar while an iguana watches from the next stool
 
-**Brief:** Inside a small local bar with louvred windows and a ceiling fan. Our
-analyst has claimed one end of the counter and opened her laptop, screen showing
-a clean console with a single blinking prompt. Beside her a large green iguana
-sits up on the next barstool watching the screen with total seriousness. Behind
-them, an unfinished domino game and two regulars who have turned to look. A
-bottle of cold water and a plate of pastechi at her elbow.
+**Brief:** Inside a small neighbourhood bar with louvred windows and a ceiling
+fan, late afternoon light in stripes. Our analyst has claimed one end of the
+counter and opened her laptop, the screen almost empty with a single blinking
+cursor. Beside her a large green iguana sits up on the next barstool watching
+the screen with total seriousness. Behind them an unfinished game of dominoes
+and two regulars who have turned to look. A bottle of cold water and a plate of
+pastechi at her elbow. No readable text anywhere, nothing legible on the screen
+beyond the cursor.
 
 ## Scene 3, Episode 3, data manipulation
 

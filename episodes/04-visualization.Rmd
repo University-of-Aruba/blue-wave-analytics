@@ -313,8 +313,8 @@ p
 
 **Step 4: Customize colours**
 
-Rather than accepting the default palette, set one deliberately. These are the
-LovelyData colours used across DCDC materials:
+Rather than accepting the default palette, set one deliberately. This is the
+palette used for the figures in this lesson:
 
 ```{r polish-step4}
 region_colours <- c(

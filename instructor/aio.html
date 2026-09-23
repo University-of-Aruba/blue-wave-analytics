@@ -597,7 +597,7 @@ starting in the next episode.</p>
   Live demo script
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>This is the complete script to run live. <strong>Practice this before
 the workshop.</strong> Make sure <code>tidyverse</code> is installed.
@@ -613,10 +613,10 @@ that makes the room lean forward.</p>
 <p>Before the first keystroke, name what the room is about to see. The
 CSV about to load is in a GitHub repository maintained at the University
 of Aruba, <code>island-research-reference-data</code>, part of the DCDC
-Network’s shared infrastructure for island research. It is not a
-third-party service you hope stays up. It is research data the network
-owns and curates. That framing matters. The payoff is not just that R
-can read a URL. It is that the data layer underneath belongs to us.</p>
+Network’s shared infrastructure for island research. The network owns
+and curates it, and keeps it up. That framing matters, because the point
+here goes past R being able to read a URL: the data layer underneath
+belongs to us.</p>
 </div>
 <div class="section level3">
 <h3 id="part-a-step-2-pull-the-sids-reference-list">Part A, step 2: Pull the SIDS reference list<a class="anchor" aria-label="anchor" href="#part-a-step-2-pull-the-sids-reference-list"></a>
@@ -1543,7 +1543,7 @@ same thing:</p>
   ..   club = col_character(),
   ..   club_country = col_character()
   .. )
- - attr(*, "problems")=&lt;pointer: 0x55d1edcfd860&gt; </code></pre>
+ - attr(*, "problems")=&lt;pointer: 0x556666aaffe0&gt; </code></pre>
 </div>
 <p>This tells you how many observations (rows), how many variables
 (columns), and the type of each variable: <code>num</code> for numbers,
@@ -3646,7 +3646,7 @@ variable and just want the panels to flow.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>The faceting example is a good place to pause and let learners
 experiment. Encourage them to try:</p>
@@ -3702,7 +3702,7 @@ with the following requirements:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3763,7 +3763,7 @@ gender.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4324,10 +4324,10 @@ home.</p>
 one null and one significant result. If you write up only the second,
 your p-value is not what it claims to be: you searched for it, and
 searching changes the odds of finding something.</p>
-<p>The fix is not to avoid looking. It is to say how much you looked.
-“We tested island and gender; the island comparison was null” costs you
-one sentence and it is the difference between an analysis a reader can
-weigh and one they have to take on faith.</p>
+<p>The fix is to say how much you looked. “We tested island and gender;
+the island comparison was null” costs you one sentence and it is the
+difference between an analysis a reader can weigh and one they have to
+take on faith.</p>
 </div>
 </div>
 </div>
@@ -4584,7 +4584,7 @@ possible, which is Episode 6.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>This is a good time to reinforce the reproducibility advantage. In
 SPSS, if a reviewer asks you to re-run an analysis on a different
@@ -4745,7 +4745,7 @@ when <code>growth_1990_2024</code> is above the median</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4843,7 +4843,7 @@ would it have meant if it were positive?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5249,7 +5249,7 @@ environment</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Common knitting problems </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>The most common issue is that knitting fails because the
 <code>.Rmd</code> file does not load packages or data that earlier
@@ -5551,7 +5551,7 @@ interpretation sentence</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>One way to approach it. Your file would look like this:</p>
 <pre><code>---
@@ -5721,7 +5721,7 @@ call-up?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The squad went from 26 players to 23 and now spans 11 countries
 instead of 10. The Netherlands share fell from 38 percent of the squad
@@ -5796,7 +5796,7 @@ it.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Timing the re-run </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>This section costs about eight minutes, most of it the download and
 the knit. If the room is behind, run it from the front instead:
@@ -5885,10 +5885,10 @@ harbour mouth.</div>
 </figure><section><h2 class="section-heading" id="getting-help">Getting help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
 </h2>
 <hr class="half-width">
-<p>Everyone gets stuck. The difference between a beginner and an
-experienced R user is not that experienced users never see errors. It is
-that they know where to look when they do. Here are the most useful help
-resources, in order of how quickly they give you an answer.</p>
+<p>Everyone gets stuck. Experienced R users see as many errors as
+beginners do. What they have is a habit of knowing where to look. Here
+are the most useful help resources, in order of how quickly they give
+you an answer.</p>
 <div class="section level3">
 <h3 id="built-in-documentation">Built-in documentation<a class="anchor" aria-label="anchor" href="#built-in-documentation"></a>
 </h3>
@@ -6525,7 +6525,7 @@ code <code>"CW"</code>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>An example using international tourism arrivals:</p>
 <div class="codewrapper sourceCode" id="cb21">
@@ -6583,12 +6583,12 @@ work.</p>
 <h3 class="callout-title">You are ready</h3>
 <div class="callout-content">
 <p>You now know how to import data, transform it, visualize it, test
-hypotheses, and produce automated reports, all in R. That is not
-everything, but it is a solid foundation. The most important thing now
-is to <strong>use it</strong>. The next time you need to analyse data,
-try doing it in R instead of SPSS. You will be slower at first, and each
-time it gets easier. Everything you produce is reproducible and open to
-challenge, which is a better position to argue from.</p>
+hypotheses, and produce automated reports, all in R. That is a solid
+foundation. The most important thing now is to <strong>use it</strong>.
+The next time you need to analyse data, try doing it in R instead of
+SPSS. You will be slower at first, and each time it gets easier.
+Everything you produce is reproducible and open to challenge, which is a
+better position to argue from.</p>
 </div>
 </div>
 </div>
@@ -6631,9 +6631,8 @@ fresh data.</p>
 <p>Please take a few minutes to complete these short surveys. Your
 feedback helps us improve the course and strengthens the DCDC
 Network.</p>
-<p><strong>Course evaluation</strong>, tell us what worked, what did
-not, and what you would change. This directly shapes future
-sessions.</p>
+<p><strong>Course evaluation</strong>, tell us what worked and what you
+would change. It shapes the next session.</p>
 <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeq_hRNTbsBXCrvHRUYky8h4aHDAIzrjRjHEhGxdkzuTAwTyQ/viewform" class="external-link">Complete
 the course evaluation survey</a></p>
 <p><strong>DCDC Network onboarding</strong>, help us understand your
@@ -6646,7 +6645,7 @@ the DCDC Network onboarding survey</a></p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Before delivery: two things to replace </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>The two survey links above are the Aruba pilot’s forms. Either create
 Curaçao cohort forms and swap the URLs, or accept mixed responses across

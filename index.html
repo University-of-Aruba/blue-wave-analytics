@@ -371,12 +371,12 @@ a CC-BY 4.0 license.</p>
 <h3 class="callout-title">The football is the vehicle, not the
 payload</h3>
 <div class="callout-content">
-<p>You will not learn expected goals, expected threat, or anything else
-from the analytics literature here. This is an introduction to R. The
-squad data is what we compute on because a local stake helps people
-learn, and because the dataset is an honest one with real gaps in it.
-What you take away is R, and it will work just as well on your own
-survey, your own budget file, or your own thesis data.</p>
+<p>This is an introduction to R. Expected goals, expected threat and the
+rest of the football analytics literature stay outside it. The squad
+data is what we compute on because a local stake helps people learn, and
+because the dataset is an honest one with real gaps in it. What you take
+away is R, and it will work just as well on your own survey, your own
+budget file, or your own thesis data.</p>
 </div>
 </div>
 </div>
@@ -561,8 +561,8 @@ sort it before the day.</p>
 <h3 class="callout-title">Install R and RStudio</h3>
 <div class="callout-content">
 <p>You need both R (the language) and RStudio (the interface). Think of
-R as the engine and RStudio as the dashboard — you will work in RStudio,
-but it needs R installed to run.</p>
+R as the engine and RStudio as the dashboard. You will work in RStudio,
+and it needs R installed to run.</p>
 </div>
 </div>
 </div>
@@ -574,15 +574,15 @@ but it needs R installed to run.</p>
   Windows
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
-<ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">CRAN</a> — click
+<ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">CRAN</a>. Click
 “Download R for Windows”, then “base”, then the download link.</li>
 <li>Run the installer with default settings.</li>
-<li>Download RStudio from <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Posit</a> — click
+<li>Download RStudio from <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Posit</a> and click
 “Download RStudio Desktop”.</li>
 <li>Run the RStudio installer with default settings.</li>
-<li>Open RStudio — if you see a console panel with the R version number,
+<li>Open RStudio. If you see a console panel with the R version number,
 you are ready.</li>
 </ol></div>
 </div>
@@ -596,15 +596,15 @@ you are ready.</li>
   macOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
-<ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/macosx/" class="external-link">CRAN</a> — choose the
+<ol style="list-style-type: decimal"><li>Download R from <a href="https://cran.r-project.org/bin/macosx/" class="external-link">CRAN</a>. Choose the
 <code>.pkg</code> file that matches your Mac (Apple Silicon or
 Intel).</li>
 <li>Open the <code>.pkg</code> file and follow the installer.</li>
 <li>Download RStudio from <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Posit</a>.</li>
 <li>Drag RStudio to your Applications folder.</li>
-<li>Open RStudio — if you see a console panel with the R version number,
+<li>Open RStudio. If you see a console panel with the R version number,
 you are ready.</li>
 </ol></div>
 </div>
@@ -618,10 +618,10 @@ you are ready.</li>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>Follow the instructions for your distribution at <a href="https://cran.r-project.org/bin/linux/" class="external-link">CRAN</a>.</li>
-<li>Download RStudio from <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Posit</a> — choose the
+<li>Download RStudio from <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Posit</a>. Choose the
 <code>.deb</code> or <code>.rpm</code> file for your distribution.</li>
 <li>Install and open RStudio.</li>
 </ol></div>
@@ -732,10 +732,9 @@ country that club plays in. 94 rows in total. The Curacao men in it are
 the squad that went to the World Cup. The September file holds the
 call-up that came after, and on the second day you will see what changes
 when you point the same analysis at it.</p>
-<p>It is scraped from Wikipedia, which makes it real data rather than a
-teaching toy. Two players have no club listed at all, and the squads are
-only as current as the volunteers who maintain those pages. Those gaps
-are part of what you will learn to handle.</p>
+<p>It is scraped from Wikipedia. Two players have no club listed at all,
+and the squads are only as current as the volunteers who maintain those
+pages. Those gaps are part of what you will learn to handle.</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.

@@ -333,7 +333,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reproducible Reporting</h1>
-        <p>Last updated on 2026-09-23 |
+        <p>Last updated on 2026-09-24 |
 
         <a href="https://github.com/University-of-Aruba/blue-wave-analytics/edit/main/episodes/06-reproducible-reporting.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -378,7 +378,35 @@ output export</li>
 </div>
 <figure><img src="../fig/scene_6.jpg" alt="Cartoon of a researcher pressing one button on a machine that turns a changed squad list into a finished report" class="figure mx-auto d-block"><div class="figcaption">The squad changed overnight. Again. Good thing
 the report rebuilds itself.</div>
-</figure><section><h2 class="section-heading" id="the-problem-with-copy-paste">The problem with copy-paste<a class="anchor" aria-label="anchor" href="#the-problem-with-copy-paste"></a></h2>
+</figure><div id="if-your-files-are-not-where-r-expects-them" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="if-your-files-are-not-where-r-expects-them" class="callout-inner">
+<h3 class="callout-title">If your files are not where R expects
+them</h3>
+<div class="callout-content">
+<p>The report code below reads <code>data/blue_wave_squad.csv</code>,
+which assumes the file sits in a <code>data</code> folder next to your
+report. If that is not your situation this morning, put this line at the
+top of the report instead and change each <code>read_csv()</code> to
+match:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/University-of-Aruba/blue-wave-analytics/main/episodes/data/"</span></span>
+<span><span class="va">squad</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu">paste0</span><span class="op">(</span><span class="va">base</span>, <span class="st">"blue_wave_squad.csv"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<p>A report that reads from a URL is still reproducible, and it has one
+advantage for a report you send to someone else: it carries its own data
+with it. The trade-off is that it needs a connection and it breaks if
+the file moves.</p>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="the-problem-with-copy-paste">The problem with copy-paste<a class="anchor" aria-label="anchor" href="#the-problem-with-copy-paste"></a></h2>
 <hr class="half-width"><p>If you have used SPSS for reporting, this workflow will feel
 familiar:</p>
 <ol style="list-style-type: decimal"><li>Run your analysis in SPSS</li>
@@ -577,7 +605,7 @@ environment</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Common knitting problems </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>The most common issue is that knitting fails because the
 <code>.Rmd</code> file does not load packages or data that earlier
@@ -632,7 +660,7 @@ YAML header and replace it with the following sections.</p>
 <p>The first code chunk in any report should load your packages and
 data. We hide the code and messages because the reader does not need to
 see them.</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -658,7 +686,7 @@ compiled in 2026.</code></pre>
 <p>Now add a code chunk that produces a summary table. The
 <code>knitr::kable()</code> function turns a data frame into a formatted
 table in your output document:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -718,7 +746,7 @@ table in your output document:</p>
 <div class="section level3">
 <h3 id="step-4-a-visualization">Step 4: A visualization<a class="anchor" aria-label="anchor" href="#step-4-a-visualization"></a></h3>
 <p>Add another chunk with a ggplot2 chart:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -850,7 +878,7 @@ interpretation sentence</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>One way to approach it. Your file would look like this:</p>
 <pre><code>---
@@ -911,7 +939,7 @@ worked example is the squad report you saw in Episode 1’s opening,
 opened now with the skills from this episode in hand.</p>
 <p>Pull the template and its stylesheet from the course repository into
 your workshop folder:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -942,13 +970,13 @@ material.</p>
 <h3 class="callout-title">One template, four reports</h3>
 <div class="callout-content">
 <p>Look at the top of the template:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a><span class="at">  </span><span class="fu">team</span><span class="kw">:</span><span class="at"> </span><span class="st">"CUW-M"</span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1" aria-label="code-block-14-3"></a><span class="at">  </span><span class="fu">data_dir</span><span class="kw">:</span><span class="at"> </span><span class="st">"data"</span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1" aria-label="code-block-14-4"></a><span class="at">  </span><span class="fu">squad_file</span><span class="kw">:</span><span class="at"> </span><span class="st">"blue_wave_squad.csv"</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a><span class="at">  </span><span class="fu">team</span><span class="kw">:</span><span class="at"> </span><span class="st">"CUW-M"</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1" aria-label="code-block-15-3"></a><span class="at">  </span><span class="fu">data_dir</span><span class="kw">:</span><span class="at"> </span><span class="st">"data"</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1" aria-label="code-block-15-4"></a><span class="at">  </span><span class="fu">squad_file</span><span class="kw">:</span><span class="at"> </span><span class="st">"blue_wave_squad.csv"</span></span></code></pre>
 </div>
 <p>Every reference to a specific squad inside the document goes through
 <code>params$team</code>. Change that one line to <code>"ARU-W"</code>,
@@ -968,7 +996,7 @@ this episode, that is step 7. Go back to step 1.</p>
 <p>Here it is one download and one changed line. The new call-up sits in
 the course repository as a second file, next to the one you already
 have:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -982,7 +1010,7 @@ have:</p>
 <code>"blue_wave_squad_2026-09.csv"</code>, and knit. Or leave the file
 alone and pass the new value in from the console, which also keeps the
 first report instead of overwriting it:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1016,7 +1044,7 @@ call-up?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The squad went from 26 players to 23 and now spans 11 countries
 instead of 10. The Netherlands share fell from 38 percent of the squad
@@ -1042,7 +1070,7 @@ list.</p>
 <p>The region code you wrote in Episode 3 names the European countries
 one by one. Run it on the new file and look at what the
 <code>.default</code> line caught:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1091,7 +1119,7 @@ it.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Timing the re-run </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>This section costs about eight minutes, most of it the download and
 the knit. If the room is behind, run it from the front instead:
@@ -1192,8 +1220,8 @@ any links that you are not going to use.
   "url": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor/06-reproducible-reporting.html",
   "identifier": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor/06-reproducible-reporting.html",
   "dateCreated": "2026-08-22",
-  "dateModified": "2026-09-23",
-  "datePublished": "2026-09-23"
+  "dateModified": "2026-09-24",
+  "datePublished": "2026-09-24"
 }
 
   </script><script>

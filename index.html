@@ -702,6 +702,14 @@ file</strong> button near the top right of the preview and save the
 file. Do not open the CSV in Excel and re-save. That can silently change
 the encoding, and it will mangle the c-cedilla in Curacao in a way that
 causes a confusing error two episodes later.</p>
+<p>Check the six files in your Downloads folder before you go further.
+They must keep their own names and their own extensions,
+<code>.csv</code>, <code>.xlsx</code> and <code>.sav</code>. Some
+browsers save every download from the same page under one name, or add
+<code>(1)</code> and <code>(2)</code>, and a file saved as
+<code>blue_wave_squad(2).csv</code> will not be found by code asking for
+<code>blue_wave_squad.csv</code>. Rename them now rather than in the
+room.</p>
 <div class="section level3">
 <h3 id="where-to-put-the-files">Where to put the files<a class="anchor" aria-label="anchor" href="#where-to-put-the-files"></a></h3>
 <p>Create a folder for the workshop, for example
@@ -716,13 +724,36 @@ Your structure should look like this:</p>
     ├── fifa_rankings.csv
     ├── diaspora_change.csv
     └── blue_wave_squad_2026-09.csv</code></pre>
-<p>When you open RStudio during the course, use <strong>File &gt; Open
-Project</strong> to open <code>blue-wave</code>, or set your working
-directory to the folder. The code in the lessons assumes this layout, so
-<code>read_csv("data/blue_wave_squad.csv")</code> finds its file without
-any extra path work.</p>
-<p>If you cannot download the files in advance, we will walk through
-this step together at the start of Episode 2. Bring the links.</p>
+<p>Then tell R where that folder is. The reliable way is <strong>Session
+&gt; Set Working Directory &gt; Choose Directory</strong>, and pick
+<code>blue-wave</code> itself, <strong>not</strong> the
+<code>data</code> folder inside it. The lesson code says
+<code>read_csv("data/blue_wave_squad.csv")</code>, so R has to be
+standing one level above <code>data</code> for that path to make sense.
+If you point it at <code>data</code>, every path in the course is wrong
+by one folder.</p>
+<p>Check it from the console before the course starts:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">getwd</span><span class="op">(</span><span class="op">)</span>             <span class="co"># should end in blue-wave</span></span>
+<span><span class="fu">list.files</span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span>  <span class="co"># should list your six files</span></span></code></pre>
+</div>
+<p>If <code>list.files("data")</code> prints <code>character(0)</code>,
+R is looking in the wrong place.</p>
+<p>If none of this works on the day, nothing is lost. Every dataset can
+also be read straight from the web, with no download and no working
+directory at all:</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/University-of-Aruba/blue-wave-analytics/main/episodes/data/"</span></span>
+<span><span class="va">squad</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu">paste0</span><span class="op">(</span><span class="va">base</span>, <span class="st">"blue_wave_squad.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">nrow</span><span class="op">(</span><span class="va">squad</span><span class="op">)</span>  <span class="co"># 94</span></span></code></pre>
+</div>
 </div>
 </section><section><h2 class="section-heading" id="what-the-data-is">What the data is<a class="anchor" aria-label="anchor" href="#what-the-data-is"></a></h2>
 <hr class="half-width"><p>The squad file lists the players in the squads of four Dutch
@@ -790,8 +821,8 @@ any links that you are not going to use.
   "url": "https://University-of-Aruba.github.io/blue-wave-analytics/index.html",
   "identifier": "https://University-of-Aruba.github.io/blue-wave-analytics/index.html",
   "dateCreated": "2026-08-22",
-  "dateModified": "2026-09-23",
-  "datePublished": "2026-09-23"
+  "dateModified": "2026-09-24",
+  "datePublished": "2026-09-24"
 }
 
   </script><script>

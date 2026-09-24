@@ -663,6 +663,44 @@ costs nothing from the timetable. It is worth naming out loud in the
 wrap-up even if nobody reads the section.</p>
 <p>The index says both are covered, which matters for institutions
 deciding whether to send staff.</p>
+</section><section><h2 class="section-heading" id="what-went-wrong-on-day-1-curacao-23-september-2026">What went wrong on Day 1, Curacao, 23 September 2026<a class="anchor" aria-label="anchor" href="#what-went-wrong-on-day-1-curacao-23-september-2026"></a>
+</h2>
+<hr class="half-width">
+<p>Recorded the same evening, from delivery. Every item here cost time
+in the room.</p>
+<p><strong>Getting the data into R was the whole problem.</strong>
+Participants had the files in a folder and no clear route from there to
+a loaded data frame. The instructions said to create a project but never
+said, in one line, how to point R at the folder afterwards. Rendell set
+the working directory to the <code>data</code> folder rather than to its
+parent, which breaks every <code>"data/..."</code> path in the course by
+one level, and the paths had to be edited live. Episode 2 now has a step
+4 that prints <code>getwd()</code> and <code>list.files("data")</code>
+before anything else, and setup.md says to pick the parent folder in as
+many words.</p>
+<p><strong>Nobody knew whether to upload through the menu or load by
+command.</strong> Walk the room through one route and name it as the
+route. Do not offer both.</p>
+<p><strong>The downloaded files collided.</strong> All three arrived
+under the same name and overwrote each other, so everyone had to rename
+before anything would load. setup.md now says to check names and
+extensions in the Downloads folder first.</p>
+<p><strong>The Excel import silently returned half the data.</strong>
+<code>read_excel()</code> takes the first sheet, and this workbook
+splits 48 rows of Curacao and 46 of Aruba. Episode 2 now counts the
+rows, names the trap, and stacks the sheets with
+<code>bind_rows()</code>. Teach it as the lesson it is: an Excel import
+that returns half your cases looks exactly like one that worked.</p>
+<p><strong>The fix that removes all of this at once</strong> is reading
+from the web. Episode 5 now opens with a <code>base</code> URL and three
+<code>read_csv(paste0(base, ...))</code> lines, so Day 2 starts with
+data in memory whatever state anyone’s folders are in. Put that block on
+the screen first and let people catch up while you talk.</p>
+<p><strong>There was no second pair of hands.</strong> One instructor
+cannot debug twenty installations and keep a timetable. Where no helper
+is funded, recruit two or three participants who got through setup
+quickly and ask them openly to help their neighbours. It costs nothing
+and it works.</p>
 </section><section><h2 class="section-heading" id="common-issues">Common Issues<a class="anchor" aria-label="anchor" href="#common-issues"></a>
 </h2>
 <hr class="half-width">
@@ -833,8 +871,8 @@ any links that you are not going to use.
   "url": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor-notes.html",
   "identifier": "https://University-of-Aruba.github.io/blue-wave-analytics/instructor-notes.html",
   "dateCreated": "2026-08-22",
-  "dateModified": "2026-09-23",
-  "datePublished": "2026-09-23"
+  "dateModified": "2026-09-24",
+  "datePublished": "2026-09-24"
 }
 
   </script><script>

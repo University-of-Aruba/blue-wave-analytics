@@ -25,6 +25,26 @@ exercises: 15
 
 
 
+::::::::::::::::::::::::::::::::::::: callout
+
+## If your files are not where R expects them
+
+The report code below reads `data/blue_wave_squad.csv`, which assumes the file
+sits in a `data` folder next to your report. If that is not your situation this
+morning, put this line at the top of the report instead and change each
+`read_csv()` to match:
+
+```r
+base <- "https://raw.githubusercontent.com/University-of-Aruba/blue-wave-analytics/main/episodes/data/"
+squad <- read_csv(paste0(base, "blue_wave_squad.csv"))
+```
+
+A report that reads from a URL is still reproducible, and it has one advantage
+for a report you send to someone else: it carries its own data with it. The
+trade-off is that it needs a connection and it breaks if the file moves.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## The problem with copy-paste
 
 If you have used SPSS for reporting, this workflow will feel familiar:

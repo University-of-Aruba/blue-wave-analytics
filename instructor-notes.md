@@ -116,6 +116,42 @@ loud in the wrap-up even if nobody reads the section.
 The index says both are covered, which matters for institutions deciding whether
 to send staff.
 
+## What went wrong on Day 1, Curacao, 23 September 2026
+
+Recorded the same evening, from delivery. Every item here cost time in the room.
+
+**Getting the data into R was the whole problem.** Participants had the files in
+a folder and no clear route from there to a loaded data frame. The instructions
+said to create a project but never said, in one line, how to point R at the
+folder afterwards. Rendell set the working directory to the `data` folder rather
+than to its parent, which breaks every `"data/..."` path in the course by one
+level, and the paths had to be edited live. Episode 2 now has a step 4 that
+prints `getwd()` and `list.files("data")` before anything else, and setup.md says
+to pick the parent folder in as many words.
+
+**Nobody knew whether to upload through the menu or load by command.** Walk the
+room through one route and name it as the route. Do not offer both.
+
+**The downloaded files collided.** All three arrived under the same name and
+overwrote each other, so everyone had to rename before anything would load.
+setup.md now says to check names and extensions in the Downloads folder first.
+
+**The Excel import silently returned half the data.** `read_excel()` takes the
+first sheet, and this workbook splits 48 rows of Curacao and 46 of Aruba. Episode
+2 now counts the rows, names the trap, and stacks the sheets with `bind_rows()`.
+Teach it as the lesson it is: an Excel import that returns half your cases looks
+exactly like one that worked.
+
+**The fix that removes all of this at once** is reading from the web. Episode 5
+now opens with a `base` URL and three `read_csv(paste0(base, ...))` lines, so Day
+2 starts with data in memory whatever state anyone's folders are in. Put that
+block on the screen first and let people catch up while you talk.
+
+**There was no second pair of hands.** One instructor cannot debug twenty
+installations and keep a timetable. Where no helper is funded, recruit two or
+three participants who got through setup quickly and ask them openly to help
+their neighbours. It costs nothing and it works.
+
 ## Common Issues
 
 - **Installation problems**: The registration email asks participants to reply

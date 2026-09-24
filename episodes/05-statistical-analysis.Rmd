@@ -38,16 +38,43 @@ table below maps the SPSS dialogs you already know to their R equivalents:
 | Chi-square test              | Analyze > Descriptive Statistics > Crosstabs           | `chisq.test(table(df$a, df$b))`             |
 | Linear regression            | Analyze > Regression > Linear                          | `lm(y ~ x1 + x2, data = df)` + `summary()` |
 
-Load the data and packages:
+Load the data and packages. These lines read the files straight from the web, so
+they work whatever happened to your folders yesterday and whatever your working
+directory is this morning:
 
 ```{r setup, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(broom)
 
+base <- "https://raw.githubusercontent.com/University-of-Aruba/blue-wave-analytics/main/episodes/data/"
+
+fifa     <- read_csv(paste0(base, "fifa_rankings.csv"))
+squad    <- read_csv(paste0(base, "blue_wave_squad.csv"))
+diaspora <- read_csv(paste0(base, "diaspora_change.csv"))
+
+nrow(squad)  # 94. If you see anything else, stop and say so.
+```
+
+::::::::::::::::::::::::::::::::::::: callout
+
+## Reading from a file instead
+
+If your three files are sitting in a `data` folder inside your working
+directory, these lines do the same job:
+
+```r
 fifa     <- read_csv("data/fifa_rankings.csv")
 squad    <- read_csv("data/blue_wave_squad.csv")
 diaspora <- read_csv("data/diaspora_change.csv")
 ```
+
+Two commands tell you whether that will work before you run it. `getwd()` prints
+where R is looking right now, and `list.files("data")` prints what R can see in
+the `data` folder from there. If the second one returns `character(0)`, R is
+looking somewhere else. Fix it with **Session > Set Working Directory > Choose
+Directory**, or keep the web version above and move on.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: callout
 

@@ -147,6 +147,12 @@ the top right of the preview and save the file. Do not open the CSV in Excel and
 re-save. That can silently change the encoding, and it will mangle the c-cedilla
 in Curacao in a way that causes a confusing error two episodes later.
 
+Check the six files in your Downloads folder before you go further. They must
+keep their own names and their own extensions, `.csv`, `.xlsx` and `.sav`. Some
+browsers save every download from the same page under one name, or add `(1)` and
+`(2)`, and a file saved as `blue_wave_squad(2).csv` will not be found by code
+asking for `blue_wave_squad.csv`. Rename them now rather than in the room.
+
 ### Where to put the files
 
 Create a folder for the workshop, for example `Documents/blue-wave/`, and inside
@@ -164,13 +170,30 @@ blue-wave/
     └── blue_wave_squad_2026-09.csv
 ```
 
-When you open RStudio during the course, use **File > Open Project** to open
-`blue-wave`, or set your working directory to the folder. The code in the
-lessons assumes this layout, so `read_csv("data/blue_wave_squad.csv")` finds its
-file without any extra path work.
+Then tell R where that folder is. The reliable way is **Session > Set Working
+Directory > Choose Directory**, and pick `blue-wave` itself, **not** the `data`
+folder inside it. The lesson code says `read_csv("data/blue_wave_squad.csv")`,
+so R has to be standing one level above `data` for that path to make sense. If
+you point it at `data`, every path in the course is wrong by one folder.
 
-If you cannot download the files in advance, we will walk through this step
-together at the start of Episode 2. Bring the links.
+Check it from the console before the course starts:
+
+```r
+getwd()             # should end in blue-wave
+list.files("data")  # should list your six files
+```
+
+If `list.files("data")` prints `character(0)`, R is looking in the wrong place.
+
+If none of this works on the day, nothing is lost. Every dataset can also be
+read straight from the web, with no download and no working directory at all:
+
+```r
+library(tidyverse)
+base <- "https://raw.githubusercontent.com/University-of-Aruba/blue-wave-analytics/main/episodes/data/"
+squad <- read_csv(paste0(base, "blue_wave_squad.csv"))
+nrow(squad)  # 94
+```
 
 ## What the data is
 

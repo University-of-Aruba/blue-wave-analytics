@@ -233,6 +233,20 @@ blue-wave/
 In RStudio's Files pane, bottom-right, click into the `data` folder. If you see
 `blue_wave_squad.csv`, you are ready. Green sticky note.
 
+**4. Prove it from the console.** The Files pane can show you a folder that R is
+not pointing at. Run these two lines:
+
+```r
+getwd()             # where R is looking right now
+list.files("data")  # what R can see in the data folder from there
+```
+
+The first should end in `blue-wave`. The second should list your files. If it
+returns `character(0)`, R is looking somewhere else: use **Session > Set Working
+Directory > Choose Directory** and pick the `blue-wave` folder itself, not the
+`data` folder inside it. Pointing R at `data` is the most common version of this
+mistake, and it breaks every `"data/..."` path in the course by one level.
+
 ::::::::::::::::::::::::::::::::::::: callout
 
 ## Why a project folder?
@@ -316,12 +330,17 @@ install.packages("readxl")
 # Iteration: 1
 library(readxl)
 
-# Basic import, reads the first sheet by default
+# Basic import, reads the FIRST SHEET ONLY
 squad_xl <- read_excel("data/blue_wave_squad.xlsx")
+nrow(squad_xl)
 ```
 
-If your Excel file has multiple sheets, use the `sheet` argument to specify
-which one you want, either by name or by position:
+Count the rows. The CSV gave you 94 players and this gives you 48, because this
+workbook has the squads split across two sheets and `read_excel()` takes the
+first one and says nothing about it. Silence is the danger here: an Excel import
+that quietly returns half your cases looks exactly like one that worked.
+
+Name the sheet you want with the `sheet` argument, by name or by position:
 
 ```{r}
 # Iteration: 1
@@ -331,6 +350,20 @@ curacao <- read_excel("data/blue_wave_squad.xlsx", sheet = "curacao")
 # By position (second sheet)
 aruba <- read_excel("data/blue_wave_squad.xlsx", sheet = 2)
 ```
+
+To get the whole dataset, read both and stack them with `bind_rows()`, which
+puts one table underneath the other:
+
+```{r}
+# Iteration: 1
+squad_xl <- bind_rows(curacao, aruba)
+nrow(squad_xl)
+```
+
+Ninety-four again. Whenever you import from Excel, check the row count against
+what you expect before you analyse anything. `excel_sheets("data/blue_wave_squad.xlsx")`
+lists every sheet in a workbook, which is the fastest way to find out what you
+were not given.
 
 You can also read a specific cell range with the `range` argument, which is
 useful when the data does not start at cell A1:

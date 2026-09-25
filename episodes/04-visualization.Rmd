@@ -40,12 +40,15 @@ layer, like constructing a sentence:
 5. **Theme** (`theme_*()`), what overall style should the plot have?
 
 You combine these layers with the `+` operator. First, load our packages and
-both datasets:
+both datasets. We read them straight from the course repository on GitHub, so nothing needs to
+be in your `data` folder for this episode:
 
 ```{r setup, message=FALSE, warning=FALSE}
 library(tidyverse)
 
-squad <- read_csv("data/blue_wave_squad.csv") |>
+base <- "https://raw.githubusercontent.com/University-of-Aruba/blue-wave-analytics/main/episodes/data/"
+
+squad <- read_csv(paste0(base, "blue_wave_squad.csv")) |>
   mutate(
     island = if_else(str_starts(team_code, "CUW"), "Curaçao", "Aruba"),
     gender = if_else(str_ends(team_code, "M"), "Men", "Women"),
@@ -60,7 +63,7 @@ squad <- read_csv("data/blue_wave_squad.csv") |>
     )
   )
 
-fifa <- read_csv("data/fifa_rankings.csv")
+fifa <- read_csv(paste0(base, "fifa_rankings.csv"))
 ```
 
 ::::::::::::::::::::::::::::::::::::: callout

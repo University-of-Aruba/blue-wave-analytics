@@ -368,11 +368,20 @@ ggplot(squad_summary, aes(x = reorder(paste(island, gender), pct_abroad),
 
 ### Step 5: Interpretation with inline R
 
-Now write a paragraph that uses inline R to insert numbers directly:
+Inline R can only use objects that already exist when knitr reaches the
+sentence. So first add a chunk that picks out the squads with the highest and
+lowest share of players abroad from the `squad_summary` table you built in
+Step 3:
 
 
+``` r
+most  <- squad_summary |> slice_max(pct_abroad, n = 1)
+least <- squad_summary |> slice_min(pct_abroad, n = 1)
+```
 
-In your `.Rmd` file you would write something like this:
+In your own report, set `echo = FALSE` on this chunk so the reader sees only the
+sentence. Then, below the chunk and outside it, write the paragraph in plain
+Markdown with the inline R in it:
 
 ````
 The squad most dependent on players based overseas is the
